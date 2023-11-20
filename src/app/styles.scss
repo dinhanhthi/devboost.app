@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose {
+  pre {
+    // padding: 0;
+    .codeStyle {
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+    }
+  }
+}
+
+@layer base {
+  .t4d-scrollbar,
+  .prose code,
+  .codeStyle,
+  .prose pre {
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #4e5361;
+      border-radius: 8px;
+      &:hover {
+        background: #adb5bd;
+      }
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &.m2it-scrollbar-small {
+      &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 7px;
+      }
+    }
+  }
+
+  .t4d-button {
+    &._main {
+      @apply bg-sky-900 hover:bg-sky-800;
+    }
+
+    @apply h-7 rounded-lg border-gray-800 bg-gray-700 px-3 text-sm text-tnormal shadow-md
+      hover:bg-[#414658] hover:text-white disabled:cursor-not-allowed
+      disabled:opacity-50 disabled:hover:bg-gray-700 disabled:hover:text-tnormal;
+  }
+
+  .t4d-textarea {
+    @apply t4d-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-border
+      bg-darkest p-4 py-3 text-tlight shadow-slate-300 placeholder:text-gray-500
+      focus:outline-none;
+  }
+
+  .t4d-input {
+    @apply h-9 rounded-md border border-border bg-darkest px-2.5
+      py-1.5 text-sm text-tlight outline-none placeholder:text-gray-500;
+  }
+}
