@@ -8,8 +8,8 @@ import { inter } from './fonts'
 import './styles.scss'
 
 export const metadata: Metadata = {
-  title: 'Tools for Devs',
-  description: 'A collection of useful tools for developers',
+  title: 'DevBoost',
+  description: 'Boost your dev with useful tools.',
   robots: {
     index: process.env.ENV_MODE !== 'prod' ? false : true,
     follow: process.env.ENV_MODE !== 'prod' ? false : true,

@@ -1,6 +1,6 @@
-# 🧰 Tools for Devs
+# DevBoost
 
-A collection of useful tools for dev.
+Boost your dev with useful tools.
 
 ```bash
 # install

@@ -1,5 +1,6 @@
 {
   "name": "devboost",
+  "description": "Boost your dev with useful tools.",
   "version": "0.0.1",
   "author": "Anh-Thi Dinh",
   "private": true,
