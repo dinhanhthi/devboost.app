@@ -8,7 +8,7 @@ export function TreeDiagramIcon(props: SVGProps<SVGSVGElement>) {
         <circle cx="38" cy="10" r="4"></circle>
         <circle cx="38" cy="24" r="4"></circle>
         <circle cx="38" cy="38" r="4"></circle>
-        <path stroke-linecap="round" stroke-linejoin="round" d="M34 38H22V10h12M14 24h20"></path>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M34 38H22V10h12M14 24h20"></path>
       </g>
     </svg>
   )

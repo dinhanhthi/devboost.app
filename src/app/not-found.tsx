@@ -1,13 +1,9 @@
-// https://nextjs.org/docs/app/api-reference/file-conventions/not-found
-import Link from 'next/link'
+import MainContainer from '../components/MainContainer'
 
 export default function NotFound() {
   return (
-    <div>
-      <h1>Not found - 404!</h1>
-      <div>
-        <Link href="/">Go back to Home</Link>
-      </div>
-    </div>
+    <MainContainer className="items-center justify-center h-full">
+      <h1 className="text-2xl animate-pulse">Not found - 404!</h1>
+    </MainContainer>
   )
 }

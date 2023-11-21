@@ -35,7 +35,8 @@ const originalTools: Tool[] = [
   {
     slug: 'check-your-api',
     name: 'Check Your API',
-    description: "Quickly check your API's response. No need to write code. You can also save your API for later use.",
+    description:
+      "Quickly check your API's response. No need to write code. You can also save your API for later use.",
     iconEl: ApiIcon({ className: commonIconClass })
   },
   {
@@ -124,7 +125,8 @@ const originalTools: Tool[] = [
   {
     slug: 'uuid-generator-decoder',
     name: 'UUID Generator/Decoder',
-    description: 'Generate UUID (Universally unique identifier) with different versions 1, 3, 4, 5. You can also validate, decode or format UUID.',
+    description:
+      'Generate UUID (Universally unique identifier) with different versions 1, 3, 4, 5. You can also validate, decode or format UUID.',
     iconEl: Uuid({ className: commonIconClass }),
     implemented: true,
     docFile: 'uuid.md'
@@ -197,7 +199,8 @@ const originalTools: Tool[] = [
   {
     slug: 'nano-id-generator',
     name: 'Nano ID Generator',
-    description: 'Generate Nano ID. You can also generate Nano ID with custom alphabet and a given size of the ID.',
+    description:
+      'Generate Nano ID. You can also generate Nano ID with custom alphabet and a given size of the ID.',
     iconEl: NanoIdIcon({ className: 'h-5' }),
     implemented: true,
     docFile: 'nanoid.md'
@@ -205,7 +208,8 @@ const originalTools: Tool[] = [
   {
     slug: 'ulid-generator',
     name: 'ULID Generator',
-    description: 'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
+    description:
+      'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
     iconEl: ULIDIcon({ className: 'text-[0.6rem]' }),
     implemented: true,
     docFile: 'ulid.md'
@@ -225,7 +229,7 @@ const originalTools: Tool[] = [
     name: 'OpenAI Key Validator',
     description: 'Quickly validate your OpenAI key to see if you can use it for OpenAI APIs.',
     iconEl: OpenAiIcon({ className: 'h-6 w-6' }),
-    implemented: true,
+    implemented: true
     // docFile: 'openai-key-validator.md'
   },
   {

@@ -11,7 +11,7 @@ type ButtonProps = {
 export default function Button(props: ButtonProps) {
   return (
     <button
-      className={cn(props.className, 'flex items-center justify-center gap-1.5 t4d-button', {
+      className={cn(props.className, 'flex items-center justify-center gap-1.5 db-button', {
         _main: props.isPrimary
       })}
       onClick={props.onClick}

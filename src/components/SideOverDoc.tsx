@@ -1,6 +1,4 @@
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
@@ -8,6 +6,7 @@ import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
 import { CloseIcon } from '../icons/CloseIcon'
 import { DocDuoToneIcon } from '../icons/DocDuaToneIcon'
 import { Tool } from '../interface'
+import { MarkdownComponents } from '../libs/helpers'
 
 type SideOverDocProps = {
   tool: Tool
@@ -17,25 +16,6 @@ type SideOverDocProps = {
 }
 
 export default function SideOverDoc(props: SideOverDocProps) {
-  const MarkdownComponents: object = {
-    code({ node, className, ...props }: any) {
-      const hasLang = /language-(\w+)/.exec(className || '')
-      return hasLang ? (
-        <SyntaxHighlighter
-          style={dracula}
-          language={hasLang[1]}
-          PreTag="div"
-          className="codeStyle"
-          showLineNumbers={true}
-          useInlineStyles={true}
-        >
-          {props.children}
-        </SyntaxHighlighter>
-      ) : (
-        <code className={className} {...props} />
-      )
-    }
-  }
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={props.setOpen}>
@@ -95,7 +75,7 @@ export default function SideOverDoc(props: SideOverDocProps) {
                       )}
                     </div>
                     <div className="flex-1 min-h-0 p-3 pt-0 overflow-hidden">
-                      <div className="h-full p-4 overflow-auto prose border rounded-lg prose-zinc prose-invert bg-dark border-border t4d-scrollbar">
+                      <div className="h-full p-4 overflow-auto prose border rounded-lg prose-zinc prose-invert bg-dark border-border db-scrollbar">
                         {props.docContent && (
                           <ReactMarkdown components={MarkdownComponents}>
                             {props.docContent}

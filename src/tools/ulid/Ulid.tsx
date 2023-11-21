@@ -1,10 +1,10 @@
 'use client'
 
-import cn from 'classnames'
 import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
+import MainContainer from '../../components/MainContainer'
 import Tabs from '../../components/Tabs'
 
 const UlidGenerator = dynamic(() => import('./UlidGenerator'), { ssr: false })
@@ -31,15 +31,11 @@ export default function Ulid() {
   return (
     <div className="flex flex-col w-full h-full gap-4">
       <Tabs tabs={tabs} selectedTab={selectedTab} setSelectedTab={setSelectedTab} width={420} />
-      <div
-        className={cn(
-          'min-h-0 w-full flex-1 overflow-hidden rounded-xl border border-border bg-dark p-4'
-        )}
-      >
+      <MainContainer>
         {selectedTab === 'generator' && <UlidGenerator />}
         {selectedTab === 'time-decoder' && <UlidTimeDecoder />}
         {selectedTab === 'validator' && <UlidValidator />}
-      </div>
+      </MainContainer>
     </div>
   )
 }

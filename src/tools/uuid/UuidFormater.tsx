@@ -51,7 +51,7 @@ export default function UuidFormater() {
         <button
           disabled={!originalValue}
           onClick={handleFormatClicked}
-          className="flex items-center gap-2 t4d-button _main"
+          className="flex items-center gap-2 db-button _main"
         >
           <FormatIcon className="h-3.5 w-3.5" /> Format
         </button>
@@ -73,7 +73,7 @@ export default function UuidFormater() {
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'123639f0852211ee9b230500b4b78763'}
-          className={cn('t4d-input flex-1 py-2')}
+          className={cn('db-input flex-1 py-2')}
         />
       </div>
 
@@ -89,7 +89,7 @@ export default function UuidFormater() {
           onChange={event => setTargetValue(event.target.value)}
           type="text"
           placeholder={'123639f0-8522-11ee-9b23-0500b4b78763'}
-          className={cn('t4d-input flex-1 py-2')}
+          className={cn('db-input flex-1 py-2')}
         />
         <CopyButton text={targetValue} />
       </div>

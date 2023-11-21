@@ -7,6 +7,7 @@ import ClearButton from '../../components/ClearButton'
 import CopyButton from '../../components/CopyButton'
 import DownloadButton from '../../components/DownloadButton'
 import GenerateButton from '../../components/GenerateButton'
+import MainContainer from '../../components/MainContainer'
 
 export default function NanoIdGenerator() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -49,7 +50,7 @@ export default function NanoIdGenerator() {
     setTextareaValue(nanoIds.join('\n'))
   }
   return (
-    <div className={cn('flex h-full flex-col gap-4 bg-dark border border-border p-4 rounded-xl')}>
+    <MainContainer>
       <div className="flex flex-col flex-wrap justify-between gap-4">
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-6">
@@ -78,7 +79,7 @@ export default function NanoIdGenerator() {
               ref={yourCharacterRef}
               type="text"
               placeholder="abcXyz123@"
-              className={cn('t4d-input w-64')}
+              className={cn('db-input w-64')}
             />
           </div>
 
@@ -93,7 +94,7 @@ export default function NanoIdGenerator() {
                 placeholder="max 100"
                 max={100}
                 min={1}
-                className={cn('t4d-input w-28')}
+                className={cn('db-input w-28')}
               />
             </div>
 
@@ -107,7 +108,7 @@ export default function NanoIdGenerator() {
                 placeholder="max 500"
                 max={500}
                 min={1}
-                className={cn('t4d-input w-28')}
+                className={cn('db-input w-28')}
               />
             </div>
           </div>
@@ -121,9 +122,9 @@ export default function NanoIdGenerator() {
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
           placeholder='Click "Generate" button to generate Nano IDs...'
-          className={cn('t4d-textarea h-full max-h-full w-full text-base')}
+          className={cn('db-textarea h-full max-h-full w-full text-base')}
         />
       </div>
-    </div>
+    </MainContainer>
   )
 }

@@ -114,7 +114,7 @@ export default function SelectOptions(props: SelectOptionsProps) {
                   >
                     <Listbox.Options
                       className={cn(
-                        't4d-scrollbar absolute right-0 top-[40px] z-10 border-border border shadow-lg overflow-auto rounded-lg bg-darker text-sm divide-y divide-x-0 divide-border ring-1 ring-black ring-opacity-5 focus:outline-none'
+                        'db-scrollbar absolute right-0 top-[40px] z-10 border-border border shadow-lg overflow-auto rounded-lg bg-darker text-sm divide-y divide-x-0 divide-border ring-1 ring-black ring-opacity-5 focus:outline-none'
                       )}
                       style={{
                         ...props.dropdownStyle,

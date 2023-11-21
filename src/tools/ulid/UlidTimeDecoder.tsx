@@ -61,7 +61,7 @@ export default function UlidTimeDecoder() {
         <button
           disabled={!originalValue}
           onClick={handleDecodeClicked}
-          className="flex items-center gap-2 t4d-button _main"
+          className="flex items-center gap-2 db-button _main"
         >
           {!isDecoding && <FormatIcon className="h-3.5 w-3.5" />}
           {isDecoding && (
@@ -86,7 +86,7 @@ export default function UlidTimeDecoder() {
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'01HFE5Z3SZDQVR53EY0T54C9TS'}
-          className={cn('t4d-input flex-1 py-2')}
+          className={cn('db-input flex-1 py-2')}
         />
       </div>
 
