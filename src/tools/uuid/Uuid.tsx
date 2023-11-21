@@ -1,9 +1,9 @@
 'use client'
 
-import cn from 'classnames'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
+import MainContainer from '../../components/MainContainer'
 import Tabs from '../../components/Tabs'
 import UuidDecoder from './UuidDecoder'
 import UuidFormater from './UuidFormater'
@@ -30,16 +30,12 @@ export default function Uuid() {
   return (
     <div className="flex flex-col w-full h-full gap-4">
       <Tabs width={460} tabs={tabs} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <div
-        className={cn(
-          'min-h-0 w-full flex-1 overflow-hidden rounded-xl border border-border bg-dark p-4'
-        )}
-      >
+      <MainContainer>
         {selectedTab === 'generator' && <UuidGenerator />}
         {selectedTab === 'decoder' && <UuidDecoder />}
         {selectedTab === 'formater' && <UuidFormater />}
         {selectedTab === 'validator' && <UuidValidator />}
-      </div>
+      </MainContainer>
     </div>
   )
 }

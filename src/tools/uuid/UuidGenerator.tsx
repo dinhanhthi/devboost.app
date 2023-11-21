@@ -191,7 +191,7 @@ export default function UuidGenerator() {
             placeholder="max 500"
             min={1}
             max={500}
-            className={cn('t4d-input w-28')}
+            className={cn('db-input w-28')}
           />
         </div>
       </div>
@@ -211,21 +211,21 @@ export default function UuidGenerator() {
                 onChange={event => setNamespaceValue(event.target.value)}
                 type="text"
                 placeholder="6ba7b810-9dad-11d1-80b4-00c04fd430c8"
-                className={cn('t4d-input flex-1 py-2')}
+                className={cn('db-input flex-1 py-2')}
               />
-              <button onClick={handleNamespaceClicked('dns')} className="t4d-button">
+              <button onClick={handleNamespaceClicked('dns')} className="db-button">
                 ns:DNS
               </button>
-              <button onClick={handleNamespaceClicked('url')} className="t4d-button">
+              <button onClick={handleNamespaceClicked('url')} className="db-button">
                 ns:URL
               </button>
-              <button onClick={handleNamespaceClicked('oid')} className="t4d-button">
+              <button onClick={handleNamespaceClicked('oid')} className="db-button">
                 ns:OID
               </button>
-              <button onClick={handleNamespaceClicked('x500')} className="t4d-button">
+              <button onClick={handleNamespaceClicked('x500')} className="db-button">
                 ns:X500
               </button>
-              <button onClick={handleNamespaceClicked('random')} className="t4d-button">
+              <button onClick={handleNamespaceClicked('random')} className="db-button">
                 Random
               </button>
             </div>
@@ -241,7 +241,7 @@ export default function UuidGenerator() {
               onChange={event => setNameValue(event.target.value)}
               type="text"
               placeholder="Enter name..."
-              className={cn('t4d-input w-full py-2')}
+              className={cn('db-input w-full py-2')}
             />
           </div>
         </div>
@@ -254,7 +254,7 @@ export default function UuidGenerator() {
           value={textareaValue}
           onChange={handleTextareaChange}
           placeholder='Click "Generate" button to generate UUIDs...'
-          className={cn('t4d-textarea h-full max-h-full w-full text-base')}
+          className={cn('db-textarea h-full max-h-full w-full text-base')}
         />
       </div>
     </div>

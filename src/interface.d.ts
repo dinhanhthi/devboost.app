@@ -23,3 +23,8 @@ interface IconBaseProps extends React.SVGAttributes<SVGElement> {
   title?: string
 }
 export declare type IconType = (props: IconBaseProps) => JSX.Element
+
+export declare module '*.md' {
+  const value: string
+  export default value
+}

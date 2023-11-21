@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { useRef, useState } from 'react'
 import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
+import MainContainer from '../../components/MainContainer'
 import ValidateButton from '../../components/ValidateButton'
 import BsFillCheckCircleFill from '../../icons/BsFillCheckCircleFill'
 import { WarningIcon } from '../../icons/WarningIcon'
@@ -50,11 +51,7 @@ export default function OpenAiKeyValidator() {
   }
 
   return (
-    <div
-      className={cn(
-        'h-full w-full overflow-hidden rounded-xl border border-border bg-dark p-4 flex flex-col gap-6'
-      )}
-    >
+    <MainContainer>
       <div className="flex flex-col flex-wrap flex-1 w-full min-h-0 gap-5">
         {/* Buttons */}
         <div className="flex flex-row flex-wrap items-center gap-6">
@@ -79,7 +76,7 @@ export default function OpenAiKeyValidator() {
             onChange={handleOnChangeApiKeyInput}
             type="text"
             placeholder={'sk-1234567890AbcXyz'}
-            className={cn('t4d-input flex-1 py-2')}
+            className={cn('db-input flex-1 py-2')}
           />
         </div>
 
@@ -114,6 +111,6 @@ export default function OpenAiKeyValidator() {
           </div>
         )}
       </div>
-    </div>
+    </MainContainer>
   )
 }

@@ -78,7 +78,7 @@ export default function UuidDecoder() {
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'123639f0-8522-11ee-9b23-0500b4b78763'}
-          className={cn('t4d-input flex-1 py-2')}
+          className={cn('db-input flex-1 py-2')}
         />
       </div>
 

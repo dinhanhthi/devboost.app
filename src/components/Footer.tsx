@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import AiOutlineQuestionCircle from '../icons/AiOutlineQuestionCircle'
 import ChangeIcon from '../icons/ChangeIcon'
+import { CooperateIcon } from '../icons/CooperateIcon'
 import IoExtensionPuzzleSharp from '../icons/IoExtensionPuzzleSharp'
 import IoInformationCircleOutline from '../icons/IoInformationCircleOutline'
 import IoIosBug from '../icons/IoIosBug'
@@ -33,6 +34,9 @@ export default function Footer() {
       <Link href="/" className={cn(bottomClassName)}>
         <AiOutlineQuestionCircle className="text-lg" />
         FAQ
+      </Link>
+      <Link href={'/how-to-contribute'} className={cn(bottomClassName)}>
+        <CooperateIcon className="w-5 h-5" /> Let's build together
       </Link>
       {/* <Link href="/" className={cn(bottomClassName)}>
         <DocumentIcon className="w-5 h-5" />

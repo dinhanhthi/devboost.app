@@ -1,10 +1,9 @@
-import cn from 'classnames'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Suspense } from 'react'
+import ToolBodySkeleton from '../../../components/ToolBodySkeleton'
 import ToolPageTemplate from '../../../components/ToolPageTemplate'
-import AiOutlineLoading3Quarters from '../../../icons/AiOutlineLoading3Quarters'
 import { DynamicSegmentParamsProps } from '../../../interface'
 import { SETTINGS } from '../../../libs/config'
 import { TOOLS } from '../../../tools/toolList'
@@ -59,18 +58,4 @@ export default async function ToolPage({ params }: DynamicSegmentParamsProps) {
     console.log('🚨Error when loading a single note page', error)
     notFound()
   }
-}
-
-export function ToolBodySkeleton() {
-  return (
-    <div
-      className={cn(
-        'h-full w-full rounded-xl border border-border bg-dark p-4 flex items-center justify-center animate-pulse'
-      )}
-    >
-      <div className="animate-spin">
-        <AiOutlineLoading3Quarters className="w-12 h-12 text-green-300" />
-      </div>
-    </div>
-  )
 }

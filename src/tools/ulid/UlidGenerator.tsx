@@ -68,7 +68,7 @@ export default function UlidGenerator() {
             ref={inputTimeSeedRef}
             type="text"
             placeholder="time seed"
-            className={cn('t4d-input w-52')}
+            className={cn('db-input w-52')}
           />
           <Times className="w-5 h-5 text-tdark" />
           <input
@@ -79,7 +79,7 @@ export default function UlidGenerator() {
             placeholder="max 500"
             max={500}
             min={1}
-            className={cn('t4d-input w-28')}
+            className={cn('db-input w-28')}
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function UlidGenerator() {
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
           placeholder='Click "Generate" button to generate ULIDs...'
-          className={cn('t4d-textarea h-full max-h-full w-full text-base')}
+          className={cn('db-textarea h-full max-h-full w-full text-base')}
         />
       </div>
     </div>

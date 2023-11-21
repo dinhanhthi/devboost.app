@@ -16,7 +16,7 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
   const { className, tool } = props
   return (
     <div className={cn(className, 'flex h-full w-full flex-col')}>
-      <div className="flex-1 min-h-0">{getToolComponent(tool.slug)}</div>
+      <div className="flex flex-col flex-1 min-h-0">{getToolComponent(tool.slug)}</div>
     </div>
   )
 }

@@ -55,7 +55,7 @@ export default function UlidValidator() {
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'01HFE5Z3SZDQVR53EY0T54C9TS'}
-          className={cn('t4d-input flex-1 py-2')}
+          className={cn('db-input flex-1 py-2')}
         />
       </div>
 

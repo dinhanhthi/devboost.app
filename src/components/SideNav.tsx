@@ -27,7 +27,7 @@ export default function SideNav(props: SideNavProps) {
             </div>
             <input
               className={cn(
-                't4d-input peer h-full w-full text-ellipsis !border-none bg-transparent text-sm'
+                'db-input peer h-full w-full text-ellipsis !border-none bg-transparent text-sm'
               )}
               id="search"
               type="search"
@@ -65,7 +65,7 @@ export default function SideNav(props: SideNavProps) {
               />
             </div>
 
-            <div className="flex flex-col flex-1 min-h-0 py-2 pr-2 overflow-auto t4d-scrollbar">
+            <div className="flex flex-col flex-1 min-h-0 py-2 pr-2 overflow-auto db-scrollbar">
               {TOOLS.map(tool => (
                 <SideNavItem key={tool.slug} tool={tool} />
               ))}

@@ -14,7 +14,7 @@ import { kanit } from '../app/fonts'
 import { DocumentHelpIcon } from '../icons/DocumentHelpIcon'
 import UserCircleIcon from '../icons/UserCircleIcon'
 import { Tool } from '../interface'
-import { SETTINGS } from '../libs/config'
+import { ListPageDocs, SETTINGS } from '../libs/config'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideOverDoc from './SideOverDoc'
 
@@ -28,14 +28,18 @@ export default function Header(props: HeaderProps) {
   const { className } = props
   const pathname = usePathname()
   const toolSlug = pathname.split('/tool/')[1]?.replace(/\/+$/, '')
-  const unknownTool: Tool = { name: 'Unknown tool', slug: '/' }
+  const unknownTool: Tool = { name: '404', slug: '/' }
   const tool =
-    pathname === '/' ? allToolItem : TOOLS.find(tool => tool.slug === toolSlug) || unknownTool
+    pathname === '/'
+      ? allToolItem
+      : TOOLS.find(tool => tool.slug === toolSlug) ||
+        ListPageDocs.find(page => page.slug === pathname.replace(/^\/+|\/+$/g, '')) ||
+        unknownTool
 
   const handleOpenSideOverClicked = async () => {
     setOpenSideDoc(true)
     if (!tool.docFile) return
-    await fetch(`/docs/${tool.docFile}`)
+    await fetch(`/docs/tools/${tool.docFile}`)
       .then(res => res.text())
       .then(text => {
         setUuidDoc(text)
@@ -48,7 +52,7 @@ export default function Header(props: HeaderProps) {
       <div className={cn('flex flex-row justify-between px-4 py-6')}>
         {/* Logo */}
         <Link href={'/'} className="flex items-center gap-2">
-          <Image src={Logo} alt="DevBoost Logo" width={25} height={25} />
+          <Image src={Logo} alt="DevBoost Logo" width={30} height={30} />
           <h1 className={cn('text-2xl text-white', kanit.className)}>{SETTINGS.siteName}</h1>
           <div
             className={cn(

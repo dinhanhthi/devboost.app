@@ -2,19 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose {
-  pre {
-    // padding: 0;
-    .codeStyle {
-      padding: 0 !important;
-      margin: 0 !important;
-      background: transparent !important;
-    }
-  }
-}
-
 @layer base {
-  .t4d-scrollbar,
+  .db-scrollbar,
   .prose code,
   .codeStyle,
   .prose pre {
@@ -44,7 +33,7 @@
     }
   }
 
-  .t4d-button {
+  .db-button {
     &._main {
       @apply bg-sky-900 hover:bg-sky-800;
     }
@@ -54,14 +43,54 @@
       disabled:opacity-50 disabled:hover:bg-gray-700 disabled:hover:text-tnormal;
   }
 
-  .t4d-textarea {
-    @apply t4d-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-border
+  .db-textarea {
+    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-border
       bg-darkest p-4 py-3 text-tlight shadow-slate-300 placeholder:text-gray-500
       focus:outline-none;
   }
 
-  .t4d-input {
+  .db-input {
     @apply h-9 rounded-md border border-border bg-darkest px-2.5
       py-1.5 text-sm text-tlight outline-none placeholder:text-gray-500;
+  }
+
+  .db-prose-code {
+    @apply break-words rounded-sm bg-darkest p-[2px_5px_3px_5px]
+    font-mono text-[85%] font-normal before:content-[''] after:content-[''];
+  }
+
+  .db-prose-h2 {
+    @apply mb-4 border-b-[0.5px] border-slate-500 pb-1 text-xl font-semibold text-tlight;
+  }
+
+  .db-prose {
+    @apply text-tnormal;
+    @apply prose prose-invert max-w-none;
+    @apply prose-code:db-prose-code;
+    @apply prose-headings:mt-6;
+    @apply prose-h2:db-prose-h2;
+    @apply prose-h3:text-lg;
+  }
+}
+
+.prose,
+.db-prose {
+  pre {
+    .codeStyle {
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+    }
+    code:before {
+      margin-left: -5px !important;
+    }
+    code:after {
+      display: none;
+    }
+    code[class*='language-'] {
+      .linenumber:last-child {
+        display: none !important;
+      }
+    }
   }
 }
