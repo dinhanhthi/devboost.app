@@ -7,6 +7,7 @@ import ClipboardButton from '../../components/ClipboardButton'
 import ValidateButton from '../../components/ValidateButton'
 import BsFillCheckCircleFill from '../../icons/BsFillCheckCircleFill'
 import { WarningIcon } from '../../icons/WarningIcon'
+import SampleButton from '../../components/SampleButton'
 
 export default function UuidValidator() {
   const originalRef = useRef<HTMLInputElement>(null)
@@ -34,6 +35,12 @@ export default function UuidValidator() {
     setResult(isValid ? 'valid' : 'invalid')
   }
 
+  const handleSampleClicked = () => {
+    const sample = '123639f0-8522-11ee-9b23-0500b4b78763'
+    setOriginalValue(sample)
+    setResult('')
+  }
+
   return (
     <div className="flex flex-col gap-4">
       {/* Buttons */}
@@ -42,6 +49,7 @@ export default function UuidValidator() {
         <div className="flex flex-row items-center gap-3">
           <ClipboardButton handleClipText={handleClipText} />
           <ClearButton onClick={handleClearClicked} disabled={!originalValue} />
+          <SampleButton onClick={handleSampleClicked} />
         </div>
       </div>
 

@@ -115,4 +115,12 @@ describe('UuidFormater', () => {
     fireEvent.click(formatButton)
     expect(output).toHaveValue('⚠️ Invalid UUID')
   })
+
+  it('displays a sample string when SampleButton is clicked', () => {
+    render(<UuidFormater />)
+    const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
+    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    fireEvent.click(sampleButton)
+    expect(input).toHaveValue('123639f0852211ee9b230500b4b78763')
+  })
 })

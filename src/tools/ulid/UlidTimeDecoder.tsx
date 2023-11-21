@@ -7,6 +7,7 @@ import ClipboardButton from '../../components/ClipboardButton'
 import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
 import FormatIcon from '../../icons/FormatIcon'
 import { WarningIcon } from '../../icons/WarningIcon'
+import SampleButton from '../../components/SampleButton'
 
 export default function UlidTimeDecoder() {
   const originalRef = useRef<HTMLInputElement>(null)
@@ -54,6 +55,12 @@ export default function UlidTimeDecoder() {
     setError('')
   }
 
+  const handleSampleClicked = () => {
+    const sample = '01HFE5Z3SZDQVR53EY0T54C9TS'
+    setOriginalValue(sample)
+    reset()
+  }
+
   return (
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
@@ -74,6 +81,7 @@ export default function UlidTimeDecoder() {
         <div className="flex flex-row items-center gap-3">
           <ClipboardButton handleClipText={handleClipText} />
           <ClearButton onClick={handleClearClicked} disabled={!originalValue} />
+          <SampleButton onClick={handleSampleClicked} />
         </div>
       </div>
 

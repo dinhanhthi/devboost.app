@@ -9,6 +9,7 @@ import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
 import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
 import FormatIcon from '../../icons/FormatIcon'
+import SampleButton from '../../components/SampleButton'
 
 export default function UuidDecoder() {
   const originalRef = useRef<HTMLInputElement>(null)
@@ -49,6 +50,12 @@ export default function UuidDecoder() {
     setResult('')
   }
 
+  const handleSampleClicked = () => {
+    const sample = '123639f0-8522-11ee-9b23-0500b4b78763'
+    setOriginalValue(sample)
+    setResult('')
+  }
+
   return (
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
@@ -65,6 +72,7 @@ export default function UuidDecoder() {
         <div className="flex flex-row items-center gap-3">
           <ClearButton onClick={handleClearClicked} disabled={!originalValue || isDecoding} />
           <ClipboardButton handleClipText={handleClipText} disabled={isDecoding} />
+          <SampleButton onClick={handleSampleClicked} />
         </div>
       </div>
 

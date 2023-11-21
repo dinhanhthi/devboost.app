@@ -8,6 +8,7 @@ import MainContainer from '../../components/MainContainer'
 import ValidateButton from '../../components/ValidateButton'
 import BsFillCheckCircleFill from '../../icons/BsFillCheckCircleFill'
 import { WarningIcon } from '../../icons/WarningIcon'
+import SampleButton from '../../components/SampleButton'
 
 export default function OpenAiKeyValidator() {
   const apiKeyInputRef = useRef<HTMLInputElement>(null)
@@ -50,6 +51,12 @@ export default function OpenAiKeyValidator() {
     setIsChecking(false)
   }
 
+  const handleSampleClicked = () => {
+    const sample = 'sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0'
+    setApiKeyInputValue(sample)
+    setResult('')
+  }
+
   return (
     <MainContainer>
       <div className="flex flex-col flex-wrap flex-1 w-full min-h-0 gap-5">
@@ -63,6 +70,7 @@ export default function OpenAiKeyValidator() {
           <div className="flex flex-row items-center gap-3">
             <ClipboardButton handleClipText={handleClipText} disabled={isChecking} />
             <ClearButton onClick={handleClearClicked} disabled={!apiKeyInputValue} />
+            <SampleButton onClick={handleSampleClicked} disabled={isChecking} />
           </div>
         </div>
 
@@ -75,7 +83,7 @@ export default function OpenAiKeyValidator() {
             value={apiKeyInputValue}
             onChange={handleOnChangeApiKeyInput}
             type="text"
-            placeholder={'sk-1234567890AbcXyz'}
+            placeholder={'sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0'}
             className={cn('db-input flex-1 py-2')}
           />
         </div>

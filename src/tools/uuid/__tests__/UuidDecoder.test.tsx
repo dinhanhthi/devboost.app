@@ -91,4 +91,11 @@ describe('UuidDecoder', () => {
     fireEvent.click(decodeButton)
     expect(await screen.findByText('Decoded UUID', { exact: false })).toBeVisible()
   })
+
+  it('displays a sample UUID when SampleButton is clicked', () => {
+    render(<UuidDecoder />)
+    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    fireEvent.click(sampleButton)
+    expect(screen.getByTestId('uuid-input')).toHaveValue('123639f0-8522-11ee-9b23-0500b4b78763')
+  })
 })
