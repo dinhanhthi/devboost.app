@@ -3,36 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  .db-scrollbar,
-  .prose code,
-  .codeStyle,
-  .prose pre {
-    &::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #4e5361;
-      border-radius: 8px;
-      &:hover {
-        background: #adb5bd;
-      }
-    }
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &.m2it-scrollbar-small {
-      &::-webkit-scrollbar {
-        width: 7px;
-        height: 7px;
-      }
-      &::-webkit-scrollbar-thumb {
-        border-radius: 7px;
-      }
-    }
-  }
-
   .db-button {
     &._main {
       @apply bg-sky-900 hover:bg-sky-800;
@@ -91,6 +61,36 @@
       .linenumber:last-child {
         display: none !important;
       }
+    }
+  }
+}
+
+.db-scrollbar,
+.prose code,
+.codeStyle,
+.prose pre {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #4e5361;
+    border-radius: 8px;
+    &:hover {
+      background: #adb5bd;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &.m2it-scrollbar-small {
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 7px;
     }
   }
 }
