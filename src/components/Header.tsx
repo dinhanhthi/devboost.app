@@ -14,7 +14,7 @@ import { kanit } from '../app/fonts'
 import { DocumentHelpIcon } from '../icons/DocumentHelpIcon'
 import UserCircleIcon from '../icons/UserCircleIcon'
 import { Tool } from '../interface'
-import { ListPageDocs, SETTINGS } from '../libs/config'
+import { PAGES, SETTINGS } from '../libs/config'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideOverDoc from './SideOverDoc'
 
@@ -27,13 +27,12 @@ export default function Header(props: HeaderProps) {
   const [uuidDoc, setUuidDoc] = useState<string | undefined>(undefined)
   const { className } = props
   const pathname = usePathname()
-  const toolSlug = pathname.split('/tool/')[1]?.replace(/\/+$/, '')
   const unknownTool: Tool = { name: '404', slug: '/' }
   const tool =
     pathname === '/'
       ? allToolItem
-      : TOOLS.find(tool => tool.slug === toolSlug) ||
-        ListPageDocs.find(page => page.slug === pathname.replace(/^\/+|\/+$/g, '')) ||
+      : TOOLS.find(tool => tool.slug === pathname.split('/tool/')[1]?.replace(/^\/+|\/+$/g, '')) ||
+        PAGES.find(page => page.slug === pathname.split('/page/')[1]?.replace(/^\/+|\/+$/g, '')) ||
         unknownTool
 
   const handleOpenSideOverClicked = async () => {
@@ -68,7 +67,7 @@ export default function Header(props: HeaderProps) {
           <div className="">
             <h1
               className={cn(
-                'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden rounded-lg border border-border bg-dark text-lg',
+                'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden rounded-lg border border-border bg-dark text-xl',
                 className
               )}
             >

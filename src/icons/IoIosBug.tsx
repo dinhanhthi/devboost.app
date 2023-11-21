@@ -6,8 +6,8 @@ export default function IoIosBug(props: { className?: string }) {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 512 512"
-      height="200px"
-      width="200px"
+      height="1em"
+      width="em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M374.6 127.3C345.4 88.5 303.1 64 256 64c-47.1 0-89.4 24.5-118.6 63.3 6.4 15.6 15.8 30 28.1 42.3 24.2 24.2 56.3 37.5 90.5 37.5s66.3-13.3 90.5-37.5c12.3-12.3 21.8-26.6 28.1-42.3z"></path>

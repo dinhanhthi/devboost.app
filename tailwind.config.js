@@ -13,7 +13,7 @@ export const theme = {
       darker: '#282a36',
       darkest: '#1c1e27',
       border: '#3b3e54',
-      tnormal: '#d6d9e4',
+      tnormal: '#dcdfe7',
       tlight: '#e0e2ea',
       tdark: '#a9adc4',
       thighlight: '#7beca4'

@@ -15,41 +15,25 @@ export default function Footer() {
   )
   return (
     <div className="z-10 flex items-center w-full gap-4 p-4">
-      <Link href="/" className={cn(bottomClassName)}>
+      <Link href="/page/about" className={cn(bottomClassName)}>
         <IoInformationCircleOutline className="text-xl" />
         About
       </Link>
-      {/* <a
-        className={cn(bottomClassName)}
-        href="https://github.com/dinhanhthi/devboost"
-        target="_blank"
-      >
-        <AiFillGithub className="text-lg" />
-        Source
-      </a> */}
-      {/* <a href="https://dinhanhthi.com" target="_blank" className={cn(bottomClassName)}>
-        <MdPerson className="w-5 h-5" />
-        Author
-      </a> */}
-      <Link href="/" className={cn(bottomClassName)}>
+      <Link href="/page/faq" className={cn(bottomClassName)}>
         <AiOutlineQuestionCircle className="text-lg" />
         FAQ
       </Link>
-      <Link href={'/how-to-contribute'} className={cn(bottomClassName)}>
+      <Link href={'/page/how-to-contribute'} className={cn(bottomClassName)}>
         <CooperateIcon className="w-5 h-5" /> Let's build together
       </Link>
-      {/* <Link href="/" className={cn(bottomClassName)}>
-        <DocumentIcon className="w-5 h-5" />
-        Documentation
-      </Link> */}
-      <Link href="/" className={cn(bottomClassName)}>
+      <Link href="/page/changelog" className={cn(bottomClassName)}>
         <ChangeIcon className="w-5 h-5" />
         Changelog
       </Link>
-      <Link href="/" className={cn(bottomClassName)}>
+      <Link href="/page/bug-tracker" className={cn(bottomClassName)}>
         <IoIosBug className="w-4 h-4" />I found a bug
       </Link>
-      <Link href="/" className={cn(bottomClassName)}>
+      <Link href="/page/request-features" className={cn(bottomClassName)}>
         <IoExtensionPuzzleSharp className="w-4 h-4" />
         Request features
       </Link>
