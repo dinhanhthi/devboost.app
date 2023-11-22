@@ -13,11 +13,21 @@ export const theme = {
       darker: '#282a36',
       darkest: '#1c1e27',
       border: '#3b3e54',
-      tnormal: '#dcdfe7',
+      tnormal: '#e9ebef',
       tlight: '#e0e2ea',
       tdark: '#a9adc4',
       thighlight: '#7beca4'
-    }
+    },
+    typography: ({ theme }) => ({
+      DEFAULT: {
+        css: {
+          color: theme('colors.gray.100')
+        }
+      }
+    })
   }
 }
+
+export const darkMode = 'class'
+
 export const plugins = [require('@tailwindcss/typography')]

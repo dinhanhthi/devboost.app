@@ -71,11 +71,11 @@ export default function SideOverDoc(props: SideOverDocProps) {
                         <DocDuoToneIcon className="w-6 h-6 text-white" /> {props.tool.name}
                       </Dialog.Title>
                       {!!props.tool.description && (
-                        <p className="pl-8 pr-4 text-sm text-tnormal">{props.tool.description}</p>
+                        <p className="pl-8 pr-4 text-sm italic text-tnormal">{props.tool.description}</p>
                       )}
                     </div>
                     <div className="flex-1 min-h-0 p-3 pt-0 overflow-hidden">
-                      <div className="h-full p-4 overflow-auto prose border rounded-lg prose-zinc prose-invert bg-dark border-border db-scrollbar">
+                      <div className="h-full p-4 overflow-auto border rounded-lg db-prose bg-dark border-border db-scrollbar">
                         {props.docContent && (
                           <ReactMarkdown components={MarkdownComponents}>
                             {props.docContent}

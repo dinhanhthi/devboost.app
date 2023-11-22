@@ -9,7 +9,7 @@ export default function MainContainer(props: MainContainerProps) {
     <div
       className={cn(
         props.className,
-        'min-h-0 flex-1 w-full overflow-hidden rounded-xl border border-border bg-dark p-4 flex flex-col gap-6'
+        'min-h-0 flex-1 w-full overflow-auto db-scrollbar rounded-xl border border-border bg-dark p-4 flex flex-col gap-6'
       )}
     >
       {props.children}

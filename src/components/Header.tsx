@@ -7,22 +7,27 @@ import { usePathname } from 'next/navigation'
 // import { promises as fs } from 'fs'
 // import path from 'path'
 
-import { useState } from 'react'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import packageInfo from '../../package.json'
 import Logo from '../../public/logo.svg'
 import { kanit } from '../app/fonts'
 import { DocumentHelpIcon } from '../icons/DocumentHelpIcon'
+import { MoonStarIcon } from '../icons/MoonStarIcon'
 import UserCircleIcon from '../icons/UserCircleIcon'
 import { Tool } from '../interface'
 import { PAGES, SETTINGS } from '../libs/config'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideOverDoc from './SideOverDoc'
+import { SunIcon } from '../icons/SunIcon'
 
 type HeaderProps = {
   className?: string
 }
 
 export default function Header(props: HeaderProps) {
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
   const [openSideDoc, setOpenSideDoc] = useState(false)
   const [uuidDoc, setUuidDoc] = useState<string | undefined>(undefined)
   const { className } = props
@@ -43,6 +48,19 @@ export default function Header(props: HeaderProps) {
       .then(text => {
         setUuidDoc(text)
       })
+  }
+
+  const handleThemeToggle = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+    document.documentElement.classList.toggle('dark')
+  }
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
   }
 
   return (
@@ -96,13 +114,20 @@ export default function Header(props: HeaderProps) {
         </div>
 
         {/* Login/Register */}
-        <Link
-          href={'/'}
-          className={cn('flex flex-row items-center gap-1 text-sm text-tnormal hover:text-white')}
-        >
-          Login / Register
-          <UserCircleIcon className="w-6 h-6" />
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href={'/'}
+            className={cn('flex flex-row items-center gap-1 text-sm text-tnormal hover:text-white')}
+          >
+            Login / Register
+            <UserCircleIcon className="w-6 h-6" />
+          </Link>
+
+          <button className="group" onClick={handleThemeToggle}>
+            {theme === 'light' && <MoonStarIcon className="w-6 h-6 group-hover:text-amber-300" />}
+            {theme === 'dark' && <SunIcon className="w-6 h-6 group-hover:text-amber-300" />}
+          </button>
+        </div>
       </div>
     </>
   )

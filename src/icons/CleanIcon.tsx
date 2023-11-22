@@ -3,8 +3,8 @@ export default function CleanIcon(props: { className?: string }) {
     <svg
       className={props.className}
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="1em"
+      height="1em"
       viewBox="0 0 32 32"
     >
       <path fill="currentColor" d="M26 20h-6v-2h6zm4 8h-6v-2h6zm-2-4h-6v-2h6z" />

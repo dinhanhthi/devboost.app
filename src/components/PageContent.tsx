@@ -24,7 +24,7 @@ export default function PageContent(props: PageContentProps) {
   return (
     <div
       className={cn(
-        'flex flex-col gap-4 h-full overflow-auto db-scrollbar px-4 py-2',
+        'flex flex-col gap-4 h-full px-4 py-2',
         props.className
       )}
     >

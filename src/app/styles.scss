@@ -26,20 +26,28 @@
 
   .db-prose-code {
     @apply break-words rounded-sm bg-darkest p-[2px_5px_3px_5px]
-    font-mono text-[85%] font-normal before:content-[''] after:content-[''];
+    font-mono text-[90%] font-normal before:content-[''] after:content-[''];
   }
 
   .db-prose-h2 {
     @apply mb-4 border-b-[0.5px] border-slate-500 pb-1 text-xl font-semibold text-tlight;
   }
 
+  .db-prose-a {
+    @apply underline underline-offset-4 hover:text-tlight;
+  }
+
   .db-prose {
-    @apply text-tnormal;
     @apply prose prose-invert max-w-none;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
     @apply prose-h3:text-lg;
+    @apply prose-a:db-prose-a;
+
+    > *:first-child {
+      margin-top: 0;
+    }
   }
 }
 
