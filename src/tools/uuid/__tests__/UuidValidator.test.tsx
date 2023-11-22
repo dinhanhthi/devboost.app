@@ -80,4 +80,17 @@ describe('UuidValidator', () => {
     expect(await screen.findByText('UUID is invalid', { exact: false })).toBeVisible()
     expect(clearButton).toBeEnabled()
   })
+
+  it('displays sample UUID when SampleButton is clicked', () => {
+    render(<UuidValidator />)
+    const input = screen.getByTestId('uuid-input')
+    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const validateButton = screen.getByRole('button', { name: /validate/i })
+    fireEvent.change(input, { target: { value: 'test' } })
+    fireEvent.click(sampleButton)
+    expect(input).toHaveValue('123639f0-8522-11ee-9b23-0500b4b78763')
+    expect(clearButton).toBeEnabled()
+    expect(validateButton).toBeEnabled()
+  })
 })

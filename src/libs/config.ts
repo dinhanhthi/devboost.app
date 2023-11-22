@@ -11,7 +11,7 @@ export const SETTINGS = {
 }
 export const PAGES: Tool[] = [
   { slug: 'about', name: 'About', iconEl: IoInformationCircleOutline({}) },
-  { slug: 'how-to-contribute', name: 'How to contribute?', iconEl: CooperateIcon({}) },
+  { slug: 'how-to-contribute', name: 'Let\'s build together', iconEl: CooperateIcon({}) },
   { slug: 'faq', name: 'FAQ', iconEl: AiOutlineQuestionCircle({}) },
   { slug: 'changelog', name: 'Changelog', iconEl: ChangeIcon({}) },
   { slug: 'bug-tracker', name: 'I found a bug', iconEl: IoIosBug({}) },

@@ -6,6 +6,7 @@ import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
 import CopyButton from '../../components/CopyButton'
 import FormatIcon from '../../icons/FormatIcon'
+import SampleButton from '../../components/SampleButton'
 
 export default function UuidFormater() {
   const originalRef = useRef<HTMLInputElement>(null)
@@ -44,6 +45,12 @@ export default function UuidFormater() {
     setTargetValue('')
   }
 
+  const handleSampleClicked = () => {
+    const sample = '123639f0852211ee9b230500b4b78763'
+    setOriginalValue(sample)
+    setTargetValue('')
+  }
+
   return (
     <div className="flex flex-col gap-4">
       {/* Buttons */}
@@ -58,6 +65,7 @@ export default function UuidFormater() {
         <div className="flex flex-row items-center gap-3">
           <ClearButton onClick={handleClearClicked} disabled={!originalValue} />
           <ClipboardButton handleClipText={handleClipText} />
+          <SampleButton onClick={handleSampleClicked} />
         </div>
       </div>
 

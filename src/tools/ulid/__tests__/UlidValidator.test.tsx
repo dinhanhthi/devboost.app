@@ -81,4 +81,11 @@ describe('UlidValidator', () => {
     expect(await screen.findByText('ULID is invalid', { exact: false })).toBeVisible()
     expect(clearButton).toBeEnabled()
   })
+
+  it('displays a sample ULID when SampleButton is clicked', () => {
+    render(<UlidValidator />)
+    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    fireEvent.click(sampleButton)
+    expect(screen.getByTestId('ulid-input')).toHaveValue('01HFE5Z3SZDQVR53EY0T54C9TS')
+  })
 })

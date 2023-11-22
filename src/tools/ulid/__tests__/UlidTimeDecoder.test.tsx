@@ -88,4 +88,12 @@ describe('UlidTimeDecoder', () => {
     const decodedTime = await screen.findByTestId('timeMs')
     expect(decodedTime).toBeInTheDocument()
   })
+
+  it('displays a sample ULID code when Sample button is clicked', () => {
+    render(<UlidTimeDecoder />)
+    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    fireEvent.click(sampleButton)
+    const input = screen.getByPlaceholderText('01HFE5Z3SZDQVR53EY0T54C9TS')
+    expect(input).toHaveValue('01HFE5Z3SZDQVR53EY0T54C9TS')
+  })
 })
