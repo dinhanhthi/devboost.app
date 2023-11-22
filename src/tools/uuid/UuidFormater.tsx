@@ -5,8 +5,8 @@ import { validate as uuidValidate } from 'uuid'
 import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
 import CopyButton from '../../components/CopyButton'
-import FormatIcon from '../../icons/FormatIcon'
 import SampleButton from '../../components/SampleButton'
+import FormatIcon from '../../icons/FormatIcon'
 
 export default function UuidFormater() {
   const originalRef = useRef<HTMLInputElement>(null)

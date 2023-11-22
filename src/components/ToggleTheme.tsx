@@ -3,8 +3,8 @@
 import cn from 'classnames'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { MoonStarIcon } from '../icons/MoonStarIcon'
-import { SunIcon } from '../icons/SunIcon'
+import MoonStarIcon from '../icons/MoonStarIcon'
+import SunIcon from '../icons/SunIcon'
 
 type ToggleThemeProps = {
   className?: string
@@ -26,13 +26,19 @@ export default function ToggleTheme(props: ToggleThemeProps) {
   if (!mounted) {
     return null
   }
+
   return (
     <button
-      className={cn(props.className, 'flex items-center justify-center text-xl group')}
+      className={cn(
+        props.className,
+        'flex items-center justify-center text-xl group text-slate-600 dark:text-tlight'
+      )}
       onClick={handleThemeToggle}
     >
-      {theme === 'light' && <MoonStarIcon className="group-hover:text-amber-300" />}
-      {theme !== 'light' && <SunIcon className="group-hover:text-amber-300" />}
+      {theme === 'light' && (
+        <MoonStarIcon className="group-hover:dark:text-amber-300 group-hover:text-amber-500" />
+      )}
+      {theme !== 'light' && <SunIcon className="group-hover:dark:text-amber-300" />}
     </button>
   )
 }

@@ -14,31 +14,31 @@
   }
 
   .db-textarea {
-    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-border
-      bg-darkest p-4 py-3 text-tlight shadow-slate-300 placeholder:text-gray-500
-      focus:outline-none;
+    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border bg-white
+    p-4 py-3 shadow-slate-300 focus:outline-none dark:border-border dark:bg-darkest dark:text-tlight
+      placeholder:dark:text-gray-500;
   }
 
   .db-input {
-    @apply h-9 rounded-md border border-border bg-darkest px-2.5
-      py-1.5 text-sm text-tlight outline-none placeholder:text-gray-500;
+    @apply h-9 rounded-md border bg-white px-2.5 py-1.5 text-sm
+      outline-none dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
   }
 
   .db-prose-code {
-    @apply break-words rounded-sm bg-darkest p-[2px_5px_3px_5px]
+    @apply break-words rounded-sm bg-slate-200 dark:bg-darkest p-[2px_5px_3px_5px]
     font-mono text-[90%] font-normal before:content-[''] after:content-[''];
   }
 
   .db-prose-h2 {
-    @apply mb-4 border-b-[0.5px] border-slate-500 pb-1 text-xl font-semibold text-tlight;
+    @apply mb-4 border-b-[0.5px] border-slate-500 pb-1 text-xl font-semibold;
   }
 
   .db-prose-a {
-    @apply underline underline-offset-4 hover:text-tlight;
+    @apply underline underline-offset-4 dark:text-tlight dark:hover:text-white hover:text-sky-600;
   }
 
   .db-prose {
-    @apply prose prose-invert max-w-none;
+    @apply prose dark:prose-invert max-w-none text-slate-700 dark:text-tlight;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
@@ -48,6 +48,18 @@
     > *:first-child {
       margin-top: 0;
     }
+  }
+
+  .db-around-border {
+    @apply border border-transparent bg-white shadow-lg dark:border-border dark:bg-dark dark:shadow-none;
+  }
+
+  .db-icon-text {
+    @apply w-fit rounded-md bg-slate-200 p-1 font-semibold leading-none text-inherit dark:bg-light;
+  }
+
+  .db-bottom-class {
+    @apply flex items-center gap-1 whitespace-nowrap text-sm hover:text-sky-600 dark:text-tnormal hover:dark:text-white;
   }
 }
 
@@ -92,14 +104,18 @@
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+}
 
-  &.m2it-scrollbar-small {
-    &::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
-    }
+.light {
+  .db-scrollbar,
+  .prose code,
+  .codeStyle,
+  .prose pre {
     &::-webkit-scrollbar-thumb {
-      border-radius: 7px;
+      background: #ccc;
+      &:hover {
+        background: #999;
+      }
     }
   }
 }

@@ -1,9 +1,9 @@
 import { SVGProps } from 'react'
 
-export function TreeDiagramIcon(props: SVGProps<SVGSVGElement>) {
+export default function TreeDiagramIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" {...props}>
-      <g fill="none" stroke="currentColor" stroke-width="4">
+      <g fill="none" stroke="currentColor" strokeWidth="4">
         <circle cx="10" cy="24" r="4"></circle>
         <circle cx="38" cy="10" r="4"></circle>
         <circle cx="38" cy="24" r="4"></circle>

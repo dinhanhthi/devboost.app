@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { useState } from 'react'
 import { kanit } from '../app/fonts'
-import { DocumentHelpIcon } from '../icons/DocumentHelpIcon'
+import DocumentHelpIcon from '../icons/DocumentHelpIcon'
 import { Tool } from '../interface'
 import { PAGES } from '../libs/config'
 import { TOOLS, allToolItem } from '../tools/toolList'
@@ -48,20 +48,22 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         <div className="">
           <h1
             className={cn(
-              'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden rounded-lg border border-border bg-dark text-xl',
+              'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden db-around-border rounded-lg text-lg',
               className
             )}
           >
             {!!tool.iconEl && (
               <div
-                className={cn('flex h-full items-center justify-center bg-darker p-2 text-white')}
+                className={cn(
+                  'flex h-full items-center justify-center p-2 bg-gray-200 text-slate-900 dark:bg-darker dark:text-white'
+                )}
               >
                 {tool.iconEl}
               </div>
             )}
             <div
               className={cn(
-                'flex items-center gap-2 px-3 tracking-widest text-thighlight',
+                'flex items-center gap-2 px-3 tracking-widest dark:text-thighlight text-sky-700',
                 kanit.className
               )}
             >
@@ -71,7 +73,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         </div>
         {(tool.docFile || tool.description) && (
           <button className="group" onClick={handleOpenSideOverClicked}>
-            <DocumentHelpIcon className="w-6 h-6 text-tdark group-hover:text-white" />
+            <DocumentHelpIcon className="w-6 h-6 dark:text-tdark text-slate-500 group-hover:dark:text-white group-hover:text-pink-600" />
           </button>
         )}
       </div>

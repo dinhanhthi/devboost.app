@@ -19,22 +19,20 @@ export default function SideNav(props: SideNavProps) {
         <div className="pb-4">
           <div
             className={cn(
-              'flex items-center gap-1 rounded-r-lg border border-border bg-darkest px-2.5 py-1'
+              'flex items-center gap-1 rounded-r-lg !rounded-l-none db-around-border px-2.5 py-1'
             )}
           >
-            <div className={cn('grid place-items-center text-slate-400')}>
+            <div className={cn('grid place-items-center text-slate-500 dark:text-slate-400')}>
               <FiSearch className="text-lg" />
             </div>
             <input
-              className={cn(
-                'db-input peer h-full w-full text-ellipsis !border-none bg-transparent text-sm'
-              )}
+              className="db-input peer h-full w-full text-ellipsis !border-none bg-transparent text-sm dark:text-slate-400 text-slate-800"
               id="search"
               type="search"
               placeholder={'type to search tools...'}
               autoComplete="off"
             />
-            <button className="w-6 text-tdark hover:text-white">
+            <button className="w-6 text-slate-600 dark:text-tdark hover:dark:text-white hover:text-sky-700">
               <IoFilter className="w-full h-5 text-lg" />
             </button>
           </div>
@@ -43,12 +41,12 @@ export default function SideNav(props: SideNavProps) {
         {/* Main */}
         <div
           className={cn(
-            'flex w-full flex-1 flex-col overflow-hidden rounded-r-xl border-[0.5px] border-l-0 border-border bg-dark'
+            'flex w-full flex-1 flex-col overflow-hidden rounded-r-xl db-around-border'
           )}
         >
           {/* Tools */}
           <div className={cn('flex min-h-0 flex-1 flex-col')}>
-            <div className="py-2 pr-2 border-b border-border">
+            <div className="py-2 pr-2 border-b dark:border-border border-slate-200">
               <SideNavItem
                 uri="/"
                 titleClassName="text-base"
@@ -56,7 +54,7 @@ export default function SideNav(props: SideNavProps) {
                 rightElement={
                   <div
                     className={cn(
-                      'rounded-lg border border-border bg-slate-700 px-2 py-1 text-xs text-tnormal'
+                      'rounded-lg border dark:border-border border-slate-200 bg-gray-100 dark:bg-slate-700 px-2 py-1 text-xs dark:text-tnormal'
                     )}
                   >
                     {TOOLS.length}
