@@ -1,4 +1,4 @@
-export default function JWT(props: { className?: string }) {
+export default function JWTIcon(props: { className?: string }) {
   return (
     <svg
       className={props.className}

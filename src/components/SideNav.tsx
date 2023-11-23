@@ -26,7 +26,7 @@ export default function SideNav(props: SideNavProps) {
               <FiSearch className="text-lg" />
             </div>
             <input
-              className="db-input peer h-full w-full text-ellipsis !border-none bg-transparent text-sm dark:text-slate-400 text-slate-800"
+              className="db-input peer h-full w-full text-ellipsis !border-none bg-transparent dark:bg-transparent text-sm dark:text-slate-400 text-slate-800"
               id="search"
               type="search"
               placeholder={'type to search tools...'}
