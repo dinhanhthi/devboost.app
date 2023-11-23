@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
+import { StarIcon } from '../icons/StarIcon'
+import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { Tool } from '../interface'
 
 type SideNavItemProps = {
@@ -13,6 +15,7 @@ type SideNavItemProps = {
   uri?: string
   titleClassName?: string
   rightElement?: React.ReactNode
+  hideFavorite?: boolean
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
@@ -36,7 +39,7 @@ export default function SideNavItem(props: SideNavItemProps) {
       href={uriToUse}
       key={tool.slug}
       aria-current={areSameUris(uriToUse, pathname) ? 'page' : undefined}
-      className={cn(className, `group flex w-full flex-row`)}
+      className={cn(className, 'relative group flex w-full flex-row items-center')}
     >
       <div
         className={cn('py-1', {
@@ -53,7 +56,7 @@ export default function SideNavItem(props: SideNavItemProps) {
       <div className="w-full pl-2 pr-2">
         <div
           className={cn(
-            'flex w-full flex-row items-center gap-2 rounded-lg px-1.5 py-2 text-sm text-slate-700 dark:text-tnormal group-hover:dark:bg-darker group-hover:bg-gray-200 group-hover:dark:text-white',
+            'flex w-full flex-row items-center gap-2 rounded-lg pl-1.5 py-2 pr-4 text-sm text-slate-700 dark:text-tnormal group-hover:dark:bg-darker group-hover:bg-gray-200 group-hover:dark:text-white',
             { 'dark:!text-thighlight !text-sky-600': areSameUris(uriToUse, pathname) }
           )}
         >
@@ -62,6 +65,19 @@ export default function SideNavItem(props: SideNavItemProps) {
           {rightElement}
         </div>
       </div>
+
+      {/* Favorite star */}
+      {!props.hideFavorite && (
+        <button
+          className={cn(
+            'absolute p-1 bg-gray-100 rounded-full opacity-0 dark:bg-light right-4 group-hover:opacity-100 hover:text-amber-500 hover:dark:text-amber-300',
+            { 'opacity-100': tool.favorite }
+          )}
+        >
+          {tool.favorite && <StarIcon className="text-lg text-amber-500 dark:text-amber-300" />}
+          {!tool.favorite && <StarOutlineIcon className="text-lg" />}
+        </button>
+      )}
     </Link>
   )
 }

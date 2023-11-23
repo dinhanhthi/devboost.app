@@ -1,8 +1,8 @@
 import cn from 'classnames'
 
 import FiSearch from '../icons/FiSearch'
-import IoFilter from '../icons/IoFilter'
 import { TOOLS, allToolItem } from '../tools/toolList'
+import SideNavFiler from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 
 type SideNavProps = {
@@ -32,9 +32,7 @@ export default function SideNav(props: SideNavProps) {
               placeholder={'type to search tools...'}
               autoComplete="off"
             />
-            <button className="w-6 text-slate-600 dark:text-tdark hover:dark:text-white hover:text-sky-700">
-              <IoFilter className="w-full h-5 text-lg" />
-            </button>
+            <SideNavFiler />
           </div>
         </div>
 
@@ -51,6 +49,7 @@ export default function SideNav(props: SideNavProps) {
                 uri="/"
                 titleClassName="text-base"
                 tool={allToolItem}
+                hideFavorite={true}
                 rightElement={
                   <div
                     className={cn(
@@ -63,7 +62,7 @@ export default function SideNav(props: SideNavProps) {
               />
             </div>
 
-            <div className="flex flex-col flex-1 min-h-0 py-2 pr-2 overflow-auto db-scrollbar">
+            <div className="flex flex-col flex-1 min-h-0 py-2 overflow-auto db-scrollbar">
               {TOOLS.map(tool => (
                 <SideNavItem key={tool.slug} tool={tool} />
               ))}
