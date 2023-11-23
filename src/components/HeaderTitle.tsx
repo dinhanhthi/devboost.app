@@ -53,7 +53,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
             {!!tool.iconEl && (
               <div
                 className={cn(
-                  'flex h-full items-center justify-center p-2 bg-white text-slate-900 dark:bg-darker dark:text-white'
+                  'flex h-full items-center justify-center p-2 bg-white text-sky-600 dark:bg-darker dark:text-white'
                 )}
               >
                 {tool.iconEl}
@@ -71,7 +71,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         </div>
         {(tool.docFile || tool.description) && (
           <button className="group" onClick={handleOpenSideOverClicked}>
-            <DocumentHelpIcon className="w-6 h-6 dark:text-tdark text-slate-500 group-hover:dark:text-white group-hover:text-pink-600" />
+            <DocumentHelpIcon className="w-6 h-6 dark:text-tdark text-slate-500 group-hover:dark:text-white group-hover:text-sky-600" />
           </button>
         )}
       </div>

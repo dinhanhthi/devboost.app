@@ -55,7 +55,7 @@ export default function UlidValidator() {
 
       {/* ULID */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <div className="text-sm text-tnormal">ULID</div>
+        <div className="text-sm">ULID</div>
         <input
           data-testid="ulid-input"
           ref={originalRef}

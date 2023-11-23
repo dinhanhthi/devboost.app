@@ -55,7 +55,7 @@ export default function UuidValidator() {
 
       {/* UUID */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <div className="text-sm text-tnormal">UUID</div>
+        <div className="text-sm">UUID</div>
         <input
           data-testid="uuid-input"
           ref={originalRef}
@@ -69,15 +69,15 @@ export default function UuidValidator() {
 
       {/* Result */}
       {result && (
-        <div className="p-4 border rounded-lg border-border bg-darker">
+        <div className="p-4 border rounded-lg dark:border-border dark:bg-darker bg-slate-100">
           {result === 'valid' && (
-            <div className="flex flex-row items-center gap-2 text-sm text-green-300">
+            <div className="flex flex-row items-center gap-2 text-sm text-green-700 dark:text-green-300">
               <BsFillCheckCircleFill className="w-5 h-5" />
               UUID is valid!
             </div>
           )}
           {result === 'invalid' && (
-            <div className="flex flex-row items-center gap-2 text-sm text-amber-400">
+            <div className="flex flex-row items-center gap-2 text-sm dark:text-amber-400 text-amber-600">
               <WarningIcon className="w-5 h-5" /> UUID is invalid!
             </div>
           )}

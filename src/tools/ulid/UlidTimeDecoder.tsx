@@ -87,7 +87,7 @@ export default function UlidTimeDecoder() {
 
       {/* Original */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <div className="text-sm text-tnormal">ULID</div>
+        <div className="text-sm">ULID</div>
         <input
           ref={originalRef}
           value={originalValue}
@@ -101,23 +101,23 @@ export default function UlidTimeDecoder() {
       {/* Result */}
       <div
         className={cn('flex flex-col gap-2 text-sm', {
-          'border rounded-lg bg-darker border-border p-4': timeMsValue || timeDateValue || error
+          'border rounded-lg bg-slate-100 dark:bg-darker dark:border-border p-4': timeMsValue || timeDateValue || error
         })}
       >
         {timeMsValue && (
           <div data-testid="timeMs" className="flex flex-row items-center gap-2 text-sm">
             <div>Extracted milliseconds since UNIX Epoch from ULID:</div>
-            <div className="text-thighlight">{timeMsValue}</div>
+            <div className="text-green-600 dark:text-thighlight">{timeMsValue}</div>
           </div>
         )}
         {timeDateValue && (
           <div className="flex flex-row items-center gap-2 text-sm">
             <div>Human friendly:</div>
-            <div className="text-thighlight">{timeDateValue}</div>
+            <div className="text-green-600 dark:text-thighlight">{timeDateValue}</div>
           </div>
         )}
         {error && (
-          <div data-testid="invalid" className="flex flex-row items-center gap-2 text-amber-400 ">
+          <div data-testid="invalid" className="flex flex-row items-center gap-2 text-amber-600 dark:text-amber-400 ">
             <WarningIcon className="w-5 h-5" />
             ULID is invalid!
           </div>

@@ -75,10 +75,10 @@ export default function SelectOptions(props: SelectOptionsProps) {
                   data-testid={`select-button-${props.formName}`}
                   ref={refs.setReference}
                   className={cn(
-                    'relative cursor-pointer rounded-3xl px-3 pr-11 border-gray-800 bg-gray-700 py-1 pl-3 text-left shadow-md h-8 w-fit'
+                    'relative cursor-pointer rounded-3xl px-3 pr-11 border border-slate-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-700 py-1 pl-3 text-left shadow-md h-8 w-fit hover:dark:bg-[#414658] hover:bg-gray-200'
                   )}
                 >
-                  <span className="block whitespace-nowrap py-0.5 text-[0.9rem] text-tlight">
+                  <span className="block whitespace-nowrap py-0.5 text-[0.9rem] dark:text-tlight text-gray-700">
                     {!isMultiSelect
                       ? selected.name
                       : selected.length > 0
@@ -92,7 +92,7 @@ export default function SelectOptions(props: SelectOptionsProps) {
                   >
                     <HiOutlineSelector
                       className={cn(
-                        'h-5 w-5 rounded-full border border-border bg-slate-300 text-darker'
+                        'h-5 w-5 rounded-full border border-slate-300 dark:border-border dark:bg-slate-300 dark:text-darker text-gray-500'
                       )}
                     />
                   </span>

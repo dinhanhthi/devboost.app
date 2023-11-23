@@ -5,28 +5,22 @@
 @layer base {
   .db-button {
     &._main {
-      @apply bg-sky-900 hover:bg-sky-800;
+      @apply bg-sky-600 text-white hover:bg-sky-800 dark:bg-sky-900 hover:dark:bg-sky-800;
     }
 
-    @apply h-7 rounded-lg border-gray-800 bg-gray-700 px-3 text-sm text-tnormal shadow-md
-      hover:bg-[#414658] hover:text-white disabled:cursor-not-allowed
-      disabled:opacity-50 disabled:hover:bg-gray-700 disabled:hover:text-tnormal;
+    @apply h-7 rounded-lg border border-slate-200 bg-gray-100 px-3 text-sm text-gray-700 shadow-sm hover:bg-gray-200 hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-700 dark:bg-gray-700 dark:dark:text-tnormal hover:dark:bg-[#414658] hover:dark:text-white disabled:hover:dark:bg-gray-700 disabled:hover:dark:text-tnormal;
   }
 
   .db-textarea {
-    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border bg-white
-    p-4 py-3 shadow-slate-300 focus:outline-none dark:border-border dark:bg-darkest dark:text-tlight
-      placeholder:dark:text-gray-500;
+    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border bg-white p-4 py-3 shadow-slate-300 focus:outline-none dark:border-border border-gray-200 dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500 placeholder:text-gray-400;
   }
 
   .db-input {
-    @apply h-9 rounded-md border bg-white px-2.5 py-1.5 text-sm
-      outline-none dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
+    @apply h-9 rounded-md border bg-white px-2.5 py-1.5 text-sm outline-none dark:border-border border-gray-300 dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500 placeholder:text-gray-400;
   }
 
   .db-prose-code {
-    @apply break-words rounded-sm bg-slate-200 dark:bg-darkest p-[2px_5px_3px_5px]
-    font-mono text-[90%] font-normal before:content-[''] after:content-[''];
+    @apply break-words rounded-sm bg-slate-200 p-[2px_5px_3px_5px] font-mono text-[90%] font-normal before:content-[''] after:content-[''] dark:bg-darkest;
   }
 
   .db-prose-h2 {
@@ -34,11 +28,11 @@
   }
 
   .db-prose-a {
-    @apply underline underline-offset-4 dark:text-tlight dark:hover:text-white hover:text-sky-600;
+    @apply underline underline-offset-4 hover:text-sky-600 dark:text-tlight dark:hover:text-white;
   }
 
   .db-prose {
-    @apply prose dark:prose-invert max-w-none text-slate-700 dark:text-tlight;
+    @apply prose max-w-none text-slate-700 dark:prose-invert dark:text-tlight;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
@@ -82,6 +76,9 @@
       .linenumber:last-child {
         display: none !important;
       }
+    }
+    & > code {
+      background: transparent !important;
     }
   }
 }
