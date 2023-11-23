@@ -6,7 +6,7 @@ import DiCss3Full from '../icons/DiCss3Full'
 import HiQrCode from '../icons/HiQrCode'
 import IoLogoJavascript from '../icons/IoLogoJavascript'
 import IoTime from '../icons/IoTime'
-import JWT from '../icons/JWT'
+import JWTIcon from '../icons/JWT'
 import LoremIpsumIcon from '../icons/LoremIpsumIcon'
 import LuBinary from '../icons/LuBinary'
 import MongoDBIcon from '../icons/MongoDBICon'
@@ -29,7 +29,7 @@ import Uuid from '../icons/Uuid'
 import VscRegex from '../icons/VscRegex'
 import { Tool } from '../interface'
 
-const commonIconClass = 'text-xl'
+const commonIconClass = 'text-2xl'
 
 const originalTools: Tool[] = [
   {
@@ -43,7 +43,7 @@ const originalTools: Tool[] = [
     slug: 'check-version',
     name: 'Check Latest Version',
     description: 'Quickly check the latest version of any package.',
-    iconEl: PackageUpdateICon({ className: 'text-xl' })
+    iconEl: PackageUpdateICon({ className: 'text-2xl' })
   },
   {
     slug: 'mermaid-playground',
@@ -70,7 +70,7 @@ const originalTools: Tool[] = [
   {
     slug: 'json-formatter',
     name: 'JSON Formatter',
-    iconEl: TbJson({ className: 'text-2xl' })
+    iconEl: TbJson({ className: commonIconClass })
   },
   {
     slug: 'unix-timestamp-converter',
@@ -80,7 +80,7 @@ const originalTools: Tool[] = [
   {
     slug: 'json-sorter',
     name: 'JSON Sorter',
-    iconEl: TbJson({ className: 'text-2xl' })
+    iconEl: TbJson({ className: commonIconClass })
   },
   {
     slug: 'open-graph-preview',
@@ -95,7 +95,7 @@ const originalTools: Tool[] = [
   {
     slug: 'jwt-decoder',
     name: 'JWT Decoder',
-    iconEl: JWT({ className: 'h-4 w-4' })
+    iconEl: JWTIcon({ className: 'text-xl' })
   },
   {
     slug: 'regex-tester',
@@ -105,17 +105,17 @@ const originalTools: Tool[] = [
   {
     slug: 'url-encoder-decoder',
     name: 'URL Encoder/Decoder',
-    iconEl: SiCurl({ className: commonIconClass })
+    iconEl: SiCurl({ className: 'text-xl' })
   },
   {
     slug: 'url-parser',
     name: 'URL Parser',
-    iconEl: SiCurl({ className: commonIconClass })
+    iconEl: SiCurl({ className: 'text-xl' })
   },
   {
     slug: 'url-shortener',
     name: 'URL Shortener',
-    iconEl: SiCurl({ className: commonIconClass })
+    iconEl: SiCurl({ className: 'text-xl' })
   },
   {
     slug: 'html-entities-encoder-decoder',
@@ -139,12 +139,12 @@ const originalTools: Tool[] = [
   {
     slug: 'yaml-to-json',
     name: 'YAML to JSON',
-    iconEl: ConvertIcon({ className: 'h-5' })
+    iconEl: ConvertIcon({ className: 'text-xl' })
   },
   {
     slug: 'json-to-yaml',
     name: 'JSON to YAML',
-    iconEl: ConvertIcon({ className: 'h-5' })
+    iconEl: ConvertIcon({ className: 'text-xl' })
   },
   {
     slug: 'number-base-converter',
@@ -164,7 +164,7 @@ const originalTools: Tool[] = [
   {
     slug: 'javascript-beautifier-minifier',
     name: 'JavaScript Beautifier/Minifier',
-    iconEl: IoLogoJavascript({ className: commonIconClass })
+    iconEl: IoLogoJavascript({ className: 'text-xl' })
   },
   {
     slug: 'xml-beautifier-minifier',
@@ -174,12 +174,12 @@ const originalTools: Tool[] = [
   {
     slug: 'scss-beautifier-minifier',
     name: 'SCSS Beautifier/Minifier',
-    iconEl: ScssIcon({ className: 'h-5' })
+    iconEl: ScssIcon({ className: commonIconClass })
   },
   {
     slug: 'lorem-ipsum-generator',
     name: 'Lorem Ipsum Generator',
-    iconEl: LoremIpsumIcon({ className: 'h-5' })
+    iconEl: LoremIpsumIcon({ className: 'text-sm' })
   },
   {
     slug: 'qr-code-generator-reader',
@@ -194,14 +194,14 @@ const originalTools: Tool[] = [
   {
     slug: 'json-to-csv',
     name: 'JSON to CSV',
-    iconEl: ConvertIcon({ className: 'h-5' })
+    iconEl: ConvertIcon({ className: 'text-xl' })
   },
   {
     slug: 'nano-id-generator',
     name: 'Nano ID Generator',
     description:
       'Generate Nano ID. You can also generate Nano ID with custom alphabet and a given size of the ID.',
-    iconEl: NanoIdIcon({ className: 'h-5' }),
+    iconEl: NanoIdIcon({ className: 'text-xl' }),
     implemented: true,
     docFile: 'nanoid.md'
   },
@@ -210,19 +210,19 @@ const originalTools: Tool[] = [
     name: 'ULID Generator',
     description:
       'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
-    iconEl: ULIDIcon({ className: 'text-[0.6rem]' }),
+    iconEl: ULIDIcon({ className: 'text-xs' }),
     implemented: true,
     docFile: 'ulid.md'
   },
   {
     slug: 'objectid-generator',
     name: 'ObjectID Generator',
-    iconEl: MongoDBIcon({ className: 'h-5' })
+    iconEl: MongoDBIcon({ className: commonIconClass })
   },
   {
     slug: 'tokenizer',
     name: 'Tokenizer (OpenAI)',
-    iconEl: TokenIcon({ className: 'h-5' })
+    iconEl: TokenIcon({ className: commonIconClass })
   },
   {
     slug: 'openai-key-validator',
@@ -235,12 +235,12 @@ const originalTools: Tool[] = [
   {
     slug: 'notion-api-playground',
     name: 'Notion API Playground',
-    iconEl: NotionIcon({ className: 'h-6 w-6' })
+    iconEl: NotionIcon({ className: commonIconClass })
   }
 ]
 
 export const TOOLS = originalTools
-  // .filter(tool => tool.implemented)
+  .filter(tool => tool.implemented)
   .sort((a, b) => {
     const nameA = a.name.toUpperCase()
     const nameB = b.name.toUpperCase()

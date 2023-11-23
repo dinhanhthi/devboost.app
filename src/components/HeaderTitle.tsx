@@ -18,7 +18,6 @@ type HeaderTitleProps = {
 export default function HeaderTitle(props: HeaderTitleProps) {
   const [openSideDoc, setOpenSideDoc] = useState(false)
   const [uuidDoc, setUuidDoc] = useState<string | undefined>(undefined)
-  const { className } = props
   const pathname = usePathname()
   const unknownTool: Tool = { name: '404', slug: '/' }
   const tool =
@@ -48,14 +47,13 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         <div className="">
           <h1
             className={cn(
-              'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden db-around-border rounded-lg text-lg',
-              className
+              'mx-auto flex h-8 w-fit flex-row items-center justify-center gap-2 overflow-hidden !bg-sky-600 dark:!bg-dark db-around-border rounded-lg text-lg'
             )}
           >
             {!!tool.iconEl && (
               <div
                 className={cn(
-                  'flex h-full items-center justify-center p-2 bg-gray-200 text-slate-900 dark:bg-darker dark:text-white'
+                  'flex h-full items-center justify-center p-2 bg-white text-slate-900 dark:bg-darker dark:text-white'
                 )}
               >
                 {tool.iconEl}
@@ -63,7 +61,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
             )}
             <div
               className={cn(
-                'flex items-center gap-2 px-3 tracking-widest dark:text-thighlight text-sky-700',
+                'flex items-center gap-2 px-3 tracking-widest dark:text-thighlight text-white',
                 kanit.className
               )}
             >
