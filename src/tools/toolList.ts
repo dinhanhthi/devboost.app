@@ -1,6 +1,6 @@
 import AiFillHtml5 from '../icons/AiFillHtml5'
-import { ApiIcon } from '../icons/ApiIcon'
-import { CompareDocIcon } from '../icons/CompareDocIcon'
+import ApiIcon from '../icons/ApiIcon'
+import CompareDocIcon from '../icons/CompareDocIcon'
 import ConvertIcon from '../icons/ConvertIcon'
 import DiCss3Full from '../icons/DiCss3Full'
 import HiQrCode from '../icons/HiQrCode'
@@ -11,10 +11,10 @@ import LoremIpsumIcon from '../icons/LoremIpsumIcon'
 import LuBinary from '../icons/LuBinary'
 import MongoDBIcon from '../icons/MongoDBICon'
 import NanoIdIcon from '../icons/NanoIdIcon'
-import { NotionIcon } from '../icons/NotionIcon'
-import { OpenAiIcon } from '../icons/OpenAiIcon'
-import OpenGraph from '../icons/OpenGraph'
-import { PackageUpdateICon } from '../icons/PackageUpdateIcon'
+import NotionIcon from '../icons/NotionIcon'
+import OpenAiIcon from '../icons/OpenAiIcon'
+import OpenGraphIcon from '../icons/OpenGraph'
+import PackageUpdateICon from '../icons/PackageUpdateIcon'
 import RiApps2Line from '../icons/RiApps2Line'
 import RiMenuSearchLine from '../icons/RiMenuSearchLine'
 import ScssIcon from '../icons/ScssIcon'
@@ -23,13 +23,13 @@ import SixtyFour from '../icons/SixtyFour'
 import TbFileTypeXml from '../icons/TbFileTypeXml'
 import TbJson from '../icons/TbJson'
 import TokenIcon from '../icons/TokenIcon'
-import { TreeDiagramIcon } from '../icons/TreeDiagramIcon'
+import TreeDiagramIcon from '../icons/TreeDiagramIcon'
 import ULIDIcon from '../icons/ULIDIcon'
 import Uuid from '../icons/Uuid'
 import VscRegex from '../icons/VscRegex'
 import { Tool } from '../interface'
 
-const commonIconClass = 'text-lg'
+const commonIconClass = 'text-xl'
 
 const originalTools: Tool[] = [
   {
@@ -85,7 +85,7 @@ const originalTools: Tool[] = [
   {
     slug: 'open-graph-preview',
     name: 'Open Graph Preview',
-    iconEl: OpenGraph({ className: 'text-xs' })
+    iconEl: OpenGraphIcon({ className: 'text-xs' })
   },
   {
     slug: 'base64-image-converter',
@@ -228,7 +228,7 @@ const originalTools: Tool[] = [
     slug: 'openai-key-validator',
     name: 'OpenAI Key Validator',
     description: 'Quickly validate your OpenAI key to see if you can use it for OpenAI APIs.',
-    iconEl: OpenAiIcon({ className: 'h-6 w-6' }),
+    iconEl: OpenAiIcon({ className: commonIconClass }),
     implemented: true
     // docFile: 'openai-key-validator.md'
   },
@@ -240,7 +240,7 @@ const originalTools: Tool[] = [
 ]
 
 export const TOOLS = originalTools
-  .filter(tool => tool.implemented)
+  // .filter(tool => tool.implemented)
   .sort((a, b) => {
     const nameA = a.name.toUpperCase()
     const nameB = b.name.toUpperCase()

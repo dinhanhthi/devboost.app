@@ -7,9 +7,9 @@ import { validate as uuidValidate } from 'uuid'
 import Button from '../../components/Button'
 import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
+import SampleButton from '../../components/SampleButton'
 import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
 import FormatIcon from '../../icons/FormatIcon'
-import SampleButton from '../../components/SampleButton'
 
 export default function UuidDecoder() {
   const originalRef = useRef<HTMLInputElement>(null)

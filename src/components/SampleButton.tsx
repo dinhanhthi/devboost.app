@@ -1,4 +1,4 @@
-import { SampleIcon } from '../icons/SampleIcon'
+import SampleIcon from '../icons/SampleIcon'
 import Button from './Button'
 
 type SampleButtonProps = {

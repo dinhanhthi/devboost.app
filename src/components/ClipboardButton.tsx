@@ -1,4 +1,4 @@
-import { ClipboardIcon } from '../icons/ClipboardIcon'
+import ClipboardIcon from '../icons/ClipboardIcon'
 import Button from './Button'
 
 type ClipboardButtonProps = {

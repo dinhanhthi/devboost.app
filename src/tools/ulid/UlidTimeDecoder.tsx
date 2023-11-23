@@ -4,10 +4,10 @@ import { useRef, useState } from 'react'
 import { decodeTime, isValid } from 'ulidx'
 import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
+import SampleButton from '../../components/SampleButton'
 import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
 import FormatIcon from '../../icons/FormatIcon'
-import { WarningIcon } from '../../icons/WarningIcon'
-import SampleButton from '../../components/SampleButton'
+import WarningIcon from '../../icons/WarningIcon'
 
 export default function UlidTimeDecoder() {
   const originalRef = useRef<HTMLInputElement>(null)

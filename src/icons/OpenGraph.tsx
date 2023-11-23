@@ -1,7 +1,5 @@
 import cn from 'classnames'
 
-export default function OpenGraph(props: { className?: string }) {
-  return (
-    <div className={cn(props.className, 'w-fit rounded-md bg-slate-500 p-1 leading-none')}>OG</div>
-  )
+export default function OpenGraphIcon(props: { className?: string }) {
+  return <div className={cn(props.className, 'db-icon-text')}>OG</div>
 }

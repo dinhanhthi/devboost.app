@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
-import { CloseIcon } from '../icons/CloseIcon'
-import { DocDuoToneIcon } from '../icons/DocDuaToneIcon'
+import CloseIcon from '../icons/CloseIcon'
+import DocDuoToneIcon from '../icons/DocDuaToneIcon'
 import { Tool } from '../interface'
 import { MarkdownComponents } from '../libs/helpers'
 
@@ -71,7 +71,9 @@ export default function SideOverDoc(props: SideOverDocProps) {
                         <DocDuoToneIcon className="w-6 h-6 text-white" /> {props.tool.name}
                       </Dialog.Title>
                       {!!props.tool.description && (
-                        <p className="pl-8 pr-4 text-sm italic text-tnormal">{props.tool.description}</p>
+                        <p className="pl-8 pr-4 text-sm italic text-tnormal">
+                          {props.tool.description}
+                        </p>
                       )}
                     </div>
                     <div className="flex-1 min-h-0 p-3 pt-0 overflow-hidden">
@@ -84,7 +86,7 @@ export default function SideOverDoc(props: SideOverDocProps) {
                         {!props.docContent && props.tool.docFile && (
                           <div className="flex items-center justify-center w-full h-full">
                             <div className="animate-spin">
-                              <AiOutlineLoading3Quarters className="w-10 h-10 text-green-300" />
+                              <AiOutlineLoading3Quarters className="w-10 h-10 dark:text-green-300 text-sky-600" />
                             </div>
                           </div>
                         )}
