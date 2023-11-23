@@ -68,10 +68,11 @@ export default function SideOverDoc(props: SideOverDocProps) {
                   <div className="flex flex-col h-full overflow-y-scroll shadow-xl text-tlight dark:bg-darker bg-[#F5F5F4]">
                     <div className="flex flex-col gap-2 px-4 py-5">
                       <Dialog.Title className="flex flex-row items-center gap-2 text-lg font-semibold leading-6 tracking-wider dark:text-thighlight text-sky-600">
-                        <DocDuoToneIcon className="w-6 h-6 text-gray-600 dark:text-white" /> {props.tool.name}
+                        <DocDuoToneIcon className="w-6 h-6 text-gray-600 dark:text-white" />{' '}
+                        {props.tool.name}
                       </Dialog.Title>
                       {!!props.tool.description && (
-                        <p className="pl-8 pr-4 text-sm italic text-gray-700 dark:text-tnormal">
+                        <p className="pl-8 pr-4 text-sm italic text-gray-800 dark:text-tnormal">
                           {props.tool.description}
                         </p>
                       )}

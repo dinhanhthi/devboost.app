@@ -92,7 +92,7 @@ export default function SelectOptions(props: SelectOptionsProps) {
                   >
                     <HiOutlineSelector
                       className={cn(
-                        'h-5 w-5 rounded-full border border-slate-300 dark:border-border dark:bg-slate-300 dark:text-darker text-gray-500'
+                        'h-5 w-5 rounded-full border border-slate-300 dark:border-border dark:bg-slate-300 dark:text-darker text-gray-600 bg-white'
                       )}
                     />
                   </span>
@@ -114,7 +114,7 @@ export default function SelectOptions(props: SelectOptionsProps) {
                   >
                     <Listbox.Options
                       className={cn(
-                        'db-scrollbar absolute right-0 top-[40px] z-10 border-border border shadow-lg overflow-auto rounded-lg bg-darker text-sm divide-y divide-x-0 divide-border ring-1 ring-black ring-opacity-5 focus:outline-none'
+                        'db-scrollbar absolute right-0 top-[40px] z-10 dark:border-border border-gray-200 border shadow-lg overflow-auto rounded-lg bg-white dark:bg-darker text-sm divide-y divide-x-0 dark:divide-border focus:outline-none'
                       )}
                       style={{
                         ...props.dropdownStyle,
@@ -129,8 +129,8 @@ export default function SelectOptions(props: SelectOptionsProps) {
                           key={item.value}
                           className={({ active }) =>
                             cn('relative cursor-default select-none px-4 py-2', {
-                              'bg-light text-white': active,
-                              'text-slate-400': !active
+                              'dark:bg-light dark:text-white text-black bg-gray-100': active,
+                              'dark:text-slate-400 text-gray-600': !active
                             })
                           }
                           value={item.value}
@@ -141,16 +141,14 @@ export default function SelectOptions(props: SelectOptionsProps) {
                                 <span
                                   className={cn('block truncate', {
                                     'font-normal': !selected,
-                                    'text-thighlight': selected
+                                    'dark:text-thighlight text-sky-600': selected
                                   })}
                                 >
                                   {item.name}
                                 </span>
                                 {selected ? (
                                   <span
-                                    className={cn(
-                                      'absolute inset-y-0 right-2 flex items-center pl-3 text-thighlight'
-                                    )}
+                                    className="absolute inset-y-0 flex items-center pl-3 right-2 dark:text-thighlight text-sky-600"
                                   >
                                     <BsFillCheckCircleFill className="w-4 h-4" />
                                   </span>

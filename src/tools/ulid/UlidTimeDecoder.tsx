@@ -101,7 +101,8 @@ export default function UlidTimeDecoder() {
       {/* Result */}
       <div
         className={cn('flex flex-col gap-2 text-sm', {
-          'border rounded-lg bg-slate-100 dark:bg-darker dark:border-border p-4': timeMsValue || timeDateValue || error
+          'border rounded-lg bg-slate-100 dark:bg-darker dark:border-border p-4':
+            timeMsValue || timeDateValue || error
         })}
       >
         {timeMsValue && (
@@ -117,7 +118,10 @@ export default function UlidTimeDecoder() {
           </div>
         )}
         {error && (
-          <div data-testid="invalid" className="flex flex-row items-center gap-2 text-amber-600 dark:text-amber-400 ">
+          <div
+            data-testid="invalid"
+            className="flex flex-row items-center gap-2 text-amber-600 dark:text-amber-400 "
+          >
             <WarningIcon className="w-5 h-5" />
             ULID is invalid!
           </div>
