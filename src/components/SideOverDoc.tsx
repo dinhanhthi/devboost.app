@@ -65,19 +65,19 @@ export default function SideOverDoc(props: SideOverDocProps) {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="flex flex-col h-full overflow-y-scroll shadow-xl text-tlight bg-darker">
+                  <div className="flex flex-col h-full overflow-y-scroll shadow-xl text-tlight dark:bg-darker bg-[#F5F5F4]">
                     <div className="flex flex-col gap-2 px-4 py-5">
-                      <Dialog.Title className="flex flex-row items-center gap-2 text-lg font-semibold leading-6 tracking-wider text-thighlight">
-                        <DocDuoToneIcon className="w-6 h-6 text-white" /> {props.tool.name}
+                      <Dialog.Title className="flex flex-row items-center gap-2 text-lg font-semibold leading-6 tracking-wider dark:text-thighlight text-sky-600">
+                        <DocDuoToneIcon className="w-6 h-6 text-gray-600 dark:text-white" /> {props.tool.name}
                       </Dialog.Title>
                       {!!props.tool.description && (
-                        <p className="pl-8 pr-4 text-sm italic text-tnormal">
+                        <p className="pl-8 pr-4 text-sm italic text-gray-700 dark:text-tnormal">
                           {props.tool.description}
                         </p>
                       )}
                     </div>
                     <div className="flex-1 min-h-0 p-3 pt-0 overflow-hidden">
-                      <div className="h-full p-4 overflow-auto border rounded-lg db-prose bg-dark border-border db-scrollbar">
+                      <div className="h-full p-4 overflow-auto rounded-lg db-prose db-around-border db-scrollbar">
                         {props.docContent && (
                           <ReactMarkdown components={MarkdownComponents}>
                             {props.docContent}

@@ -71,7 +71,7 @@ export default function UuidFormater() {
 
       {/* Original */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <label htmlFor="original-input" className="text-sm text-tnormal">
+        <label htmlFor="original-input" className="text-sm">
           String to format
         </label>
         <input
@@ -87,7 +87,7 @@ export default function UuidFormater() {
 
       {/* Target */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <label htmlFor="uuid-input" className="text-sm text-tnormal">
+        <label htmlFor="uuid-input" className="text-sm">
           UUID
         </label>
         <input

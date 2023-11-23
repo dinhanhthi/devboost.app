@@ -182,7 +182,7 @@ export default function UuidGenerator() {
             initSelectedValue={getValuesVersion('version')}
             dropdownStyle={{ width: 260, maxHeight: 300 }}
           />
-          <Times className="w-5 h-5 text-tdark" />
+          <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
           <input
             ref={inputRecordsRef}
             value={recordsValue}

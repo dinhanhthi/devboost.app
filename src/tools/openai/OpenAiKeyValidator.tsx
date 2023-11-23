@@ -76,7 +76,7 @@ export default function OpenAiKeyValidator() {
 
         {/* API key */}
         <div className="flex flex-row items-center gap-2 flex-2">
-          <div className="w-16 text-sm text-tnormal">API Key</div>
+          <div className="w-16 text-sm">API Key</div>
           <input
             data-testid="api-key-input"
             ref={apiKeyInputRef}
@@ -90,11 +90,11 @@ export default function OpenAiKeyValidator() {
 
         {/* Result */}
         {result && (
-          <div className="p-4 border rounded-lg border-border bg-darker">
+          <div className="p-4 border rounded-lg dark:border-border dark:bg-darker bg-slate-100">
             {result === 'valid' && (
               <div
                 data-testid="valid"
-                className="flex flex-row items-center gap-2 text-sm text-green-300"
+                className="flex flex-row items-center gap-2 text-sm text-green-700 dark:text-green-300"
               >
                 <BsFillCheckCircleFill className="w-5 h-5" />
                 The key is valid!
@@ -103,7 +103,7 @@ export default function OpenAiKeyValidator() {
             {result === 'invalid' && (
               <div
                 data-testid="invalid"
-                className="flex flex-row items-center gap-2 text-sm text-amber-400"
+                className="flex flex-row items-center gap-2 text-sm dark:text-amber-400 text-amber-600"
               >
                 <WarningIcon className="w-5 h-5" /> The key is invalid!
               </div>

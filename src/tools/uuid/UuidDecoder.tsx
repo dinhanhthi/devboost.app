@@ -78,7 +78,7 @@ export default function UuidDecoder() {
 
       {/* Original */}
       <div className="flex flex-row items-center gap-2 flex-2">
-        <div className="text-sm text-tnormal">UUID</div>
+        <div className="text-sm">UUID</div>
         <input
           data-testid="uuid-input"
           ref={originalRef}
