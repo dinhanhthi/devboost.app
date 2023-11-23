@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-export function SampleIcon(props: SVGProps<SVGSVGElement>) {
+export default function SampleIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-export function ClipboardIcon(props: { className?: string }) {
+export default function ClipboardIcon(props: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

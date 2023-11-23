@@ -24,7 +24,7 @@ export default function Tabs(props: TabsProps) {
     <div
       className={cn(
         className,
-        'relative flex overflow-hidden rounded-3xl border border-border bg-dark shadow-md',
+        'relative flex overflow-hidden !rounded-3xl border db-around-border',
         {
           'w-fit': !props.width
         }
@@ -36,9 +36,9 @@ export default function Tabs(props: TabsProps) {
           key={tab.key}
           type="button"
           className={cn(
-            'z-20 flex flex-1 items-center justify-center gap-2 whitespace-nowrap px-6 py-3 text-sm text-tdark hover:text-white',
+            'z-20 flex flex-1 items-center justify-center gap-2 whitespace-nowrap px-6 py-3 text-sm dark:text-tdark hover:dark:text-white hover:text-black',
             {
-              '!text-white': selectedTab === tab.key
+              'dark:!text-white': selectedTab === tab.key
             }
           )}
           onClick={() => {
@@ -56,7 +56,7 @@ export default function Tabs(props: TabsProps) {
           className={cn('z-10 h-full p-1.5 transition-all duration-300')}
           style={generateStyle(tabs, selectedTab)}
         >
-          <div className={cn('h-full w-full rounded-3xl bg-light')}></div>
+          <div className={cn('h-full w-full rounded-3xl dark:bg-light bg-gray-200')}></div>
         </div>
       </div>
     </div>

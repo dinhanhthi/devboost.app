@@ -4,10 +4,10 @@ import { useRef, useState } from 'react'
 import { validate as uuidValidate } from 'uuid'
 import ClearButton from '../../components/ClearButton'
 import ClipboardButton from '../../components/ClipboardButton'
+import SampleButton from '../../components/SampleButton'
 import ValidateButton from '../../components/ValidateButton'
 import BsFillCheckCircleFill from '../../icons/BsFillCheckCircleFill'
-import { WarningIcon } from '../../icons/WarningIcon'
-import SampleButton from '../../components/SampleButton'
+import WarningIcon from '../../icons/WarningIcon'
 
 export default function UuidValidator() {
   const originalRef = useRef<HTMLInputElement>(null)

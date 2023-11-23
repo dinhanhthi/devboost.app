@@ -44,13 +44,17 @@ export default function SideNavItem(props: SideNavItemProps) {
           'opacity-0': !areSameUris(uriToUse, pathname)
         })}
       >
-        <div className={cn('-ml-0.5 h-full w-1.5 rounded-lg border-r-4 border-green-400')}></div>
+        <div
+          className={cn(
+            '-ml-0.5 h-full w-1.5 rounded-lg border-r-4 dark:border-green-400 border-sky-600'
+          )}
+        ></div>
       </div>
       <div className="w-full pl-2 pr-2">
         <div
           className={cn(
-            'flex w-full flex-row items-center gap-2 rounded-lg px-1.5 py-2 text-sm text-tnormal group-hover:bg-darker group-hover:text-white',
-            { '!text-thighlight': areSameUris(uriToUse, pathname) }
+            'flex w-full flex-row items-center gap-2 rounded-lg px-1.5 py-2 text-sm text-slate-700 dark:text-tnormal group-hover:dark:bg-darker group-hover:bg-gray-200 group-hover:dark:text-white',
+            { 'dark:!text-thighlight !text-sky-600': areSameUris(uriToUse, pathname) }
           )}
         >
           <div className="flex items-center justify-center w-8">{tool.iconEl}</div>
