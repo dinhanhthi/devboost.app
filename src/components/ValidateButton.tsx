@@ -14,7 +14,7 @@ export default function ValidateButton(props: ValidateButtonProps) {
     <Button isPrimary={true} onClick={props.onClick} disabled={props.disabled}>
       {props.isValidating && (
         <div className="animate-spin">
-          <AiOutlineLoading3Quarters className="h-3.5 w-3.5" />
+          <AiOutlineLoading3Quarters className="h-3.5 w-3.5 db-button-active" />
         </div>
       )}
       {!props.isValidating && <FiSearch className="text-base" />}

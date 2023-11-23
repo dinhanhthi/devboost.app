@@ -70,8 +70,8 @@ export default function HeaderTitle(props: HeaderTitleProps) {
           </h1>
         </div>
         {(tool.docFile || tool.description) && (
-          <button className="group" onClick={handleOpenSideOverClicked}>
-            <DocumentHelpIcon className="w-6 h-6 dark:text-tdark text-slate-500 group-hover:dark:text-white group-hover:text-sky-600" />
+          <button className="p-1.5 group db-button-hover" onClick={handleOpenSideOverClicked}>
+            <DocumentHelpIcon className="text-2xl dark:text-tdark text-slate-500 group-hover:dark:text-white group-hover:text-slate-900 db-button-active shrink-0" />
           </button>
         )}
       </div>

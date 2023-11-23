@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               'flex h-screen max-h-screen flex-col text-slate-800 dark:text-tnormal bg-[#F5F5F4] dark:bg-darker'
             )}
           >
-            <div className="h-[80px] shrink-0 w-full flex flex-row justify-between px-4">
+            <div className="h-[80px] shrink-0 w-full flex flex-row items-center justify-between px-6">
               <div className="flex items-center gap-2">
                 <Link href={'/'} className="flex items-center gap-2">
                   <Image src={Logo} alt="DevBoost Logo" width={30} height={30} />
@@ -50,9 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                 </Link>
 
-                <div className="w-[25px]">
-                  <ToggleTheme className="w-full" />
-                </div>
+                <ToggleTheme />
               </div>
 
               <HeaderTitle className="flex-1 h-full" />
@@ -60,11 +58,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 href={'/'}
                 className={cn(
-                  'flex flex-row items-center gap-1 text-sm text-slate-800 dark:text-tnormal dark:hover:text-white hover:text-sky-600'
+                  'flex flex-row items-center gap-1 text-sm text-slate-800 dark:text-tnormal dark:hover:text-white hover:text-slate-900 h-fit py-2 px-3 db-button-hover group'
                 )}
               >
                 Login / Register
-                <UserCircleIcon className="w-6 h-6" />
+                <UserCircleIcon className="w-6 h-6 db-button-active" />
               </Link>
             </div>
             <div className={cn('flex min-h-0 grow flex-row justify-between')}>

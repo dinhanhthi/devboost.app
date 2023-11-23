@@ -36,9 +36,9 @@ export default function Tabs(props: TabsProps) {
           key={tab.key}
           type="button"
           className={cn(
-            'z-20 flex flex-1 items-center justify-center gap-2 whitespace-nowrap px-6 py-3 text-sm dark:text-tdark hover:dark:text-white hover:text-black',
+            'z-20 flex flex-1 items-center justify-center gap-2 whitespace-nowrap px-6 py-3 text-sm text-slate-600 dark:text-tdark hover:dark:text-white hover:text-slate-900',
             {
-              'dark:!text-white': selectedTab === tab.key
+              'dark:!text-white !text-slate-900': selectedTab === tab.key
             }
           )}
           onClick={() => {

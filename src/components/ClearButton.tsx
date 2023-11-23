@@ -9,7 +9,7 @@ type ClearButtonProps = {
 export default function ClearButton(props: ClearButtonProps) {
   return (
     <Button onClick={props.onClick} disabled={props.disabled}>
-      <CleanIcon className="w-4 h-4" />
+      <CleanIcon className="w-4 h-4 db-button-active" />
       Clear
     </Button>
   )

@@ -2,7 +2,7 @@ import cn from 'classnames'
 
 import FiSearch from '../icons/FiSearch'
 import { TOOLS, allToolItem } from '../tools/toolList'
-import SideNavFiler from './SideNavFilter'
+import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 
 type SideNavProps = {
@@ -19,7 +19,7 @@ export default function SideNav(props: SideNavProps) {
         <div className="pb-4">
           <div
             className={cn(
-              'flex items-center gap-1 rounded-r-lg !rounded-l-none db-around-border px-2.5 py-1'
+              'flex items-center gap-1 rounded-r-lg !rounded-l-none db-around-border px-2.5 py-1.5'
             )}
           >
             <div className={cn('grid place-items-center text-slate-500 dark:text-slate-400')}>
@@ -32,7 +32,7 @@ export default function SideNav(props: SideNavProps) {
               placeholder={'type to search tools...'}
               autoComplete="off"
             />
-            <SideNavFiler />
+            <SideNavFilter />
           </div>
         </div>
 

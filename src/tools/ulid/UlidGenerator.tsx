@@ -63,7 +63,7 @@ export default function UlidGenerator() {
         </div>
 
         {/* records */}
-        <div className="flex flex-row items-center gap-1 h-7">
+        <div className="flex flex-row items-center h-8 gap-1">
           <input
             ref={inputTimeSeedRef}
             type="text"

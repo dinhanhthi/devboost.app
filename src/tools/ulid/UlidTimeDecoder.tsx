@@ -70,7 +70,7 @@ export default function UlidTimeDecoder() {
           onClick={handleDecodeClicked}
           className="flex items-center gap-2 db-button _main"
         >
-          {!isDecoding && <FormatIcon className="h-3.5 w-3.5" />}
+          {!isDecoding && <FormatIcon className="h-3.5 w-3.5 db-button-active" />}
           {isDecoding && (
             <div className="animate-spin">
               <AiOutlineLoading3Quarters className="h-3.5 w-3.5" />

@@ -161,7 +161,7 @@ export default function UuidGenerator() {
               onClick={handleNilClicked}
               disabled={parseInt(recordsValue) > 500 || parseInt(recordsValue) < 1}
             >
-              <FaMagic className="h-3.5 w-3.5" />
+              <FaMagic className="h-3.5 w-3.5 db-button-active" />
               NIL
             </Button>
           </div>
@@ -174,7 +174,7 @@ export default function UuidGenerator() {
         </div>
 
         {/* versions */}
-        <div className="relative z-10 flex flex-row items-center gap-1 h-7">
+        <div className="relative z-10 flex flex-row items-center h-8 gap-1">
           <SelectOptions
             data={uuidVersions}
             control={controlVersion}

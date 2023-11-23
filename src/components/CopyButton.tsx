@@ -20,9 +20,9 @@ export default function CopyButton(props: CopyButtonProps) {
   }
 
   return (
-    <Button className="w-[92px]" onClick={handleCopyClicked} disabled={!props.text}>
+    <Button className="w-[92px]" onClick={handleCopyClicked} disabled={!props.text || isCopied}>
       {isCopied && <CheckIcon className="h-3.5 w-3.5 shrink-0" />}
-      {!isCopied && <CopyIcon className="h-3.5 w-3.5 shrink-0" />}
+      {!isCopied && <CopyIcon className="h-3.5 w-3.5 shrink-0 db-button-active" />}
       {isCopied ? 'Copied' : 'Copy'}
     </Button>
   )
