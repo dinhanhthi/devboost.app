@@ -6,15 +6,18 @@ const nextConfig = {
     scrollRestoration: true // not supported yet by --turbo
   },
   images: {
-    domains: ['avatars.githubusercontent.com']
-  },
-  webpack: (config) => {
-    config.module.rules.push(
+    remotePatterns: [
       {
-        test: /\.md$/,
-        use: 'raw-loader'
+        protocol: 'https',
+        hostname: '**.githubusercontent.com'
       }
-    )
+    ]
+  },
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader'
+    })
 
     return config
   }

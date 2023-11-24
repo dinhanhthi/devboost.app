@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import MainContainer from '../../../components/MainContainer'
-import PageContent from '../../../components/PageContent'
-import ToolBodySkeleton from '../../../components/ToolBodySkeleton'
-import { DynamicSegmentParamsProps } from '../../../interface'
-import { PAGES, SETTINGS } from '../../../libs/config'
+import MainContainer from '../../../../components/MainContainer'
+import PageContentTemplate from './PageContentTemplate'
+import ToolBodySkeleton from '../../../../components/ToolBodySkeleton'
+import { DynamicSegmentParamsProps } from '../../../../interface'
+import { PAGES, SETTINGS } from '../../../../libs/config'
 
 export const revalidate = 20
 
@@ -48,7 +48,7 @@ export default async function SinglePage({ params }: DynamicSegmentParamsProps) 
     return (
       <Suspense fallback={<ToolBodySkeleton />}>
         <MainContainer className="h-full">
-          <PageContent filePath={`/docs/page/${page.slug}.md`} />
+          <PageContentTemplate filePath={`/docs/page/${page.slug}.md`} />
         </MainContainer>
       </Suspense>
     )

@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Suspense } from 'react'
-import ToolBodySkeleton from '../../../components/ToolBodySkeleton'
-import ToolPageTemplate from '../../../components/ToolPageTemplate'
-import { DynamicSegmentParamsProps } from '../../../interface'
-import { SETTINGS } from '../../../libs/config'
-import { TOOLS } from '../../../tools/toolList'
+import ToolBodySkeleton from '../../../../components/ToolBodySkeleton'
+import ToolPageTemplate from './ToolPageTemplate'
+import { DynamicSegmentParamsProps } from '../../../../interface'
+import { SETTINGS } from '../../../../libs/config'
+import { TOOLS } from '../../../../tools/toolList'
 
 export const revalidate = 20
 

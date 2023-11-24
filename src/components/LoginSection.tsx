@@ -1,8 +1,8 @@
 'use client'
 
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AiFillGithub from '../icons/AiFillGithub'
 import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
 import UserCircleIcon from '../icons/UserCircleIcon'
@@ -12,6 +12,26 @@ import Modal from './Modal'
 export default function LoginSection() {
   const [isOpen, setIsOpen] = useState(false)
   const { data: session, status } = useSession()
+
+  const popupCenter = (url: string) => {
+    const dualScreenLeft = window.screenLeft ?? window.screenX;
+    const dualScreenTop = window.screenTop ?? window.screenY;
+    const width = Math.min(window.innerWidth * 2 / 3, 600);
+    const height = Math.min(window.innerHeight * 2 / 3, 600);
+    const top = dualScreenTop + height / 2;
+    const left = dualScreenLeft + width / 2;
+    const newWindowFeatures = `width=${width},height=${height},top=${top},left=${left}`;
+    const newWindow = window.open(
+      url,
+      '_blank',
+      newWindowFeatures
+    )
+    newWindow?.focus()
+  }
+
+  useEffect(() => {
+    if (session) setIsOpen(false)
+  }, [session, status])
 
   return (
     <>
@@ -56,7 +76,7 @@ export default function LoginSection() {
               <p className="text-base italic">More tools when you login.</p>
             </div>
             <Button
-              onClick={() => signIn('github')}
+              onClick={() => popupCenter('/github-login')}
               className="h-12 px-6 mx-auto text-lg font-semibold text-white hover:text-white group w-fit bg-darker hover:bg-light rounded-3xl"
             >
               <AiFillGithub className="text-3xl db-button-active" />
