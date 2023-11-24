@@ -15,7 +15,7 @@ export default function ClipboardButton(props: ClipboardButtonProps) {
 
   return (
     <Button onClick={handleClipboardClicked} disabled={props.disabled}>
-      <ClipboardIcon className="h-3.5 w-3.5" /> Clipboard
+      <ClipboardIcon className="h-3.5 w-3.5 db-button-active" /> Clipboard
     </Button>
   )
 }

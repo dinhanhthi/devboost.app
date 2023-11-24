@@ -10,7 +10,7 @@ type GenerateButtonProps = {
 export default function GenerateButton(props: GenerateButtonProps) {
   return (
     <Button isPrimary={true} onClick={props.onClick} disabled={props.disabled}>
-      <FaMagic className="h-3.5 w-3.5" /> Generate
+      <FaMagic className="h-3.5 w-3.5 db-button-active" /> Generate
     </Button>
   )
 }

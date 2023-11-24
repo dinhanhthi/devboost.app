@@ -1,11 +1,11 @@
 import cn from 'classnames'
 
-import { Tool } from '../interface'
-import Base64String from '../tools/base64/Base64String'
-import NanoIdGenerator from '../tools/nano-id/NanoIdGenerator'
-import OpenAiKeyValidator from '../tools/openai/OpenAiKeyValidator'
-import Ulid from '../tools/ulid/Ulid'
-import Uuid from '../tools/uuid/Uuid'
+import { Tool } from '../../../../interface'
+import Base64String from '../../../../tools/base64/Base64String'
+import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
+import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
+import Ulid from '../../../../tools/ulid/Ulid'
+import Uuid from '../../../../tools/uuid/Uuid'
 
 type ToolPageTemplateProps = {
   className?: string

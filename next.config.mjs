@@ -5,13 +5,19 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true // not supported yet by --turbo
   },
-  webpack: (config) => {
-    config.module.rules.push(
+  images: {
+    remotePatterns: [
       {
-        test: /\.md$/,
-        use: 'raw-loader'
+        protocol: 'https',
+        hostname: '**.githubusercontent.com'
       }
-    )
+    ]
+  },
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader'
+    })
 
     return config
   }

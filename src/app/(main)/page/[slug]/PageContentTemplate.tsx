@@ -3,15 +3,15 @@
 import cn from 'classnames'
 import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
-import { MarkdownComponents } from '../libs/helpers'
+import AiOutlineLoading3Quarters from '../../../../icons/AiOutlineLoading3Quarters'
+import { MarkdownComponents } from '../../../../libs/helpers'
 
-type PageContentProps = {
+type PageContentTemplateProps = {
   filePath: string
   className?: string
 }
 
-export default function PageContent(props: PageContentProps) {
+export default function PageContentTemplate(props: PageContentTemplateProps) {
   const [content, setContent] = useState<string | undefined>(undefined)
   useEffect(() => {
     const fetchContent = async () => {

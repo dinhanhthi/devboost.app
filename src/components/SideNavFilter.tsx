@@ -7,7 +7,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import IoFilter from '../icons/IoFilter'
 
-export default function SideNavFiler() {
+export default function SideNavFilter() {
   const [hydrated, setHydrated] = useState(false)
   const [showFilterPanel, setShowFilterPanel] = useState(false)
   const { refs, floatingStyles } = useFloating({
@@ -33,11 +33,11 @@ export default function SideNavFiler() {
         ref={refs.setReference}
         onClick={toggleShowFilterPanel}
         className={cn(
-          'relative w-6 text-slate-600 dark:text-tdark hover:dark:text-white hover:text-sky-600',
+          'relative w-8 h-8 text-slate-600 dark:text-tdark hover:dark:text-white hover:text-slate-900 db-button-hover p-1.5 group',
           { '!text-sky-600': showFilterPanel }
         )}
       >
-        <IoFilter className="w-full h-5 text-lg" />
+        <IoFilter className="text-lg db-button-active" />
       </button>
       {typeof window === 'object' &&
         createPortal(

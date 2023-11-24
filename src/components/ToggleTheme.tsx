@@ -31,14 +31,16 @@ export default function ToggleTheme(props: ToggleThemeProps) {
     <button
       className={cn(
         props.className,
-        'flex items-center justify-center text-xl group text-slate-600 dark:text-tlight'
+        'flex items-center justify-center text-xl group text-slate-600 dark:text-tlight p-2 db-button-hover'
       )}
       onClick={handleThemeToggle}
     >
       {theme === 'light' && (
-        <MoonStarIcon className="group-hover:dark:text-amber-300 group-hover:text-amber-500" />
+        <MoonStarIcon className="group-hover:dark:text-amber-300 group-hover:text-black db-button-active shrink-0" />
       )}
-      {theme !== 'light' && <SunIcon className="group-hover:dark:text-amber-300" />}
+      {theme !== 'light' && (
+        <SunIcon className="transition-transform group-hover:dark:text-amber-300 group-active:scale-90" />
+      )}
     </button>
   )
 }

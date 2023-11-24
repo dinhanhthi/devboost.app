@@ -61,7 +61,7 @@ export default function UuidDecoder() {
       {/* Buttons */}
       <div className="flex flex-row flex-wrap items-center gap-6">
         <Button isPrimary={true} onClick={handleDecodeClicked} disabled={!originalValue}>
-          {!isDecoding && <FormatIcon className="h-3.5 w-3.5" />}
+          {!isDecoding && <FormatIcon className="h-3.5 w-3.5 db-button-active" />}
           {isDecoding && (
             <div className="animate-spin">
               <AiOutlineLoading3Quarters className="h-3.5 w-3.5" />

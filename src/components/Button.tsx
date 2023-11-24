@@ -3,7 +3,7 @@ import cn from 'classnames'
 type ButtonProps = {
   isPrimary?: boolean
   className?: string
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
   children?: React.ReactNode
 }
@@ -11,7 +11,7 @@ type ButtonProps = {
 export default function Button(props: ButtonProps) {
   return (
     <button
-      className={cn(props.className, 'flex items-center justify-center gap-1.5 db-button', {
+      className={cn(props.className, 'flex items-center justify-center gap-1.5 db-button group', {
         _main: props.isPrimary
       })}
       onClick={props.onClick}

@@ -10,7 +10,7 @@ type DownloadButtonProps = {
 export default function DownloadButton(props: DownloadButtonProps) {
   return (
     <Button onClick={props.onClick} disabled={props.disabled}>
-      <SaveIcon className="w-4 h-4" />
+      <SaveIcon className="w-4 h-4 db-button-active" />
       Download
     </Button>
   )

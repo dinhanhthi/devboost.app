@@ -9,7 +9,7 @@ type SampleButtonProps = {
 export default function SampleButton(props: SampleButtonProps) {
   return (
     <Button onClick={props.onClick} disabled={props.disabled}>
-      <SampleIcon className="w-4 h-4" />
+      <SampleIcon className="w-4 h-4 db-button-active" />
       Sample
     </Button>
   )

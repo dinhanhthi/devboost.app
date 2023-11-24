@@ -60,7 +60,9 @@ export default function SideNavItem(props: SideNavItemProps) {
             { 'dark:!text-thighlight !text-sky-600': areSameUris(uriToUse, pathname) }
           )}
         >
-          <div className="flex items-center justify-center w-8">{tool.iconEl}</div>
+          <div className="flex items-center justify-center w-8 db-button-active">
+            {tool.iconEl}
+          </div>
           <div className={titleClassName}>{tool.name}</div>
           {rightElement}
         </div>

@@ -5,18 +5,26 @@
 @layer base {
   .db-button {
     &._main {
-      @apply bg-sky-600 text-white hover:bg-sky-800 dark:bg-sky-900 hover:dark:bg-sky-800;
+      @apply bg-sky-600 border-transparent text-white hover:bg-sky-800 dark:bg-sky-900 hover:dark:bg-sky-800;
     }
 
-    @apply h-7 rounded-lg border border-slate-200 bg-gray-100 px-3 text-sm text-gray-700 shadow-sm hover:bg-gray-200 hover:text-gray-900 disabled:cursor-not-allowed disabled:dark:opacity-60 disabled:opacity-70 dark:border-gray-700 dark:bg-gray-700 dark:dark:text-tnormal hover:dark:bg-[#414658] hover:dark:text-white disabled:hover:dark:bg-gray-700 disabled:hover:dark:text-tnormal;
+    @apply h-8 rounded-2xl border border-slate-300 bg-gray-200 px-4 text-sm text-gray-800 shadow-sm hover:bg-gray-200 hover:text-gray-900 disabled:cursor-not-allowed disabled:dark:opacity-60 disabled:opacity-70 dark:border-gray-700 dark:bg-gray-700 dark:dark:text-tnormal hover:dark:bg-[#414658] hover:dark:text-white disabled:hover:dark:bg-gray-700 disabled:hover:dark:text-tnormal;
+  }
+
+  .db-button-active {
+    @apply transition-transform duration-200 group-active:scale-90;
+  }
+
+  .db-button-hover {
+    @apply hover:bg-slate-200 hover:dark:bg-dark rounded-lg;
   }
 
   .db-textarea {
-    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 py-3 shadow-slate-300 placeholder:text-gray-400 focus:outline-none dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
+    @apply db-scrollbar appearance-none overflow-hidden overflow-y-auto rounded-lg border border-gray-300 bg-white p-4 py-3 shadow-slate-300 placeholder:text-gray-400 focus:outline-none dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
   }
 
   .db-input {
-    @apply h-9 rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm outline-none placeholder:text-gray-400 dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
+    @apply h-9 rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm outline-none placeholder:text-gray-500 dark:border-border dark:bg-darkest dark:text-tlight placeholder:dark:text-gray-500;
   }
 
   .db-prose-code {
@@ -32,7 +40,7 @@
   }
 
   .db-prose {
-    @apply prose max-w-none text-slate-700 dark:prose-invert dark:text-tlight;
+    @apply prose max-w-none text-slate-800 dark:prose-invert dark:text-tlight;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
