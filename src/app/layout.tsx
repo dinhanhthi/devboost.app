@@ -7,9 +7,9 @@ import packageInfo from '../../package.json'
 import Logo from '../../public/logo.svg'
 import Footer from '../components/Footer'
 import HeaderTitle from '../components/HeaderTitle'
+import LoginSection from '../components/LoginSection'
 import SideNav from '../components/SideNav'
 import ToggleTheme from '../components/ToggleTheme'
-import UserCircleIcon from '../icons/UserCircleIcon'
 import { SETTINGS } from '../libs/config'
 import { inter, kanit } from './fonts'
 import Providers from './providers'
@@ -55,15 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               <HeaderTitle className="flex-1 h-full" />
 
-              <Link
-                href={'/'}
-                className={cn(
-                  'flex flex-row items-center gap-1 text-sm text-slate-800 dark:text-tnormal dark:hover:text-white hover:text-slate-900 h-fit py-2 px-3 db-button-hover group'
-                )}
-              >
-                Login / Register
-                <UserCircleIcon className="w-6 h-6 db-button-active" />
-              </Link>
+              <LoginSection />
             </div>
             <div className={cn('flex min-h-0 grow flex-row justify-between')}>
               <SideNav className="hidden h-full w-fit lg:block" />

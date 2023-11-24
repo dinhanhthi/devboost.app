@@ -3,7 +3,7 @@ import cn from 'classnames'
 type ButtonProps = {
   isPrimary?: boolean
   className?: string
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
   children?: React.ReactNode
 }

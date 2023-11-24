@@ -1,11 +1,14 @@
 'use client'
 
 import { ThemeProvider } from 'next-themes'
+import { NextAuthProvider } from './provider'
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" disableTransitionOnChange={true} defaultTheme="dark">
-      {children}
-    </ThemeProvider>
+    <NextAuthProvider>
+      <ThemeProvider attribute="class" disableTransitionOnChange={true} defaultTheme="dark">
+        {children}
+      </ThemeProvider>
+    </NextAuthProvider>
   )
 }

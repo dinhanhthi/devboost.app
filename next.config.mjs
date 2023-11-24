@@ -5,6 +5,9 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true // not supported yet by --turbo
   },
+  images: {
+    domains: ['avatars.githubusercontent.com']
+  },
   webpack: (config) => {
     config.module.rules.push(
       {

@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 import AiOutlineQuestionCircle from '../icons/AiOutlineQuestionCircle'
 import ChangeIcon from '../icons/ChangeIcon'
-import CooperateIcon from '../icons/CooperateIcon'
 import InformationCircle from '../icons/InformationCircle'
 import IoExtensionPuzzleSharp from '../icons/IoExtensionPuzzleSharp'
 import IoIosBug from '../icons/IoIosBug'
 import PiMedalFill from '../icons/PiMedalFill'
+import AddIcon from '../icons/AddIcon'
 
 export default function Footer() {
   return (
@@ -21,7 +21,7 @@ export default function Footer() {
         FAQ
       </Link>
       <Link href={'/page/how-to-contribute'} className={'db-bottom-class'}>
-        <CooperateIcon className="w-5 h-5" /> Let's build together
+        <AddIcon className="w-5 h-5" /> Add yours
       </Link>
       <Link href="/page/changelog" className={'db-bottom-class'}>
         <ChangeIcon className="w-5 h-5" />
@@ -34,14 +34,15 @@ export default function Footer() {
         <IoExtensionPuzzleSharp className="w-4 h-4" />
         Request features
       </Link>
-      <button
+      <Link
+        href="/page/get-more"
         className={cn(
           'flex items-center gap-1 rounded-2xl text-amber-800 bg-amber-300 pl-1.5 pr-2 py-1 text-[0.8rem] font-semibold tracking-widest transition-all duration-200 hover:px-2 hover:text-amber-900'
         )}
       >
         <PiMedalFill className="w-4 h-4" />
         Get More
-      </button>
+      </Link>
     </div>
   )
 }

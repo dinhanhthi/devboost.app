@@ -3,7 +3,7 @@
 import cn from 'classnames'
 import { usePathname } from 'next/navigation'
 
-import { useState } from 'react'
+import { cloneElement, useState } from 'react'
 import { kanit } from '../app/fonts'
 import DocumentHelpIcon from '../icons/DocumentHelpIcon'
 import { Tool } from '../interface'
@@ -51,12 +51,10 @@ export default function HeaderTitle(props: HeaderTitleProps) {
             )}
           >
             {!!tool.iconEl && (
-              <div
-                className={cn(
-                  'flex h-full items-center justify-center p-2 bg-white text-sky-600 dark:bg-darker dark:text-white'
-                )}
-              >
-                {tool.iconEl}
+              <div className={cn('flex h-full items-center justify-center p-2 dark:bg-darker bg-white')}>
+                {cloneElement(tool.iconEl!, {
+                  className: 'text-xl text-sky-600  dark:text-white'
+                })}
               </div>
             )}
             <div
