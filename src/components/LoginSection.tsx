@@ -8,8 +8,13 @@ import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
 import UserCircleIcon from '../icons/UserCircleIcon'
 import Button from './Button'
 import Modal from './Modal'
+import cn from 'classnames'
 
-export default function LoginSection() {
+type LoginSectionProps = {
+  className?: string
+}
+
+export default function LoginSection(props: LoginSectionProps) {
   const [isOpen, setIsOpen] = useState(false)
   const { data: session, status } = useSession()
 
@@ -34,7 +39,7 @@ export default function LoginSection() {
   }, [session, status])
 
   return (
-    <>
+    <div className={cn(props.className, 'flex justify-end')}>
       {status == 'unauthenticated' && (
         <button
           onClick={() => setIsOpen(true)}
@@ -85,6 +90,6 @@ export default function LoginSection() {
           </div>
         </Modal>
       )}
-    </>
+    </div>
   )
 }
