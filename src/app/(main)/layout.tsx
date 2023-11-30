@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             )}
           >
             <div className="h-[80px] shrink-0 w-full flex flex-row items-center justify-between px-6">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 min-w-[250px]">
                 <Link href={'/'} className="flex items-center gap-2">
                   <Image src={Logo} alt="DevBoost Logo" width={30} height={30} />
                   <h1 className={cn('text-2xl', kanit.className)}>{SETTINGS.siteName}</h1>
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               <HeaderTitle className="flex-1 h-full" />
 
-              <LoginSection />
+              <LoginSection className="min-w-[200px] " />
             </div>
             <div className={cn('flex min-h-0 grow flex-row justify-between')}>
               <SideNav className="hidden h-full w-fit lg:block" />
