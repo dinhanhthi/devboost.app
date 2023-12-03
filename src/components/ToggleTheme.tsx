@@ -1,16 +1,12 @@
 'use client'
 
-import cn from 'classnames'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import MoonStarIcon from '../icons/MoonStarIcon'
 import SunIcon from '../icons/SunIcon'
+import { Button } from './ui/Button'
 
-type ToggleThemeProps = {
-  className?: string
-}
-
-export default function ToggleTheme(props: ToggleThemeProps) {
+export default function ToggleTheme() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -28,19 +24,9 @@ export default function ToggleTheme(props: ToggleThemeProps) {
   }
 
   return (
-    <button
-      className={cn(
-        props.className,
-        'flex items-center justify-center text-xl group text-slate-600 dark:text-tlight p-2 db-button-hover'
-      )}
-      onClick={handleThemeToggle}
-    >
-      {theme === 'light' && (
-        <MoonStarIcon className="group-hover:dark:text-amber-300 group-hover:text-black db-button-active shrink-0" />
-      )}
-      {theme !== 'light' && (
-        <SunIcon className="transition-transform group-hover:dark:text-amber-300 group-active:scale-90" />
-      )}
-    </button>
+    <Button variant="ghost" size="icon" onClick={handleThemeToggle}>
+      {theme === 'light' && <MoonStarIcon className="w-5 h-5" />}
+      {theme !== 'light' && <SunIcon className="w-5 h-5" />}
+    </Button>
   )
 }

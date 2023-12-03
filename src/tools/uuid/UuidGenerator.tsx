@@ -1,8 +1,7 @@
 'use client'
 
-import cn from 'classnames'
-import { useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { cn } from '@/lib/utils'
+import { useRef, useState } from 'react'
 
 import {
   NIL as NIL_UUID,
@@ -13,14 +12,24 @@ import {
   v5 as uuidv5
 } from 'uuid'
 
-import Button from '../../components/Button'
-import ClearButton from '../../components/ClearButton'
-import CopyButton from '../../components/CopyButton'
-import DownloadButton from '../../components/DownloadButton'
-import GenerateButton from '../../components/GenerateButton'
-import SelectOptions from '../../components/SelectOptions'
+import { Button } from '../../components/ui/Button'
+import ButtonClear from '../../components/ui/ButtonClear'
+import ButtonCopy from '../../components/ui/ButtonCopy'
+import ButtonDownload from '../../components/ui/ButtonDownload'
+import ButtonGenerate from '../../components/ui/ButtonGenerate'
+import { Input } from '../../components/ui/Input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '../../components/ui/Select'
+import { Textarea } from '../../components/ui/Textarea'
 import FaMagic from '../../icons/FaMagic'
 import Times from '../../icons/Times'
+
+type UuidVersion = 'v1' | 'v3' | 'v4' | 'v5'
 
 export default function UuidGenerator() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -31,6 +40,7 @@ export default function UuidGenerator() {
   const [namespaceValue, setNamespaceValue] = useState('')
   const [nameValue, setNameValue] = useState('')
   const [recordsValue, setRecordsValue] = useState('')
+  const [uuidVersion, setUuidVersion] = useState<UuidVersion>('v1')
 
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextareaValue(event.target.value)
@@ -41,27 +51,19 @@ export default function UuidGenerator() {
     textareaRef.current?.focus()
   }
 
-  const {
-    control: controlVersion,
-    getValues: getValuesVersion,
-    watch: watchVersion
-  } = useForm<{ version: 'v1' | 'v3' | 'v4' | 'v5' }>({ defaultValues: { version: 'v1' } })
-
-  const uuidVersion = watchVersion('version')
-  useEffect(() => {
-    if (uuidVersion) {
-      setNameValue('')
-      setNamespaceValue('')
-      setTextareaValue('')
-    }
-  }, [uuidVersion])
-
   const uuidVersions = [
     { value: 'v1', name: 'UUID v1 (time-based)' },
     { value: 'v3', name: 'UUID v3 (name-based (MD5))' },
     { value: 'v4', name: 'UUID v4 (random)' },
     { value: 'v5', name: 'UUID v5 (name-based (SHA-1))' }
   ]
+
+  const handleSelectVersionsChange = (value: UuidVersion) => {
+    setNameValue('')
+    setNamespaceValue('')
+    setTextareaValue('')
+    setUuidVersion(value)
+  }
 
   const handleNamespaceClicked = (namespace: string) => () => {
     switch (namespace) {
@@ -100,11 +102,10 @@ export default function UuidGenerator() {
   }
 
   const handleGenerateClicked = () => {
-    const version = getValuesVersion('version')
     const max = inputRecordsRef.current?.value ? parseInt(inputRecordsRef.current.value) : 1
     const uuids = []
     for (let i = 0; i < max; i++) {
-      switch (version) {
+      switch (uuidVersion) {
         case 'v1':
           uuids.push(uuidv1())
           break
@@ -151,39 +152,47 @@ export default function UuidGenerator() {
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-6">
           <div className="flex flex-row items-center gap-3">
-            <GenerateButton
+            <ButtonGenerate
               onClick={handleGenerateClicked}
               disabled={parseInt(recordsValue) > 500 || parseInt(recordsValue) < 1}
             />
             <Button
               className="text-sm"
-              isPrimary={true}
               onClick={handleNilClicked}
               disabled={parseInt(recordsValue) > 500 || parseInt(recordsValue) < 1}
             >
-              <FaMagic className="h-3.5 w-3.5 db-button-active" />
+              <FaMagic className="w-4 h-4 mr-1.5" />
               NIL
             </Button>
           </div>
 
           <div className="flex flex-row items-center gap-3">
-            <CopyButton text={textareaValue} />
-            <DownloadButton onClick={handleDownloadClicked} disabled={!textareaValue} />
-            <ClearButton onClick={handleClearClicked} disabled={!textareaValue} />
+            <ButtonCopy text={textareaValue} />
+            <ButtonDownload onClick={handleDownloadClicked} disabled={!textareaValue} />
+            <ButtonClear onClick={handleClearClicked} disabled={!textareaValue} />
           </div>
         </div>
 
         {/* versions */}
         <div className="relative z-10 flex flex-row items-center h-8 gap-1">
-          <SelectOptions
-            data={uuidVersions}
-            control={controlVersion}
-            formName="version"
-            initSelectedValue={getValuesVersion('version')}
-            dropdownStyle={{ width: 260, maxHeight: 300 }}
-          />
+          <Select
+            defaultValue="v1"
+            onValueChange={handleSelectVersionsChange}
+            name="version-selection"
+          >
+            <SelectTrigger data-testid="select-button-version" className="w-[280px]">
+              <SelectValue placeholder="Select a version" />
+            </SelectTrigger>
+            <SelectContent>
+              {uuidVersions.map(({ value, name }) => (
+                <SelectItem data-testid={`select-option`} key={value} value={value}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
-          <input
+          <Input
             ref={inputRecordsRef}
             value={recordsValue}
             onChange={event => setRecordsValue(event.target.value)}
@@ -191,7 +200,7 @@ export default function UuidGenerator() {
             placeholder="max 500"
             min={1}
             max={500}
-            className={cn('db-input w-28')}
+            className={cn('w-28')}
           />
         </div>
       </div>
@@ -201,47 +210,47 @@ export default function UuidGenerator() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap gap-3">
             <div className="flex flex-row items-center w-full gap-2">
-              <label htmlFor="namespace" className="text-sm text-tnormal">
+              <label htmlFor="namespace" className="text-sm">
                 Namespace
               </label>
-              <input
+              <Input
                 id="namespace"
                 ref={inputNamespaceRef}
                 value={namespaceValue}
                 onChange={event => setNamespaceValue(event.target.value)}
                 type="text"
                 placeholder="6ba7b810-9dad-11d1-80b4-00c04fd430c8"
-                className={cn('db-input flex-1 py-2')}
+                className={cn('flex-1 py-2')}
               />
-              <button onClick={handleNamespaceClicked('dns')} className="db-button">
+              <Button variant="secondary" onClick={handleNamespaceClicked('dns')}>
                 ns:DNS
-              </button>
-              <button onClick={handleNamespaceClicked('url')} className="db-button">
+              </Button>
+              <Button variant="secondary" onClick={handleNamespaceClicked('url')}>
                 ns:URL
-              </button>
-              <button onClick={handleNamespaceClicked('oid')} className="db-button">
+              </Button>
+              <Button variant="secondary" onClick={handleNamespaceClicked('oid')}>
                 ns:OID
-              </button>
-              <button onClick={handleNamespaceClicked('x500')} className="db-button">
+              </Button>
+              <Button variant="secondary" onClick={handleNamespaceClicked('x500')}>
                 ns:X500
-              </button>
-              <button onClick={handleNamespaceClicked('random')} className="db-button">
+              </Button>
+              <Button variant="secondary" onClick={handleNamespaceClicked('random')}>
                 Random
-              </button>
+              </Button>
             </div>
           </div>
           <div className="flex flex-row items-center gap-2">
-            <label htmlFor="name" className="text-sm text-tnormal">
+            <label htmlFor="name" className="text-sm">
               Name
             </label>
-            <input
+            <Input
               id="name"
               ref={inputNameRef}
               value={nameValue}
               onChange={event => setNameValue(event.target.value)}
               type="text"
               placeholder="Enter name..."
-              className={cn('db-input w-full py-2')}
+              className={cn('w-full py-2')}
             />
           </div>
         </div>
@@ -249,12 +258,11 @@ export default function UuidGenerator() {
 
       {/* textarea */}
       <div className="flex-1 min-h-0">
-        <textarea
+        <Textarea
           ref={textareaRef}
           value={textareaValue}
           onChange={handleTextareaChange}
           placeholder='Click "Generate" button to generate UUIDs...'
-          className={cn('db-textarea h-full max-h-full w-full text-base')}
         />
       </div>
     </div>

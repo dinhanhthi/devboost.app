@@ -1,10 +1,8 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useState } from 'react'
 
-import MainContainer from '../../components/MainContainer'
-import Tabs from '../../components/Tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs'
 import UuidDecoder from './UuidDecoder'
 import UuidFormater from './UuidFormater'
 import UuidGenerator from './UuidGenerator'
@@ -12,10 +10,10 @@ import UuidValidator from './UuidValidator'
 
 export default function Uuid() {
   const tabs = [
-    { key: 'generator', label: 'Generator' },
-    { key: 'decoder', label: 'Decoder' },
-    { key: 'formater', label: 'Formater' },
-    { key: 'validator', label: 'Validator' }
+    { key: 'generator', label: 'Generator', component: <UuidGenerator /> },
+    { key: 'decoder', label: 'Decoder', component: <UuidDecoder /> },
+    { key: 'formater', label: 'Formater', component: <UuidFormater /> },
+    { key: 'validator', label: 'Validator', component: <UuidValidator /> }
   ]
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab')
@@ -25,17 +23,23 @@ export default function Uuid() {
   } else {
     initTab = tabs.find(option => option.key === tab)?.key
   }
-  const [selectedTab, setSelectedTab] = useState(initTab)
 
   return (
     <div className="flex flex-col w-full h-full gap-4">
-      <Tabs width={460} tabs={tabs} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <MainContainer>
-        {selectedTab === 'generator' && <UuidGenerator />}
-        {selectedTab === 'decoder' && <UuidDecoder />}
-        {selectedTab === 'formater' && <UuidFormater />}
-        {selectedTab === 'validator' && <UuidValidator />}
-      </MainContainer>
+      <Tabs defaultValue={initTab} className="flex flex-col gap-2">
+        <TabsList className='w-fit'>
+          {tabs.map(tab => (
+            <TabsTrigger key={tab.key} value={tab.key}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {tabs.map(tab => (
+          <TabsContent key={tab.key} value={tab.key}>
+            {tab.component}
+          </TabsContent>
+        ))}
+      </Tabs>
     </div>
   )
 }

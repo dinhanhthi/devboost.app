@@ -1,6 +1,5 @@
 'use client'
 
-import cn from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
@@ -8,18 +7,19 @@ import { useEffect, useRef } from 'react'
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { Tool } from '../interface'
+import { cn } from '../lib/utils'
+import { Button } from './ui/Button'
 
 type SideNavItemProps = {
   className?: string
   tool: Tool
   uri?: string
-  titleClassName?: string
   rightElement?: React.ReactNode
   hideFavorite?: boolean
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
-  const { className, tool, uri, titleClassName, rightElement } = props
+  const { className, tool, uri, rightElement } = props
 
   const pathname = usePathname()
   const uriToUse = uri || `/tool/${tool.slug}`
@@ -34,53 +34,39 @@ export default function SideNavItem(props: SideNavItemProps) {
   }, [pathname])
 
   return (
-    <Link
-      ref={areSameUris(uriToUse, pathname) ? ref : undefined}
-      href={uriToUse}
-      key={tool.slug}
-      aria-current={areSameUris(uriToUse, pathname) ? 'page' : undefined}
-      className={cn(className, 'relative group flex w-full flex-row items-center')}
-    >
-      <div
-        className={cn('py-1', {
-          'opacity-100': areSameUris(uriToUse, pathname),
-          'opacity-0': !areSameUris(uriToUse, pathname)
-        })}
+    <Button variant="ghost" size="lg" asChild>
+      <Link
+        ref={areSameUris(uriToUse, pathname) ? ref : undefined}
+        href={uriToUse}
+        key={tool.slug}
+        aria-selected={areSameUris(uriToUse, pathname)}
+        className={cn(
+          className,
+          'relative group w-full aria-selected:bg-muted aria-selected:text-foreground aria-selected:font-medium !px-2 text-muted-foreground font-normal'
+        )}
       >
-        <div
-          className={cn(
-            '-ml-0.5 h-full w-1.5 rounded-lg border-r-4 dark:border-green-400 border-sky-600'
-          )}
-        ></div>
-      </div>
-      <div className="w-full pl-2 pr-2">
-        <div
-          className={cn(
-            'flex w-full flex-row items-center gap-2 rounded-lg pl-1.5 py-2 pr-4 text-sm text-slate-700 dark:text-tnormal group-hover:dark:bg-darker group-hover:bg-gray-200 group-hover:dark:text-white',
-            { 'dark:!text-thighlight !text-sky-600': areSameUris(uriToUse, pathname) }
-          )}
-        >
-          <div className="flex items-center justify-center w-8 db-button-active">
-            {tool.iconEl}
-          </div>
-          <div className={titleClassName}>{tool.name}</div>
+        <div className="flex items-center w-full gap-2">
+          {tool.iconEl}
+          {tool.name}
           {rightElement}
         </div>
-      </div>
 
-      {/* Favorite star */}
-      {!props.hideFavorite && (
-        <button
-          className={cn(
-            'absolute p-1 bg-gray-100 rounded-full opacity-0 dark:bg-light right-4 group-hover:opacity-100 hover:text-amber-500 hover:dark:text-amber-300',
-            { 'opacity-100': tool.favorite }
-          )}
-        >
-          {tool.favorite && <StarIcon className="text-lg text-amber-500 dark:text-amber-300" />}
-          {!tool.favorite && <StarOutlineIcon className="text-lg" />}
-        </button>
-      )}
-    </Link>
+        {/* Favorite star */}
+        {!props.hideFavorite && (
+          <button
+            className={cn(
+              'absolute opacity-0 right-1 group-hover:opacity-100 w-5 h-5 bg-muted rounded-full flex items-center justify-center',
+              {
+                'opacity-100': tool.favorite
+              }
+            )}
+          >
+            {tool.favorite && <StarIcon className="w-4 h-4" />}
+            {!tool.favorite && <StarOutlineIcon className="w-4 h-4" />}
+          </button>
+        )}
+      </Link>
+    </Button>
   )
 }
 

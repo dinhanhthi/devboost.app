@@ -1,6 +1,6 @@
 'use client'
 
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import React, { useEffect, useState } from 'react'
 
 import PiImageSquareDuotone from '../icons/PiImageSquareDuotone'

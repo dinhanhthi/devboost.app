@@ -1,5 +1,5 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 
 export default function LoremIpsumIcon(props: { className?: string }) {
-  return <div className={cn(props.className, 'db-icon-text')}>Li</div>
+  return <div className={cn(props.className, 'font-semibold')}>Li</div>
 }
