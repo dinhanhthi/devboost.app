@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import MainContainer from '../../../../components/MainContainer'
-import PageContentTemplate from './PageContentTemplate'
 import ToolBodySkeleton from '../../../../components/ToolBodySkeleton'
 import { DynamicSegmentParamsProps } from '../../../../interface'
-import { PAGES, SETTINGS } from '../../../../libs/config'
+import { PAGES, SETTINGS } from '../../../../lib/config'
+import PageContentTemplate from './PageContentTemplate'
 
 export const revalidate = 20
 

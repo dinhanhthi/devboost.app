@@ -1,13 +1,15 @@
 'use client'
 
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import { customAlphabet, nanoid } from 'nanoid'
 import { useRef, useState } from 'react'
-import ClearButton from '../../components/ClearButton'
-import CopyButton from '../../components/CopyButton'
-import DownloadButton from '../../components/DownloadButton'
-import GenerateButton from '../../components/GenerateButton'
 import MainContainer from '../../components/MainContainer'
+import ButtonClear from '../../components/ui/ButtonClear'
+import ButtonCopy from '../../components/ui/ButtonCopy'
+import ButtonDownload from '../../components/ui/ButtonDownload'
+import ButtonGenerate from '../../components/ui/ButtonGenerate'
+import { Input } from '../../components/ui/Input'
+import { Textarea } from '../../components/ui/Textarea'
 
 export default function NanoIdGenerator() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -54,7 +56,7 @@ export default function NanoIdGenerator() {
       <div className="flex flex-col flex-wrap justify-between gap-4">
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-6">
-          <GenerateButton
+          <ButtonGenerate
             onClick={handleGenerateClicked}
             disabled={
               parseInt(recordsValue) > 500 ||
@@ -65,9 +67,9 @@ export default function NanoIdGenerator() {
           />
 
           <div className="flex flex-row items-center gap-3">
-            <CopyButton text={textareaValue} />
-            <DownloadButton onClick={handleDownloadClicked} disabled={!textareaValue} />
-            <ClearButton onClick={handleClearClicked} disabled={!textareaValue} />
+            <ButtonCopy text={textareaValue} />
+            <ButtonDownload onClick={handleDownloadClicked} disabled={!textareaValue} />
+            <ButtonClear onClick={handleClearClicked} disabled={!textareaValue} />
           </div>
         </div>
 
@@ -75,18 +77,18 @@ export default function NanoIdGenerator() {
         <div className="flex flex-row flex-wrap items-center flex-1 min-w-0 gap-4 h-7">
           <div className="flex flex-row items-center gap-2">
             <div className="text-sm">Generate based on your characters (optional) </div>
-            <input
+            <Input
               ref={yourCharacterRef}
               type="text"
               placeholder="abcXyz123@"
-              className={cn('db-input w-64')}
+              className={cn('w-64')}
             />
           </div>
 
           <div className="flex flex-row flex-wrap items-center gap-4">
             <div className="flex flex-row items-center gap-2">
               <div className="text-sm">ID Size</div>
-              <input
+              <Input
                 ref={idSizeRef}
                 value={idSizeValue}
                 onChange={event => setIdSizeValue(event.target.value)}
@@ -94,13 +96,13 @@ export default function NanoIdGenerator() {
                 placeholder="max 100"
                 max={100}
                 min={1}
-                className={cn('db-input w-28')}
+                className={cn('w-28')}
               />
             </div>
 
             <div className="flex flex-row items-center gap-2">
               <div className="text-sm">How many?</div>
-              <input
+              <Input
                 ref={inputRecordsRef}
                 value={recordsValue}
                 onChange={event => setRecordsValue(event.target.value)}
@@ -108,7 +110,7 @@ export default function NanoIdGenerator() {
                 placeholder="max 500"
                 max={500}
                 min={1}
-                className={cn('db-input w-28')}
+                className={cn('w-28')}
               />
             </div>
           </div>
@@ -117,12 +119,12 @@ export default function NanoIdGenerator() {
 
       {/* textarea */}
       <div className="flex-1 min-h-0">
-        <textarea
+        <Textarea
           ref={textareaRef}
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
           placeholder='Click "Generate" button to generate Nano IDs...'
-          className={cn('db-textarea h-full max-h-full w-full text-base')}
+          className={cn('h-full max-h-full w-full text-base')}
         />
       </div>
     </MainContainer>

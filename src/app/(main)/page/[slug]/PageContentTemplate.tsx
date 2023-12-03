@@ -1,10 +1,10 @@
 'use client'
 
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { MarkdownComponents } from '../../../../components/MarkdownComponents'
 import AiOutlineLoading3Quarters from '../../../../icons/AiOutlineLoading3Quarters'
-import { MarkdownComponents } from '../../../../libs/helpers'
 
 type PageContentTemplateProps = {
   filePath: string
@@ -31,7 +31,7 @@ export default function PageContentTemplate(props: PageContentTemplateProps) {
       {!content && (
         <div className="flex items-center justify-center h-full animate-pulse">
           <div className="animate-spin">
-            <AiOutlineLoading3Quarters className="w-12 h-12 dark:text-green-300 text-sky-600" />
+            <AiOutlineLoading3Quarters className="w-12 h-12 text-primary" />
           </div>
         </div>
       )}

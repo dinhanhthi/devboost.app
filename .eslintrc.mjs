@@ -8,6 +8,7 @@ const config = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'react-app',
     'next/core-web-vitals',
@@ -68,7 +69,12 @@ const config = {
       }
     ]
   },
-  ignorePatterns: ['next-env.d.ts', 'graphql/**/*.ts']
+  ignorePatterns: ['next-env.d.ts', 'graphql/**/*.ts'],
+  settings: {
+    react: {
+      version: "detect"
+    }
+  }
 }
 
 export default config

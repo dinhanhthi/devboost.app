@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { cloneElement } from 'react'
 
@@ -17,11 +17,11 @@ export default function ToolCard(props: ToolCardProps) {
       href={`/tool/${tool.slug}`}
       className={cn(
         className,
-        'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight hover:border-sky-600 db-around-border rounded-lg group'
+        'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight hover:border-sky-600 rounded-lg group'
       )}
     >
       {cloneElement(tool.iconEl!, {
-        className: 'text-2xl dark:text-thighlight text-sky-600 h-8 w-fit db-button-active'
+        className: 'text-2xl dark:text-thighlight text-sky-600 h-8 w-fit'
       })}
       {tool.name}
     </Link>
@@ -34,8 +34,8 @@ export function ToolCardSkeleton() {
       className={cn(`flex transform flex-col items-center justify-center gap-4 rounded-lg
         border-border bg-dark border p-4 animate-pulse h-[106px]`)}
     >
-      <div className="w-8 h-8 rounded-full bg-light"></div>
-      <div className="w-4/5 h-4 rounded-full bg-light"></div>
+      <div className="w-8 h-8 rounded-full"></div>
+      <div className="w-4/5 h-4 rounded-full"></div>
     </div>
   )
 }

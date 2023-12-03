@@ -1,11 +1,13 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import { useRef, useState } from 'react'
 import { validate as uuidValidate } from 'uuid'
 
-import ClearButton from '../../components/ClearButton'
-import ClipboardButton from '../../components/ClipboardButton'
-import CopyButton from '../../components/CopyButton'
-import SampleButton from '../../components/SampleButton'
+import { Button } from '../../components/ui/Button'
+import ButtonClear from '../../components/ui/ButtonClear'
+import ButtonClipboard from '../../components/ui/ButtonClipboard'
+import ButtonCopy from '../../components/ui/ButtonCopy'
+import ButtonSample from '../../components/ui/ButtonSample'
+import { Input } from '../../components/ui/Input'
 import FormatIcon from '../../icons/FormatIcon'
 
 export default function UuidFormater() {
@@ -55,17 +57,13 @@ export default function UuidFormater() {
     <div className="flex flex-col gap-4">
       {/* Buttons */}
       <div className="flex flex-row flex-wrap items-center gap-6">
-        <button
-          disabled={!originalValue}
-          onClick={handleFormatClicked}
-          className="flex items-center gap-2 db-button _main"
-        >
-          <FormatIcon className="h-3.5 w-3.5" /> Format
-        </button>
+        <Button disabled={!originalValue} onClick={handleFormatClicked}>
+          <FormatIcon className="h-4 w-4 mr-1.5" /> Format
+        </Button>
         <div className="flex flex-row items-center gap-3">
-          <ClearButton onClick={handleClearClicked} disabled={!originalValue} />
-          <ClipboardButton handleClipText={handleClipText} />
-          <SampleButton onClick={handleSampleClicked} />
+          <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />
+          <ButtonClipboard handleClipText={handleClipText} />
+          <ButtonSample onClick={handleSampleClicked} />
         </div>
       </div>
 
@@ -74,14 +72,14 @@ export default function UuidFormater() {
         <label htmlFor="original-input" className="text-sm">
           String to format
         </label>
-        <input
+        <Input
           id="original-input"
           ref={originalRef}
           value={originalValue}
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'123639f0852211ee9b230500b4b78763'}
-          className={cn('db-input flex-1 py-2')}
+          className={cn('flex-1 py-2')}
         />
       </div>
 
@@ -90,16 +88,16 @@ export default function UuidFormater() {
         <label htmlFor="uuid-input" className="text-sm">
           UUID
         </label>
-        <input
+        <Input
           id="uuid-input"
           ref={targetRef}
           value={targetValue}
           onChange={event => setTargetValue(event.target.value)}
           type="text"
           placeholder={'123639f0-8522-11ee-9b23-0500b4b78763'}
-          className={cn('db-input flex-1 py-2')}
+          className={cn('flex-1 py-2')}
         />
-        <CopyButton text={targetValue} />
+        <ButtonCopy text={targetValue} />
       </div>
     </div>
   )

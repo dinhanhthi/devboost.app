@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 
 import { Tool } from '../../../../interface'
 import Base64String from '../../../../tools/base64/Base64String'
