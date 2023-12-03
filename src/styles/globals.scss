@@ -65,7 +65,7 @@
   }
 
   .db-prose {
-    @apply prose max-w-none text-foreground;
+    @apply prose max-w-none text-foreground dark:prose-invert;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
