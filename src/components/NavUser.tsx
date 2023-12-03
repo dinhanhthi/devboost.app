@@ -30,6 +30,8 @@ export function NavUser() {
     newWindow?.focus()
   }
 
+  /* ###Thi */ console.log(`👉👉👉 session: `, session);
+
   return (
     <div className='flex items-center justify-center ml-2'>
       {status === 'loading' && (
