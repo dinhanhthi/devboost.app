@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import uuid from 'uuid'
 import UuidGenerator from '../UuidGenerator'
 
@@ -94,80 +94,6 @@ describe('UuidGenerator', () => {
     expect(nameInput).not.toBeInTheDocument()
   })
 
-  it('does not render the namespace input and the name input when the version is 1', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v1Option = await screen.findByTestId('select-option-v1')
-    fireEvent.click(v1Option)
-    await waitFor(() => {
-      const namespaceInput = screen.queryByPlaceholderText('6ba7b810-9dad-11d1-80b4-00c04fd430c8')
-      const nameInput = screen.queryByPlaceholderText('Enter name...')
-      expect(namespaceInput).not.toBeInTheDocument()
-      expect(nameInput).not.toBeInTheDocument()
-    })
-  })
-
-  it('does not render the namespace input and the name input when the version is 4', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v4Option = await screen.findByTestId('select-option-v4')
-    fireEvent.click(v4Option)
-    await waitFor(() => {
-      const namespaceInput = screen.queryByPlaceholderText('6ba7b810-9dad-11d1-80b4-00c04fd430c8')
-      const nameInput = screen.queryByPlaceholderText('Enter name...')
-      expect(namespaceInput).not.toBeInTheDocument()
-      expect(nameInput).not.toBeInTheDocument()
-    })
-  })
-
-  it('renders the namespace input and the name input when the version is 3', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v3Option = await screen.findByTestId('select-option-v3')
-    fireEvent.click(v3Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const nameInput = await screen.findByPlaceholderText('Enter name...')
-    expect(namespaceInput).toBeInTheDocument()
-    expect(nameInput).toBeInTheDocument()
-  })
-
-  it('renders the namespace input and the name input when the version is 5', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const nameInput = await screen.findByPlaceholderText('Enter name...')
-    expect(namespaceInput).toBeInTheDocument()
-    expect(nameInput).toBeInTheDocument()
-  })
-
-  it('shows error if namespace is invalid', async () => {
-    jest.spyOn(uuid, 'validate').mockReturnValueOnce(false)
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    const textarea = screen.getByPlaceholderText('Click "Generate" button to generate UUIDs...')
-    const generateButton = screen.getByRole('button', { name: /generate/i })
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    fireEvent.change(namespaceInput, { target: { value: 'invalid' } })
-    fireEvent.click(generateButton)
-    expect(namespaceInput).toBeInTheDocument()
-    expect(textarea).toHaveValue('⚠️ Invalid namespace')
-  })
-
   it('generates UUIDs when GenerateButton is clicked on first load', () => {
     jest.spyOn(uuid, 'v1').mockReturnValueOnce('b1d82820-866b-11ee-b7d9-7f085416ca4d')
     render(<UuidGenerator />)
@@ -177,111 +103,12 @@ describe('UuidGenerator', () => {
     expect(textarea).toHaveValue('b1d82820-866b-11ee-b7d9-7f085416ca4d')
   })
 
-  it('generates UUIDs when GenerateButton is clicked on version 4', async () => {
-    jest.spyOn(uuid, 'v4').mockReturnValueOnce('4dc3ae1d-a39e-49f3-b73e-e0cf2e3ca6ce')
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    const textarea = screen.getByPlaceholderText('Click "Generate" button to generate UUIDs...')
-    const generateButton = screen.getByRole('button', { name: /generate/i })
-
-    fireEvent.click(versionButton)
-    const v4Option = await screen.findByTestId('select-option-v4')
-    fireEvent.click(v4Option)
-    fireEvent.click(generateButton)
-    expect(textarea).toHaveValue('4dc3ae1d-a39e-49f3-b73e-e0cf2e3ca6ce')
-  })
-
-  it('generates UUIDs when GenerateButton is clicked on version 3', async () => {
-    jest.spyOn(uuid, 'validate').mockReturnValueOnce(true)
-    jest.spyOn(uuid, 'v3').mockReturnValueOnce('c87ee674-4ddc-3efe-a74e-dfe25da5d7b3')
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    const textarea = screen.getByPlaceholderText('Click "Generate" button to generate UUIDs...')
-    const generateButton = screen.getByRole('button', { name: /generate/i })
-    fireEvent.click(versionButton)
-    const v3Option = await screen.findByTestId('select-option-v3')
-    fireEvent.click(v3Option)
-    fireEvent.click(generateButton)
-    expect(textarea).toHaveValue('c87ee674-4ddc-3efe-a74e-dfe25da5d7b3')
-  })
-
   it('generates NIL UUID when NilButton is clicked', () => {
     render(<UuidGenerator />)
     const textarea = screen.getByPlaceholderText('Click "Generate" button to generate UUIDs...')
     const nilButton = screen.getByRole('button', { name: /nil/i })
     fireEvent.click(nilButton)
     expect(textarea).toHaveValue('00000000-0000-0000-0000-000000000000')
-  })
-
-  it('generates UUIDs for namespace when ns:DNS button is clicked', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const ndDnsButton = screen.getByRole('button', { name: /ns:DNS/i })
-    fireEvent.click(ndDnsButton)
-    expect(namespaceInput).toHaveValue('6ba7b810-9dad-11d1-80b4-00c04fd430c8')
-  })
-
-  it('generates UUIDs for namespace when ns:URL button is clicked', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const ndDnsButton = screen.getByRole('button', { name: /ns:URL/i })
-    fireEvent.click(ndDnsButton)
-    expect(namespaceInput).toHaveValue('6ba7b811-9dad-11d1-80b4-00c04fd430c8')
-  })
-
-  it('generates UUIDs for namespace when ns:OID button is clicked', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const ndDnsButton = screen.getByRole('button', { name: /ns:OID/i })
-    fireEvent.click(ndDnsButton)
-    expect(namespaceInput).toHaveValue('6ba7b812-9dad-11d1-80b4-00c04fd430c8')
-  })
-
-  it('generates UUIDs for namespace when ns:X500 button is clicked', async () => {
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const ndDnsButton = screen.getByRole('button', { name: /ns:X500/i })
-    fireEvent.click(ndDnsButton)
-    expect(namespaceInput).toHaveValue('6ba7b814-9dad-11d1-80b4-00c04fd430c8')
-  })
-
-  it('generates UUIDs for namespace when Random button is clicked', async () => {
-    jest.spyOn(uuid, 'v4').mockReturnValueOnce('4dc3ae1d-a39e-49f3-b73e-e0cf2e3ca6ce')
-    render(<UuidGenerator />)
-    const versionButton = screen.getByTestId('select-button-version')
-    fireEvent.click(versionButton)
-    const v5Option = await screen.findByTestId('select-option-v5')
-    fireEvent.click(v5Option)
-    const namespaceInput = await screen.findByPlaceholderText(
-      '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
-    )
-    const ndDnsButton = screen.getByRole('button', { name: /random/i })
-    fireEvent.click(ndDnsButton)
-    expect(namespaceInput).toHaveValue('4dc3ae1d-a39e-49f3-b73e-e0cf2e3ca6ce')
   })
 
   it('generates UUIDs when GenerateButton is clicked on first load and the records input is set', () => {

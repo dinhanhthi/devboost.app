@@ -21,7 +21,6 @@ import { Input } from '../../components/ui/Input'
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue
@@ -176,18 +175,20 @@ export default function UuidGenerator() {
 
         {/* versions */}
         <div className="relative z-10 flex flex-row items-center h-8 gap-1">
-          <Select defaultValue="v1" onValueChange={handleSelectVersionsChange}>
-            <SelectTrigger className="w-[280px]">
+          <Select
+            defaultValue="v1"
+            onValueChange={handleSelectVersionsChange}
+            name="version-selection"
+          >
+            <SelectTrigger data-testid="select-button-version" className="w-[280px]">
               <SelectValue placeholder="Select a version" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                {uuidVersions.map(({ value, name }) => (
-                  <SelectItem key={value} value={value}>
-                    {name}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
+              {uuidVersions.map(({ value, name }) => (
+                <SelectItem data-testid={`select-option`} key={value} value={value}>
+                  {name}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
