@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth/next'
 import GithubProvider from 'next-auth/providers/github'
-import { v5 as uuidv5 } from 'uuid'
 import firestoreDb from '../../../../lib/firebaseAdmin'
+import { generateUuidBasedOnEmail } from '../../../../lib/utils'
 
 const handler = NextAuth({
   providers: [
@@ -10,17 +10,12 @@ const handler = NextAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET!
     })
   ],
-  // adapter: FirestoreAdapter({
-  //   credential: cert({
-  //     projectId: process.env.FIREBASE_PROJECT_ID,
-  //     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  //     privateKey: process.env.FIREBASE_PRIVATE_KEY
-  //   })
-  // }),
   callbacks: {
     async session({ session }) {
       if (session.user?.email) {
-        const userRef = firestoreDb.collection('users').doc(generateUuidBasedOnEmail(session.user.email))
+        const userRef = firestoreDb
+          .collection('users')
+          .doc(generateUuidBasedOnEmail(session.user.email))
         const userDoc = await userRef.get()
 
         if (!userDoc.exists) {
@@ -43,7 +38,3 @@ const handler = NextAuth({
 })
 
 export { handler as GET, handler as POST }
-
-function generateUuidBasedOnEmail(email: string) {
-  return uuidv5(email, uuidv5.URL)
-}
