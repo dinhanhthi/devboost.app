@@ -1,15 +1,14 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import { useRef, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { validate as uuidValidate } from 'uuid'
 
-import Button from '../../components/Button'
-import ClearButton from '../../components/ClearButton'
-import ClipboardButton from '../../components/ClipboardButton'
-import SampleButton from '../../components/SampleButton'
-import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
-import FormatIcon from '../../icons/FormatIcon'
+import ButtonClear from '../../components/ui/ButtonClear'
+import ButtonClipboard from '../../components/ui/ButtonClipboard'
+import ButtonDecode from '../../components/ui/ButtonDecode'
+import ButtonSample from '../../components/ui/ButtonSample'
+import { Input } from '../../components/ui/Input'
 
 export default function UuidDecoder() {
   const originalRef = useRef<HTMLInputElement>(null)
@@ -60,33 +59,30 @@ export default function UuidDecoder() {
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
       <div className="flex flex-row flex-wrap items-center gap-6">
-        <Button isPrimary={true} onClick={handleDecodeClicked} disabled={!originalValue}>
-          {!isDecoding && <FormatIcon className="h-3.5 w-3.5 db-button-active" />}
-          {isDecoding && (
-            <div className="animate-spin">
-              <AiOutlineLoading3Quarters className="h-3.5 w-3.5" />
-            </div>
-          )}
-          Decode*
-        </Button>
+        <ButtonDecode
+          onClick={handleDecodeClicked}
+          disabled={!originalValue}
+          loading={isDecoding}
+        />
+
         <div className="flex flex-row items-center gap-3">
-          <ClearButton onClick={handleClearClicked} disabled={!originalValue || isDecoding} />
-          <ClipboardButton handleClipText={handleClipText} disabled={isDecoding} />
-          <SampleButton onClick={handleSampleClicked} />
+          <ButtonClear onClick={handleClearClicked} disabled={!originalValue || isDecoding} />
+          <ButtonClipboard handleClipText={handleClipText} disabled={isDecoding} />
+          <ButtonSample onClick={handleSampleClicked} />
         </div>
       </div>
 
       {/* Original */}
       <div className="flex flex-row items-center gap-2 flex-2">
         <div className="text-sm">UUID</div>
-        <input
+        <Input
           data-testid="uuid-input"
           ref={originalRef}
           value={originalValue}
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'123639f0-8522-11ee-9b23-0500b4b78763'}
-          className={cn('db-input flex-1 py-2')}
+          className={cn('flex-1 py-2')}
         />
       </div>
 
@@ -103,7 +99,7 @@ export default function UuidDecoder() {
       <div className={cn('pb-1.5 text-sm italic text-tdark')}>
         *We use{' '}
         <a
-          className="underline underline-offset-4 hover:text-tlight"
+          className="underline underline-offset-4"
           href="https://www.uuidtools.com/decode"
           target="_blank"
           rel="noopener noreferrer"

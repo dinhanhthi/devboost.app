@@ -1,10 +1,12 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import { useRef, useState } from 'react'
 
 import { decodeTime, isValid } from 'ulidx'
-import ClearButton from '../../components/ClearButton'
-import ClipboardButton from '../../components/ClipboardButton'
-import SampleButton from '../../components/SampleButton'
+import { Button } from '../../components/ui/Button'
+import ButtonClear from '../../components/ui/ButtonClear'
+import ButtonClipboard from '../../components/ui/ButtonClipboard'
+import ButtonSample from '../../components/ui/ButtonSample'
+import { Input } from '../../components/ui/Input'
 import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
 import FormatIcon from '../../icons/FormatIcon'
 import WarningIcon from '../../icons/WarningIcon'
@@ -65,43 +67,39 @@ export default function UlidTimeDecoder() {
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
       <div className="flex flex-row flex-wrap items-center gap-6">
-        <button
-          disabled={!originalValue}
-          onClick={handleDecodeClicked}
-          className="flex items-center gap-2 db-button _main"
-        >
-          {!isDecoding && <FormatIcon className="h-3.5 w-3.5 db-button-active" />}
+        <Button disabled={!originalValue} onClick={handleDecodeClicked}>
+          {!isDecoding && <FormatIcon className="h-4 w-4 mr-1.5" />}
           {isDecoding && (
             <div className="animate-spin">
-              <AiOutlineLoading3Quarters className="h-3.5 w-3.5" />
+              <AiOutlineLoading3Quarters className="h-4 w-4 mr-1.5" />
             </div>
           )}{' '}
           Decode
-        </button>
+        </Button>
         <div className="flex flex-row items-center gap-3">
-          <ClipboardButton handleClipText={handleClipText} />
-          <ClearButton onClick={handleClearClicked} disabled={!originalValue} />
-          <SampleButton onClick={handleSampleClicked} />
+          <ButtonClipboard handleClipText={handleClipText} />
+          <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />
+          <ButtonSample onClick={handleSampleClicked} />
         </div>
       </div>
 
       {/* Original */}
       <div className="flex flex-row items-center gap-2 flex-2">
         <div className="text-sm">ULID</div>
-        <input
+        <Input
           ref={originalRef}
           value={originalValue}
           onChange={handleOnChangeInput}
           type="text"
           placeholder={'01HFE5Z3SZDQVR53EY0T54C9TS'}
-          className={cn('db-input flex-1 py-2')}
+          className={cn('flex-1 py-2')}
         />
       </div>
 
       {/* Result */}
       <div
         className={cn('flex flex-col gap-2 text-sm', {
-          'border rounded-lg bg-slate-100 dark:bg-darker dark:border-border p-4':
+          'border rounded-lg bg-slate-100 dark:border-border p-4':
             timeMsValue || timeDateValue || error
         })}
       >

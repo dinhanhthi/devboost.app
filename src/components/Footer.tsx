@@ -1,36 +1,66 @@
-import cn from 'classnames'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
+import AddIcon from '../icons/AddIcon'
 import AiOutlineQuestionCircle from '../icons/AiOutlineQuestionCircle'
 import ChangeIcon from '../icons/ChangeIcon'
 import InformationCircle from '../icons/InformationCircle'
 import IoExtensionPuzzleSharp from '../icons/IoExtensionPuzzleSharp'
 import IoIosBug from '../icons/IoIosBug'
 import PiMedalFill from '../icons/PiMedalFill'
-import AddIcon from '../icons/AddIcon'
 
 export default function Footer() {
   return (
-    <div className="z-10 flex items-center w-full gap-4 p-4">
-      <Link href="/page/about" className={'db-bottom-class'}>
-        <InformationCircle className="text-xl" />
+    <div className="z-10 flex items-center w-full gap-4 p-3 border-t">
+      <Link
+        href="/page/about"
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
+        <InformationCircle className="w-4 h-4" />
         About
       </Link>
-      <Link href="/page/faq" className={'db-bottom-class'}>
-        <AiOutlineQuestionCircle className="text-lg" />
+      <Link
+        href="/page/faq"
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
+        <AiOutlineQuestionCircle className="w-4 h-4" />
         FAQ
       </Link>
-      <Link href={'/page/how-to-contribute'} className={'db-bottom-class'}>
-        <AddIcon className="w-5 h-5" /> Add yours
+      <Link
+        href={'/page/how-to-contribute'}
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
+        <AddIcon className="w-4 h-4" /> Add yours
       </Link>
-      <Link href="/page/changelog" className={'db-bottom-class'}>
-        <ChangeIcon className="w-5 h-5" />
+      <Link
+        href="/page/changelog"
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
+        <ChangeIcon className="w-4 h-4" />
         Changelog
       </Link>
-      <Link href="/page/bug-tracker" className={'db-bottom-class'}>
+      <Link
+        href="/page/bug-tracker"
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
         <IoIosBug className="w-4 h-4" />I found a bug
       </Link>
-      <Link href="/page/request-features" className={'db-bottom-class'}>
+      <Link
+        href="/page/request-features"
+        className={
+          'hover:underline flex gap-1 items-center text-sm underline-offset-4 text-muted-foreground hover:text-foreground'
+        }
+      >
         <IoExtensionPuzzleSharp className="w-4 h-4" />
         Request features
       </Link>
