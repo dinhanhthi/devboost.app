@@ -74,7 +74,7 @@ export default function SideNavItem(props: SideNavItemProps) {
         aria-selected={areSameUris(uriToUse, pathname)}
         className={cn(
           className,
-          'relative group w-full aria-selected:bg-muted aria-selected:text-foreground aria-selected:font-medium !px-2 text-muted-foreground font-normal'
+          'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-70 hover:opacity-100'
         )}
       >
         <div className="flex items-center w-full gap-2">

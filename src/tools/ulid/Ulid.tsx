@@ -27,7 +27,7 @@ export default function Ulid() {
 
   return (
     <div className="flex flex-col w-full h-full gap-4">
-      <Tabs defaultValue={initTab} className="flex flex-col gap-2">
+      <Tabs defaultValue={initTab} className="flex flex-col h-full gap-2">
         <TabsList className='w-fit'>
           {tabs.map(tab => (
             <TabsTrigger key={tab.key} value={tab.key}>
@@ -36,7 +36,7 @@ export default function Ulid() {
           ))}
         </TabsList>
         {tabs.map(tab => (
-          <TabsContent key={tab.key} value={tab.key}>
+          <TabsContent className='flex-1 min-h-0' key={tab.key} value={tab.key}>
             {tab.component}
           </TabsContent>
         ))}
