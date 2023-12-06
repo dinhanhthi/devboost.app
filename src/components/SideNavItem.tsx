@@ -1,13 +1,16 @@
 'use client'
 
+import { doc, setDoc } from 'firebase/firestore'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { Tool } from '../interface'
-import { cn } from '../lib/utils'
+import { db } from '../lib/firebase'
+import { cn, generateUuidBasedOnEmail } from '../lib/utils'
 import { Button } from './ui/Button'
 
 type SideNavItemProps = {
@@ -16,10 +19,14 @@ type SideNavItemProps = {
   uri?: string
   rightElement?: React.ReactNode
   hideFavorite?: boolean
+  favoriteToolSlugs?: string[]
+  setFavoriteToolSlugs?: Dispatch<SetStateAction<string[]>>
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
+  const { data: session } = useSession()
   const { className, tool, uri, rightElement } = props
+  const [isFavorite, setIsFavorite] = useState(tool.favorite)
 
   const pathname = usePathname()
   const uriToUse = uri || `/tool/${tool.slug}`
@@ -33,6 +40,31 @@ export default function SideNavItem(props: SideNavItemProps) {
     scrollToElement()
   }, [pathname])
 
+  const handleAddFavorite = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsFavorite(!isFavorite)
+    if (props.favoriteToolSlugs && props.setFavoriteToolSlugs) {
+      if (isFavorite) {
+        props.setFavoriteToolSlugs(props.favoriteToolSlugs.filter(slug => slug !== tool.slug))
+        if (session?.user?.email) {
+          const favoriteRef = doc(db, `settings/${generateUuidBasedOnEmail(session?.user?.email)}`)
+          await setDoc(favoriteRef, { favorite: props.favoriteToolSlugs }, { merge: true })
+        }
+      } else {
+        props.setFavoriteToolSlugs([...props.favoriteToolSlugs, tool.slug])
+        if (session?.user?.email) {
+          const favoriteRef = doc(db, `settings/${generateUuidBasedOnEmail(session?.user?.email)}`)
+          await setDoc(
+            favoriteRef,
+            { favorite: [...props.favoriteToolSlugs, tool.slug] },
+            { merge: true }
+          )
+        }
+      }
+    }
+  }
+
   return (
     <Button variant="ghost" size="lg" asChild>
       <Link
@@ -42,7 +74,7 @@ export default function SideNavItem(props: SideNavItemProps) {
         aria-selected={areSameUris(uriToUse, pathname)}
         className={cn(
           className,
-          'relative group w-full aria-selected:bg-muted aria-selected:text-foreground aria-selected:font-medium !px-2 text-muted-foreground font-normal'
+          'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-70 hover:opacity-100'
         )}
       >
         <div className="flex items-center w-full gap-2">
@@ -54,15 +86,16 @@ export default function SideNavItem(props: SideNavItemProps) {
         {/* Favorite star */}
         {!props.hideFavorite && (
           <button
+            onClick={handleAddFavorite}
             className={cn(
               'absolute opacity-0 right-1 group-hover:opacity-100 w-5 h-5 bg-muted rounded-full flex items-center justify-center',
               {
-                'opacity-100': tool.favorite
+                'opacity-100': isFavorite
               }
             )}
           >
-            {tool.favorite && <StarIcon className="w-4 h-4" />}
-            {!tool.favorite && <StarOutlineIcon className="w-4 h-4" />}
+            {isFavorite && <StarIcon className="w-4 h-4" />}
+            {!isFavorite && <StarOutlineIcon className="w-4 h-4" />}
           </button>
         )}
       </Link>

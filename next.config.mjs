@@ -3,7 +3,8 @@ const nextConfig = {
   poweredByHeader: false,
   transpilePackages: ['react-syntax-highlighter'],
   experimental: {
-    scrollRestoration: true // not supported yet by --turbo
+    scrollRestoration: true, // not supported yet by --turbo,
+    serverComponentsExternalPackages: ['firebase-admin', 'lodash'],
   },
   images: {
     remotePatterns: [

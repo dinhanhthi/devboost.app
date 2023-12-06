@@ -1,5 +1,8 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 
+import { useState } from 'react'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
@@ -11,10 +14,12 @@ type SideNavProps = {
 }
 
 export default function SideNav(props: SideNavProps) {
-  const { className } = props
+  const [favoriteToolSlugs, setFavoriteToolSlugs] = useState<string[]>(
+    TOOLS.filter(tool => tool.favorite).map(tool => tool.slug)
+  )
 
   return (
-    <div className={cn(className, 'border-r')}>
+    <div className={cn(props.className, 'border-r')}>
       <div className={cn('flex h-full w-full flex-col')}>
         {/* Search */}
         <div className={cn('flex items-center gap-1 p-2.5 border-b')}>
@@ -37,7 +42,12 @@ export default function SideNav(props: SideNavProps) {
           {/* Tools */}
           <div className="flex flex-col flex-1 min-h-0 gap-1 p-2 overflow-auto db-scrollbar">
             {TOOLS.map(tool => (
-              <SideNavItem key={tool.slug} tool={tool} />
+              <SideNavItem
+                key={tool.slug}
+                tool={tool}
+                favoriteToolSlugs={favoriteToolSlugs}
+                setFavoriteToolSlugs={setFavoriteToolSlugs}
+              />
             ))}
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
       <div className={cn(props.className, 'flex gap-2 items-center justify-center')}>
         {/* Title */}
         <div className="">
-          <h1 className={cn('gap-2 overflow-hidden text-xl font-semibold text-primary', kanit.className)}>
+          <h1 className={cn('gap-2 overflow-hidden text-xl font-semibold text-foreground', kanit.className)}>
             {tool.name}
           </h1>
         </div>

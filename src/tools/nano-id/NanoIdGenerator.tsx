@@ -124,7 +124,7 @@ export default function NanoIdGenerator() {
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
           placeholder='Click "Generate" button to generate Nano IDs...'
-          className={cn('h-full max-h-full w-full text-base')}
+          className={cn('h-full w-full text-base db-scrollbar')}
         />
       </div>
     </MainContainer>

@@ -259,6 +259,7 @@ export default function UuidGenerator() {
       {/* textarea */}
       <div className="flex-1 min-h-0">
         <Textarea
+          className='h-full db-scrollbar'
           ref={textareaRef}
           value={textareaValue}
           onChange={handleTextareaChange}
