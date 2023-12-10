@@ -4,7 +4,7 @@ const nextConfig = {
   transpilePackages: ['react-syntax-highlighter'],
   experimental: {
     scrollRestoration: true, // not supported yet by --turbo,
-    serverComponentsExternalPackages: ['firebase-admin', 'lodash'],
+    serverComponentsExternalPackages: ['lodash'],
   },
   images: {
     remotePatterns: [

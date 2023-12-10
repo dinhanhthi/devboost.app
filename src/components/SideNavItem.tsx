@@ -1,7 +1,5 @@
 'use client'
 
-import { doc, setDoc } from 'firebase/firestore'
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
@@ -9,8 +7,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { Tool } from '../interface'
-import { db } from '../lib/firebase'
-import { cn, generateUuidBasedOnEmail } from '../lib/utils'
+import { cn } from '../lib/utils'
 import { Button } from './ui/Button'
 
 type SideNavItemProps = {
@@ -24,7 +21,6 @@ type SideNavItemProps = {
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
-  const { data: session } = useSession()
   const { className, tool, uri, rightElement } = props
   const [isFavorite, setIsFavorite] = useState(tool.favorite)
 
@@ -47,20 +43,8 @@ export default function SideNavItem(props: SideNavItemProps) {
     if (props.favoriteToolSlugs && props.setFavoriteToolSlugs) {
       if (isFavorite) {
         props.setFavoriteToolSlugs(props.favoriteToolSlugs.filter(slug => slug !== tool.slug))
-        if (session?.user?.email) {
-          const favoriteRef = doc(db, `settings/${generateUuidBasedOnEmail(session?.user?.email)}`)
-          await setDoc(favoriteRef, { favorite: props.favoriteToolSlugs }, { merge: true })
-        }
       } else {
         props.setFavoriteToolSlugs([...props.favoriteToolSlugs, tool.slug])
-        if (session?.user?.email) {
-          const favoriteRef = doc(db, `settings/${generateUuidBasedOnEmail(session?.user?.email)}`)
-          await setDoc(
-            favoriteRef,
-            { favorite: [...props.favoriteToolSlugs, tool.slug] },
-            { merge: true }
-          )
-        }
       }
     }
   }
