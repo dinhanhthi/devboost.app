@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
@@ -13,16 +13,15 @@ import { Button } from './ui/Button'
 type SideNavItemProps = {
   className?: string
   tool: Tool
+  favoriteToolSlugs: string[]
+  setFavoriteToolSlugs: (value: string[]) => void
   uri?: string
   rightElement?: React.ReactNode
   hideFavorite?: boolean
-  favoriteToolSlugs?: string[]
-  setFavoriteToolSlugs?: Dispatch<SetStateAction<string[]>>
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
-  const { className, tool, uri, rightElement } = props
-  const [isFavorite, setIsFavorite] = useState(tool.favorite)
+  const { className, tool, uri, rightElement, favoriteToolSlugs, setFavoriteToolSlugs } = props
 
   const pathname = usePathname()
   const uriToUse = uri || `/tool/${tool.slug}`
@@ -39,12 +38,11 @@ export default function SideNavItem(props: SideNavItemProps) {
   const handleAddFavorite = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     e.stopPropagation()
-    setIsFavorite(!isFavorite)
-    if (props.favoriteToolSlugs && props.setFavoriteToolSlugs) {
-      if (isFavorite) {
-        props.setFavoriteToolSlugs(props.favoriteToolSlugs.filter(slug => slug !== tool.slug))
+    if (props.favoriteToolSlugs && setFavoriteToolSlugs) {
+      if (favoriteToolSlugs.includes(tool.slug)) {
+        setFavoriteToolSlugs(favoriteToolSlugs.filter(slug => slug !== tool.slug))
       } else {
-        props.setFavoriteToolSlugs([...props.favoriteToolSlugs, tool.slug])
+        setFavoriteToolSlugs([...favoriteToolSlugs, tool.slug])
       }
     }
   }
@@ -74,12 +72,12 @@ export default function SideNavItem(props: SideNavItemProps) {
             className={cn(
               'absolute opacity-0 right-1 group-hover:opacity-100 w-5 h-5 bg-muted rounded-full flex items-center justify-center',
               {
-                'opacity-100': isFavorite
+                'opacity-100': favoriteToolSlugs.includes(tool.slug)
               }
             )}
           >
-            {isFavorite && <StarIcon className="w-4 h-4" />}
-            {!isFavorite && <StarOutlineIcon className="w-4 h-4" />}
+            {favoriteToolSlugs.includes(tool.slug) && <StarIcon className="w-4 h-4" />}
+            {!favoriteToolSlugs.includes(tool.slug) && <StarOutlineIcon className="w-4 h-4" />}
           </button>
         )}
       </Link>

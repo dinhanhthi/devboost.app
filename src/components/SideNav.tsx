@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { useState } from 'react'
+import useLocalStorage from '../lib/hooks/use-local-storage'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
@@ -14,9 +14,7 @@ type SideNavProps = {
 }
 
 export default function SideNav(props: SideNavProps) {
-  const [favoriteToolSlugs, setFavoriteToolSlugs] = useState<string[]>(
-    TOOLS.filter(tool => tool.favorite).map(tool => tool.slug)
-  )
+  const [favoriteToolSlugs, setFavoriteToolSlugs] = useLocalStorage<string[]>('favoriteToolSlugs', [])
 
   return (
     <div className={cn(props.className, 'border-r')}>
@@ -36,6 +34,8 @@ export default function SideNav(props: SideNavProps) {
               tool={allToolItem}
               hideFavorite={true}
               rightElement={<Badge>{TOOLS.length}</Badge>}
+              favoriteToolSlugs={favoriteToolSlugs}
+              setFavoriteToolSlugs={setFavoriteToolSlugs}
             />
           </div>
 

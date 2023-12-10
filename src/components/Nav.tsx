@@ -32,7 +32,6 @@ export default function Nav() {
             <GitHubLogoIcon className="w-5 h-5" />
           </a>
         </Button>
-        ∏
         <ToggleTheme />
       </div>
     </div>

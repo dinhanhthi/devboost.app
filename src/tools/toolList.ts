@@ -129,8 +129,7 @@ const originalTools: Tool[] = [
       'Generate UUID (Universally unique identifier) with different versions 1, 3, 4, 5. You can also validate, decode or format UUID.',
     iconEl: Uuid({ className: commonIconClass }),
     implemented: true,
-    docFile: 'uuid.md',
-    favorite: true
+    docFile: 'uuid.md'
   },
   {
     slug: 'html-preview',

@@ -8,7 +8,6 @@ export interface Tool {
   description?: string
   implemented?: boolean
   docFile?: string
-  favorite?: boolean
 }
 
 export interface DynamicSegmentParamsProps {
