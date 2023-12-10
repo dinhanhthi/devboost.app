@@ -7,7 +7,6 @@ import { kanit } from '../app/fonts'
 import { SETTINGS } from '../lib/config'
 import { cn } from '../lib/utils'
 import HeaderTitle from './HeaderTitle'
-import { NavUser } from './NavUser'
 import ToggleTheme from './ToggleTheme'
 import { Badge } from './ui/Badge'
 import { Button } from './ui/Button'
@@ -33,8 +32,8 @@ export default function Nav() {
             <GitHubLogoIcon className="w-5 h-5" />
           </a>
         </Button>
+        ∏
         <ToggleTheme />
-        <NavUser />
       </div>
     </div>
   )
