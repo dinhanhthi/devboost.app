@@ -8,7 +8,7 @@ import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { Tool } from '../interface'
 import { cn } from '../lib/utils'
-import { SideNavFilter } from './SideNav'
+import { SideNavFilterType } from './SideNav'
 import { Button } from './ui/Button'
 
 type SideNavItemProps = {
@@ -19,7 +19,7 @@ type SideNavItemProps = {
   uri?: string
   rightElement?: React.ReactNode
   hideFavorite?: boolean
-  filter?: SideNavFilter
+  filter?: SideNavFilterType
 }
 
 export default function SideNavItem(props: SideNavItemProps) {

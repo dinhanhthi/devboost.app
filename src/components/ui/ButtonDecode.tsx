@@ -1,4 +1,4 @@
-import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
+import LoadingIcon from '../../icons/LoadingIcon'
 import FaMagic from '../../icons/FaMagic'
 import { Button } from './Button'
 
@@ -15,7 +15,7 @@ export default function ButtonDecode(props: ButtonDecodeProps) {
     <Button onClick={props.onClick} disabled={props.disabled}>
       {props.loading && (
         <div className="animate-spin">
-          <AiOutlineLoading3Quarters className="w-4 h-4" />
+          <LoadingIcon className="w-4 h-4" />
         </div>
       )}
       {!props.loading && <FaMagic className="w-4 h-4" />}

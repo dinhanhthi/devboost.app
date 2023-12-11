@@ -2,7 +2,8 @@
 
 import { cn } from '@/lib/utils'
 
-import { Tool } from '../interface'
+import { SideNavFilterType, Tool } from '../interface'
+import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
@@ -10,24 +11,19 @@ import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
 import { Input } from './ui/Input'
 
-export type SideNavFilter = {
-  showOnlyFavorites: boolean
-}
-
-export const defaultFilter: SideNavFilter = {
-  showOnlyFavorites: false
-}
-
 type SideNavProps = {
   className?: string
 }
 
 export default function SideNav(props: SideNavProps) {
   const [favoriteToolSlugs, setFavoriteToolSlugs] = useLocalStorage<string[]>(
-    'favoriteToolSlugs',
-    []
+    CONFIG_KEYS.favoriteToolSlugs,
+    DEFAULT_C0NFIGS.favoriteToolSlugs
   )
-  const [filter, setFilter] = useLocalStorage<SideNavFilter>('sideNavFilter', defaultFilter)
+  const [filter, setFilter] = useLocalStorage<SideNavFilterType>(
+    CONFIG_KEYS.sideNavFilter,
+    DEFAULT_C0NFIGS.sideNavFilter
+  )
 
   return (
     <div className={cn(props.className, 'border-r')}>
@@ -69,7 +65,7 @@ export default function SideNav(props: SideNavProps) {
   )
 }
 
-function mapFilterToTool(filter: SideNavFilter, tool: Tool, favoriteToolSlugs: string[]) {
+function mapFilterToTool(filter: SideNavFilterType, tool: Tool, favoriteToolSlugs: string[]) {
   if (filter.showOnlyFavorites) {
     return favoriteToolSlugs.includes(tool.slug)
   }

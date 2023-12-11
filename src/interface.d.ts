@@ -28,3 +28,19 @@ export declare module '*.md' {
   const value: string
   export default value
 }
+
+export type FooterLink = {
+  name: string
+  description?: string
+  docFile: string
+  icon: JSX.Element
+}
+
+export type SideNavFilterType = {
+  showOnlyFavorites: boolean
+}
+
+export type Configs = {
+  sideNavFilter: SideNavFilterType
+  favoriteToolSlugs: string[]
+}

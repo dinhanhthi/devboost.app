@@ -1,4 +1,4 @@
-import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
+import LoadingIcon from '../../icons/LoadingIcon'
 import FiSearch from '../../icons/FiSearch'
 import { Button } from './Button'
 
@@ -14,7 +14,7 @@ export default function ButtonValidate(props: ButtonValidateProps) {
     <Button onClick={props.onClick} disabled={props.disabled}>
       {props.loading && (
         <div className="animate-spin">
-          <AiOutlineLoading3Quarters className="w-4 h-4" />
+          <LoadingIcon className="w-4 h-4" />
         </div>
       )}
       {!props.loading && <FiSearch className="w-4 h-4" />}

@@ -4,18 +4,53 @@ import ChangeIcon from '../icons/ChangeIcon'
 import InformationCircle from '../icons/InformationCircle'
 import IoExtensionPuzzleSharp from '../icons/IoExtensionPuzzleSharp'
 import IoIosBug from '../icons/IoIosBug'
-import PiMedalFill from '../icons/PiMedalFill'
-import { Tool } from '../interface'
+import { Configs, FooterLink } from '../interface'
 
 export const SETTINGS = {
   siteName: 'DevBoost'
 }
-export const PAGES: Tool[] = [
-  { slug: 'about', name: 'About', iconEl: InformationCircle({}) },
-  { slug: 'how-to-contribute', name: "Let's build together", iconEl: AddIcon({}) },
-  { slug: 'faq', name: 'FAQ', iconEl: AiOutlineQuestionCircle({}) },
-  { slug: 'changelog', name: 'Changelog', iconEl: ChangeIcon({}) },
-  { slug: 'bug-tracker', name: 'I found a bug', iconEl: IoIosBug({}) },
-  { slug: 'request-features', name: 'Request features', iconEl: IoExtensionPuzzleSharp({}) },
-  { slug: 'get-more', name: 'Get More', iconEl: PiMedalFill({}) }
+
+export const FOOTER_LINKS: FooterLink[] = [
+  {
+    name: 'About',
+    docFile: 'about.md',
+    icon: InformationCircle({})
+  },
+  {
+    name: 'FAQ',
+    docFile: 'faq.md',
+    icon: AiOutlineQuestionCircle({})
+  },
+  {
+    name: 'Add yours',
+    docFile: 'how-to-contribute.md',
+    icon: AddIcon({})
+  },
+  {
+    name: 'Changelog',
+    docFile: 'changelog.md',
+    icon: ChangeIcon({})
+  },
+  {
+    name: 'I found a bug',
+    docFile: 'bug-tracker.md',
+    icon: IoIosBug({})
+  },
+  {
+    name: 'Request features',
+    docFile: 'request-features.md',
+    icon: IoExtensionPuzzleSharp({})
+  }
 ]
+
+export const CONFIG_KEYS: Record<keyof Configs, string> = {
+  sideNavFilter: 'sideNavFilter',
+  favoriteToolSlugs: 'favoriteToolSlugs'
+}
+
+export const DEFAULT_C0NFIGS: Configs = {
+  sideNavFilter: {
+    showOnlyFavorites: false
+  },
+  favoriteToolSlugs: []
+}

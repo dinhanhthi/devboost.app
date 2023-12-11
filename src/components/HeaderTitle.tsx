@@ -6,11 +6,10 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { kanit } from '../app/fonts'
-import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
+import LoadingIcon from '../icons/LoadingIcon'
 import DocDuoToneIcon from '../icons/DocDuaToneIcon'
 import DocumentHelpIcon from '../icons/DocumentHelpIcon'
 import { Tool } from '../interface'
-import { PAGES } from '../lib/config'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import { MarkdownComponents } from './MarkdownComponents'
 import { Button } from './ui/Button'
@@ -35,7 +34,6 @@ export default function HeaderTitle(props: HeaderTitleProps) {
     pathname === '/'
       ? allToolItem
       : TOOLS.find(tool => tool.slug === pathname.split('/tool/')[1]?.replace(/^\/+|\/+$/g, '')) ||
-        PAGES.find(page => page.slug === pathname.split('/page/')[1]?.replace(/^\/+|\/+$/g, '')) ||
         unknownTool
 
   const handleOpenDocClicked = async () => {
@@ -52,7 +50,12 @@ export default function HeaderTitle(props: HeaderTitleProps) {
       <div className={cn(props.className, 'flex gap-2 items-center justify-center')}>
         {/* Title */}
         <div className="">
-          <h1 className={cn('gap-2 overflow-hidden text-xl font-semibold text-primary', kanit.className)}>
+          <h1
+            className={cn(
+              'gap-2 overflow-hidden text-xl font-semibold text-primary',
+              kanit.className
+            )}
+          >
             {tool.name}
           </h1>
         </div>
@@ -60,12 +63,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         {(tool.docFile || tool.description) && (
           <Dialog>
             <DialogTrigger asChild>
-              <Button
-                onClick={handleOpenDocClicked}
-                variant="ghost"
-                size="icon"
-                className="group"
-              >
+              <Button onClick={handleOpenDocClicked} variant="ghost" size="icon" className="group">
                 <DocumentHelpIcon className="w-5 h-5 opacity-70 group-hover:opacity-100" />
               </Button>
             </DialogTrigger>
@@ -85,7 +83,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
                   {!docContent && tool.docFile && (
                     <div className="flex items-center justify-center w-full h-full">
                       <div className="animate-spin">
-                        <AiOutlineLoading3Quarters className="w-10 h-10 text-primary" />
+                        <LoadingIcon className="w-10 h-10 text-primary" />
                       </div>
                     </div>
                   )}

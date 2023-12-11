@@ -3,14 +3,15 @@
 import { CheckedState } from '@radix-ui/react-checkbox'
 import { isEqual } from 'lodash'
 import IoFilter from '../icons/IoFilter'
-import { SideNavFilter, defaultFilter } from './SideNav'
+import { SideNavFilterType } from '../interface'
+import { DEFAULT_C0NFIGS } from '../lib/config'
 import { Button } from './ui/Button'
 import { Checkbox } from './ui/Checkbox'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/Popover'
 
 type SideNavFilterProps = {
-  filter: SideNavFilter
-  setFilter: (value: SideNavFilter) => void
+  filter: SideNavFilterType
+  setFilter: (value: SideNavFilterType) => void
 }
 
 export default function SideNavFilter(props: SideNavFilterProps) {
@@ -25,7 +26,7 @@ export default function SideNavFilter(props: SideNavFilterProps) {
       <PopoverTrigger asChild>
         <Button className="relative" variant="ghost" size="icon">
           <IoFilter className="w-4 h-4" />
-          {!isEqual(filter, defaultFilter) && (
+          {!isEqual(filter, DEFAULT_C0NFIGS.sideNavFilter) && (
             <div className="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-primary"></div>
           )}
         </Button>

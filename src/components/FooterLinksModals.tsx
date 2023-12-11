@@ -2,8 +2,9 @@
 
 import { cloneElement, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import AiOutlineLoading3Quarters from '../icons/AiOutlineLoading3Quarters'
-import { FooterLink, footerLinks } from '../lib/footerLinks'
+import LoadingIcon from '../icons/LoadingIcon'
+import { FooterLink } from '../interface'
+import { FOOTER_LINKS } from '../lib/config'
 import { MarkdownComponents } from './MarkdownComponents'
 import { Button } from './ui/Button'
 import {
@@ -35,8 +36,8 @@ export default function FooterLinksModals() {
 
   return (
     <div>
-      {footerLinks.map(link => (
-        <Dialog onOpenChange={handleOnOpenChange}>
+      {FOOTER_LINKS.map(link => (
+        <Dialog key={link.docFile} onOpenChange={handleOnOpenChange}>
           <DialogTrigger asChild>
             <Button
               onClick={() => handleOpenDocClicked(link)}
@@ -63,7 +64,7 @@ export default function FooterLinksModals() {
                 {!docContent && link.docFile && (
                   <div className="flex items-center justify-center w-full h-full">
                     <div className="animate-spin">
-                      <AiOutlineLoading3Quarters className="w-10 h-10 text-primary" />
+                      <LoadingIcon className="w-10 h-10 text-primary" />
                     </div>
                   </div>
                 )}

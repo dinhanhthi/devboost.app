@@ -1,4 +1,4 @@
-export default function AiOutlineLoading3Quarters(props: { className?: string }) {
+export default function LoadingIcon(props: { className?: string }) {
   return (
     <svg
       className={props.className}
