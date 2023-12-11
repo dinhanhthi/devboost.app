@@ -41,7 +41,7 @@ export default function FooterLinksModals() {
             <Button
               onClick={() => handleOpenDocClicked(link)}
               variant="ghost"
-              className="px-2 group"
+              className="px-2 font-normal group"
             >
               {cloneElement(link.icon!, { className: 'w-4 h-4 mr-1.5' })}
               <span className="text-sm">{link.name}</span>

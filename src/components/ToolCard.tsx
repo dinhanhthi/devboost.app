@@ -17,11 +17,11 @@ export default function ToolCard(props: ToolCardProps) {
       href={`/tool/${tool.slug}`}
       className={cn(
         className,
-        'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight hover:border-sky-600 rounded-lg group'
+        'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight border hover:border-primary rounded-lg group bg-accent'
       )}
     >
       {cloneElement(tool.iconEl!, {
-        className: 'text-2xl dark:text-thighlight text-sky-600 h-8 w-fit'
+        className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
       })}
       {tool.name}
     </Link>
