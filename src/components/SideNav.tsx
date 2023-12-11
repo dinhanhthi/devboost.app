@@ -14,7 +14,7 @@ export type SideNavFilter = {
   showOnlyFavorites: boolean
 }
 
-const defaultFilter: SideNavFilter = {
+export const defaultFilter: SideNavFilter = {
   showOnlyFavorites: false
 }
 
