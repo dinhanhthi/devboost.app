@@ -2,13 +2,11 @@ import { cn } from '@/lib/utils'
 import { useRef, useState } from 'react'
 
 import { decodeTime, isValid } from 'ulidx'
-import { Button } from '../../components/ui/Button'
 import ButtonClear from '../../components/ui/ButtonClear'
 import ButtonClipboard from '../../components/ui/ButtonClipboard'
+import ButtonDecode from '../../components/ui/ButtonDecode'
 import ButtonSample from '../../components/ui/ButtonSample'
 import { Input } from '../../components/ui/Input'
-import AiOutlineLoading3Quarters from '../../icons/AiOutlineLoading3Quarters'
-import FormatIcon from '../../icons/FormatIcon'
 import WarningIcon from '../../icons/WarningIcon'
 
 export default function UlidTimeDecoder() {
@@ -67,15 +65,11 @@ export default function UlidTimeDecoder() {
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
       <div className="flex flex-row flex-wrap items-center gap-6">
-        <Button disabled={!originalValue} onClick={handleDecodeClicked}>
-          {!isDecoding && <FormatIcon className="h-4 w-4 mr-1.5" />}
-          {isDecoding && (
-            <div className="animate-spin">
-              <AiOutlineLoading3Quarters className="h-4 w-4 mr-1.5" />
-            </div>
-          )}{' '}
-          Decode
-        </Button>
+        <ButtonDecode
+          onClick={handleDecodeClicked}
+          disabled={!originalValue}
+          loading={isDecoding}
+        />
         <div className="flex flex-row items-center gap-3">
           <ButtonClipboard handleClipText={handleClipText} />
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />

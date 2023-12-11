@@ -28,7 +28,7 @@ type HeaderTitleProps = {
 }
 
 export default function HeaderTitle(props: HeaderTitleProps) {
-  const [uuidDoc, setUuidDoc] = useState<string | undefined>(undefined)
+  const [docContent, setDocContent] = useState<string | undefined>(undefined)
   const pathname = usePathname()
   const unknownTool: Tool = { name: '404', slug: '/' }
   const tool =
@@ -38,12 +38,12 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         PAGES.find(page => page.slug === pathname.split('/page/')[1]?.replace(/^\/+|\/+$/g, '')) ||
         unknownTool
 
-  const handleOpenSideOverClicked = async () => {
+  const handleOpenDocClicked = async () => {
     if (!tool.docFile) return
     await fetch(`/docs/tools/${tool.docFile}`)
       .then(res => res.text())
       .then(text => {
-        setUuidDoc(text)
+        setDocContent(text)
       })
   }
 
@@ -52,7 +52,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
       <div className={cn(props.className, 'flex gap-2 items-center justify-center')}>
         {/* Title */}
         <div className="">
-          <h1 className={cn('gap-2 overflow-hidden text-xl font-semibold text-foreground', kanit.className)}>
+          <h1 className={cn('gap-2 overflow-hidden text-xl font-semibold text-primary', kanit.className)}>
             {tool.name}
           </h1>
         </div>
@@ -61,7 +61,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
           <Dialog>
             <DialogTrigger asChild>
               <Button
-                onClick={handleOpenSideOverClicked}
+                onClick={handleOpenDocClicked}
                 variant="ghost"
                 size="icon"
                 className="group"
@@ -79,10 +79,10 @@ export default function HeaderTitle(props: HeaderTitleProps) {
               </DialogHeader>
               <div className="flex-1 min-h-0 pt-0 overflow-hidden">
                 <div className="h-full overflow-auto db-prose db-scrollbar">
-                  {uuidDoc && (
-                    <ReactMarkdown components={MarkdownComponents}>{uuidDoc}</ReactMarkdown>
+                  {docContent && (
+                    <ReactMarkdown components={MarkdownComponents}>{docContent}</ReactMarkdown>
                   )}
-                  {!uuidDoc && tool.docFile && (
+                  {!docContent && tool.docFile && (
                     <div className="flex items-center justify-center w-full h-full">
                       <div className="animate-spin">
                         <AiOutlineLoading3Quarters className="w-10 h-10 text-primary" />
