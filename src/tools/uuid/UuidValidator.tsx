@@ -70,15 +70,15 @@ export default function UuidValidator() {
 
       {/* Result */}
       {result && (
-        <div className="p-4 border rounded-lg dark:border-border bg-slate-100">
+        <div className="p-4 border rounded-lg dark:border-border bg-muted">
           {result === 'valid' && (
-            <div className="flex flex-row items-center gap-2 text-sm text-green-700 dark:text-green-300">
+            <div className="flex flex-row items-center gap-2 text-sm text-success">
               <BsFillCheckCircleFill className="w-5 h-5" />
               UUID is valid!
             </div>
           )}
           {result === 'invalid' && (
-            <div className="flex flex-row items-center gap-2 text-sm dark:text-amber-400 text-amber-600">
+            <div className="flex flex-row items-center gap-2 text-sm text-warning">
               <WarningIcon className="w-5 h-5" /> UUID is invalid!
             </div>
           )}

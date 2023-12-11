@@ -91,11 +91,11 @@ export default function OpenAiKeyValidator() {
 
         {/* Result */}
         {result && (
-          <div className="p-4 border rounded-lg dark:border-border bg-slate-100">
+          <div className="p-4 border rounded-lg dark:border-border bg-muted">
             {result === 'valid' && (
               <div
                 data-testid="valid"
-                className="flex flex-row items-center gap-2 text-sm text-green-700 dark:text-green-300"
+                className="flex flex-row items-center gap-2 text-sm text-success"
               >
                 <BsFillCheckCircleFill className="w-5 h-5" />
                 The key is valid!
@@ -104,7 +104,7 @@ export default function OpenAiKeyValidator() {
             {result === 'invalid' && (
               <div
                 data-testid="invalid"
-                className="flex flex-row items-center gap-2 text-sm dark:text-amber-400 text-amber-600"
+                className="flex flex-row items-center gap-2 text-sm text-warning"
               >
                 <WarningIcon className="w-5 h-5" /> The key is invalid!
               </div>
@@ -112,7 +112,7 @@ export default function OpenAiKeyValidator() {
             {result === 'error' && (
               <div
                 data-testid="error"
-                className="flex flex-row items-center gap-2 text-sm text-red-400"
+                className="flex flex-row items-center gap-2 text-sm text-danger"
               >
                 ⚠️ There is an error when validaing your key!
               </div>

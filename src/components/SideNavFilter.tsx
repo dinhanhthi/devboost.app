@@ -78,7 +78,7 @@ export default function SideNavFilter(props: SideNavFilterProps) {
             onClick={() => setFilter(DEFAULT_C0NFIGS.sideNavFilter)}
           >
             <CleanIcon className="w-4 h-4" />
-            Clear filters
+            Reset filters
           </button>
         </div>
       </PopoverContent>

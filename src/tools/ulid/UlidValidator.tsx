@@ -70,15 +70,15 @@ export default function UlidValidator() {
 
       {/* Result */}
       {result && (
-        <div className="p-4 border rounded-lg border-border">
+        <div className="p-4 border rounded-lg border-border bg-muted">
           {result === 'valid' && (
-            <div className="flex flex-row items-center gap-2 text-sm text-green-300">
+            <div className="flex flex-row items-center gap-2 text-sm text-success">
               <BsFillCheckCircleFill className="w-5 h-5" />
               ULID is valid!
             </div>
           )}
           {result === 'invalid' && (
-            <div className="flex flex-row items-center gap-2 text-sm text-amber-400">
+            <div className="flex flex-row items-center gap-2 text-sm text-warning">
               <WarningIcon className="w-5 h-5" /> ULID is invalid!
             </div>
           )}

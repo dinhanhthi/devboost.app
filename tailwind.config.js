@@ -25,6 +25,9 @@ export const theme = {
       ring: 'hsl(var(--ring))',
       background: 'hsl(var(--background))',
       foreground: 'hsl(var(--foreground))',
+      warning: 'hsl(var(--warning))',
+      success: 'hsl(var(--success))',
+      danger: 'hsl(var(--danger))',
       primary: {
         DEFAULT: 'hsl(var(--primary))',
         foreground: 'hsl(var(--primary-foreground))'

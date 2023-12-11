@@ -25,8 +25,6 @@ export default function SideNav(props: SideNavProps) {
     DEFAULT_C0NFIGS.sideNavFilter
   )
 
-  /* ###Thi */ console.log(`👉👉👉 filter: `, filter);
-
   return (
     <div className={cn(props.className, 'border-r')}>
       <div className={cn('flex h-full w-full flex-col')}>
