@@ -6,9 +6,8 @@ import { useEffect, useRef } from 'react'
 
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
-import { Tool } from '../interface'
+import { SideNavFilterType, Tool } from '../interface'
 import { cn } from '../lib/utils'
-import { SideNavFilterType } from './SideNav'
 import { Button } from './ui/Button'
 
 type SideNavItemProps = {
@@ -50,7 +49,7 @@ export default function SideNavItem(props: SideNavItemProps) {
   }
 
   return (
-    <Button variant="ghost" size="lg" asChild>
+    <Button variant="ghost" size="lg" className="py-2 h-fit" asChild>
       <Link
         ref={areSameUris(uriToUse, pathname) ? ref : undefined}
         href={uriToUse}
@@ -62,9 +61,16 @@ export default function SideNavItem(props: SideNavItemProps) {
         )}
       >
         <div className="flex items-center w-full gap-2">
-          {tool.iconEl}
-          {tool.name}
-          {rightElement}
+          <div className="flex items-center w-6">{tool.iconEl}</div>
+          <div className="flex flex-col flex-1 min-w-0">
+            <div className="font-medium">{tool.name}</div>
+            {props.filter?.showDescription && (
+              <div className="w-full text-xs italic whitespace-break-spaces line-clamp-3 opacity-80">
+                {tool.description}
+              </div>
+            )}
+          </div>
+          <div>{rightElement}</div>
         </div>
 
         {/* Favorite star */}

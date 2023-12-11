@@ -38,6 +38,7 @@ export type FooterLink = {
 
 export type SideNavFilterType = {
   showOnlyFavorites: boolean
+  showDescription: boolean
 }
 
 export type Configs = {

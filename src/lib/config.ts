@@ -50,7 +50,8 @@ export const CONFIG_KEYS: Record<keyof Configs, string> = {
 
 export const DEFAULT_C0NFIGS: Configs = {
   sideNavFilter: {
-    showOnlyFavorites: false
+    showOnlyFavorites: false,
+    showDescription: false
   },
   favoriteToolSlugs: []
 }

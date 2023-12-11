@@ -2,13 +2,13 @@
 
 import { CheckedState } from '@radix-ui/react-checkbox'
 import { isEqual } from 'lodash'
+import CleanIcon from '../icons/CleanIcon'
 import IoFilter from '../icons/IoFilter'
 import { SideNavFilterType } from '../interface'
 import { DEFAULT_C0NFIGS } from '../lib/config'
 import { Button } from './ui/Button'
 import { Checkbox } from './ui/Checkbox'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/Popover'
-import CleanIcon from '../icons/CleanIcon'
 
 type SideNavFilterProps = {
   filter: SideNavFilterType
@@ -22,6 +22,10 @@ export default function SideNavFilter(props: SideNavFilterProps) {
     setFilter({ ...filter, showOnlyFavorites: checked === true })
   }
 
+  const handleShowDescriptionChange = (checked: CheckedState) => {
+    setFilter({ ...filter, showDescription: checked === true })
+  }
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -32,27 +36,45 @@ export default function SideNavFilter(props: SideNavFilterProps) {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='flex flex-col gap-4 divide-y' align="start">
-        {/* Show only favorites */}
-        <div className="flex space-x-2 items-top">
-          <Checkbox
-            checked={filter.showOnlyFavorites}
-            id="show-only-favorites"
-            onCheckedChange={handleShowOnlyFavoriteChange}
-          />
-          <div className="grid gap-1.5 leading-none">
-            <label
-              htmlFor="show-only-favorites"
-              className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Show favorites only
-            </label>
+      <PopoverContent className="flex flex-col gap-4 divide-y" align="start">
+        <div className="flex flex-col gap-4">
+          {/* Show only favorites */}
+          <div className="flex space-x-2 items-top">
+            <Checkbox
+              checked={filter.showOnlyFavorites}
+              id="show-only-favorites"
+              onCheckedChange={handleShowOnlyFavoriteChange}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="show-only-favorites"
+                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Show favorites only
+              </label>
+            </div>
+          </div>
+          {/* Show description */}
+          <div className="flex space-x-2 items-top">
+            <Checkbox
+              checked={filter.showDescription}
+              id="show-description"
+              onCheckedChange={handleShowDescriptionChange}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="show-description"
+                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Show descriptions
+              </label>
+            </div>
           </div>
         </div>
         {/* Clear filters */}
         <div className="pt-2 -mb-1">
           <button
-            className='flex items-center gap-1.5 text-sm hover:bg-accent hover:text-accent-foreground px-3 py-1 rounded-sm'
+            className="flex items-center gap-1.5 text-sm hover:bg-accent hover:text-accent-foreground px-3 py-1 rounded-sm"
             onClick={() => setFilter(DEFAULT_C0NFIGS.sideNavFilter)}
           >
             <CleanIcon className="w-4 h-4" />

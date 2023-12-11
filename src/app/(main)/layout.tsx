@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className={cn('flex h-screen max-h-screen flex-col')}>
             <Nav />
             <div className={cn('flex min-h-0 grow flex-row justify-between')}>
-              <SideNav className="hidden h-full min-w-[300px] w-fit lg:block" />
+              <SideNav className="hidden h-full w-[320px] lg:block" />
               <main className={cn('h-full min-w-0 flex-1')}>
                 <div className="w-full h-full p-4">{children}</div>
               </main>

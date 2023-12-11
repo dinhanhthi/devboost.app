@@ -210,7 +210,7 @@ const originalTools: Tool[] = [
     name: 'ULID Generator',
     description:
       'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
-    iconEl: ULIDIcon({ className: 'text-xs' }),
+    iconEl: ULIDIcon({ className: 'text-[0.65rem]' }),
     implemented: true,
     docFile: 'ulid.md'
   },
