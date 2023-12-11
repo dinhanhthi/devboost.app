@@ -8,6 +8,7 @@ import { DEFAULT_C0NFIGS } from '../lib/config'
 import { Button } from './ui/Button'
 import { Checkbox } from './ui/Checkbox'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/Popover'
+import CleanIcon from '../icons/CleanIcon'
 
 type SideNavFilterProps = {
   filter: SideNavFilterType
@@ -31,7 +32,7 @@ export default function SideNavFilter(props: SideNavFilterProps) {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start">
+      <PopoverContent className='flex flex-col gap-4 divide-y' align="start">
         {/* Show only favorites */}
         <div className="flex space-x-2 items-top">
           <Checkbox
@@ -47,6 +48,16 @@ export default function SideNavFilter(props: SideNavFilterProps) {
               Show favorites only
             </label>
           </div>
+        </div>
+        {/* Clear filters */}
+        <div className="pt-2 -mb-1">
+          <button
+            className='flex items-center gap-1.5 text-sm hover:bg-accent hover:text-accent-foreground px-3 py-1 rounded-sm'
+            onClick={() => setFilter(DEFAULT_C0NFIGS.sideNavFilter)}
+          >
+            <CleanIcon className="w-4 h-4" />
+            Clear filters
+          </button>
         </div>
       </PopoverContent>
     </Popover>
