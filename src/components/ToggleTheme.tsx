@@ -4,6 +4,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import MoonStarIcon from '../icons/MoonStarIcon'
 import SunIcon from '../icons/SunIcon'
+import SimpleTooltip from './SimpleTooltip'
 import { Button } from './ui/Button'
 
 export default function ToggleTheme() {
@@ -24,9 +25,11 @@ export default function ToggleTheme() {
   }
 
   return (
-    <Button variant="ghost" size="icon" onClick={handleThemeToggle}>
-      {theme === 'light' && <MoonStarIcon className="w-5 h-5" />}
-      {theme !== 'light' && <SunIcon className="w-5 h-5" />}
-    </Button>
+    <SimpleTooltip text={theme === 'light' ? 'Enable Dark Theme' : 'Enable Light Theme'}>
+      <Button variant="ghost" size="icon" onClick={handleThemeToggle}>
+        {theme === 'light' && <MoonStarIcon className="w-5 h-5" />}
+        {theme !== 'light' && <SunIcon className="w-5 h-5" />}
+      </Button>
+    </SimpleTooltip>
   )
 }
