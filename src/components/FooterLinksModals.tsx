@@ -44,7 +44,7 @@ export default function FooterLinksModals() {
               variant="ghost"
               className="px-2 font-normal group"
             >
-              {cloneElement(link.icon!, { className: 'w-4 h-4 mr-1.5' })}
+              {cloneElement(link.icon!, { className: 'w-5 h-5 mr-1.5' })}
               <span className="text-sm">{link.name}</span>
             </Button>
           </DialogTrigger>
