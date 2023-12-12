@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import { SideNavFilterType, Tool } from '../interface'
+import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
 import { TOOLS, allToolItem } from '../tools/toolList'
@@ -16,11 +16,11 @@ type SideNavProps = {
 }
 
 export default function SideNav(props: SideNavProps) {
-  const [favoriteToolSlugs, setFavoriteToolSlugs] = useLocalStorage<string[]>(
+  const [favoriteToolSlugs, setFavoriteToolSlugs] = useLocalStorage<Configs['favoriteToolSlugs']>(
     CONFIG_KEYS.favoriteToolSlugs,
     DEFAULT_C0NFIGS.favoriteToolSlugs
   )
-  const [filter, setFilter] = useLocalStorage<SideNavFilterType>(
+  const [filter, setFilter] = useLocalStorage<Configs['sideNavFilter']>(
     CONFIG_KEYS.sideNavFilter,
     DEFAULT_C0NFIGS.sideNavFilter
   )

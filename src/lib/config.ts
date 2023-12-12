@@ -45,13 +45,17 @@ export const FOOTER_LINKS: FooterLink[] = [
 
 export const CONFIG_KEYS: Record<keyof Configs, string> = {
   sideNavFilter: 'sideNavFilter',
-  favoriteToolSlugs: 'favoriteToolSlugs'
+  favoriteToolSlugs: 'favoriteToolSlugs',
+  usageFrequency: 'usageFrequency'
 }
 
 export const DEFAULT_C0NFIGS: Configs = {
   sideNavFilter: {
     showOnlyFavorites: false,
-    showDescription: false
+    showDescription: false,
+    sortBy: 'name',
+    sortDirection: 'asc'
   },
-  favoriteToolSlugs: []
+  favoriteToolSlugs: [],
+  usageFrequency: {}
 }

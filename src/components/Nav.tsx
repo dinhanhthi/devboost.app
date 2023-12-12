@@ -1,9 +1,9 @@
-import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import packageInfo from '../../package.json'
 import Logo from '../../public/logo.svg'
 import { kanit } from '../app/fonts'
+import GithubLineIcon from '../icons/GithubLineIcon'
 import { SETTINGS } from '../lib/config'
 import { cn } from '../lib/utils'
 import HeaderTitle from './HeaderTitle'
@@ -33,7 +33,7 @@ export default function Nav() {
         <SimpleTooltip text="Check the source codes">
           <Button variant="ghost" size="icon" asChild>
             <a target="_blank" href="https://github.com/dinhanhthi/devboost.app">
-              <GitHubLogoIcon className="w-5 h-5" />
+              <GithubLineIcon className="w-5 h-5" />
             </a>
           </Button>
         </SimpleTooltip>

@@ -36,12 +36,19 @@ export type FooterLink = {
   icon: JSX.Element
 }
 
+export type SideNavFilterSortBy = 'name' | 'favorite' | 'usageFrequency'
+
+export type SideNavFilterSortDirection = 'asc' | 'desc'
+
 export type SideNavFilterType = {
   showOnlyFavorites: boolean
   showDescription: boolean
+  sortBy: SideNavFilterSortBy
+  sortDirection: SideNavFilterSortDirection
 }
 
 export type Configs = {
   sideNavFilter: SideNavFilterType
   favoriteToolSlugs: string[]
+  usageFrequency: { [slug: string]: number }
 }
