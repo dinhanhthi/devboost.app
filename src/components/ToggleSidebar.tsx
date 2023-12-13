@@ -4,7 +4,7 @@ import HideSidebarIcon from '../icons/HideSidebarIcon'
 import SimpleTooltip from './SimpleTooltip'
 import { Button } from './ui/Button'
 
-export default function HideSidebarButton() {
+export default function ToggleSidebar() {
   const handleHideSidenavClicked = () => {
     document.querySelector('.sidebar')?.classList.toggle('!hidden')
   }

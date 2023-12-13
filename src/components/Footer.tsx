@@ -1,10 +1,10 @@
 import FooterLinksModals from './FooterLinksModals'
-import HideSidebarButton from './HideSidebarButton'
+import ToggleSidebar from './ToggleSidebar'
 
 export default function Footer() {
   return (
     <div className="z-10 flex items-center w-full p-3 border-t">
-      <HideSidebarButton />
+      <ToggleSidebar />
       <FooterLinksModals />
       {/* <Link
         href="/page/get-more"

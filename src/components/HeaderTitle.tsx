@@ -3,15 +3,17 @@
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
+import { Pencil1Icon } from '@radix-ui/react-icons'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { kanit } from '../app/fonts'
-import LoadingIcon from '../icons/LoadingIcon'
 import DocDuoToneIcon from '../icons/DocDuaToneIcon'
 import DocumentHelpIcon from '../icons/DocumentHelpIcon'
+import LoadingIcon from '../icons/LoadingIcon'
 import { Tool } from '../interface'
 import { TOOLS, allToolItem } from '../tools/toolList'
 import { MarkdownComponents } from './MarkdownComponents'
+import SimpleTooltip from './SimpleTooltip'
 import { Button } from './ui/Button'
 import {
   Dialog,
@@ -72,6 +74,16 @@ export default function HeaderTitle(props: HeaderTitleProps) {
                 <DialogTitle className="flex items-center gap-2 text-xl text-primary">
                   <DocDuoToneIcon className="w-6 h-6" />
                   {tool.name}
+                  <SimpleTooltip text="Improve this document">
+                    <Button variant="ghost" size="icon" className="group" asChild>
+                      <a
+                        target="_blank"
+                        href={`https://github.com/dinhanhthi/devboost.app/edit/main/public/docs/tools/${tool.docFile}`}
+                      >
+                        <Pencil1Icon className="w-5 h-5 opacity-70 group-hover:opacity-100" />
+                      </a>
+                    </Button>
+                  </SimpleTooltip>
                 </DialogTitle>
                 {tool.description && <DialogDescription>{tool.description}</DialogDescription>}
               </DialogHeader>
