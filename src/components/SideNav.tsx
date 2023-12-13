@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils'
 
 import { useEffect, useState } from 'react'
+import LoadingIcon from '../icons/LoadingIcon'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
@@ -11,7 +12,6 @@ import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
 import { Input } from './ui/Input'
-import LoadingIcon from '../icons/LoadingIcon'
 
 type SideNavProps = {
   className?: string
@@ -39,7 +39,9 @@ export default function SideNav(props: SideNavProps) {
   }, [])
 
   return (
-    <div className={cn(props.className, 'border-r')}>
+    <div
+      className={cn(props.className, 'sidebar border-r')}
+    >
       <div className={cn('flex h-full w-full flex-col')}>
         {/* Search */}
         <div className={cn('flex items-center gap-1 p-2.5 border-b')}>
@@ -63,19 +65,23 @@ export default function SideNav(props: SideNavProps) {
 
           {/* Tools */}
           <div className="flex flex-col flex-1 min-h-0 gap-1 p-2 overflow-auto db-scrollbar">
-            {!loading && sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!)
-              .filter(tool => mapFilterToTool(filter, tool, favoriteToolSlugs))
-              .map(tool => (
-                <SideNavItem
-                  key={tool.slug}
-                  tool={tool}
-                  filter={filter}
-                  favoriteToolSlugs={favoriteToolSlugs}
-                  setFavoriteToolSlugs={setFavoriteToolSlugs}
-                />
-              ))}
+            {!loading &&
+              sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!)
+                .filter(tool => mapFilterToTool(filter, tool, favoriteToolSlugs))
+                .map(tool => (
+                  <SideNavItem
+                    key={tool.slug}
+                    tool={tool}
+                    filter={filter}
+                    favoriteToolSlugs={favoriteToolSlugs}
+                    setFavoriteToolSlugs={setFavoriteToolSlugs}
+                  />
+                ))}
             {loading && (
-              <LoadingIcon className="w-6 h-6 m-auto opacity-50 animate-spin text-foreground" aria-label="loading" />
+              <LoadingIcon
+                className="w-6 h-6 m-auto opacity-50 animate-spin text-foreground"
+                aria-label="loading"
+              />
             )}
           </div>
         </div>
