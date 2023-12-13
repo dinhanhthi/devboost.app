@@ -2,7 +2,8 @@
 
 import { cn } from '@/lib/utils'
 
-import { useEffect, useState } from 'react'
+import Fuse from 'fuse.js'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import LoadingIcon from '../icons/LoadingIcon'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
@@ -12,6 +13,7 @@ import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
 import { Input } from './ui/Input'
+import { Button } from './ui/Button'
 
 type SideNavProps = {
   className?: string
@@ -38,14 +40,45 @@ export default function SideNav(props: SideNavProps) {
     setLoading(false)
   }, [])
 
+  // Search
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [searchResult, setSearchResult] = useState<Tool[]>(TOOLS)
+  const [query, setQuery] = useState('')
+  const fuseOptions = {
+    includeScore: false,
+    keys: ['name', 'description']
+  }
+  const fuse = new Fuse(TOOLS, fuseOptions)
+  function handleOnchangeInput(e: ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target
+    setQuery(value)
+    if (value.length) {
+      const result = fuse.search(value)
+      setSearchResult(result.map(item => item.item))
+    } else {
+      setSearchResult(TOOLS)
+    }
+  }
+  const toolsToShow = query
+    ? searchResult
+    : sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!).filter(tool =>
+        mapFilterToTool(filter, tool, favoriteToolSlugs)
+      )
+
   return (
-    <div
-      className={cn(props.className, 'sidebar border-r')}
-    >
+    <div className={cn(props.className, 'sidebar border-r')}>
       <div className={cn('flex h-full w-full flex-col')}>
         {/* Search */}
         <div className={cn('flex items-center gap-1 p-2.5 border-b')}>
-          <Input id="search" type="search" placeholder={'type to search tools...'} />
+          <Input
+            ref={inputRef}
+            autoComplete="off"
+            id="search"
+            type="search"
+            placeholder={'type to search tools...'}
+            value={query}
+            onChange={e => handleOnchangeInput(e)}
+          />
           <SideNavFilter filter={filter} setFilter={setFilter} />
         </div>
 
@@ -66,22 +99,34 @@ export default function SideNav(props: SideNavProps) {
           {/* Tools */}
           <div className="flex flex-col flex-1 min-h-0 gap-1 p-2 overflow-auto db-scrollbar">
             {!loading &&
-              sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!)
-                .filter(tool => mapFilterToTool(filter, tool, favoriteToolSlugs))
-                .map(tool => (
-                  <SideNavItem
-                    key={tool.slug}
-                    tool={tool}
-                    filter={filter}
-                    favoriteToolSlugs={favoriteToolSlugs}
-                    setFavoriteToolSlugs={setFavoriteToolSlugs}
-                  />
-                ))}
+              toolsToShow.map(tool => (
+                <SideNavItem
+                  key={tool.slug}
+                  tool={tool}
+                  filter={filter}
+                  favoriteToolSlugs={favoriteToolSlugs}
+                  setFavoriteToolSlugs={setFavoriteToolSlugs}
+                />
+              ))}
             {loading && (
               <LoadingIcon
                 className="w-6 h-6 m-auto opacity-50 animate-spin text-foreground"
                 aria-label="loading"
               />
+            )}
+            {query && !toolsToShow.length && (
+              <div className="flex flex-col items-center justify-center h-full gap-4">
+                <div className="text-foreground">No results found.</div>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    setQuery('')
+                    inputRef.current?.focus()
+                  }}
+                >
+                  Clear search
+                </Button>
+              </div>
             )}
           </div>
         </div>
