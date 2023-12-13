@@ -49,7 +49,7 @@ export default function SideNavItem(props: SideNavItemProps) {
   }
 
   return (
-    <Button variant="ghost" size="lg" className="py-2 h-fit" asChild>
+    <Button onClick={() => console.log('side item clicked')} variant="ghost" size="lg" className="py-2 h-fit" asChild>
       <Link
         ref={areSameUris(uriToUse, pathname) ? ref : undefined}
         href={uriToUse}

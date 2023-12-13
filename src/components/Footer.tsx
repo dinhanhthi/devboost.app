@@ -1,8 +1,16 @@
+import HideSidebarIcon from '../icons/HideSidebarIcon'
 import FooterLinksModals from './FooterLinksModals'
+import SimpleTooltip from './SimpleTooltip'
+import { Button } from './ui/Button'
 
 export default function Footer() {
   return (
-    <div className="z-10 flex items-center w-full gap-4 p-3 border-t">
+    <div className="z-10 flex items-center w-full p-3 border-t">
+      <SimpleTooltip text="Toggle sidebar">
+        <Button variant="ghost" size="icon">
+          <HideSidebarIcon className="w-5 h-5" />
+        </Button>
+      </SimpleTooltip>
       <FooterLinksModals />
       {/* <Link
         href="/page/get-more"

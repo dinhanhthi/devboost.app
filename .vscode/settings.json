@@ -26,5 +26,6 @@
     "**/out": true,
     "**/.open-next": true
   },
-  "editor.rulers": [100]
+  "editor.rulers": [100],
+  "workbench.tree.enableStickyScroll": true
 }
