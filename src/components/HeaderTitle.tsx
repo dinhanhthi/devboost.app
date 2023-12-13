@@ -69,7 +69,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
                 <DocumentHelpIcon className="w-5 h-5 opacity-70 group-hover:opacity-100" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="flex flex-col max-h-[95%] h-full max-w-[90%] sm:max-w-xl lg:max-w-3xl xl:max-w-4xl">
+            <DialogContent className="flex flex-col max-h-[min(700px,_95%)] h-full max-w-[90%] sm:max-w-xl lg:max-w-3xl xl:max-w-4xl">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2 text-xl text-primary">
                   <DocDuoToneIcon className="w-6 h-6" />
