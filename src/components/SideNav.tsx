@@ -11,12 +11,14 @@ import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
 import { Input } from './ui/Input'
+import LoadingIcon from '../icons/LoadingIcon'
 
 type SideNavProps = {
   className?: string
 }
 
 export default function SideNav(props: SideNavProps) {
+  const [loading, setLoading] = useState(true)
   const [favoriteToolSlugs, setFavoriteToolSlugs] = useLocalStorage<Configs['favoriteToolSlugs']>(
     CONFIG_KEYS.favoriteToolSlugs,
     DEFAULT_C0NFIGS.favoriteToolSlugs
@@ -33,6 +35,7 @@ export default function SideNav(props: SideNavProps) {
   useEffect(() => {
     const newUsageFrequency = window.localStorage.getItem('usageFrequency')
     if (newUsageFrequency) setUsageFrequency(JSON.parse(newUsageFrequency))
+    setLoading(false)
   }, [])
 
   return (
@@ -60,7 +63,7 @@ export default function SideNav(props: SideNavProps) {
 
           {/* Tools */}
           <div className="flex flex-col flex-1 min-h-0 gap-1 p-2 overflow-auto db-scrollbar">
-            {sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!)
+            {!loading && sortTools(TOOLS, filter, favoriteToolSlugs, usageFrequency!)
               .filter(tool => mapFilterToTool(filter, tool, favoriteToolSlugs))
               .map(tool => (
                 <SideNavItem
@@ -71,6 +74,9 @@ export default function SideNav(props: SideNavProps) {
                   setFavoriteToolSlugs={setFavoriteToolSlugs}
                 />
               ))}
+            {loading && (
+              <LoadingIcon className="w-6 h-6 m-auto opacity-50 animate-spin text-foreground" aria-label="loading" />
+            )}
           </div>
         </div>
       </div>
