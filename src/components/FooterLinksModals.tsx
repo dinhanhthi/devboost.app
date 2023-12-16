@@ -48,7 +48,7 @@ export default function FooterLinksModals() {
               <span className="text-sm">{link.name}</span>
             </Button>
           </DialogTrigger>
-          <DialogContent className="flex flex-col max-h-[95%] h-full max-w-[90%] sm:max-w-xl lg:max-w-3xl xl:max-w-4xl">
+          <DialogContent className="flex flex-col h-full max-h-[min(700px,_95%)] sm:max-w-xl lg:max-w-3xl xl:max-w-4xl">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-xl text-primary">
                 {cloneElement(link.icon!, { className: 'w-6 h-6' })}

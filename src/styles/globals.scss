@@ -71,14 +71,27 @@
     @apply underline underline-offset-4 hover:text-sky-600 dark:hover:text-white;
   }
 
+  .db-prose-p, .db-prose-pre, .db-prose-ol, .db-prose-ul {
+    @apply my-4;
+  }
+
+  .db-prose-headings {
+    @apply mt-5 mb-4;
+  }
+
   .db-prose {
-    @apply prose max-w-none text-foreground dark:prose-invert;
+    @apply prose leading-6 max-w-none text-foreground dark:prose-invert;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
     @apply prose-h3:text-lg;
     @apply prose-a:db-prose-a;
     @apply prose-strong:font-semibold;
+    @apply prose-p:db-prose-p;
+    @apply prose-pre:db-prose-pre;
+    @apply prose-headings:db-prose-headings;
+    @apply prose-ol:db-prose-ol;
+    @apply prose-ul:db-prose-ul;
 
     > *:first-child {
       margin-top: 0;
