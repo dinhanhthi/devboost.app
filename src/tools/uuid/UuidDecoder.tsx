@@ -63,6 +63,7 @@ export default function UuidDecoder() {
           onClick={handleDecodeClicked}
           disabled={!originalValue}
           loading={isDecoding}
+          star={true}
         />
 
         <div className="flex flex-row items-center gap-3">

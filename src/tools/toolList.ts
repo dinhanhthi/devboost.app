@@ -64,8 +64,7 @@ const originalTools: Tool[] = [
     slug: 'base64-string-encode-decode',
     name: 'Base64 String Encoder/Decoder',
     iconEl: SixtyFour({ className: 'text-xs' }),
-    implemented: true,
-    docFile: 'base64-string.md'
+    implemented: true
   },
   {
     slug: 'json-formatter',
@@ -128,8 +127,7 @@ const originalTools: Tool[] = [
     description:
       'Generate UUID (Universally unique identifier) with different versions 1, 3, 4, 5. You can also validate, decode or format UUID.',
     iconEl: Uuid({ className: commonIconClass }),
-    implemented: true,
-    docFile: 'uuid.md'
+    implemented: true
   },
   {
     slug: 'html-preview',
@@ -202,8 +200,7 @@ const originalTools: Tool[] = [
     description:
       'Generate Nano ID. You can also generate Nano ID with custom alphabet and a given size of the ID.',
     iconEl: NanoIdIcon({ className: 'text-xl' }),
-    implemented: true,
-    docFile: 'nanoid.md'
+    implemented: true
   },
   {
     slug: 'ulid-generator',
@@ -211,8 +208,7 @@ const originalTools: Tool[] = [
     description:
       'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
     iconEl: ULIDIcon({ className: 'text-[0.65rem]' }),
-    implemented: true,
-    docFile: 'ulid.md'
+    implemented: true
   },
   {
     slug: 'objectid-generator',
@@ -230,7 +226,6 @@ const originalTools: Tool[] = [
     description: 'Quickly validate your OpenAI key to see if you can use it for OpenAI APIs.',
     iconEl: OpenAiIcon({ className: commonIconClass }),
     implemented: true
-    // docFile: 'openai-key-validator.md'
   },
   {
     slug: 'notion-api-playground',

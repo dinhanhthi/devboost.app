@@ -3,33 +3,15 @@
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
-import { Pencil1Icon } from '@radix-ui/react-icons'
-import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
 import { kanit } from '../app/fonts'
-import DocDuoToneIcon from '../icons/DocDuaToneIcon'
-import DocumentHelpIcon from '../icons/DocumentHelpIcon'
-import LoadingIcon from '../icons/LoadingIcon'
 import { Tool } from '../interface'
 import { TOOLS, allToolItem } from '../tools/toolList'
-import { MarkdownComponents } from './MarkdownComponents'
-import SimpleTooltip from './SimpleTooltip'
-import { Button } from './ui/Button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from './ui/Dialog'
 
 type HeaderTitleProps = {
   className?: string
 }
 
 export default function HeaderTitle(props: HeaderTitleProps) {
-  const [docContent, setDocContent] = useState<string | undefined>(undefined)
   const pathname = usePathname()
   const unknownTool: Tool = { name: '404', slug: '/' }
   const tool =
@@ -38,19 +20,9 @@ export default function HeaderTitle(props: HeaderTitleProps) {
       : TOOLS.find(tool => tool.slug === pathname.split('/tool/')[1]?.replace(/^\/+|\/+$/g, '')) ||
         unknownTool
 
-  const handleOpenDocClicked = async () => {
-    if (!tool.docFile) return
-    await fetch(`/docs/tools/${tool.docFile}`)
-      .then(res => res.text())
-      .then(text => {
-        setDocContent(text)
-      })
-  }
-
   return (
     <>
       <div className={cn(props.className, 'flex gap-2 items-center justify-center')}>
-        {/* Title */}
         <div className="">
           <h1
             className={cn(
@@ -61,54 +33,6 @@ export default function HeaderTitle(props: HeaderTitleProps) {
             {tool.name}
           </h1>
         </div>
-        {/* Tool Doc */}
-        {(tool.docFile || tool.description) && (
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button onClick={handleOpenDocClicked} variant="ghost" size="icon" className="group">
-                <DocumentHelpIcon className="w-5 h-5 opacity-70 group-hover:opacity-100" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="flex flex-col max-h-[min(700px,_95%)] h-full max-w-[90%] sm:max-w-xl lg:max-w-3xl xl:max-w-4xl">
-              <DialogHeader>
-                <DialogTitle className="flex items-center gap-2 text-xl text-primary">
-                  <DocDuoToneIcon className="w-6 h-6" />
-                  {tool.name}
-                  <SimpleTooltip text="Improve this document">
-                    <Button variant="ghost" size="icon" className="group" asChild>
-                      <a
-                        target="_blank"
-                        href={`https://github.com/dinhanhthi/devboost.app/edit/main/public/docs/tools/${tool.docFile}`}
-                      >
-                        <Pencil1Icon className="w-5 h-5 opacity-70 group-hover:opacity-100" />
-                      </a>
-                    </Button>
-                  </SimpleTooltip>
-                </DialogTitle>
-                {tool.description && <DialogDescription>{tool.description}</DialogDescription>}
-              </DialogHeader>
-              <div className="flex-1 min-h-0 pt-0 overflow-hidden">
-                <div className="h-full overflow-auto db-prose db-scrollbar">
-                  {docContent && (
-                    <ReactMarkdown components={MarkdownComponents}>{docContent}</ReactMarkdown>
-                  )}
-                  {!docContent && tool.docFile && (
-                    <div className="flex items-center justify-center w-full h-full">
-                      <div className="animate-spin">
-                        <LoadingIcon className="w-10 h-10 text-primary" />
-                      </div>
-                    </div>
-                  )}
-                  {!tool.docFile && (
-                    <div className="flex items-center justify-center w-full h-full">
-                      <p className="text-base text-white">This tool has no document.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-        )}
       </div>
     </>
   )

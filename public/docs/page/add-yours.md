@@ -32,6 +32,6 @@ Place the test files in the folder `__tests__` of each tool. The name of each te
 
 1. Choose a logo for that tool, in `svg` format. I recommend to use [this site](https://icones.js.org/collection/all). Copy the svg codes and create a new file in `src/icons/`. Make sure you follow the same structure like the others. If you use the site I recommend, just click an icon and then click "React TS" under "Components" to copy the svg codes and paste it in the file you just created.
 2. Create a component in `src/tools/<group>/NameOfTool.tsx`. Just take a look at one of existing tool and make a copy.
-3. Add the document for that tool in `public/docs/NameOfTool.md`.
-4. Add the information of the tool in `src/tools/toolList.tsx`.
-5. For our styles, we leverage [shadcn/ui](https://ui.shadcn.com) and [Radix UI](https://radix-ui.com). Our custom color scheme is located in `src/styles/globals.scss`. It's important to note that these custom colors aren't part of [the default sets](https://ui.shadcn.com/themes) provided by shadcn/ui. If you encounter any inconsistencies in styles, please don't hesitate to [initiate a discussion](https://github.com/dinhanhthi/devboost.app/issues) on GitHub.
+3. Add the information of the tool in `src/tools/toolList.tsx`.
+4. For our styles, we leverage [shadcn/ui](https://ui.shadcn.com) and [Radix UI](https://radix-ui.com). Our custom color scheme is located in `src/styles/globals.scss`. It's important to note that these custom colors aren't part of [the default sets](https://ui.shadcn.com/themes) provided by shadcn/ui. If you encounter any inconsistencies in styles, please don't hesitate to [initiate a discussion](https://github.com/dinhanhthi/devboost.app/issues) on GitHub.
+5. (Optional) Writing tests.

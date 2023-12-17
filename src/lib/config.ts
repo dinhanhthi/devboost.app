@@ -23,7 +23,7 @@ export const FOOTER_LINKS: FooterLink[] = [
   },
   {
     name: 'Add yours',
-    docFile: 'how-to-contribute.md',
+    docFile: 'add-yours.md',
     icon: AddIcon({})
   },
   {
@@ -33,7 +33,7 @@ export const FOOTER_LINKS: FooterLink[] = [
   },
   {
     name: 'I found a bug',
-    docFile: 'bug-tracker.md',
+    docFile: 'i-found-a-bug.md',
     icon: IoIosBug({})
   },
   {
