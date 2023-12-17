@@ -63,7 +63,7 @@ function getToolComponent(slug: string) {
     case 'nano-id-generator':
       return <NanoIdGenerator />
 
-    case 'base64-string-encode-decode':
+    case 'base64-string':
       return <Base64String />
 
     default:

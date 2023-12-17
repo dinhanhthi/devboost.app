@@ -61,7 +61,7 @@ const originalTools: Tool[] = [
     iconEl: CompareDocIcon({ className: 'text-2xl' })
   },
   {
-    slug: 'base64-string-encode-decode',
+    slug: 'base64-string',
     name: 'Base64 String Encoder/Decoder',
     iconEl: SixtyFour({ className: 'text-xs' }),
     implemented: true

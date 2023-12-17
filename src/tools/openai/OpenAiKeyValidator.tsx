@@ -36,6 +36,7 @@ export default function OpenAiKeyValidator() {
   const handleValidateClicked = async () => {
     setIsChecking(true)
     try {
+      // https://platform.openai.com/docs/api-reference/models/list
       const response = await fetch('https://api.openai.com/v1/models', {
         headers: {
           Authorization: `Bearer ${apiKeyInputValue}`
