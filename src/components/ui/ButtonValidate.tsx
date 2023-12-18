@@ -14,10 +14,10 @@ export default function ButtonValidate(props: ButtonValidateProps) {
     <Button onClick={props.onClick} disabled={props.disabled}>
       {props.loading && (
         <div className="animate-spin">
-          <LoadingIcon className="w-4 h-4" />
+          <LoadingIcon className="w-3.5 h-3.5" />
         </div>
       )}
-      {!props.loading && <FiSearch className="w-4 h-4" />}
+      {!props.loading && <FiSearch className="w-3.5 h-3.5" />}
       <span className="ml-1.5">Validate{props.star && '*'}</span>
     </Button>
   )

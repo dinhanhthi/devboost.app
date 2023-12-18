@@ -15,10 +15,10 @@ export default function ButtonDecode(props: ButtonDecodeProps) {
     <Button onClick={props.onClick} disabled={props.disabled}>
       {props.loading && (
         <div className="animate-spin">
-          <LoadingIcon className="w-4 h-4" />
+          <LoadingIcon className="w-3.5 h-3.5" />
         </div>
       )}
-      {!props.loading && <FaMagic className="w-4 h-4" />}
+      {!props.loading && <FaMagic className="w-3.5 h-3.5" />}
       <span className="ml-1.5">Decode{props.star && '*'}</span>
     </Button>
   )

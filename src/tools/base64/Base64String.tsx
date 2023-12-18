@@ -8,9 +8,9 @@ import ButtonCopy from '../../components/ui/ButtonCopy'
 import ButtonDecode from '../../components/ui/ButtonDecode'
 import ButtonEncode from '../../components/ui/ButtonEncode'
 import ButtonSample from '../../components/ui/ButtonSample'
+import ButtonUpload from '../../components/ui/ButtonUpload'
 import { Textarea } from '../../components/ui/Textarea'
 import TurnLeftIcon from '../../icons/TurnLeftIcon'
-import ButtonUpload from '../../components/ui/ButtonUpload'
 
 export default function Base64String() {
   const inputRef = useRef<HTMLTextAreaElement>(null)
@@ -112,10 +112,13 @@ export default function Base64String() {
         return
       }
       const reader = new FileReader()
+      setOutputValue('')
       reader.onload = () => {
         const text = reader.result
         setInputValue(text as string)
-        setOutputValue('')
+      }
+      reader.onerror = e => {
+        setInputValue(`Error: ${e}`)
       }
       reader.readAsText(file)
     }
@@ -123,20 +126,16 @@ export default function Base64String() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full gap-4">
+    <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
       {/* Input */}
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="font-medium">Input</div>
-          <div className="flex flex-row items-center gap-3">
-            <ButtonEncode onClick={handleEncodeClicked} disabled={!inputValue} />
-            <ButtonDecode onClick={handleDecodeClicked} disabled={!inputValue} />
-          </div>
-          <div className="flex flex-row items-center gap-3">
-            <ButtonUpload onClick={handleUploadFile} />
-            <ButtonClipboard handleClipText={handleClipText} />
-            <ButtonSample onClick={handleSampleClicked} />
-          </div>
+          <ButtonEncode onClick={handleEncodeClicked} disabled={!inputValue} />
+          <ButtonDecode onClick={handleDecodeClicked} disabled={!inputValue} />
+          <ButtonUpload onClick={handleUploadFile} />
+          <ButtonClipboard handleClipText={handleClipText} />
+          <ButtonSample onClick={handleSampleClicked} />
           <ButtonClear onClick={handleClearClicked} disabled={!inputValue} />
         </div>
         <div className="flex-1 min-h-0">
@@ -146,14 +145,16 @@ export default function Base64String() {
             value={inputValue}
             onChange={handleOnChangeInput}
             onDrop={handleOnDrop}
-            placeholder="Type anything or you can drag and drop a file here..."
+            placeholder={
+              'Type anything / you can drag and drop a file here / Click "Upload" button to upload a file...'
+            }
           />
         </div>
       </div>
 
       {/* Output */}
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="font-medium">Output</div>
           <ButtonCopy text={outputValue} />
           <Button onClick={handleUseAsInputClicked} variant="outline" disabled={!outputValue}>

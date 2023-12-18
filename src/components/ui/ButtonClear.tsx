@@ -8,8 +8,8 @@ type ButtonClearProps = {
 
 export default function ButtonClear(props: ButtonClearProps) {
   return (
-    <Button className='!bg-white' variant="outline" onClick={props.onClick} disabled={props.disabled}>
-      <CleanIcon className="w-4 h-4 mr-1.5" />
+    <Button variant="outline" onClick={props.onClick} disabled={props.disabled}>
+      <CleanIcon className="w-3.5 h-3.5 mr-1.5" />
       Clear
     </Button>
   )

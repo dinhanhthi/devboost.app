@@ -15,7 +15,7 @@ export default function ButtonClipboard(props: ButtonClipboardProps) {
 
   return (
     <Button variant='outline' onClick={handleClipboardClicked} disabled={props.disabled}>
-      <ClipboardIcon className="w-4 h-4 mr-1.5" /> Clipboard
+      <ClipboardIcon className="w-3.5 h-3.5 mr-1.5" /> Clipboard
     </Button>
   )
 }

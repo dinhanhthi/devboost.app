@@ -70,10 +70,10 @@ export default function NavConfig() {
       </SimpleTooltip>
       <DropdownMenuContent>
         <DropdownMenuItem onClick={() => handleDownloadConfigs()}>
-          <DownloadIcon className="mr-1.5" /> Download configs
+          <DownloadIcon className="mr-1.5" /> Export configs
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleUploadConfigs()}>
-          <UploadIcon className="mr-1.5" /> Upload configs
+          <UploadIcon className="mr-1.5" /> Import configs
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

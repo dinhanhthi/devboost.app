@@ -87,14 +87,16 @@ const originalTools: Tool[] = [
     iconEl: OpenGraphIcon({ className: 'text-xs' })
   },
   {
-    slug: 'base64-image-converter',
-    name: 'Base64 Image Converter',
-    iconEl: SixtyFour({ className: 'text-xs' })
+    slug: 'base64-image',
+    name: 'Base64 Image Encoder/Decoder',
+    iconEl: SixtyFour({ className: 'text-xs' }),
+    implemented: true
   },
   {
-    slug: 'jwt-decoder',
-    name: 'JWT Decoder',
-    iconEl: JWTIcon({ className: 'text-xl' })
+    slug: 'jwt-encoder-decoder',
+    name: 'JWT Encoder/Decoder',
+    iconEl: JWTIcon({ className: 'text-xl' }),
+    implemented: true
   },
   {
     slug: 'regex-tester',

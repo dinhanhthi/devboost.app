@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import { Configs, Tool } from '../../../../interface'
 import { DEFAULT_C0NFIGS } from '../../../../lib/config'
+import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
@@ -65,6 +66,9 @@ function getToolComponent(slug: string) {
 
     case 'base64-string':
       return <Base64String />
+
+    case 'base64-image':
+      return <Base64Image />
 
     default:
       return null

@@ -148,7 +148,7 @@ export default function UuidGenerator() {
 
   return (
     <div className={cn('flex h-full flex-col gap-4')}>
-      <div className="flex flex-col flex-wrap justify-between gap-4">
+      <div className="flex flex-wrap justify-between gap-4">
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-6">
           <div className="flex flex-row items-center gap-3">
@@ -161,7 +161,7 @@ export default function UuidGenerator() {
               onClick={handleNilClicked}
               disabled={parseInt(recordsValue) > 500 || parseInt(recordsValue) < 1}
             >
-              <FaMagic className="w-4 h-4 mr-1.5" />
+              <FaMagic className="w-3.5 h-3.5 mr-1.5" />
               NIL
             </Button>
           </div>

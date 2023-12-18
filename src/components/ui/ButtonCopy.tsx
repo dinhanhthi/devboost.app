@@ -26,8 +26,8 @@ export default function ButtonCopy(props: ButtonCopyProps) {
       onClick={handleCopyClicked}
       disabled={!props.text || isCopied}
     >
-      {isCopied && <CheckIcon className="w-4 h-4 mr-1.5" />}
-      {!isCopied && <CopyIcon className="w-4 h-4 mr-1.5" />}
+      {isCopied && <CheckIcon className="w-3.5 h-3.5 mr-1.5" />}
+      {!isCopied && <CopyIcon className="w-3.5 h-3.5 mr-1.5" />}
       {isCopied ? 'Copied' : 'Copy'}
     </Button>
   )

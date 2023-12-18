@@ -4,7 +4,7 @@ No. We do not collect your data. Your information remains securely stored locall
 
 ## Can my configs be kept?
 
-Yes and no. Your configurations may persist depending on your browser settings. Changing or resetting your browser might clear saved configurations. To maintain settings permanently, remember to "Download configs" and "Upload configs" after making changes.
+Yes and no. Your configurations may persist depending on your browser settings. Changing or resetting your browser might clear saved configurations. To maintain settings permanently, remember to "Export configs" and "Import configs" after making changes.
 
 ## Are there all tools you have?
 
