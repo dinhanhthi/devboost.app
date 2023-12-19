@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 
-import Fuse from 'fuse.js'
+import Fuse, { FuseResult } from 'fuse.js'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import LoadingIcon from '../icons/LoadingIcon'
 import { Configs, SideNavFilterType, Tool } from '../interface'
@@ -12,8 +12,8 @@ import { TOOLS, allToolItem } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
-import { Input } from './ui/Input'
 import { Button } from './ui/Button'
+import { Input } from './ui/Input'
 
 type SideNavProps = {
   className?: string
@@ -44,9 +44,13 @@ export default function SideNav(props: SideNavProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [searchResult, setSearchResult] = useState<Tool[]>(TOOLS)
   const [query, setQuery] = useState('')
+  // https://www.fusejs.io/api/options.html#findallmatches
   const fuseOptions = {
     includeScore: false,
-    keys: ['name', 'description']
+    keys: ['name', 'description'],
+    includeMatches: true,
+    minMatchCharLength: 2,
+    threshold: 0.3
   }
   const fuse = new Fuse(TOOLS, fuseOptions)
   function handleOnchangeInput(e: ChangeEvent<HTMLInputElement>) {
@@ -54,7 +58,7 @@ export default function SideNav(props: SideNavProps) {
     setQuery(value)
     if (value.length) {
       const result = fuse.search(value)
-      setSearchResult(result.map(item => item.item))
+      setSearchResult(highlight(result))
     } else {
       setSearchResult(TOOLS)
     }
@@ -194,4 +198,41 @@ function sortTools(
     }
   }
   return tools
+}
+
+function highlight(result: FuseResult<Tool>[]): Tool[] {
+  return result.map(item => {
+    const { item: tool, matches } = item
+    if (!matches) return tool
+    const name = highlightMatches('name', tool.name, matches)
+    const description = highlightMatches('description', tool.description!, matches)
+    return { ...tool, name, description }
+  })
+}
+
+const highlightMatches = (
+  key: 'name' | 'description',
+  value: string,
+  matches: FuseResult<Tool>['matches']
+): string => {
+  if (!matches) return value
+  const match = matches.find(match => match.key === key)
+  if (!match) return value
+  const { indices } = match
+  if (!indices || !indices.length) return value
+  let newValue = value
+  let offset = 0
+  indices.forEach(([start, end]) => {
+    start += offset
+    newValue = insertStringAt(newValue, start, '<span class="fuse-highlight">')
+    offset += '<span class="fuse-highlight">'.length
+    end += offset + 1
+    newValue = insertStringAt(newValue, end, '</span>')
+    offset += '</span>'.length
+  })
+  return newValue
+}
+
+function insertStringAt(str: string, index: number, insertString: string) {
+  return str.slice(0, index) + insertString + str.slice(index)
 }

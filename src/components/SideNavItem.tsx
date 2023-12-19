@@ -49,7 +49,13 @@ export default function SideNavItem(props: SideNavItemProps) {
   }
 
   return (
-    <Button onClick={() => console.log('side item clicked')} variant="ghost" size="lg" className="py-2 h-fit" asChild>
+    <Button
+      onClick={() => console.log('side item clicked')}
+      variant="ghost"
+      size="lg"
+      className="py-2 h-fit"
+      asChild
+    >
       <Link
         ref={areSameUris(uriToUse, pathname) ? ref : undefined}
         href={uriToUse}
@@ -63,11 +69,12 @@ export default function SideNavItem(props: SideNavItemProps) {
         <div className="flex items-center w-full gap-2">
           <div className="flex items-center w-6">{tool.iconEl}</div>
           <div className="flex flex-col flex-1 min-w-0">
-            <div className="font-medium">{tool.name}</div>
+            <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
             {props.filter?.showDescription && (
-              <div className="w-full text-xs italic whitespace-break-spaces line-clamp-3 opacity-80">
-                {tool.description}
-              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: tool.description! }}
+                className="w-full text-xs italic whitespace-break-spaces line-clamp-3 opacity-80"
+              ></div>
             )}
           </div>
           <div>{rightElement}</div>

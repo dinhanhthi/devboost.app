@@ -97,6 +97,10 @@
       margin-top: 0;
     }
   }
+
+  .fuse-highlight {
+    @apply text-warning;
+  }
 }
 
 .prose,
