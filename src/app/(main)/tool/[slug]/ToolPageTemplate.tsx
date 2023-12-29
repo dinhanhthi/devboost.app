@@ -7,6 +7,7 @@ import { Configs, Tool } from '../../../../interface'
 import { DEFAULT_C0NFIGS } from '../../../../lib/config'
 import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
+import Jwt from '../../../../tools/jwt/Jwt'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
@@ -69,6 +70,9 @@ function getToolComponent(slug: string) {
 
     case 'base64-image':
       return <Base64Image />
+
+    case 'jwt-encoder-decoder':
+      return <Jwt />
 
     default:
       return null

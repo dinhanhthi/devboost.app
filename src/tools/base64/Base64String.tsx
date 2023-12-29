@@ -128,7 +128,7 @@ export default function Base64String() {
   return (
     <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
       {/* Input */}
-      <div className="flex flex-col flex-1 gap-4">
+      <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
         <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="font-medium">Input</div>
           <ButtonEncode onClick={handleEncodeClicked} disabled={!inputValue} />
@@ -140,7 +140,7 @@ export default function Base64String() {
         </div>
         <div className="flex-1 min-h-0">
           <Textarea
-            className="h-full db-scrollbar"
+            className="h-full max-h-full resize-none db-scrollbar"
             ref={inputRef}
             value={inputValue}
             onChange={handleOnChangeInput}
@@ -153,7 +153,7 @@ export default function Base64String() {
       </div>
 
       {/* Output */}
-      <div className="flex flex-col flex-1 gap-4">
+      <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
         <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="font-medium">Output</div>
           <ButtonCopy text={outputValue} />
@@ -164,7 +164,7 @@ export default function Base64String() {
         </div>
         <div className="flex-1 min-h-0">
           <Textarea
-            className="h-full db-scrollbar"
+            className="h-full max-h-full resize-none db-scrollbar"
             ref={outputRef}
             value={outputValue}
             onChange={handleOnChangeOutput}

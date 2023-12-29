@@ -110,6 +110,7 @@ export default function SideNav(props: SideNavProps) {
                   filter={filter}
                   favoriteToolSlugs={favoriteToolSlugs}
                   setFavoriteToolSlugs={setFavoriteToolSlugs}
+                  forceToShowDescription={!!query}
                 />
               ))}
             {loading && (

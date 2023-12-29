@@ -19,6 +19,7 @@ type SideNavItemProps = {
   rightElement?: React.ReactNode
   hideFavorite?: boolean
   filter?: SideNavFilterType
+  forceToShowDescription?: boolean
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
@@ -70,7 +71,7 @@ export default function SideNavItem(props: SideNavItemProps) {
           <div className="flex items-center w-6">{tool.iconEl}</div>
           <div className="flex flex-col flex-1 min-w-0">
             <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
-            {props.filter?.showDescription && (
+            {(props.filter?.showDescription || props.forceToShowDescription) && (
               <div
                 dangerouslySetInnerHTML={{ __html: tool.description! }}
                 className="w-full text-xs italic whitespace-break-spaces line-clamp-3 opacity-80"

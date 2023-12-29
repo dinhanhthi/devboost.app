@@ -36,13 +36,13 @@ const originalTools: Tool[] = [
     slug: 'check-your-api',
     name: 'Check Your API',
     description:
-      "Quickly check your API's response. No need to write code. You can also save your API for later use.",
+      "Quickly check your API's response. No need to write code. Save your API for later use.",
     iconEl: ApiIcon({ className: commonIconClass })
   },
   {
-    slug: 'check-version',
-    name: 'Check Latest Version',
-    description: 'Quickly check the latest version of any package.',
+    slug: 'check-npm-version',
+    name: 'Check Latest NPM Package Version',
+    description: 'Quickly check the latest version of any npm / yarn package.',
     iconEl: PackageUpdateICon({ className: 'text-2xl' })
   },
   {
@@ -63,6 +63,14 @@ const originalTools: Tool[] = [
   {
     slug: 'base64-string',
     name: 'Base64 String Encoder/Decoder',
+    description: 'Convert string to base64 and base64 to string.',
+    iconEl: SixtyFour({ className: 'text-xs' }),
+    implemented: true
+  },
+  {
+    slug: 'base64-image',
+    name: 'Base64 Image Encoder/Decoder',
+    description: 'Convert image to base64 and base64 to image.',
     iconEl: SixtyFour({ className: 'text-xs' }),
     implemented: true
   },
@@ -87,14 +95,9 @@ const originalTools: Tool[] = [
     iconEl: OpenGraphIcon({ className: 'text-xs' })
   },
   {
-    slug: 'base64-image',
-    name: 'Base64 Image Encoder/Decoder',
-    iconEl: SixtyFour({ className: 'text-xs' }),
-    implemented: true
-  },
-  {
     slug: 'jwt-encoder-decoder',
     name: 'JWT Encoder/Decoder',
+    description: 'Encode and decode JSON Web Token.',
     iconEl: JWTIcon({ className: 'text-xl' }),
     implemented: true
   },
@@ -127,7 +130,7 @@ const originalTools: Tool[] = [
     slug: 'uuid-generator-decoder',
     name: 'UUID Generator/Decoder',
     description:
-      'Generate UUID (Universally unique identifier) with different versions 1, 3, 4, 5. You can also validate, decode or format UUID.',
+      'Generate Universally unique identifier with different versions 1, 3, 4, 5. Also validate, decode or format UUID.',
     iconEl: Uuid({ className: commonIconClass }),
     implemented: true
   },
@@ -200,7 +203,7 @@ const originalTools: Tool[] = [
     slug: 'nano-id-generator',
     name: 'Nano ID Generator',
     description:
-      'Generate Nano ID. You can also generate Nano ID with custom alphabet and a given size of the ID.',
+      'Generate Nano ID. Generate Nano ID with custom alphabet and a given size of the ID.',
     iconEl: NanoIdIcon({ className: 'text-xl' }),
     implemented: true
   },
@@ -208,7 +211,7 @@ const originalTools: Tool[] = [
     slug: 'ulid-generator',
     name: 'ULID Generator',
     description:
-      'Generate ULID (Universally Unique Lexicographically Sortable Identifier). You can also extract timestamp from ULID and validate an ULID.',
+      'Generate Universally Unique Lexicographically Sortable Identifier. Extract timestamp from ULID and validate an ULID.',
     iconEl: ULIDIcon({ className: 'text-[0.65rem]' }),
     implemented: true
   },

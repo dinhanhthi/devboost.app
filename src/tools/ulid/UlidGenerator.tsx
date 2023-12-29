@@ -93,7 +93,7 @@ export default function UlidGenerator() {
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
           placeholder='Click "Generate" button to generate ULIDs...'
-          className={cn('h-full w-full text-base db-scrollbar')}
+          className="w-full h-full text-base resize-none db-scrollbar"
         />
       </div>
     </div>

@@ -180,7 +180,7 @@ export default function UuidGenerator() {
             onValueChange={handleSelectVersionsChange}
             name="version-selection"
           >
-            <SelectTrigger data-testid="select-button-version" className="w-[280px]">
+            <SelectTrigger data-testid="select-button-version" className="w-[280px] h-8">
               <SelectValue placeholder="Select a version" />
             </SelectTrigger>
             <SelectContent>
@@ -200,7 +200,7 @@ export default function UuidGenerator() {
             placeholder="max 500"
             min={1}
             max={500}
-            className={cn('w-28')}
+            className={cn('w-28 h-8')}
           />
         </div>
       </div>
@@ -220,7 +220,7 @@ export default function UuidGenerator() {
                 onChange={event => setNamespaceValue(event.target.value)}
                 type="text"
                 placeholder="6ba7b810-9dad-11d1-80b4-00c04fd430c8"
-                className={cn('flex-1 py-2')}
+                className={cn('flex-1 py-2 h-8')}
               />
               <Button variant="secondary" onClick={handleNamespaceClicked('dns')}>
                 ns:DNS
@@ -259,7 +259,7 @@ export default function UuidGenerator() {
       {/* textarea */}
       <div className="flex-1 min-h-0">
         <Textarea
-          className='h-full db-scrollbar'
+          className='h-full resize-none db-scrollbar'
           ref={textareaRef}
           value={textareaValue}
           onChange={handleTextareaChange}

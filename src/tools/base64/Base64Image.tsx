@@ -171,7 +171,7 @@ export default function Base64Image() {
   return (
     <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
       {/* Image */}
-      <div className="flex flex-col flex-1 gap-4">
+      <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
         <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="font-medium">Image</div>
           <ButtonUpload onClick={handleUploadFile} />
@@ -193,7 +193,7 @@ export default function Base64Image() {
               </span>
             )}
             {preview && !imageError && (
-              <div className="flex items-center justify-center p-8">
+              <div className="flex items-center justify-center h-full p-8">
                 <img src={preview} alt="Preview" style={{ maxWidth: '100%', maxHeight: '100%' }} />
               </div>
             )}
@@ -216,7 +216,7 @@ export default function Base64Image() {
         <div className="flex-1 min-h-0">
           <Textarea
             onPaste={handleOnPastString}
-            className="h-full db-scrollbar"
+            className="h-full max-h-full resize-none db-scrollbar"
             ref={stringInputRef}
             value={stringValue}
             onChange={handleOnChangeStringInput}
