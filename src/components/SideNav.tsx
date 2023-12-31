@@ -50,7 +50,7 @@ export default function SideNav(props: SideNavProps) {
     keys: ['name', 'description'],
     includeMatches: true,
     minMatchCharLength: 2,
-    threshold: 0.3
+    threshold: 0.6 // 0.0 requires a perfect match, 1.0 would match anything
   }
   const fuse = new Fuse(TOOLS, fuseOptions)
   function handleOnchangeInput(e: ChangeEvent<HTMLInputElement>) {

@@ -1,6 +1,17 @@
-import { CheckCircledIcon, Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons'
-import * as jose from 'jose'
+import { CheckCircledIcon, Cross2Icon } from '@radix-ui/react-icons'
+
+import {
+  KeyLike,
+  SignJWT,
+  decodeJwt,
+  decodeProtectedHeader,
+  importJWK,
+  importPKCS8,
+  importSPKI,
+  jwtVerify
+} from 'jose'
 import { useRef, useState } from 'react'
+import MoreInformation from '../../components/MoreInformation'
 import SimpleTooltip from '../../components/SimpleTooltip'
 import { Button } from '../../components/ui/Button'
 import ButtonClear from '../../components/ui/ButtonClear'
@@ -208,7 +219,7 @@ export default function Jwt() {
 
   async function parseHeader(jwt: string) {
     try {
-      const protectedHeader = jose.decodeProtectedHeader(jwt)
+      const protectedHeader = decodeProtectedHeader(jwt)
       setHeaderInputValue(JSON.stringify(protectedHeader, null, 2))
     } catch (error) {
       setHeaderInputValue('{}')
@@ -217,7 +228,7 @@ export default function Jwt() {
 
   async function parsePayload(jwt: string) {
     try {
-      const claims = jose.decodeJwt(jwt)
+      const claims = decodeJwt(jwt)
       setPayloadInputValue(JSON.stringify(claims, null, 2))
     } catch (error) {
       setPayloadInputValue('{}')
@@ -234,11 +245,11 @@ export default function Jwt() {
     try {
       if (algo.startsWith('HS')) {
         const secret = new TextEncoder().encode(secretVal)
-        await jose.jwtVerify(jwt, secret)
+        await jwtVerify(jwt, secret)
         setIsSignatureVerified(true)
       } else {
-        const publicKey = await jose.importSPKI(publicKeyVal, algo)
-        await jose.jwtVerify(jwt, publicKey)
+        const publicKey = await importSPKI(publicKeyVal, algo)
+        await jwtVerify(jwt, publicKey)
         setIsSignatureVerified(true)
       }
     } catch (error) {
@@ -294,20 +305,20 @@ export default function Jwt() {
       const alg = headerObj?.alg
       if (!alg) throw new Error('Invalid header')
       const payloadObj = JSON.parse(payload)
-      let privateKey: jose.KeyLike | Uint8Array
+      let privateKey: KeyLike | Uint8Array
       // PKCS#8
       try {
-        privateKey = await jose.importPKCS8(key, alg)
+        privateKey = await importPKCS8(key, alg)
       } catch (err) {
         // JWK String format
         try {
           const jwk = JSON.parse(key)
-          privateKey = await jose.importJWK(jwk, alg)
+          privateKey = await importJWK(jwk, alg)
         } catch (e) {
           throw new Error('Invalid key')
         }
       }
-      const jwt = await new jose.SignJWT(payloadObj).setProtectedHeader(headerObj).sign(privateKey)
+      const jwt = await new SignJWT(payloadObj).setProtectedHeader(headerObj).sign(privateKey)
       return jwt
     } catch (err) {
       setIsSignatureVerified(false)
@@ -325,7 +336,7 @@ export default function Jwt() {
       const headerObj = JSON.parse(header)
       const payloadObj = JSON.parse(payload)
       const secret = new TextEncoder().encode(key)
-      const jwt = await new jose.SignJWT(payloadObj).setProtectedHeader(headerObj).sign(secret)
+      const jwt = await new SignJWT(payloadObj).setProtectedHeader(headerObj).sign(secret)
       return jwt
     } catch (err) {
       setIsSignatureVerified(false)
@@ -464,12 +475,10 @@ export default function Jwt() {
               />
             </div>
           </div>
-          <div className="flex flex-col flex-1 gap-3">
+          <div className="flex flex-col justify-center flex-1 gap-3">
             <div className="flex items-center font-medium">
               Verify Signature
-              <SimpleTooltip text={'Click "Sample" button to load the sample data.'}>
-                <InfoCircledIcon className="w-4 h-4 ml-1.5" />
-              </SimpleTooltip>
+              <MoreInformation text='Click "Sample" button to load the sample data.' />
             </div>
             <div className="flex-1 min-h-0 text-sm">
               <div className="flex flex-col w-full h-full gap-2 p-3 overflow-auto font-mono border bg-accent">
