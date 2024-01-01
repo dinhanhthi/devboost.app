@@ -217,8 +217,11 @@ const originalTools: Tool[] = [
   },
   {
     slug: 'objectid-generator',
-    name: 'ObjectID Generator',
-    iconEl: MongoDBIcon({ className: commonIconClass })
+    name: 'ObjectID Generator/Converter',
+    description:
+      'Generate MongoDB ObjectID. You can convert ObjectID to timestamp (timestamp converter).',
+    iconEl: MongoDBIcon({ className: commonIconClass }),
+    implemented: true
   },
   {
     slug: 'tokenizer',

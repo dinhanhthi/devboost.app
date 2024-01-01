@@ -9,6 +9,7 @@ import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
 import Jwt from '../../../../tools/jwt/Jwt'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
+import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
@@ -73,6 +74,9 @@ function getToolComponent(slug: string) {
 
     case 'jwt-encoder-decoder':
       return <Jwt />
+
+    case 'objectid-generator':
+      return <ObjectIdComponent />
 
     default:
       return null
