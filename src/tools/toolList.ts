@@ -87,7 +87,9 @@ const originalTools: Tool[] = [
   {
     slug: 'json-sorter',
     name: 'JSON Sorter',
-    iconEl: TbJson({ className: commonIconClass })
+    description: 'Sort JSON by key or value.',
+    iconEl: TbJson({ className: commonIconClass }),
+    implemented: true
   },
   {
     slug: 'open-graph-preview',

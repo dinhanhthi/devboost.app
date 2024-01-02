@@ -7,6 +7,7 @@ import { Configs, Tool } from '../../../../interface'
 import { DEFAULT_C0NFIGS } from '../../../../lib/config'
 import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
+import JsonSorter from '../../../../tools/json/JsonSorter'
 import Jwt from '../../../../tools/jwt/Jwt'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
@@ -77,6 +78,9 @@ function getToolComponent(slug: string) {
 
     case 'objectid-generator':
       return <ObjectIdComponent />
+
+    case 'json-sorter':
+      return <JsonSorter />
 
     default:
       return null

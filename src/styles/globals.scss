@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -52,11 +51,10 @@
     --ring: 212.7 26.8% 83.9;
     --radius: 0.5rem;
     --warning: 43 96.4% 56.3%; // amber-400
-    --success: 142 76.6% 73.1%;// green-300
+    --success: 142 76.6% 73.1%; // green-300
     --danger: 0 90.6% 70.8%; // red-400
   }
 }
-
 
 @layer base {
   .db-prose-code {
@@ -71,16 +69,19 @@
     @apply underline underline-offset-4 hover:text-sky-600 dark:hover:text-white;
   }
 
-  .db-prose-p, .db-prose-pre, .db-prose-ol, .db-prose-ul {
+  .db-prose-p,
+  .db-prose-pre,
+  .db-prose-ol,
+  .db-prose-ul {
     @apply my-4;
   }
 
   .db-prose-headings {
-    @apply mt-5 mb-4;
+    @apply mb-4 mt-5;
   }
 
   .db-prose {
-    @apply prose leading-6 max-w-none text-foreground dark:prose-invert;
+    @apply prose max-w-none leading-6 text-foreground dark:prose-invert;
     @apply prose-code:db-prose-code;
     @apply prose-headings:mt-6;
     @apply prose-h2:db-prose-h2;
@@ -100,6 +101,12 @@
 
   .fuse-highlight {
     @apply text-warning;
+  }
+}
+
+@layer components {
+  .db-code-mirror {
+    @apply h-full rounded-md border border-input shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
   }
 }
 
@@ -129,7 +136,16 @@
   }
 }
 
+.cm-theme-light .cm-editor {
+  background-color: #fff;
+}
+
+.cm-theme-dark .cm-editor {
+  background-color: #1C1F27;
+}
+
 .db-scrollbar,
+.cm-scroller, // for code mirror
 .prose code,
 .codeStyle,
 .prose pre {
@@ -151,6 +167,7 @@
 
 .light {
   .db-scrollbar,
+  .cm-scroller, // for code mirror
   .prose code,
   .codeStyle,
   .prose pre {
