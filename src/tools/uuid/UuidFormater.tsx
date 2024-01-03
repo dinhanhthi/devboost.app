@@ -56,11 +56,11 @@ export default function UuidFormater() {
   return (
     <div className="flex flex-col gap-4">
       {/* Buttons */}
-      <div className="flex flex-row flex-wrap items-center gap-6">
+      <div className="flex flex-row flex-wrap items-center gap-4">
         <Button disabled={!originalValue} onClick={handleFormatClicked}>
           <FormatIcon className="h-4 w-4 mr-1.5" /> Format
         </Button>
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-2">
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />
           <ButtonClipboard handleClipText={handleClipText} />
           <ButtonSample onClick={handleSampleClicked} />

@@ -154,7 +154,7 @@ export default function Base64String() {
 
       {/* Output */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
-        <div className="flex flex-row flex-wrap items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">Output</div>
           <ButtonCopy text={outputValue} />
           <Button onClick={handleUseAsInputClicked} variant="outline" disabled={!outputValue}>

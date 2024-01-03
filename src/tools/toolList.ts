@@ -143,7 +143,7 @@ const originalTools: Tool[] = [
   },
   {
     slug: 'json-yaml',
-    name: 'JSON from/to YAML',
+    name: '[WIP] JSON from/to YAML',
     description: 'Convert JSON to YAML and vice versa.',
     iconEl: ConvertIcon({ className: 'text-xl' }),
     implemented: true

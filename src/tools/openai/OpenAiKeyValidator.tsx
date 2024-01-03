@@ -63,13 +63,13 @@ export default function OpenAiKeyValidator() {
     <MainContainer>
       <div className="flex flex-col flex-wrap flex-1 w-full min-h-0 gap-5">
         {/* Buttons */}
-        <div className="flex flex-row flex-wrap items-center gap-6">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <ButtonValidate
             loading={isChecking}
             onClick={handleValidateClicked}
             disabled={!apiKeyInputValue || isChecking}
           />
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-2">
             <ButtonClipboard handleClipText={handleClipText} disabled={isChecking} />
             <ButtonClear onClick={handleClearClicked} disabled={!apiKeyInputValue} />
             <ButtonSample onClick={handleSampleClicked} disabled={isChecking} />

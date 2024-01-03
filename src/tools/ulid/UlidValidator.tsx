@@ -45,9 +45,9 @@ export default function UlidValidator() {
   return (
     <div className="flex flex-col gap-4">
       {/* Buttons */}
-      <div className="flex flex-row flex-wrap items-center gap-6">
+      <div className="flex flex-row flex-wrap items-center gap-4">
         <ButtonValidate onClick={handleValidateClicked} disabled={!originalValue} />
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-2">
           <ButtonClipboard handleClipText={handleClipText} />
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />
           <ButtonSample onClick={handleSampleClicked} />

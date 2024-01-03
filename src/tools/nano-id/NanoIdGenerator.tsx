@@ -55,7 +55,7 @@ export default function NanoIdGenerator() {
     <MainContainer>
       <div className="flex flex-col flex-wrap justify-between gap-4">
         {/* buttons */}
-        <div className="flex flex-row flex-wrap items-center gap-6">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <ButtonGenerate
             onClick={handleGenerateClicked}
             disabled={
@@ -66,7 +66,7 @@ export default function NanoIdGenerator() {
             }
           />
 
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-2">
             <ButtonCopy text={textareaValue} />
             <ButtonDownload onClick={handleDownloadClicked} disabled={!textareaValue} />
             <ButtonClear onClick={handleClearClicked} disabled={!textareaValue} />

@@ -141,7 +141,7 @@ export default function JsonYaml() {
     <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
       {/* Input */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
-        <div className="flex flex-row flex-wrap items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">JSON</div>
           <ButtonUpload onClick={handleUploadFile} />
           <ButtonClipboard handleClipText={handleClipboardClicked} />
@@ -162,7 +162,7 @@ export default function JsonYaml() {
 
       {/* Output */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
-        <div className="flex flex-row flex-wrap items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">YAML</div>
           <ButtonCopy text={yamlValue} />
           <Select

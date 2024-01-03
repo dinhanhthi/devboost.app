@@ -58,7 +58,7 @@ export default function UuidDecoder() {
   return (
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
-      <div className="flex flex-row flex-wrap items-center gap-6">
+      <div className="flex flex-row flex-wrap items-center gap-4">
         <ButtonDecode
           onClick={handleDecodeClicked}
           disabled={!originalValue}
@@ -66,7 +66,7 @@ export default function UuidDecoder() {
           star={true}
         />
 
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-2">
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue || isDecoding} />
           <ButtonClipboard handleClipText={handleClipText} disabled={isDecoding} />
           <ButtonSample onClick={handleSampleClicked} />

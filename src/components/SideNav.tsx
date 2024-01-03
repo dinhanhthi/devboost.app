@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils'
 
 import Fuse, { FuseResult } from 'fuse.js'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import LoadingIcon from '../icons/LoadingIcon'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
@@ -113,12 +112,13 @@ export default function SideNav(props: SideNavProps) {
                   forceToShowDescription={!!query}
                 />
               ))}
-            {loading && (
-              <LoadingIcon
-                className="w-6 h-6 m-auto opacity-50 animate-spin text-foreground"
-                aria-label="loading"
-              />
-            )}
+            {loading &&
+              Array.from({ length: 10 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center w-full h-10 rounded-md animate-pulse bg-accent"
+                />
+              ))}
             {query && !toolsToShow.length && (
               <div className="flex flex-col items-center justify-center h-full gap-4">
                 <div className="text-foreground">No results found.</div>

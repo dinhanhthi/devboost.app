@@ -51,13 +51,13 @@ export default function UlidGenerator() {
     <div className={cn('flex h-full flex-col gap-4')}>
       <div className="flex flex-row flex-wrap items-center justify-between gap-4">
         {/* buttons */}
-        <div className="flex flex-row flex-wrap items-center gap-6">
+        <div className="flex flex-row flex-wrap items-center gap-4">
           <ButtonGenerate
             onClick={handleGenerateClicked}
             disabled={parseInt(recordsValue) > 500 || parseInt(recordsValue) < 1}
           />
 
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-2">
             <ButtonCopy text={textareaValue} />
             <ButtonDownload onClick={handleDownloadClicked} disabled={!textareaValue} />
             <ButtonClear onClick={handleClearClicked} disabled={!textareaValue} />

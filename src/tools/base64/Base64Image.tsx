@@ -202,7 +202,7 @@ export default function Base64Image() {
 
       {/* String */}
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex flex-row flex-wrap items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">String</div>
           <ButtonClipboard handleClipText={handleClipboardString} />
           <ButtonSample onClick={handleSampleStringClicked} />

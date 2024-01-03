@@ -64,13 +64,13 @@ export default function ObjectIdTimestampConverter() {
   return (
     <div className="flex flex-col h-full gap-4">
       {/* Buttons */}
-      <div className="flex flex-row flex-wrap items-center gap-6">
+      <div className="flex flex-row flex-wrap items-center gap-4">
         <ButtonDecode
           onClick={handleDecodeClicked}
           disabled={!originalValue}
           loading={isDecoding}
         />
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-2">
           <ButtonClipboard handleClipText={handleClipText} />
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue} />
           <ButtonSample onClick={handleSampleClicked} />
