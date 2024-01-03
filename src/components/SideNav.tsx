@@ -116,8 +116,11 @@ export default function SideNav(props: SideNavProps) {
               Array.from({ length: 10 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center w-full h-10 rounded-md animate-pulse bg-accent"
-                />
+                  className="flex items-center justify-center w-full h-10 gap-2 p-2 animate-pulse"
+                >
+                  <div className='w-6 h-6 rounded-full bg-border'></div>
+                  <div className='flex-1 h-full min-w-0 rounded-md bg-border'></div>
+                </div>
               ))}
             {query && !toolsToShow.length && (
               <div className="flex flex-col items-center justify-center h-full gap-4">
