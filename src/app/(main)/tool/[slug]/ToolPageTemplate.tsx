@@ -8,13 +8,13 @@ import { DEFAULT_C0NFIGS } from '../../../../lib/config'
 import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
 import JsonSorter from '../../../../tools/json/JsonSorter'
+import JsonYaml from '../../../../tools/json/JsonYaml'
 import Jwt from '../../../../tools/jwt/Jwt'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
-import JsonYaml from '../../../../tools/json/JsonYaml'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -49,7 +49,20 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
 
   return (
     <div className={cn(className, 'flex h-full w-full flex-col')}>
-      <div className="flex flex-col flex-1 min-h-0">{getToolComponent(tool.slug)}</div>
+      <div className="flex flex-col flex-1 min-h-0 p-4">{getToolComponent(tool.slug)}</div>
+      {tool.credit && (
+        <div className="w-full p-2 text-xs italic bg-accent db-prose">
+          External tools/libraries used to build this tool:{' '}
+          {tool.credit.map((credit, index) => (
+            <span key={credit.name}>
+              <a href={credit.url} target="_blank" rel="noopener noreferrer">
+                {credit.name}
+              </a>{credit.version && (<span> (v{credit.version})</span>)}
+              {index !== tool.credit!.length - 1 && ', '}
+            </span>
+          ))}.
+        </div>
+      )}
     </div>
   )
 }

@@ -81,16 +81,17 @@ export default function JsonSorter() {
   }
 
   const handleClipboardClicked = (text: string) => {
-    setInputValue(text)
+    var objKeysRegex = /({|,)(?:\s*)(?:')?([A-Za-z_$\.][A-Za-z0-9_ \-\.$]*)(?:')?(?:\s*):/g;
+    var stringWithQuotes = text.replace(/'/g, '"').replace(objKeysRegex, "$1\"$2\":");
+    // setInputValue(text)
+    setInputValue(stringWithQuotes)
     setOutputValue(sortJson(text, sortMethod, sortDirection, keyNameValue))
   }
 
   const handleSampleClicked = () => {
     setInputValue(JSON.stringify(sampleJson, null, 2))
     setKeyNameValue('name')
-    setOutputValue(
-      sortJson(JSON.stringify(sampleJson), sortMethod, sortDirection, 'name')
-    )
+    setOutputValue(sortJson(JSON.stringify(sampleJson), sortMethod, sortDirection, 'name'))
   }
 
   const handleUploadFile = () => {
@@ -263,11 +264,11 @@ function sortJson(
         if (sortDirection === 'desc') keys.reverse()
         const sortedObj = {} as any
         keys.forEach(key => {
-          sortedObj[key] = obj[key];
-        });
-        return sortedObj;
-      };
-      const sorted = jsonArr.map(obj => sortObjectKeys(obj));
+          sortedObj[key] = obj[key]
+        })
+        return sortedObj
+      }
+      const sorted = jsonArr.map(obj => sortObjectKeys(obj))
       return JSON.stringify(sorted, null, 2)
     }
   } catch (e) {

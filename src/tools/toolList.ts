@@ -101,6 +101,13 @@ const originalTools: Tool[] = [
     name: 'JWT Encoder/Decoder',
     description: 'Encode and decode JSON Web Token.',
     iconEl: JWTIcon({ className: 'text-xl' }),
+    credit: [
+      {
+        name: 'jose',
+        url: 'https://github.com/panva/jose',
+        version: '5.1.3'
+      }
+    ],
     implemented: true
   },
   {
@@ -134,6 +141,17 @@ const originalTools: Tool[] = [
     description:
       'Generate Universally unique identifier with different versions 1, 3, 4, 5. Also validate, decode or format UUID.',
     iconEl: Uuid({ className: commonIconClass }),
+    credit: [
+      {
+        name: 'uuid',
+        url: 'https://github.com/uuidjs/uuid',
+        version: '9.0.1'
+      },
+      {
+        name: 'uuidtools',
+        url: 'https://www.uuidtools.com/decode'
+      }
+    ],
     implemented: true
   },
   {
@@ -204,6 +222,13 @@ const originalTools: Tool[] = [
     description:
       'Generate Nano ID. Generate Nano ID with custom alphabet and a given size of the ID.',
     iconEl: NanoIdIcon({ className: 'text-xl' }),
+    credit: [
+      {
+        name: 'nanoid',
+        url: 'https://github.com/ai/nanoid',
+        version: '5.0.3'
+      }
+    ],
     implemented: true
   },
   {
@@ -212,6 +237,13 @@ const originalTools: Tool[] = [
     description:
       'Generate Universally Unique Lexicographically Sortable Identifier. Extract timestamp from ULID and validate an ULID.',
     iconEl: ULIDIcon({ className: 'text-[0.65rem]' }),
+    credit: [
+      {
+        name: 'ulidx',
+        url: 'https://github.com/perry-mitchell/ulidx',
+        version: '2.2.1'
+      }
+    ],
     implemented: true
   },
   {
@@ -220,6 +252,13 @@ const originalTools: Tool[] = [
     description:
       'Generate MongoDB ObjectID. You can convert ObjectID to timestamp (timestamp converter).',
     iconEl: MongoDBIcon({ className: commonIconClass }),
+    credit: [
+      {
+        name: 'bson',
+        url: 'https://github.com/mongodb/js-bson',
+        version: '6.2.0'
+      }
+    ],
     implemented: true
   },
   {
@@ -232,6 +271,12 @@ const originalTools: Tool[] = [
     name: 'OpenAI Key Validator',
     description: 'Quickly validate your OpenAI key to see if you can use it for OpenAI APIs.',
     iconEl: OpenAiIcon({ className: commonIconClass }),
+    credit: [
+      {
+        name: 'OpenAI API',
+        url: 'https://platform.openai.com/docs/api-reference/models/list'
+      }
+    ],
     implemented: true
   },
   {

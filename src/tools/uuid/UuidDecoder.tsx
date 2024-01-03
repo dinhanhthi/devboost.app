@@ -97,18 +97,6 @@ export default function UuidDecoder() {
           </div>
         )}
       </div>
-      <div className={cn('pb-1.5 text-sm italic text-tdark')}>
-        *We use{' '}
-        <a
-          className="underline underline-offset-4"
-          href="https://www.uuidtools.com/decode"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          an external API
-        </a>{' '}
-        for this task.
-      </div>
     </div>
   )
 }

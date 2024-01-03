@@ -7,6 +7,7 @@ export interface Tool {
   iconImg?: StaticImageData // when icon is imported as an image
   description?: string
   implemented?: boolean
+  credit?: { name: string; url: string, version?: string }[]
 }
 
 export interface DynamicSegmentParamsProps {
