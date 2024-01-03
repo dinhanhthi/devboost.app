@@ -1,9 +1,11 @@
-import ClipboardIcon from '../../icons/ClipboardIcon'
+import { ClipboardIcon } from '@radix-ui/react-icons'
+import SimpleTooltip from '../SimpleTooltip'
 import { Button } from './Button'
 
 type ButtonClipboardProps = {
   handleClipText: (text: string) => void
   disabled?: boolean
+  showText?: boolean
 }
 
 export default function ButtonClipboard(props: ButtonClipboardProps) {
@@ -14,8 +16,11 @@ export default function ButtonClipboard(props: ButtonClipboardProps) {
   }
 
   return (
-    <Button variant='outline' onClick={handleClipboardClicked} disabled={props.disabled}>
-      <ClipboardIcon className="w-3.5 h-3.5 mr-1.5" /> Clipboard
-    </Button>
+    <SimpleTooltip text="Paste your text" hidden={!!props.showText}>
+      <Button variant="outline" onClick={handleClipboardClicked} disabled={props.disabled}>
+        <ClipboardIcon className="w-3.5 h-3.5" />
+        {props.showText && <span className="ml-1.5">Clipboard</span>}
+      </Button>
+    </SimpleTooltip>
   )
 }

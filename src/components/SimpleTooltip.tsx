@@ -1,8 +1,10 @@
+import { cn } from '../lib/utils'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/Tooltip'
 
 type SimpleTooltipProps = {
   text: string
   children: React.ReactNode
+  hidden?: boolean
 }
 
 export default function SimpleTooltip(props: SimpleTooltipProps) {
@@ -10,7 +12,7 @@ export default function SimpleTooltip(props: SimpleTooltipProps) {
     <TooltipProvider delayDuration={1}>
       <Tooltip>
         <TooltipTrigger asChild>{props.children}</TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent className={cn({ hidden: props.hidden })}>
           <p>{props.text}</p>
         </TooltipContent>
       </Tooltip>

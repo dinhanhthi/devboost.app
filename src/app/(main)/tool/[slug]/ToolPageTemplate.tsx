@@ -14,6 +14,7 @@ import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
+import JsonYaml from '../../../../tools/json/JsonYaml'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -81,6 +82,9 @@ function getToolComponent(slug: string) {
 
     case 'json-sorter':
       return <JsonSorter />
+
+    case 'json-yaml':
+      return <JsonYaml />
 
     default:
       return null

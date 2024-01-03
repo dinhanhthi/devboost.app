@@ -1,8 +1,6 @@
 'use client'
 
-import { ClipboardIcon } from '@radix-ui/react-icons'
 import { useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
 import ButtonClear from '../../components/ui/ButtonClear'
 import ButtonClipboard from '../../components/ui/ButtonClipboard'
 import ButtonCopy from '../../components/ui/ButtonCopy'
@@ -172,12 +170,10 @@ export default function Base64Image() {
     <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
       {/* Image */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
-        <div className="flex flex-row flex-wrap items-center gap-4">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">Image</div>
           <ButtonUpload onClick={handleUploadFile} />
-          <Button variant="outline" onClick={handleClipboardImage}>
-            <ClipboardIcon className="w-3.5 h-3.5 mr-1.5" /> Clipboard
-          </Button>
+          <ButtonClipboard handleClipText={handleClipboardImage} />
           <ButtonSample onClick={handleSampleImageClicked} />
           <ButtonDownload onClick={handleDownloadImage} disabled={!preview} />
           <ButtonClear onClick={handleClearImageClicked} disabled={!preview && !imageError} />

@@ -142,14 +142,11 @@ const originalTools: Tool[] = [
     iconEl: AiFillHtml5({ className: commonIconClass })
   },
   {
-    slug: 'yaml-to-json',
-    name: 'YAML to JSON',
-    iconEl: ConvertIcon({ className: 'text-xl' })
-  },
-  {
-    slug: 'json-to-yaml',
-    name: 'JSON to YAML',
-    iconEl: ConvertIcon({ className: 'text-xl' })
+    slug: 'json-yaml',
+    name: 'JSON from/to YAML',
+    description: 'Convert JSON to YAML and vice versa.',
+    iconEl: ConvertIcon({ className: 'text-xl' }),
+    implemented: true
   },
   {
     slug: 'number-base-converter',

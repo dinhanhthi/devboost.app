@@ -22,7 +22,7 @@ yarn prettier # prettier your codes
 yarn clean # clean .next
 ```
 
-## Write tests
+## Writing tests (optional)
 
 ### Tests for tools
 

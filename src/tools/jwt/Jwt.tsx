@@ -12,11 +12,10 @@ import {
 } from 'jose'
 import { useRef, useState } from 'react'
 import MoreInformation from '../../components/MoreInformation'
-import SimpleTooltip from '../../components/SimpleTooltip'
-import { Button } from '../../components/ui/Button'
 import ButtonClear from '../../components/ui/ButtonClear'
 import ButtonClipboard from '../../components/ui/ButtonClipboard'
 import ButtonCopy from '../../components/ui/ButtonCopy'
+import ButtonSample from '../../components/ui/ButtonSample'
 import { Input } from '../../components/ui/Input'
 import {
   Select,
@@ -26,7 +25,6 @@ import {
   SelectValue
 } from '../../components/ui/Select'
 import { Textarea } from '../../components/ui/Textarea'
-import SampleIcon from '../../icons/SampleIcon'
 import { cn } from '../../lib/utils'
 import './jwt.scss'
 
@@ -349,7 +347,7 @@ export default function Jwt() {
       {/* Encoded */}
       <div className="flex flex-col flex-1 gap-3">
         <div className="flex flex-row flex-wrap gap-4">
-          <div className="flex flex-row flex-wrap items-center gap-4">
+          <div className="flex flex-row flex-wrap items-center gap-2">
             <div className="font-medium">Encoded</div>
             <Select
               defaultValue={defaultValue.algorithm}
@@ -370,12 +368,7 @@ export default function Jwt() {
             </Select>
             <ButtonCopy text={jwt} />
             <ButtonClipboard handleClipText={handleJwtClipboardClicked} />
-            <SimpleTooltip text={'Auto fill empty inputs with samples.'}>
-              <Button variant="outline" onClick={handleSampleClicked}>
-                <SampleIcon className="w-3.5 h-3.5 mr-1.5" />
-                Sample
-              </Button>
-            </SimpleTooltip>
+            <ButtonSample onClick={handleSampleClicked} />
             <ButtonClear onClick={handleClearClicked} disabled={!jwt} />
           </div>
           {jwt && (
