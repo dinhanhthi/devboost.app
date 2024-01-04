@@ -23,7 +23,7 @@ Boost your dev with useful tools.
 - [ ] HTML Entities Encoder/Decoder
 - [x] UUID Generator/Decoder
 - [ ] HTML Preview
-- [ ] JSON from/to YAML
+- [x] JSON from/to YAML
 - [ ] Number Base Converter
 - [ ] HTML Beautifier/Minifier
 - [ ] CSS Beautifier/Minifier

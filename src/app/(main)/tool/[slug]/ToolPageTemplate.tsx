@@ -51,7 +51,7 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
     <div className={cn(className, 'flex h-full w-full flex-col')}>
       <div className="flex flex-col flex-1 min-h-0 p-4">{getToolComponent(tool.slug)}</div>
       {tool.credit && (
-        <div className="w-full p-2 text-xs italic bg-accent db-prose">
+        <div className="w-full px-4 py-2 text-xs italic border-t db-prose">
           External tools/libraries used to build this tool:{' '}
           {tool.credit.map((credit, index) => (
             <span key={credit.name}>

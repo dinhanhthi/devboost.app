@@ -2,98 +2,85 @@
 
 import { json } from '@codemirror/lang-json'
 import CodeMirror from '@uiw/react-codemirror'
-import { flattenDeep, sortBy, uniq } from 'lodash'
+import { parse, stringify } from 'yaml'
 
 import { useTheme } from 'next-themes'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import ButtonClear from '../../components/ui/ButtonClear'
 import ButtonClipboard from '../../components/ui/ButtonClipboard'
 import ButtonCopy from '../../components/ui/ButtonCopy'
+import ButtonDownload from '../../components/ui/ButtonDownload'
 import ButtonSample from '../../components/ui/ButtonSample'
 import ButtonUpload from '../../components/ui/ButtonUpload'
-import { Input } from '../../components/ui/Input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '../../components/ui/Select'
-import { cn } from '../../lib/utils'
 
-const sampleJson = [
-  {
-    id: 1,
-    name: 'David',
-    age: 20
+const sampleJson = {
+  version: '1.0.0',
+  dependencies: {
+    yaml: '^1.10.0'
   },
-  {
-    id: 2,
-    name: 'Bobby',
-    age: 34
-  },
-  {
-    id: 3,
-    name: 'Warren',
-    age: 28
+  package: {
+    exclude: ['.idea/**', '.gitignore']
   }
-]
+}
 
 export default function JsonYaml() {
-  const defaultSortMethod = 'key-value'
-  const defaultSortDirection = 'asc'
-  const sortMethods = [
-    { value: 'key-name', name: 'by Key Name' },
-    { value: 'key-value', name: 'by Key Value' }
-  ]
-  const sortDirections = [
-    { value: 'asc', name: 'Asc' },
-    { value: 'desc', name: 'Desc' }
-  ]
-
   const { theme } = useTheme()
   const [jsonValue, setJsonValue] = useState(JSON.stringify(sampleJson, null, 2))
-  const [yamlValue, setYamlValue] = useState(
-    sortJson(JSON.stringify(sampleJson), defaultSortMethod, defaultSortDirection, 'name')
-  )
-  const [sortMethod, setSortMethod] = useState<'key-name' | 'key-value'>(defaultSortMethod)
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(defaultSortDirection)
-  const inputKeyNameRef = useRef<HTMLInputElement>(null)
-  const [keyNameValue, setKeyNameValue] = useState('name')
+  const [yamlValue, setYamlValue] = useState(stringify(sampleJson))
 
   const handleOnChangeInput = useCallback((val: string, _viewUpdate: any) => {
     setJsonValue(val)
-    const sortedString = sortJson(val, sortMethod, sortDirection, keyNameValue)
-    setYamlValue(sortedString)
+    if (!val) {
+      setYamlValue('')
+      return
+    }
+    try {
+      setYamlValue(stringify(JSON.parse(val)))
+    } catch (error) {
+      setYamlValue('Invalid JSON format!')
+    }
   }, [])
 
   const handleOnChangeOutput = useCallback((val: string, _viewUpdate: any) => {
     setYamlValue(val)
+    if (!val) {
+      setJsonValue('')
+      return
+    }
+    try {
+      const jsonString = JSON.stringify(parse(val), null, 2)
+      JSON.parse(jsonString)
+      setJsonValue(jsonString)
+    } catch (error) {
+      setJsonValue('Invalid YAML format!')
+    }
   }, [])
-
-  const inputRef = useRef<HTMLTextAreaElement>(null)
 
   const handleClearClicked = () => {
     setJsonValue('')
     setYamlValue('')
-    setKeyNameValue('')
-    inputRef.current?.focus()
   }
 
-  const handleClipboardClicked = (text: string) => {
+  const handleClipboardJsonClicked = (text: string) => {
     setJsonValue(text)
-    setYamlValue(sortJson(text, sortMethod, sortDirection, keyNameValue))
+    try {
+      setYamlValue(stringify(JSON.parse(text)))
+    } catch (error) {
+      setYamlValue('Invalid JSON format!')
+    }
+  }
+
+  const handleClipboardYamlClicked = (text: string) => {
+    setYamlValue(text)
+    setJsonValue(JSON.stringify(parse(text), null, 2))
   }
 
   const handleSampleClicked = () => {
     setJsonValue(JSON.stringify(sampleJson, null, 2))
-    setKeyNameValue('name')
-    setYamlValue(
-      sortJson(JSON.stringify(sampleJson), sortMethod, sortDirection, 'name')
-    )
+    setYamlValue(stringify(sampleJson))
   }
 
-  const handleUploadFile = () => {
+  const handleJsonUploadFile = () => {
     const input = document.createElement('input')
     input.type = 'file'
     input.accept = '.json'
@@ -110,6 +97,7 @@ export default function JsonYaml() {
       reader.onload = () => {
         const text = reader.result
         setJsonValue(text as string)
+        setYamlValue(stringify(JSON.parse(text as string)))
       }
       reader.onerror = e => {
         setJsonValue(`Error: ${e}`)
@@ -119,34 +107,69 @@ export default function JsonYaml() {
     input.click()
   }
 
-  const handleSortMethodChange = (value: 'key-name' | 'key-value') => {
-    setSortMethod(value)
-    const sortedString = sortJson(jsonValue, value, sortDirection, keyNameValue)
-    setYamlValue(sortedString)
+  const handleYamlUploadFile = () => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = '.yaml, .yml'
+    input.onchange = (event: any) => {
+      const file = event.target.files[0]
+      if (!file) return
+      if (file.size > 5 * 1024 * 1024) {
+        setJsonValue('Only file size less than 5MB is supported!')
+        setYamlValue('')
+        return
+      }
+      const reader = new FileReader()
+      setYamlValue('')
+      reader.onload = () => {
+        const text = reader.result
+        setYamlValue(text as string)
+        setJsonValue(JSON.stringify(parse(text as string), null, 2))
+      }
+      reader.onerror = e => {
+        setJsonValue(`Error: ${e}`)
+      }
+      reader.readAsText(file)
+    }
+    input.click()
   }
 
-  const handleSortDirectionChange = (value: 'asc' | 'desc') => {
-    setSortDirection(value)
-    const sortedString = sortJson(jsonValue, sortMethod, value, keyNameValue)
-    setYamlValue(sortedString)
+  const handleDownloadJsonClicked = () => {
+    const blob = new Blob([jsonValue], { type: 'text/json;charset=utf-8' })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.style.display = 'none'
+    a.href = url
+    a.download = 'file_generated_by_DevBoost.app.json'
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
   }
 
-  const handleKeyNameChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyNameValue(event.target.value)
-    const sortedString = sortJson(jsonValue, sortMethod, sortDirection, event.target.value)
-    setYamlValue(sortedString)
+  const handleDownloadYamlClicked = () => {
+    const blob = new Blob([yamlValue], { type: 'text/yaml;charset=utf-8' })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.style.display = 'none'
+    a.href = url
+    a.download = 'file_generated_by_DevBoost.app.yaml'
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
   }
 
   return (
     <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
-      {/* Input */}
+      {/* JSON */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
         <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">JSON</div>
-          <ButtonUpload onClick={handleUploadFile} />
-          <ButtonClipboard handleClipText={handleClipboardClicked} />
+          <ButtonUpload onClick={handleJsonUploadFile} />
+          <ButtonClipboard handleClipText={handleClipboardJsonClicked} />
           <ButtonSample onClick={handleSampleClicked} />
           <ButtonClear onClick={handleClearClicked} disabled={!jsonValue} />
+          <ButtonCopy text={jsonValue} />
+          <ButtonDownload onClick={handleDownloadJsonClicked} disabled={!jsonValue} />
         </div>
         <div className="flex-1 min-h-0">
           <CodeMirror
@@ -160,53 +183,16 @@ export default function JsonYaml() {
         </div>
       </div>
 
-      {/* Output */}
+      {/* YAML */}
       <div className="flex flex-col flex-1 gap-4 max-h-[50%] 2xl:max-h-none">
         <div className="flex flex-row flex-wrap items-center gap-2">
           <div className="font-medium">YAML</div>
+          <ButtonUpload onClick={handleYamlUploadFile} />
+          <ButtonClipboard handleClipText={handleClipboardYamlClicked} />
+          <ButtonSample onClick={handleSampleClicked} />
+          <ButtonClear onClick={handleClearClicked} disabled={!yamlValue} />
           <ButtonCopy text={yamlValue} />
-          <Select
-            defaultValue={defaultSortDirection}
-            onValueChange={handleSortDirectionChange}
-            name="sort-direciton-selection"
-          >
-            <SelectTrigger className="h-8 w-[80px]">
-              <SelectValue placeholder="Select a sort direction" />
-            </SelectTrigger>
-            <SelectContent>
-              {sortDirections.map(({ value, name }) => (
-                <SelectItem key={value} value={value}>
-                  {name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select
-            defaultValue={defaultSortMethod}
-            onValueChange={handleSortMethodChange}
-            name="sort-method-selection"
-          >
-            <SelectTrigger className="h-8 w-fit">
-              <SelectValue placeholder="Select a sort method" />
-            </SelectTrigger>
-            <SelectContent>
-              {sortMethods.map(({ value, name }) => (
-                <SelectItem key={value} value={value}>
-                  {name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          {sortMethod === 'key-value' && (
-            <Input
-              ref={inputKeyNameRef}
-              value={keyNameValue}
-              onChange={handleKeyNameChanged}
-              type="text"
-              placeholder="Key name"
-              className={cn('w-40 h-8')}
-            />
-          )}
+          <ButtonDownload onClick={handleDownloadYamlClicked} disabled={!yamlValue} />
         </div>
         <div className="flex-1 min-h-0">
           <CodeMirror
@@ -221,58 +207,4 @@ export default function JsonYaml() {
       </div>
     </div>
   )
-}
-
-function sortJson(
-  jsonString: string,
-  sortMethod: 'key-name' | 'key-value',
-  sortDirection: 'asc' | 'desc',
-  keyName: string
-): string {
-  if (!jsonString) return ''
-
-  try {
-    JSON.parse(jsonString)
-  } catch (e) {
-    return 'Invalid JSON!'
-  }
-
-  const jsonArr = JSON.parse(jsonString)
-
-  if (!Array.isArray(jsonArr)) return 'You have to input an array of objects!'
-
-  if (!keyName) return 'Missing key name!'
-
-  if (!uniq(flattenDeep(jsonArr.map(item => Object.keys(item))))?.includes(keyName)) {
-    return 'Invalid key name!'
-  }
-
-  try {
-    if (sortMethod === 'key-value') {
-      const sorted = sortBy(jsonArr, [
-        function (o) {
-          return o[keyName]
-        }
-      ])
-      if (sortDirection === 'desc') return JSON.stringify(sorted.reverse(), null, 2)
-      return JSON.stringify(sorted, null, 2)
-    } else {
-      const sortObjectKeys = (obj: any) => {
-        const keys = Object.keys(obj)
-        keys.sort()
-        if (sortDirection === 'desc') keys.reverse()
-        const sortedObj = {} as any
-        keys.forEach(key => {
-          sortedObj[key] = obj[key];
-        });
-        return sortedObj;
-      };
-      const sorted = jsonArr.map(obj => sortObjectKeys(obj));
-      return JSON.stringify(sorted, null, 2)
-    }
-  } catch (e) {
-    return 'There is an error when sorting!'
-  }
-
-  return ''
 }

@@ -161,9 +161,16 @@ const originalTools: Tool[] = [
   },
   {
     slug: 'json-yaml',
-    name: '[WIP] JSON from/to YAML',
+    name: 'JSON from/to YAML',
     description: 'Convert JSON to YAML and vice versa.',
     iconEl: ConvertIcon({ className: 'text-xl' }),
+    credit: [
+      {
+        name: 'yaml',
+        url: 'https://github.com/eemeli/yaml',
+        version: '2.3.4'
+      }
+    ],
     implemented: true
   },
   {
