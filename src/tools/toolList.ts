@@ -294,7 +294,6 @@ const originalTools: Tool[] = [
 ]
 
 export const TOOLS = originalTools
-  .filter(tool => tool.implemented)
   .sort((a, b) => {
     const nameA = a.name.toUpperCase()
     const nameB = b.name.toUpperCase()

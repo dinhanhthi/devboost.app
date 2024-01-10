@@ -27,6 +27,10 @@ export default function SideNavFilter(props: SideNavFilterProps) {
     setFilter({ ...filter, showDescription: checked === true })
   }
 
+  const handleShowUnimplementedChange = (checked: CheckedState) => {
+    setFilter({ ...filter, showUnimplemented: checked === true })
+  }
+
   const sortByOptions: { value: SideNavFilterSortBy; name: string }[] = [
     { value: 'name', name: 'Name' },
     { value: 'favorite', name: 'Favorite' },
@@ -90,10 +94,30 @@ export default function SideNavFilter(props: SideNavFilterProps) {
               </label>
             </div>
           </div>
+          {/* Show unimplemented tools */}
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              checked={filter.showUnimplemented}
+              id="show-unimplemented"
+              onCheckedChange={handleShowUnimplementedChange}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="show-unimplemented"
+                className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Show unimplemented tools
+              </label>
+            </div>
+          </div>
           {/* Sort by */}
           <div className="flex items-center space-x-2">
             <div className="whitespace-nowrap">Sort tools by</div>
-            <Select defaultValue={filter.sortBy} onValueChange={handleSortByChange} name="sort-by-selection">
+            <Select
+              defaultValue={filter.sortBy}
+              onValueChange={handleSortByChange}
+              name="sort-by-selection"
+            >
               <SelectTrigger className="h-7">
                 <SelectValue placeholder="Select a sort type" />
               </SelectTrigger>
@@ -109,7 +133,11 @@ export default function SideNavFilter(props: SideNavFilterProps) {
           {/* Sort direction */}
           <div className="flex items-center space-x-2">
             <div className="whitespace-nowrap">Sort direction</div>
-            <Select defaultValue={filter.sortDirection} onValueChange={handleSortDirectionChange} name="sort-by-selection">
+            <Select
+              defaultValue={filter.sortDirection}
+              onValueChange={handleSortDirectionChange}
+              name="sort-by-selection"
+            >
               <SelectTrigger className="h-7">
                 <SelectValue placeholder="Select a direction" />
               </SelectTrigger>

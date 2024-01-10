@@ -53,6 +53,7 @@ export const DEFAULT_C0NFIGS: Configs = {
   sideNavFilter: {
     showOnlyFavorites: false,
     showDescription: false,
+    showUnimplemented: false,
     sortBy: 'name',
     sortDirection: 'asc'
   },

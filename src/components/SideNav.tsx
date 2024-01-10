@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
-import { TOOLS, allToolItem } from '../tools/toolList'
+import { TOOLS as originalTools, allToolItem } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
@@ -28,6 +28,8 @@ export default function SideNav(props: SideNavProps) {
     CONFIG_KEYS.sideNavFilter,
     DEFAULT_C0NFIGS.sideNavFilter
   )
+
+  const TOOLS = originalTools.filter(tool => filter.showUnimplemented || tool.implemented)
 
   // Usage frequency
   const [usageFrequency, setUsageFrequency] = useState<Configs['usageFrequency']>(

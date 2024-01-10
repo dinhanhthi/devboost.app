@@ -43,6 +43,7 @@ export type SideNavFilterSortDirection = 'asc' | 'desc'
 export type SideNavFilterType = {
   showOnlyFavorites: boolean
   showDescription: boolean
+  showUnimplemented: boolean
   sortBy: SideNavFilterSortBy
   sortDirection: SideNavFilterSortDirection
 }
