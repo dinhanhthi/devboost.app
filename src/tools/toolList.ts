@@ -64,6 +64,7 @@ const originalTools: Tool[] = [
     slug: 'base64-string',
     name: 'Base64 String Encoder/Decoder',
     description: 'Convert string to base64 and base64 to string.',
+    categories: ['Encoders / Decoders'],
     iconEl: SixtyFour({ className: 'text-xs' }),
     implemented: true
   },
@@ -71,12 +72,14 @@ const originalTools: Tool[] = [
     slug: 'base64-image',
     name: 'Base64 Image Encoder/Decoder',
     description: 'Convert image to base64 and base64 to image.',
+    categories: ['Encoders / Decoders'],
     iconEl: SixtyFour({ className: 'text-xs' }),
     implemented: true
   },
   {
     slug: 'json-formatter',
     name: 'JSON Formatter',
+    categories: ['Formatters'],
     iconEl: TbJson({ className: commonIconClass })
   },
   {
@@ -88,6 +91,7 @@ const originalTools: Tool[] = [
     slug: 'json-sorter',
     name: 'JSON Sorter',
     description: 'Sort JSON by key or value.',
+    categories: ['Beautifiers'],
     iconEl: TbJson({ className: commonIconClass }),
     implemented: true
   },
@@ -100,6 +104,7 @@ const originalTools: Tool[] = [
     slug: 'jwt-encoder-decoder',
     name: 'JWT Encoder/Decoder',
     description: 'Encode and decode JSON Web Token.',
+    categories: ['Encoders / Decoders', 'Validators'],
     iconEl: JWTIcon({ className: 'text-xl' }),
     credit: [
       {
@@ -118,6 +123,7 @@ const originalTools: Tool[] = [
   {
     slug: 'url-encoder-decoder',
     name: 'URL Encoder/Decoder',
+    categories: ['Encoders / Decoders'],
     iconEl: SiCurl({ className: 'text-xl' })
   },
   {
@@ -140,6 +146,7 @@ const originalTools: Tool[] = [
     name: 'UUID Generator/Decoder',
     description:
       'Generate Universally unique identifier with different versions 1, 3, 4, 5. Also validate, decode or format UUID.',
+    categories: ['Generators', 'Validators', 'Decoders'],
     iconEl: Uuid({ className: commonIconClass }),
     credit: [
       {
@@ -163,6 +170,7 @@ const originalTools: Tool[] = [
     slug: 'json-yaml',
     name: 'JSON from/to YAML',
     description: 'Convert JSON to YAML and vice versa.',
+    categories: ['Converters'],
     iconEl: ConvertIcon({ className: 'text-xl' }),
     credit: [
       {
@@ -206,7 +214,11 @@ const originalTools: Tool[] = [
   {
     slug: 'lorem-ipsum-generator',
     name: 'Lorem Ipsum Generator',
-    iconEl: LoremIpsumIcon({ className: 'text-sm' })
+    description: 'Generate Lorem Ipsum text.',
+    categories: ['Generators'],
+    iconEl: LoremIpsumIcon({ className: 'text-sm' }),
+    implemented: true,
+    wip: true
   },
   {
     slug: 'qr-code-generator-reader',
@@ -222,9 +234,9 @@ const originalTools: Tool[] = [
     slug: 'json-csv',
     name: 'JSON from/to CSV',
     description: 'Convert JSON to CSV and vice versa.',
+    categories: ['Converters'],
     iconEl: ConvertIcon({ className: 'text-xl' }),
     implemented: true,
-    wip: true,
     credit: [
       {
         name: 'Papa Parse',
@@ -238,6 +250,7 @@ const originalTools: Tool[] = [
     name: 'Nano ID Generator',
     description:
       'Generate Nano ID. Generate Nano ID with custom alphabet and a given size of the ID.',
+    categories: ['Generators'],
     iconEl: NanoIdIcon({ className: 'text-xl' }),
     credit: [
       {
@@ -253,6 +266,7 @@ const originalTools: Tool[] = [
     name: 'ULID Generator',
     description:
       'Generate Universally Unique Lexicographically Sortable Identifier. Extract timestamp from ULID and validate an ULID.',
+    categories: ['Generators', 'Decoders'],
     iconEl: ULIDIcon({ className: 'text-[0.65rem]' }),
     credit: [
       {
@@ -268,6 +282,7 @@ const originalTools: Tool[] = [
     name: 'ObjectID Generator/Converter',
     description:
       'Generate MongoDB ObjectID. You can convert ObjectID to timestamp (timestamp converter).',
+    categories: ['Generators', 'Converters'],
     iconEl: MongoDBIcon({ className: commonIconClass }),
     credit: [
       {
@@ -287,6 +302,7 @@ const originalTools: Tool[] = [
     slug: 'openai-key-validator',
     name: 'OpenAI Key Validator',
     description: 'Quickly validate your OpenAI key to see if you can use it for OpenAI APIs.',
+    categories: ['Validators'],
     iconEl: OpenAiIcon({ className: commonIconClass }),
     credit: [
       {

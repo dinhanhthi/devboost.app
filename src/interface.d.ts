@@ -3,6 +3,7 @@ import { StaticImageData } from 'next/image'
 export interface Tool {
   slug: string
   name: string
+  categories?: string[]
   iconEl?: React.ReactElement // when icon is a React component in src/app/icons
   iconImg?: StaticImageData // when icon is imported as an image
   description?: string

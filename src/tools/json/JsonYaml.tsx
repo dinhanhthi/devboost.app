@@ -28,7 +28,7 @@ export default function JsonYaml() {
   const [jsonValue, setJsonValue] = useState(JSON.stringify(sampleJson, null, 2))
   const [yamlValue, setYamlValue] = useState(stringify(sampleJson))
 
-  const handleOnChangeInput = useCallback((val: string, _viewUpdate: any) => {
+  const handleOnChangeJson = useCallback((val: string, _viewUpdate: any) => {
     setJsonValue(val)
     if (!val) {
       setYamlValue('')
@@ -41,7 +41,7 @@ export default function JsonYaml() {
     }
   }, [])
 
-  const handleOnChangeOutput = useCallback((val: string, _viewUpdate: any) => {
+  const handleOnChangeYaml = useCallback((val: string, _viewUpdate: any) => {
     setYamlValue(val)
     if (!val) {
       setJsonValue('')
@@ -176,7 +176,7 @@ export default function JsonYaml() {
             value={jsonValue}
             height="100%"
             extensions={[json()]}
-            onChange={handleOnChangeInput}
+            onChange={handleOnChangeJson}
             className="db-scrollbar db-code-mirror"
             theme={theme === 'dark' ? 'dark' : 'light'}
           />
@@ -199,7 +199,7 @@ export default function JsonYaml() {
             value={yamlValue}
             height="100%"
             extensions={[json()]}
-            onChange={handleOnChangeOutput}
+            onChange={handleOnChangeYaml}
             className="db-scrollbar db-code-mirror"
             theme={theme === 'dark' ? 'dark' : 'light'}
           />

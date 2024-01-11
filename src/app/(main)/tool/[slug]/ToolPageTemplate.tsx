@@ -15,6 +15,7 @@ import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
+import JsonCsv from '../../../../tools/json/JsonCsv'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -98,6 +99,9 @@ function getToolComponent(slug: string) {
 
     case 'json-yaml':
       return <JsonYaml />
+
+    case 'json-csv':
+      return <JsonCsv />
 
     default:
       return null
