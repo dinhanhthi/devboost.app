@@ -12,24 +12,38 @@ type ToolCardProps = {
 export default function ToolCard(props: ToolCardProps) {
   const { tool, className } = props
 
+  const classNames = cn(
+    className,
+    'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight border hover:border-primary rounded-lg group bg-accent relative overflow-hidden'
+  )
+
   return (
-    <Link
-      href={`/tool/${tool.slug}`}
-      className={cn(
-        className,
-        'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight border hover:border-primary rounded-lg group bg-accent relative overflow-hidden'
+    <>
+      {tool.implemented && (
+        <Link href={`/tool/${tool.slug}`} className={classNames}>
+          {cloneElement(tool.iconEl!, {
+            className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
+          })}
+          {tool.name}
+          {tool.wip && (
+            <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
+              WIP
+            </div>
+          )}
+        </Link>
       )}
-    >
-      {cloneElement(tool.iconEl!, {
-        className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
-      })}
-      {tool.name}
       {!tool.implemented && (
-        <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
-          unimplemented
+        <div className={classNames}>
+          {cloneElement(tool.iconEl!, {
+            className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
+          })}
+          {tool.name}
+          <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
+            not ready
+          </div>
         </div>
       )}
-    </Link>
+    </>
   )
 }
 

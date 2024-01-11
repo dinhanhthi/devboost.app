@@ -70,7 +70,10 @@ export default function SideNavItem(props: SideNavItemProps) {
         <div className="flex items-center w-full gap-2">
           <div className="flex items-center w-6">{tool.iconEl}</div>
           <div className="flex flex-col flex-1 min-w-0">
-            <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
+            <div className='flex flex-row gap-1'>
+              {tool.wip && <span className='flex items-center px-1 py-0 text-[10px] rounded-sm bg-primary text-background'>WIP</span>}
+              <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
+            </div>
             {(props.filter?.showDescription || props.forceToShowDescription) && (
               <div
                 dangerouslySetInnerHTML={{ __html: tool.description! }}

@@ -219,9 +219,19 @@ const originalTools: Tool[] = [
     iconEl: RiMenuSearchLine({ className: commonIconClass })
   },
   {
-    slug: 'json-to-csv',
-    name: 'JSON to CSV',
-    iconEl: ConvertIcon({ className: 'text-xl' })
+    slug: 'json-csv',
+    name: 'JSON from/to CSV',
+    description: 'Convert JSON to CSV and vice versa.',
+    iconEl: ConvertIcon({ className: 'text-xl' }),
+    implemented: true,
+    wip: true,
+    credit: [
+      {
+        name: 'Papa Parse',
+        url: 'https://github.com/mholt/PapaParse',
+        version: '5.4.1'
+      }
+    ]
   },
   {
     slug: 'nano-id-generator',

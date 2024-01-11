@@ -8,6 +8,7 @@ export interface Tool {
   description?: string
   implemented?: boolean
   credit?: { name: string; url: string, version?: string }[]
+  wip?: boolean
 }
 
 export interface DynamicSegmentParamsProps {
