@@ -13,7 +13,7 @@ type HeaderTitleProps = {
 
 export default function HeaderTitle(props: HeaderTitleProps) {
   const pathname = usePathname()
-  const unknownTool: Tool = { name: '404', slug: '/' }
+  const unknownTool: Tool = { name: '404', slug: '/', releaseDate: '' }
   const tool =
     pathname === '/'
       ? allToolItem
