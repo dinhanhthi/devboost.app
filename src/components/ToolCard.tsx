@@ -34,9 +34,9 @@ export default function ToolCard(props: ToolCardProps) {
       {tool.implemented && (
         <Link href={`/tool/${tool.slug}`} className={classNames}>
           {cloneElement(tool.iconEl!, {
-            className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
+            className: 'text-xl dark:text-thighlight text-primary h-6 w-fit'
           })}
-          {tool.name}
+          <span className='text-base'>{tool.name}</span>
           {tool.wip && (
             <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
               WIP
@@ -50,9 +50,7 @@ export default function ToolCard(props: ToolCardProps) {
               })}
             >
               {dateStatus === 'new' && 'new'}
-              {dateStatus === 'updated' && 'updated'}
-              {' '}
-              {dateRangeStatus}
+              {dateStatus === 'updated' && 'updated'} {dateRangeStatus}
             </div>
           )}
         </Link>
@@ -60,9 +58,9 @@ export default function ToolCard(props: ToolCardProps) {
       {!tool.implemented && (
         <div className={classNames}>
           {cloneElement(tool.iconEl!, {
-            className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
+            className: 'text-xl dark:text-thighlight text-primary h-6 w-fit'
           })}
-          {tool.name}
+          <span className='text-base'>{tool.name}</span>
           <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-foreground text-accent">
             not ready
           </div>
@@ -79,8 +77,8 @@ export function ToolCardSkeleton() {
         `flex transform flex-col items-center justify-center gap-4 rounded-lg border-border bg-dark border p-4 animate-pulse h-[106px]`
       )}
     >
-      <div className="w-8 h-8 rounded-full"></div>
-      <div className="w-4/5 h-4 rounded-full"></div>
+      <div className="w-6 h-6 rounded-full"></div>
+      <div className="w-4/5 h-3 rounded-full"></div>
     </div>
   )
 }
