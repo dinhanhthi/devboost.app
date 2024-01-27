@@ -1,8 +1,11 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { cloneElement } from 'react'
 
 import { Tool } from '../interface'
+import { useDateRangeStatus, useDateStatus } from '../lib/hooks/use-date-status'
 
 type ToolCardProps = {
   tool: Tool
@@ -11,6 +14,15 @@ type ToolCardProps = {
 
 export default function ToolCard(props: ToolCardProps) {
   const { tool, className } = props
+
+  const dateStatus = useDateStatus(
+    new Date(tool.releaseDate),
+    tool.updatedDate ? new Date(tool.updatedDate) : undefined
+  )
+
+  const dateRangeStatus = useDateRangeStatus(
+    tool.updatedDate ? new Date(tool.updatedDate) : new Date(tool.releaseDate)
+  )
 
   const classNames = cn(
     className,
@@ -30,6 +42,19 @@ export default function ToolCard(props: ToolCardProps) {
               WIP
             </div>
           )}
+          {(dateStatus === 'new' || dateStatus === 'updated') && !tool.wip && (
+            <div
+              className={cn('absolute top-0 right-0 py-0.5 px-1.5 text-[10px]', {
+                'bg-success text-background': dateStatus === 'updated',
+                'bg-warning text-primary-foreground': dateStatus === 'new'
+              })}
+            >
+              {dateStatus === 'new' && 'new'}
+              {dateStatus === 'updated' && 'updated'}
+              {' '}
+              {dateRangeStatus}
+            </div>
+          )}
         </Link>
       )}
       {!tool.implemented && (
@@ -38,7 +63,7 @@ export default function ToolCard(props: ToolCardProps) {
             className: 'text-2xl dark:text-thighlight text-primary h-8 w-fit'
           })}
           {tool.name}
-          <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
+          <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-foreground text-accent">
             not ready
           </div>
         </div>

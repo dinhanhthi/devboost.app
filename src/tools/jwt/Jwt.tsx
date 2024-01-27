@@ -412,7 +412,7 @@ export default function Jwt() {
             />
           </div>
         </div>
-        {jwt && isSignatureVerified && (
+        {jwt && (
           <div
             className={cn('items-center hidden w-full mx-auto text-center 2xl:flex', {
               'text-success': isSignatureVerified,

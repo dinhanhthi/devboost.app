@@ -37,28 +37,33 @@ const originalTools: Tool[] = [
     name: 'Check Your API',
     description:
       "Quickly check your API's response. No need to write code. Save your API for later use.",
-    iconEl: ApiIcon({ className: commonIconClass })
+    iconEl: ApiIcon({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'check-npm-version',
     name: 'Check Latest NPM Package Version',
     description: 'Quickly check the latest version of any npm / yarn package.',
-    iconEl: PackageUpdateICon({ className: 'text-2xl' })
+    iconEl: PackageUpdateICon({ className: 'text-2xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'mermaid-playground',
     name: 'Mermaid Playground',
-    iconEl: TreeDiagramIcon({ className: 'text-xl' })
+    iconEl: TreeDiagramIcon({ className: 'text-xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'compare-json',
     name: 'Compare JSON',
-    iconEl: CompareDocIcon({ className: 'text-2xl' })
+    iconEl: CompareDocIcon({ className: 'text-2xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'compare-string',
     name: 'Compare String',
-    iconEl: CompareDocIcon({ className: 'text-2xl' })
+    iconEl: CompareDocIcon({ className: 'text-2xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'base64-string',
@@ -66,7 +71,8 @@ const originalTools: Tool[] = [
     description: 'Convert string to base64 and base64 to string.',
     categories: ['Encoders / Decoders'],
     iconEl: SixtyFour({ className: 'text-xs' }),
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'base64-image',
@@ -74,18 +80,21 @@ const originalTools: Tool[] = [
     description: 'Convert image to base64 and base64 to image.',
     categories: ['Encoders / Decoders'],
     iconEl: SixtyFour({ className: 'text-xs' }),
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'json-formatter',
     name: 'JSON Formatter',
     categories: ['Formatters'],
-    iconEl: TbJson({ className: commonIconClass })
+    iconEl: TbJson({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'unix-timestamp-converter',
     name: 'Unix Timestamp Converter',
-    iconEl: IoTime({ className: commonIconClass })
+    iconEl: IoTime({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'json-sorter',
@@ -93,12 +102,14 @@ const originalTools: Tool[] = [
     description: 'Sort JSON by key or value.',
     categories: ['Beautifiers'],
     iconEl: TbJson({ className: commonIconClass }),
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'open-graph-preview',
     name: 'Open Graph Preview',
-    iconEl: OpenGraphIcon({ className: 'text-xs' })
+    iconEl: OpenGraphIcon({ className: 'text-xs' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'jwt-encoder-decoder',
@@ -113,33 +124,39 @@ const originalTools: Tool[] = [
         version: '5.1.3'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'regex-tester',
     name: 'Regex Tester',
-    iconEl: VscRegex({ className: commonIconClass })
+    iconEl: VscRegex({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'url-encoder-decoder',
     name: 'URL Encoder/Decoder',
     categories: ['Encoders / Decoders'],
-    iconEl: SiCurl({ className: 'text-xl' })
+    iconEl: SiCurl({ className: 'text-xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'url-parser',
     name: 'URL Parser',
-    iconEl: SiCurl({ className: 'text-xl' })
+    iconEl: SiCurl({ className: 'text-xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'url-shortener',
     name: 'URL Shortener',
-    iconEl: SiCurl({ className: 'text-xl' })
+    iconEl: SiCurl({ className: 'text-xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'html-entities-encoder-decoder',
     name: 'HTML Entities Encoder/Decoder',
-    iconEl: AiFillHtml5({ className: commonIconClass })
+    iconEl: AiFillHtml5({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'uuid-generator-decoder',
@@ -159,12 +176,14 @@ const originalTools: Tool[] = [
         url: 'https://www.uuidtools.com/decode'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'html-preview',
     name: 'HTML Preview',
-    iconEl: AiFillHtml5({ className: commonIconClass })
+    iconEl: AiFillHtml5({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'json-yaml',
@@ -179,37 +198,44 @@ const originalTools: Tool[] = [
         version: '2.3.4'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'number-base-converter',
     name: 'Number Base Converter',
-    iconEl: LuBinary({ className: commonIconClass })
+    iconEl: LuBinary({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'html-beautifier-minifier',
     name: 'HTML Beautifier/Minifier',
-    iconEl: AiFillHtml5({ className: commonIconClass })
+    iconEl: AiFillHtml5({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'css-beautifier-minifier',
     name: 'CSS Beautifier/Minifier',
-    iconEl: DiCss3Full({ className: commonIconClass })
+    iconEl: DiCss3Full({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'javascript-beautifier-minifier',
     name: 'JavaScript Beautifier/Minifier',
-    iconEl: IoLogoJavascript({ className: 'text-xl' })
+    iconEl: IoLogoJavascript({ className: 'text-xl' }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'xml-beautifier-minifier',
     name: 'XML Beautifier/Minifier',
-    iconEl: TbFileTypeXml({ className: commonIconClass })
+    iconEl: TbFileTypeXml({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'scss-beautifier-minifier',
     name: 'SCSS Beautifier/Minifier',
-    iconEl: ScssIcon({ className: commonIconClass })
+    iconEl: ScssIcon({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'lorem-ipsum-generator',
@@ -218,17 +244,20 @@ const originalTools: Tool[] = [
     categories: ['Generators'],
     iconEl: LoremIpsumIcon({ className: 'text-sm' }),
     implemented: true,
-    wip: true
+    wip: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'qr-code-generator-reader',
     name: 'QR Code Generator/Reader',
-    iconEl: HiQrCode({ className: commonIconClass })
+    iconEl: HiQrCode({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'string-inspector',
     name: 'String Inspector',
-    iconEl: RiMenuSearchLine({ className: commonIconClass })
+    iconEl: RiMenuSearchLine({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'json-csv',
@@ -243,7 +272,8 @@ const originalTools: Tool[] = [
         url: 'https://github.com/mholt/PapaParse',
         version: '5.4.1'
       }
-    ]
+    ],
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'nano-id-generator',
@@ -259,7 +289,8 @@ const originalTools: Tool[] = [
         version: '5.0.3'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'ulid-generator',
@@ -275,7 +306,8 @@ const originalTools: Tool[] = [
         version: '2.2.1'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'objectid-generator',
@@ -291,12 +323,14 @@ const originalTools: Tool[] = [
         version: '6.2.0'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'tokenizer',
     name: 'Tokenizer (OpenAI)',
-    iconEl: TokenIcon({ className: commonIconClass })
+    iconEl: TokenIcon({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'openai-key-validator',
@@ -310,12 +344,14 @@ const originalTools: Tool[] = [
         url: 'https://platform.openai.com/docs/api-reference/models/list'
       }
     ],
-    implemented: true
+    implemented: true,
+    releaseDate: '2023-10-31'
   },
   {
     slug: 'notion-api-playground',
     name: 'Notion API Playground',
-    iconEl: NotionIcon({ className: commonIconClass })
+    iconEl: NotionIcon({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
   }
 ]
 
@@ -335,5 +371,6 @@ export const TOOLS = originalTools
 export const allToolItem: Tool = {
   name: 'All tools',
   slug: '/',
-  iconEl: RiApps2Line({ className: 'text-xl' })
+  iconEl: RiApps2Line({ className: 'text-xl' }),
+  releaseDate: '2023-10-31'
 }

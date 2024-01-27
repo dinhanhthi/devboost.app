@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import packageInfo from '../../package.json'
+// import packageInfo from '../../package.json'
 import Logo from '../../public/logo.svg'
 import { kanit } from '../app/fonts'
 import GithubLineIcon from '../icons/GithubLineIcon'
@@ -22,7 +22,8 @@ export default function Nav() {
           <h1 className={cn('text-2xl', kanit.className)}>{SETTINGS.siteName}</h1>
         </Link>
         <Badge className="font-normal" variant="secondary">
-          v{packageInfo.version}
+          {/* v{packageInfo.version} */}
+          WIP
         </Badge>
         <div>/</div>
         <HeaderTitle className="flex-1 h-full" />
