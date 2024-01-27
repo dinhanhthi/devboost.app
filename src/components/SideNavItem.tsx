@@ -7,6 +7,7 @@ import { useEffect, useRef } from 'react'
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
 import { SideNavFilterType, Tool } from '../interface'
+import { useDateStatus } from '../lib/hooks/use-date-status'
 import { cn } from '../lib/utils'
 import { Button } from './ui/Button'
 
@@ -24,6 +25,11 @@ type SideNavItemProps = {
 
 export default function SideNavItem(props: SideNavItemProps) {
   const { className, tool, uri, rightElement, favoriteToolSlugs, setFavoriteToolSlugs } = props
+
+  const dateStatus = useDateStatus(
+    new Date(tool.releaseDate),
+    tool.updatedDate ? new Date(tool.updatedDate) : undefined
+  )
 
   const pathname = usePathname()
   const uriToUse = uri || `/tool/${tool.slug}`
@@ -50,13 +56,7 @@ export default function SideNavItem(props: SideNavItemProps) {
   }
 
   return (
-    <Button
-      onClick={() => console.log('side item clicked')}
-      variant="ghost"
-      size="lg"
-      className="py-2 h-fit"
-      asChild
-    >
+    <Button variant="ghost" size="lg" className="py-2 h-fit" asChild>
       <Link
         ref={areSameUris(uriToUse, pathname) ? ref : undefined}
         href={uriToUse}
@@ -70,8 +70,23 @@ export default function SideNavItem(props: SideNavItemProps) {
         <div className="flex items-center w-full gap-2">
           <div className="flex items-center w-6">{tool.iconEl}</div>
           <div className="flex flex-col flex-1 min-w-0">
-            <div className='flex flex-row items-center gap-1'>
-              {tool.wip && <span className='flex items-center px-1.5 py-0 text-[10px] h-4 rounded-sm bg-primary text-background'>WIP</span>}
+            <div className="flex flex-row items-center gap-1">
+              {tool.wip && (
+                <span className="flex items-center px-1.5 py-0 text-[10px] h-4 rounded-sm bg-primary text-background">
+                  WIP
+                </span>
+              )}
+              {(dateStatus === 'new' || dateStatus === 'updated') && !tool.wip && (
+                <span
+                  className={cn('flex items-center px-1.5 py-0 text-[10px] h-4 rounded-sm', {
+                    'bg-success text-background': dateStatus === 'updated',
+                    'bg-warning text-primary-foreground': dateStatus === 'new'
+                  })}
+                >
+                  {dateStatus === 'new' && 'new'}
+                  {dateStatus === 'updated' && 'updated'}
+                </span>
+              )}
               <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
             </div>
             {(props.filter?.showDescription || props.forceToShowDescription) && (
