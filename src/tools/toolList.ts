@@ -245,7 +245,14 @@ const originalTools: Tool[] = [
     iconEl: LoremIpsumIcon({ className: 'text-sm' }),
     implemented: true,
     wip: true,
-    releaseDate: '2023-10-31'
+    releaseDate: '2023-10-31',
+    credit: [
+      {
+        name: 'lorem-ipsum',
+        url: 'https://github.com/knicklabs/lorem-ipsum.js',
+        version: '2.0.8'
+      }
+    ]
   },
   {
     slug: 'qr-code-generator-reader',
@@ -355,18 +362,17 @@ const originalTools: Tool[] = [
   }
 ]
 
-export const TOOLS = originalTools
-  .sort((a, b) => {
-    const nameA = a.name.toUpperCase()
-    const nameB = b.name.toUpperCase()
-    if (nameA < nameB) {
-      return -1
-    }
-    if (nameA > nameB) {
-      return 1
-    }
-    return 0
-  })
+export const TOOLS = originalTools.sort((a, b) => {
+  const nameA = a.name.toUpperCase()
+  const nameB = b.name.toUpperCase()
+  if (nameA < nameB) {
+    return -1
+  }
+  if (nameA > nameB) {
+    return 1
+  }
+  return 0
+})
 
 export const allToolItem: Tool = {
   name: 'All tools',

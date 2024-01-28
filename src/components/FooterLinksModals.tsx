@@ -16,7 +16,11 @@ import {
   DialogTrigger
 } from './ui/Dialog'
 
-export default function FooterLinksModals() {
+type FooterLinksModalsProps = {
+  className?: string
+}
+
+export default function FooterLinksModals(props: FooterLinksModalsProps) {
   const [docContent, setDocContent] = useState<string | undefined>(undefined)
 
   const handleOpenDocClicked = async (link: FooterLink) => {
@@ -35,7 +39,7 @@ export default function FooterLinksModals() {
   }
 
   return (
-    <div>
+    <div className={props.className}>
       {FOOTER_LINKS.map(link => (
         <Dialog key={link.docFile} onOpenChange={handleOnOpenChange}>
           <DialogTrigger asChild>
