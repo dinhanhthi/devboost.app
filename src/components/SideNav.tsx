@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
-import { TOOLS as originalTools, allToolItem } from '../tools/toolList'
+import { allToolItem, TOOLS as originalTools } from '../tools/toolList'
 import SideNavFilter from './SideNavFilter'
 import SideNavItem from './SideNavItem'
 import { Badge } from './ui/Badge'
@@ -16,6 +16,7 @@ import { Input } from './ui/Input'
 
 type SideNavProps = {
   className?: string
+  bottomSearch?: boolean // when true, search input and filter will be at the bottom
 }
 
 export default function SideNav(props: SideNavProps) {
@@ -71,21 +72,23 @@ export default function SideNav(props: SideNavProps) {
       )
 
   return (
-    <div className={cn(props.className, 'sidebar border-r')}>
+    <div className={cn(props.className, 'sidebar')}>
       <div className={cn('flex h-full w-full flex-col')}>
         {/* Search */}
-        <div className={cn('flex items-center gap-1 p-2.5 border-b')}>
-          <Input
-            ref={inputRef}
-            autoComplete="off"
-            id="search"
-            type="search"
-            placeholder={'type to search tools...'}
-            value={query}
-            onChange={e => handleOnchangeInput(e)}
-          />
-          <SideNavFilter filter={filter} setFilter={setFilter} />
-        </div>
+        {!props.bottomSearch && (
+          <div className={cn('flex items-center gap-1 p-2.5 border-b')}>
+            <Input
+              ref={inputRef}
+              autoComplete="off"
+              id="search"
+              type="search"
+              placeholder={'type to search tools...'}
+              value={query}
+              onChange={e => handleOnchangeInput(e)}
+            />
+            <SideNavFilter filter={filter} setFilter={setFilter} />
+          </div>
+        )}
 
         {/* Main */}
         <div className={cn('flex w-full flex-1 flex-col overflow-hidden')}>
@@ -120,8 +123,8 @@ export default function SideNav(props: SideNavProps) {
                   key={i}
                   className="flex items-center justify-center w-full h-10 gap-2 p-2 animate-pulse"
                 >
-                  <div className='w-6 h-6 rounded-full bg-border'></div>
-                  <div className='flex-1 h-full min-w-0 rounded-md bg-border'></div>
+                  <div className="w-6 h-6 rounded-full bg-border"></div>
+                  <div className="flex-1 h-full min-w-0 rounded-md bg-border"></div>
                 </div>
               ))}
             {query && !toolsToShow.length && (
@@ -140,6 +143,22 @@ export default function SideNav(props: SideNavProps) {
             )}
           </div>
         </div>
+
+        {/* Search (bottom) */}
+        {props.bottomSearch && (
+          <div className={cn('flex items-center gap-1 p-2.5')}>
+            <Input
+              ref={inputRef}
+              autoComplete="off"
+              id="search"
+              type="search"
+              placeholder={'type to search tools...'}
+              value={query}
+              onChange={e => handleOnchangeInput(e)}
+            />
+            <SideNavFilter filter={filter} setFilter={setFilter} />
+          </div>
+        )}
       </div>
     </div>
   )

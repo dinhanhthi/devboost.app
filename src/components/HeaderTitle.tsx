@@ -26,7 +26,7 @@ export default function HeaderTitle(props: HeaderTitleProps) {
         <div className="">
           <h1
             className={cn(
-              'gap-2 overflow-hidden text-xl font-semibold text-primary',
+              'gap-2 overflow-hidden text-xl font-semibold text-primary leading-tight',
               kanit.className
             )}
           >

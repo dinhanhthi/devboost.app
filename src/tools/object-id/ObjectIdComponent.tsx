@@ -1,11 +1,24 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/Tabs'
-import dynamic from 'next/dynamic'
+import LoadingIcon from '../../icons/LoadingIcon'
 
-const ObjectIdGenerator = dynamic(() => import('./ObjectIdGenerator'), { ssr: false })
-const ObjectIdTimestampConverter = dynamic(() => import('./ObjectIdTimestampConverter'), { ssr: false })
+const SkeletonLoader = () => (
+  <div className="flex items-center justify-center w-full h-full animate-pulse">
+    <LoadingIcon className="w-8 h-8 text-primary animate-spin" />
+  </div>
+)
+
+const ObjectIdGenerator = dynamic(() => import('./ObjectIdGenerator'), {
+  ssr: false,
+  loading: SkeletonLoader
+})
+const ObjectIdTimestampConverter = dynamic(() => import('./ObjectIdTimestampConverter'), {
+  ssr: false,
+  loading: SkeletonLoader
+})
 
 export default function ObjectIdComponent() {
   const tabs = [

@@ -13,7 +13,11 @@ import {
   DropdownMenuTrigger
 } from './ui/DropdownMenu'
 
-export default function NavConfig() {
+type NavConfigProps = {
+  className?: string
+}
+
+export default function NavConfig(props: NavConfigProps) {
   const handleDownloadConfigs = () => {
     const configs = {} as any
     for (const key of Object.keys(CONFIG_KEYS)) {
@@ -60,22 +64,24 @@ export default function NavConfig() {
   }
 
   return (
-    <DropdownMenu>
-      <SimpleTooltip text="Settings">
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <ConfigIcon className="w-5 h-5" />
-          </Button>
-        </DropdownMenuTrigger>
-      </SimpleTooltip>
-      <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => handleDownloadConfigs()}>
-          <DownloadIcon className="mr-1.5" /> Export configs
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleUploadConfigs()}>
-          <UploadIcon className="mr-1.5" /> Import configs
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className={props.className}>
+      <DropdownMenu>
+        <SimpleTooltip text="Settings">
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <ConfigIcon className="w-5 h-5" />
+            </Button>
+          </DropdownMenuTrigger>
+        </SimpleTooltip>
+        <DropdownMenuContent>
+          <DropdownMenuItem onClick={() => handleDownloadConfigs()}>
+            <DownloadIcon className="mr-1.5" /> Export configs
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleUploadConfigs()}>
+            <UploadIcon className="mr-1.5" /> Import configs
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   )
 }

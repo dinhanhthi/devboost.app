@@ -7,7 +7,11 @@ import SunIcon from '../icons/SunIcon'
 import SimpleTooltip from './SimpleTooltip'
 import { Button } from './ui/Button'
 
-export default function ToggleTheme() {
+type ToggleThemeProps = {
+  className?: string
+}
+
+export default function ToggleTheme(props: ToggleThemeProps) {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -25,11 +29,13 @@ export default function ToggleTheme() {
   }
 
   return (
-    <SimpleTooltip text={theme === 'light' ? 'Enable Dark Theme' : 'Enable Light Theme'}>
-      <Button variant="ghost" size="icon" onClick={handleThemeToggle}>
-        {theme === 'light' && <MoonStarIcon className="w-5 h-5" />}
-        {theme !== 'light' && <SunIcon className="w-5 h-5" />}
-      </Button>
-    </SimpleTooltip>
+    <div className={props.className}>
+      <SimpleTooltip text={theme === 'light' ? 'Enable Dark Theme' : 'Enable Light Theme'}>
+        <Button variant="ghost" size="icon" onClick={handleThemeToggle}>
+          {theme === 'light' && <MoonStarIcon className="w-5 h-5" />}
+          {theme !== 'light' && <SunIcon className="w-5 h-5" />}
+        </Button>
+      </SimpleTooltip>
+    </div>
   )
 }
