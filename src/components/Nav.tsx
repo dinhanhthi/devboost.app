@@ -17,11 +17,11 @@ export default function Nav() {
   return (
     <div className="flex flex-row items-center justify-between w-full px-6 py-3 border-b shrink-0">
       <div className="flex items-center gap-2">
-        <Link href={'/'} className="flex items-center gap-2">
+        <Link href={'/'} className="flex items-center gap-2 shrink-0">
           <Image src={Logo} alt="DevBoost Logo" width={30} height={30} />
-          <h1 className={cn('text-2xl', kanit.className)}>{SETTINGS.siteName}</h1>
+          <h1 className={cn('text-2xl hidden sm:block', kanit.className)}>{SETTINGS.siteName}</h1>
         </Link>
-        <Badge className="font-normal" variant="secondary">
+        <Badge className="text-xs font-normal md:text-sm" variant="secondary">
           {/* v{packageInfo.version} */}
           WIP
         </Badge>
@@ -29,7 +29,7 @@ export default function Nav() {
         <HeaderTitle className="flex-1 h-full" />
       </div>
 
-      <div className="flex items-center gap-1">
+      <div className="items-center hidden gap-1 lg:flex">
         <NavConfig />
         <SimpleTooltip text="Check the source codes">
           <Button variant="ghost" size="icon" asChild>
