@@ -1,6 +1,6 @@
 'use client'
 
-import { DashboardIcon } from '@radix-ui/react-icons'
+import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { cloneElement, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import LoadingIcon from '../icons/LoadingIcon'
@@ -42,7 +42,7 @@ export default function FooterLinksMobile(props: FooterLinksMobileProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
-            <DashboardIcon className="w-5 h-5" />
+            <HamburgerMenuIcon className="w-5 h-5" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="flex flex-col gap-4 p-3 bg-background">
