@@ -5,7 +5,7 @@ export default function ToolBodySkeleton() {
   return (
     <MainContainer className="items-center justify-center h-full animate-pulse">
       <div className="animate-spin">
-        <LoadingIcon className="w-12 h-12 dark:text-green-300 text-sky-600" />
+        <LoadingIcon className="w-8 h-8 text-primary" />
       </div>
     </MainContainer>
   )
