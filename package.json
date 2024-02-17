@@ -3,6 +3,7 @@
   "description": "Boost your dev with useful tools.",
   "version": "0.0.1",
   "author": "Anh-Thi Dinh",
+  "license": "GPL-3.0-or-later",
   "private": true,
   "scripts": {
     "dev": "next dev",
