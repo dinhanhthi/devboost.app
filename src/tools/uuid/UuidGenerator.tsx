@@ -40,7 +40,8 @@ export default function UuidGenerator() {
   const [namespaceValue, setNamespaceValue] = useState('')
   const [nameValue, setNameValue] = useState('')
   const [recordsValue, setRecordsValue] = useState('')
-  const [uuidVersion, setUuidVersion] = useState<UuidVersion>('v1')
+  const defaultUuidVersion = 'v1'
+  const [uuidVersion, setUuidVersion] = useState<UuidVersion>(defaultUuidVersion)
 
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextareaValue(event.target.value)
@@ -176,7 +177,7 @@ export default function UuidGenerator() {
         {/* versions */}
         <div className="relative z-10 flex flex-row items-center h-8 gap-1">
           <Select
-            defaultValue="v1"
+            defaultValue={defaultUuidVersion}
             onValueChange={handleSelectVersionsChange}
             name="version-selection"
           >

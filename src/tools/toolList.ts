@@ -244,8 +244,7 @@ const originalTools: Tool[] = [
     categories: ['Generators'],
     iconEl: LoremIpsumIcon({ className: 'text-sm' }),
     implemented: true,
-    wip: true,
-    releaseDate: '2023-10-31',
+    releaseDate: '2024-02-17',
     credit: [
       {
         name: 'lorem-ipsum',

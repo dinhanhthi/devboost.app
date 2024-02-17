@@ -7,15 +7,16 @@ import { Configs, Tool } from '../../../../interface'
 import { DEFAULT_C0NFIGS } from '../../../../lib/config'
 import Base64Image from '../../../../tools/base64/Base64Image'
 import Base64String from '../../../../tools/base64/Base64String'
+import JsonCsv from '../../../../tools/json/JsonCsv'
 import JsonSorter from '../../../../tools/json/JsonSorter'
 import JsonYaml from '../../../../tools/json/JsonYaml'
 import Jwt from '../../../../tools/jwt/Jwt'
+import LoremIpsumGenerator from '../../../../tools/lorem-ipsum/LoremIpsumGenerator'
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
-import JsonCsv from '../../../../tools/json/JsonCsv'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -58,10 +59,12 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
             <span key={credit.name}>
               <a href={credit.url} target="_blank" rel="noopener noreferrer">
                 {credit.name}
-              </a>{credit.version && (<span> (v{credit.version})</span>)}
+              </a>
+              {credit.version && <span> (v{credit.version})</span>}
               {index !== tool.credit!.length - 1 && ', '}
             </span>
-          ))}.
+          ))}
+          .
         </div>
       )}
     </div>
@@ -70,29 +73,14 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
 
 function getToolComponent(slug: string) {
   switch (slug) {
-    case 'openai-key-validator':
-      return <OpenAiKeyValidator />
-
-    case 'uuid-generator-decoder':
-      return <Uuid />
-
-    case 'ulid-generator':
-      return <Ulid />
-
-    case 'nano-id-generator':
-      return <NanoIdGenerator />
+    case 'base64-image':
+      return <Base64Image />
 
     case 'base64-string':
       return <Base64String />
 
-    case 'base64-image':
-      return <Base64Image />
-
-    case 'jwt-encoder-decoder':
-      return <Jwt />
-
-    case 'objectid-generator':
-      return <ObjectIdComponent />
+    case 'json-csv':
+      return <JsonCsv />
 
     case 'json-sorter':
       return <JsonSorter />
@@ -100,8 +88,26 @@ function getToolComponent(slug: string) {
     case 'json-yaml':
       return <JsonYaml />
 
-    case 'json-csv':
-      return <JsonCsv />
+    case 'jwt-encoder-decoder':
+      return <Jwt />
+
+    case 'lorem-ipsum-generator':
+      return <LoremIpsumGenerator />
+
+    case 'nano-id-generator':
+      return <NanoIdGenerator />
+
+    case 'openai-key-validator':
+      return <OpenAiKeyValidator />
+
+    case 'objectid-generator':
+      return <ObjectIdComponent />
+
+    case 'ulid-generator':
+      return <Ulid />
+
+    case 'uuid-generator-decoder':
+      return <Uuid />
 
     default:
       return null
