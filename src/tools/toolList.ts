@@ -15,6 +15,7 @@ import NotionIcon from '../icons/NotionIcon'
 import OpenAiIcon from '../icons/OpenAiIcon'
 import OpenGraphIcon from '../icons/OpenGraphIcon'
 import PackageUpdateICon from '../icons/PackageUpdateIcon'
+import PasswordIcon from '../icons/PasswordIcon'
 import RiApps2Line from '../icons/RiApps2Line'
 import RiMenuSearchLine from '../icons/RiMenuSearchLine'
 import ScssIcon from '../icons/ScssIcon'
@@ -358,6 +359,14 @@ const originalTools: Tool[] = [
     name: 'Notion API Playground',
     iconEl: NotionIcon({ className: commonIconClass }),
     releaseDate: '2023-10-31'
+  },
+  {
+    slug: 'password-generator',
+    name: 'Password Generator',
+    iconEl: PasswordIcon({ className: commonIconClass }),
+    releaseDate: '2024-02-17',
+    wip: true,
+    implemented: true
   }
 ]
 
