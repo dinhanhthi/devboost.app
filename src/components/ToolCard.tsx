@@ -30,13 +30,13 @@ export default function ToolCard(props: ToolCardProps) {
   )
 
   return (
-    <>
+    <div className={cn({ 'opacity-50 hover:opacity-100': !tool.implemented })}>
       {tool.implemented && (
         <Link href={`/tool/${tool.slug}`} className={classNames}>
           {cloneElement(tool.iconEl!, {
             className: 'text-xl dark:text-thighlight text-primary h-6 w-fit'
           })}
-          <span className='text-base'>{tool.name}</span>
+          <span className="text-base">{tool.name}</span>
           {tool.wip && (
             <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-primary text-accent">
               WIP
@@ -60,13 +60,13 @@ export default function ToolCard(props: ToolCardProps) {
           {cloneElement(tool.iconEl!, {
             className: 'text-xl dark:text-thighlight text-primary h-6 w-fit'
           })}
-          <span className='text-base'>{tool.name}</span>
+          <span className="text-base">{tool.name}</span>
           <div className="absolute top-0 right-0 py-0.5 px-1.5 text-[10px] bg-foreground text-accent">
             not ready
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
