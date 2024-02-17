@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 
 import Fuse, { FuseResult } from 'fuse.js'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { Configs, SideNavFilterType, Tool } from '../interface'
 import { CONFIG_KEYS, DEFAULT_C0NFIGS } from '../lib/config'
 import useLocalStorage from '../lib/hooks/use-local-storage'
@@ -17,6 +17,7 @@ import { Input } from './ui/Input'
 type SideNavProps = {
   className?: string
   bottomSearch?: boolean // when true, search input and filter will be at the bottom
+  setOpenSheet?: Dispatch<SetStateAction<boolean>>
 }
 
 export default function SideNav(props: SideNavProps) {
@@ -93,16 +94,18 @@ export default function SideNav(props: SideNavProps) {
         {/* Main */}
         <div className={cn('flex w-full flex-1 flex-col overflow-hidden')}>
           {/* All tools */}
-          <div className="p-2 border-b">
-            <SideNavItem
-              uri="/"
-              tool={allToolItem}
-              hideFavorite={true}
-              rightElement={<Badge>{TOOLS.length}</Badge>}
-              favoriteToolSlugs={favoriteToolSlugs}
-              setFavoriteToolSlugs={setFavoriteToolSlugs}
-            />
-          </div>
+          {!props.bottomSearch && (
+            <div className="p-2 border-b">
+              <SideNavItem
+                uri="/"
+                tool={allToolItem}
+                hideFavorite={true}
+                rightElement={<Badge>{TOOLS.length}</Badge>}
+                favoriteToolSlugs={favoriteToolSlugs}
+                setFavoriteToolSlugs={setFavoriteToolSlugs}
+              />
+            </div>
+          )}
 
           {/* Tools */}
           <div className="flex flex-col flex-1 min-h-0 gap-1 p-2 overflow-auto db-scrollbar">
@@ -115,6 +118,7 @@ export default function SideNav(props: SideNavProps) {
                   favoriteToolSlugs={favoriteToolSlugs}
                   setFavoriteToolSlugs={setFavoriteToolSlugs}
                   forceToShowDescription={!!query}
+                  setOpenSheet={props.setOpenSheet}
                 />
               ))}
             {loading &&
@@ -146,17 +150,29 @@ export default function SideNav(props: SideNavProps) {
 
         {/* Search (bottom) */}
         {props.bottomSearch && (
-          <div className={cn('flex items-center gap-1 p-2.5')}>
-            <Input
-              ref={inputRef}
-              autoComplete="off"
-              id="search"
-              type="search"
-              placeholder={'type to search tools...'}
-              value={query}
-              onChange={e => handleOnchangeInput(e)}
-            />
-            <SideNavFilter filter={filter} setFilter={setFilter} />
+          <div>
+            <div className="p-2 pb-0 border-t">
+              <SideNavItem
+                uri="/"
+                tool={allToolItem}
+                hideFavorite={true}
+                rightElement={<Badge>{TOOLS.length}</Badge>}
+                favoriteToolSlugs={favoriteToolSlugs}
+                setFavoriteToolSlugs={setFavoriteToolSlugs}
+              />
+            </div>
+            <div className={cn('flex items-center gap-1 p-2.5')}>
+              <Input
+                ref={inputRef}
+                autoComplete="off"
+                id="search"
+                type="search"
+                placeholder={'type to search tools...'}
+                value={query}
+                onChange={e => handleOnchangeInput(e)}
+              />
+              <SideNavFilter filter={filter} setFilter={setFilter} />
+            </div>
           </div>
         )}
       </div>

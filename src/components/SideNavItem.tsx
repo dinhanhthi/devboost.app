@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
 
 import { StarIcon } from '../icons/StarIcon'
 import { StarOutlineIcon } from '../icons/StarOutlineIcon'
@@ -21,6 +21,7 @@ type SideNavItemProps = {
   hideFavorite?: boolean
   filter?: SideNavFilterType
   forceToShowDescription?: boolean
+  setOpenSheet?: Dispatch<SetStateAction<boolean>>
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
@@ -62,6 +63,7 @@ export default function SideNavItem(props: SideNavItemProps) {
         href={uriToUse}
         key={tool.slug}
         aria-selected={areSameUris(uriToUse, pathname)}
+        onClick={() => props.setOpenSheet?.(false)}
         className={cn(
           className,
           'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-95 hover:opacity-100'

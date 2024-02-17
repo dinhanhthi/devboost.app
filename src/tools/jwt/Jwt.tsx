@@ -437,7 +437,7 @@ export default function Jwt() {
 
       {/* Decoded */}
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex flex-row flex-1 min-h-0 gap-4 2xl:flex-col">
+        <div className="flex flex-col flex-1 min-h-0 gap-4 md:flex-row 2xl:flex-col">
           <div className="flex flex-col flex-1 gap-3">
             <div className="flex flex-row flex-wrap items-center gap-4">
               <div className="font-medium">Header</div>
@@ -445,7 +445,7 @@ export default function Jwt() {
             </div>
             <div className="flex-1 min-h-0">
               <Textarea
-                className="h-full max-h-full font-mono text-red-600 resize-none db-scrollbar dark:text-red-400"
+                className="h-full min-h-[100px] max-h-full font-mono text-red-600 resize-none db-scrollbar dark:text-red-400"
                 ref={headerInputRef}
                 value={headerInputValue}
                 onChange={handleHeaderInputChanged}
@@ -460,7 +460,7 @@ export default function Jwt() {
             </div>
             <div className="flex-1 min-h-0">
               <Textarea
-                className="h-full max-h-full font-mono resize-none db-scrollbar text-fuchsia-600 dark:text-fuchsia-400"
+                className="h-full min-h-[150px] max-h-full font-mono resize-none db-scrollbar text-fuchsia-600 dark:text-fuchsia-400"
                 ref={payloadInputRef}
                 value={payloadInputValue}
                 onChange={handlePayloadInputChanged}

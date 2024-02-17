@@ -24,6 +24,8 @@ type FooterLinksMobileProps = {
 
 export default function FooterLinksMobile(props: FooterLinksMobileProps) {
   const [docContent, setDocContent] = useState<string | undefined>(undefined)
+  const [openDropdown, onOpenChangeDropdown] = useState(false)
+
   const handleOpenDocClicked = async (link: FooterLink) => {
     if (!link.docFile) return
     await fetch(`/docs/page/${link.docFile}`)
@@ -32,14 +34,17 @@ export default function FooterLinksMobile(props: FooterLinksMobileProps) {
         setDocContent(text)
       })
   }
-  const handleOnOpenChange = (open: boolean) => {
+
+  const handleOnOpenChangeDialog = (open: boolean) => {
     if (!open) {
       setDocContent(undefined)
+      onOpenChangeDropdown(false)
     }
   }
+
   return (
     <div className={props.className}>
-      <DropdownMenu>
+      <DropdownMenu open={openDropdown} onOpenChange={onOpenChangeDropdown}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
             <HamburgerMenuIcon className="w-5 h-5" />
@@ -47,10 +52,12 @@ export default function FooterLinksMobile(props: FooterLinksMobileProps) {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="flex flex-col gap-4 p-3 bg-background">
           {FOOTER_LINKS.map(link => (
-            <Dialog key={link.docFile} onOpenChange={handleOnOpenChange}>
+            <Dialog key={link.docFile} onOpenChange={handleOnOpenChangeDialog}>
               <DialogTrigger asChild>
                 <Button
-                  onClick={() => handleOpenDocClicked(link)}
+                  onClick={() => {
+                    handleOpenDocClicked(link)
+                  }}
                   variant="ghost"
                   className="justify-start px-2 font-normal group"
                 >
