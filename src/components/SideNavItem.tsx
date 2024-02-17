@@ -66,7 +66,8 @@ export default function SideNavItem(props: SideNavItemProps) {
         onClick={() => props.setOpenSheet?.(false)}
         className={cn(
           className,
-          'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-95 hover:opacity-100'
+          'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-95 hover:opacity-100',
+          { 'opacity-50': !tool.implemented }
         )}
       >
         <div className="flex items-center w-full gap-2">
