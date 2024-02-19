@@ -26,16 +26,16 @@ export default function LoremIpsumGenerator() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [textareaValue, setTextareaValue] = useState('')
   const inputRecordsRef = useRef<HTMLInputElement>(null)
-  const [recordsValue, setRecordsValue] = useState('')
+  const [recordsValue, setRecordsValue] = useState(3)
 
   const wpsMinRef = useRef<HTMLInputElement>(null)
-  const [wpsMinValue, setWpsMinValue] = useState(1)
+  const [wpsMinValue, setWpsMinValue] = useState(3)
   const wpsMaxRef = useRef<HTMLInputElement>(null)
-  const [wpsMaxValue, setWpsMaxValue] = useState(1)
+  const [wpsMaxValue, setWpsMaxValue] = useState(7)
   const sppMinRef = useRef<HTMLInputElement>(null)
   const [sppMinValue, setSppMinValue] = useState(1)
   const sppMaxRef = useRef<HTMLInputElement>(null)
-  const [sppMaxValue, setSppMaxValue] = useState(1)
+  const [sppMaxValue, setSppMaxValue] = useState(5)
 
   const defaultGenerateType = 'paragraph'
   const [generateType, setGenerateType] = useState<GenerateTypes>(defaultGenerateType)
@@ -83,7 +83,7 @@ export default function LoremIpsumGenerator() {
     switch (generateType) {
       case 'words': {
         const lorem = new LoremIpsum({}, format)
-        setTextareaValue(lorem.generateWords(parseInt(recordsValue)))
+        setTextareaValue(lorem.generateWords(recordsValue))
         break
       }
 
@@ -97,7 +97,7 @@ export default function LoremIpsumGenerator() {
           },
           format
         )
-        setTextareaValue(lorem.generateSentences(parseInt(recordsValue)))
+        setTextareaValue(lorem.generateSentences(recordsValue))
         break
       }
 
@@ -115,7 +115,7 @@ export default function LoremIpsumGenerator() {
           },
           format
         )
-        setTextareaValue(lorem.generateParagraphs(parseInt(recordsValue)))
+        setTextareaValue(lorem.generateParagraphs(recordsValue))
         break
       }
 
@@ -134,8 +134,8 @@ export default function LoremIpsumGenerator() {
             <ButtonGenerate
               onClick={handleGenerateClicked}
               disabled={
-                parseInt(recordsValue) < 1 ||
-                parseInt(recordsValue) > maxRecords ||
+                recordsValue < 1 ||
+                recordsValue > maxRecords ||
                 wpsMinValue < 1 ||
                 wpsMaxValue < 1 ||
                 wpsMaxValue < wpsMinValue ||
@@ -190,7 +190,7 @@ export default function LoremIpsumGenerator() {
             <Input
               ref={inputRecordsRef}
               value={recordsValue}
-              onChange={event => setRecordsValue(event.target.value)}
+              onChange={event => setRecordsValue(+event.target.value)}
               type="number"
               placeholder={`max ${maxRecords}`}
               min={1}
