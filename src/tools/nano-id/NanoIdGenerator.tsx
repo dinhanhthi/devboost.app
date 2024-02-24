@@ -75,7 +75,7 @@ export default function NanoIdGenerator() {
 
         {/* records */}
         <div className="flex flex-row flex-wrap items-center flex-1 min-w-0 gap-4 h-7">
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-col gap-2 sm:items-center sm:flex-row">
             <div className="text-sm">Generate based on your characters (optional) </div>
             <Input
               ref={yourCharacterRef}

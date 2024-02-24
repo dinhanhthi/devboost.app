@@ -9,6 +9,7 @@ import ButtonCopy from '../../components/ui/ButtonCopy'
 import ButtonDownload from '../../components/ui/ButtonDownload'
 import ButtonGenerate from '../../components/ui/ButtonGenerate'
 import { Input } from '../../components/ui/Input'
+import { RadioGroup, RadioGroupItem } from '../../components/ui/RadioGroup'
 import {
   Select,
   SelectContent,
@@ -54,8 +55,8 @@ export default function LoremIpsumGenerator() {
   const defaultFormat = 'plain'
   const [format, setFormat] = useState<FormatTypes>(defaultFormat)
   const formatTypes = [
-    { value: 'html', name: 'Format HTML' },
-    { value: 'plain', name: 'Format Plain Text' }
+    { value: 'html', name: 'HTML' },
+    { value: 'plain', name: 'Plain Text' }
   ]
   const handleSelectFormats = (value: FormatTypes) => {
     setTextareaValue('')
@@ -128,7 +129,7 @@ export default function LoremIpsumGenerator() {
     <MainContainer>
       <div className="flex flex-col flex-wrap justify-between gap-4">
         {/* header */}
-        <div className="flex flex-wrap justify-between gap-4">
+        <div className="flex flex-wrap gap-4">
           {/* buttons */}
           <div className="flex flex-row flex-wrap items-center gap-4">
             <ButtonGenerate
@@ -150,11 +151,21 @@ export default function LoremIpsumGenerator() {
               <ButtonDownload onClick={handleDownloadClicked} disabled={!textareaValue} />
               <ButtonClear onClick={handleClearClicked} disabled={!textareaValue} />
             </div>
-          </div>
 
-          {/* format x type x number */}
-          <div className="relative z-10 flex flex-row items-center h-8 gap-1">
-            <Select
+            {/* HTML / Plain Text */}
+            <RadioGroup
+              className="flex"
+              defaultValue={defaultFormat}
+              onValueChange={handleSelectFormats}
+            >
+              {formatTypes.map(item => (
+                <div key={item.value} className="flex items-center space-x-2">
+                  <RadioGroupItem value={item.value} id={item.value} />
+                  <label htmlFor={item.value}>{item.name}</label>
+                </div>
+              ))}
+            </RadioGroup>
+            {/* <Select
               defaultValue={defaultFormat}
               onValueChange={handleSelectFormats}
               name="format-selection"
@@ -169,34 +180,43 @@ export default function LoremIpsumGenerator() {
                   </SelectItem>
                 ))}
               </SelectContent>
-            </Select>
-            <Select
-              defaultValue={defaultGenerateType}
-              onValueChange={handleSelectTypes}
-              name="types-selection"
-            >
-              <SelectTrigger className="w-[200px] h-8">
-                <SelectValue placeholder="Select a type" />
-              </SelectTrigger>
-              <SelectContent>
-                {generateTypes.map(({ value, name }) => (
-                  <SelectItem key={value} value={value}>
-                    {name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
-            <Input
-              ref={inputRecordsRef}
-              value={recordsValue}
-              onChange={event => setRecordsValue(+event.target.value)}
-              type="number"
-              placeholder={`max ${maxRecords}`}
-              min={1}
-              max={maxRecords}
-              className={cn('w-28 h-8')}
-            />
+            </Select> */}
+          </div>
+
+          {/* format x type x number */}
+          <div className="relative z-10 flex flex-row items-center h-fit gap-x-1 gap-y-2">
+            {/* Words / Paragraphs / Sentences */}
+            <div className="flex flex-row flex-wrap gap-x-1 gap-y-2 h-fit">
+              <Select
+                defaultValue={defaultGenerateType}
+                onValueChange={handleSelectTypes}
+                name="types-selection"
+              >
+                <SelectTrigger className="w-[200px] h-8">
+                  <SelectValue placeholder="Select a type" />
+                </SelectTrigger>
+                <SelectContent>
+                  {generateTypes.map(({ value, name }) => (
+                    <SelectItem key={value} value={value}>
+                      {name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <div className="flex items-center gap-1 flex-nowrap">
+                <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
+                <Input
+                  ref={inputRecordsRef}
+                  value={recordsValue}
+                  onChange={event => setRecordsValue(+event.target.value)}
+                  type="number"
+                  placeholder={`max ${maxRecords}`}
+                  min={1}
+                  max={maxRecords}
+                  className={cn('w-28 h-8')}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -204,54 +224,66 @@ export default function LoremIpsumGenerator() {
         {generateType !== 'words' && (
           <div className="flex flex-row flex-wrap items-center flex-1 min-w-0 gap-4 h-7">
             {/* Words per sentence */}
-            <div className="flex flex-row items-center gap-2">
-              <div className="text-sm">Words per sentence</div>
-              <Input
-                ref={wpsMinRef}
-                value={wpsMinValue}
-                onChange={event => setWpsMinValue(+event.target.value)}
-                type="number"
-                placeholder="min"
-                min={1}
-                className={cn('w-28')}
-              />
-              (min)
-              <Input
-                ref={wpsMaxRef}
-                value={wpsMaxValue}
-                onChange={event => setWpsMaxValue(+event.target.value)}
-                type="number"
-                placeholder="max"
-                min={1}
-                className={cn('w-28')}
-              />
-              (max)
+            <div className="flex flex-row flex-wrap items-center gap-3">
+              <div className="text-sm whitespace-nowrap">Words per sentence</div>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-2 flex-nowrap">
+                  <Input
+                    ref={wpsMinRef}
+                    value={wpsMinValue}
+                    onChange={event => setWpsMinValue(+event.target.value)}
+                    type="number"
+                    placeholder="min"
+                    min={1}
+                    className={cn('w-28')}
+                  />
+                  (min)
+                </div>
+                <div className="flex items-center gap-2 flex-nowrap">
+                  <Input
+                    ref={wpsMaxRef}
+                    value={wpsMaxValue}
+                    onChange={event => setWpsMaxValue(+event.target.value)}
+                    type="number"
+                    placeholder="max"
+                    min={1}
+                    className={cn('w-28')}
+                  />
+                  (max)
+                </div>
+              </div>
             </div>
 
             {/* Sentences per paragraph */}
             {generateType === 'paragraph' && (
-              <div className="flex flex-row items-center gap-2">
-                <div className="text-sm">Sentences per paragraph</div>
-                <Input
-                  ref={sppMinRef}
-                  value={sppMinValue}
-                  onChange={event => setSppMinValue(+event.target.value)}
-                  type="number"
-                  placeholder="min"
-                  min={1}
-                  className={cn('w-28')}
-                />
-                (min)
-                <Input
-                  ref={sppMaxRef}
-                  value={sppMaxValue}
-                  onChange={event => setSppMaxValue(+event.target.value)}
-                  type="number"
-                  placeholder="max"
-                  min={1}
-                  className={cn('w-28')}
-                />
-                (max)
+              <div className="flex flex-row flex-wrap items-center gap-3">
+                <div className="text-sm whitespace-nowrap">Sentences per paragraph</div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex items-center gap-2 flex-nowrap">
+                    <Input
+                      ref={sppMinRef}
+                      value={sppMinValue}
+                      onChange={event => setSppMinValue(+event.target.value)}
+                      type="number"
+                      placeholder="min"
+                      min={1}
+                      className={cn('w-28')}
+                    />
+                    (min)
+                  </div>
+                  <div className="flex items-center gap-2 flex-nowrap">
+                    <Input
+                      ref={sppMaxRef}
+                      value={sppMaxValue}
+                      onChange={event => setSppMaxValue(+event.target.value)}
+                      type="number"
+                      placeholder="max"
+                      min={1}
+                      className={cn('w-28')}
+                    />
+                    (max)
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -264,7 +296,7 @@ export default function LoremIpsumGenerator() {
           ref={textareaRef}
           value={textareaValue}
           onChange={e => setTextareaValue(e.target.value)}
-          placeholder='Click "Generate" button to generate Nano IDs...'
+          placeholder='Click "Generate" button to generate Lorem Ipsum...'
           className="w-full h-full text-base resize-none db-scrollbar"
         />
       </div>

@@ -17,6 +17,7 @@ import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
+import PasswordGenerator from '../../../../tools/password/PasswordGenerator'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -51,7 +52,7 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
 
   return (
     <div className={cn(className, 'flex h-full w-full flex-col')}>
-      <div className="flex flex-col flex-1 min-h-0 p-4">{getToolComponent(tool.slug)}</div>
+      <div className="flex flex-col flex-1 min-h-0 p-4 overflow-auto db-scrollbar">{getToolComponent(tool.slug)}</div>
       {tool.credit && (
         <div className="w-full px-4 py-2 text-xs italic border-t db-prose">
           External tools/libraries used to build this tool:{' '}
@@ -102,6 +103,9 @@ function getToolComponent(slug: string) {
 
     case 'objectid-generator':
       return <ObjectIdComponent />
+
+    case 'password-generator':
+      return <PasswordGenerator />
 
     case 'ulid-generator':
       return <Ulid />
