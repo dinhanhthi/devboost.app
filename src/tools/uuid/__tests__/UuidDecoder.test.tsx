@@ -21,7 +21,7 @@ describe('UuidDecoder', () => {
 
   it('disables ClearButton and Decode button when UUID input is empty', () => {
     render(<UuidDecoder />)
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const decodeButton = screen.getByRole('button', { name: /decode/i })
     expect(clearButton).toBeDisabled()
     expect(decodeButton).toBeDisabled()
@@ -30,7 +30,7 @@ describe('UuidDecoder', () => {
   it('enables ClearButton and Decode button when UUID input is not empty', () => {
     render(<UuidDecoder />)
     const input = screen.getByTestId('uuid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const decodeButton = screen.getByRole('button', { name: /decode/i })
     fireEvent.change(input, { target: { value: 'test' } })
     expect(clearButton).toBeEnabled()
@@ -40,7 +40,7 @@ describe('UuidDecoder', () => {
   it('clears UUID input when ClearButton is clicked', () => {
     render(<UuidDecoder />)
     const input = screen.getByTestId('uuid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const decodeButton = screen.getByRole('button', { name: /decode/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(clearButton)
@@ -54,11 +54,11 @@ describe('UuidDecoder', () => {
       .spyOn(navigator.clipboard, 'readText')
       .mockImplementation(() => Promise.resolve('clipboardValue'))
     render(<UuidDecoder />)
-    const clipboardButton = screen.getByRole('button', { name: /clipboard/i })
+    const clipboardButton = screen.getByTestId('clipboard-button')
     fireEvent.click(clipboardButton)
     await screen.findByDisplayValue('clipboardValue')
     const input = screen.getByTestId('uuid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const decodeButton = screen.getByRole('button', { name: /decode/i })
     expect(input).toHaveValue('clipboardValue')
     expect(clearButton).toBeEnabled()
@@ -94,7 +94,7 @@ describe('UuidDecoder', () => {
 
   it('displays a sample UUID when SampleButton is clicked', () => {
     render(<UuidDecoder />)
-    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    const sampleButton = screen.getByTestId('sample-button')
     fireEvent.click(sampleButton)
     expect(screen.getByTestId('uuid-input')).toHaveValue('123639f0-8522-11ee-9b23-0500b4b78763')
   })

@@ -15,7 +15,7 @@ describe('UuidFormater', () => {
 
   it('disables ClearButton and Format button when string to format input is empty', () => {
     render(<UuidFormater />)
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const formatButton = screen.getByRole('button', { name: /format/i })
     expect(clearButton).toBeDisabled()
     expect(formatButton).toBeDisabled()
@@ -24,7 +24,7 @@ describe('UuidFormater', () => {
   it('enables ClearButton and Format button when string to format input is not empty', () => {
     render(<UuidFormater />)
     const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const formatButton = screen.getByRole('button', { name: /format/i })
     fireEvent.change(input, { target: { value: 'test' } })
     expect(clearButton).toBeEnabled()
@@ -35,7 +35,7 @@ describe('UuidFormater', () => {
     render(<UuidFormater />)
     const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
     const output = screen.getByPlaceholderText('123639f0-8522-11ee-9b23-0500b4b78763')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const formatButton = screen.getByRole('button', { name: /format/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.change(output, { target: { value: 'test' } })
@@ -51,12 +51,12 @@ describe('UuidFormater', () => {
       .spyOn(navigator.clipboard, 'readText')
       .mockImplementation(() => Promise.resolve('clipboardValue'))
     render(<UuidFormater />)
-    const clipboardButton = screen.getByRole('button', { name: /clipboard/i })
+    const clipboardButton = screen.getByTestId('clipboard-button')
     fireEvent.click(clipboardButton)
     await screen.findByDisplayValue('clipboardValue')
     const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
     const output = screen.getByPlaceholderText('123639f0-8522-11ee-9b23-0500b4b78763')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const formatButton = screen.getByRole('button', { name: /format/i })
     expect(input).toHaveValue('clipboardValue')
     expect(output).toHaveValue('')
@@ -83,7 +83,7 @@ describe('UuidFormater', () => {
     const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
     const output = screen.getByPlaceholderText('123639f0-8522-11ee-9b23-0500b4b78763')
     const formatButton = screen.getByRole('button', { name: /format/i })
-    const copyButton = screen.getByRole('button', { name: /copy/i })
+    const copyButton = screen.getByTestId('copy-button')
     fireEvent.change(input, { target: { value: '123639f0852211ee9b230500b4b78763' } })
     fireEvent.click(formatButton)
     fireEvent.click(copyButton)
@@ -94,14 +94,14 @@ describe('UuidFormater', () => {
 
   it('disables CopyButton when UUID output is empty', () => {
     render(<UuidFormater />)
-    const copyButton = screen.getByRole('button', { name: /copy/i })
+    const copyButton = screen.getByTestId('copy-button')
     expect(copyButton).toBeDisabled()
   })
 
   it('enables CopyButton when UUID output is not empty', () => {
     render(<UuidFormater />)
     const output = screen.getByPlaceholderText('123639f0-8522-11ee-9b23-0500b4b78763')
-    const copyButton = screen.getByRole('button', { name: /copy/i })
+    const copyButton = screen.getByTestId('copy-button')
     fireEvent.change(output, { target: { value: '123639f0-8522-11ee-9b23-0500b4b78763' } })
     expect(copyButton).toBeEnabled()
   })
@@ -119,7 +119,7 @@ describe('UuidFormater', () => {
   it('displays a sample string when SampleButton is clicked', () => {
     render(<UuidFormater />)
     const input = screen.getByPlaceholderText('123639f0852211ee9b230500b4b78763')
-    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    const sampleButton = screen.getByTestId('sample-button')
     fireEvent.click(sampleButton)
     expect(input).toHaveValue('123639f0852211ee9b230500b4b78763')
   })

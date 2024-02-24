@@ -360,7 +360,7 @@ export default function Jwt() {
               </SelectTrigger>
               <SelectContent>
                 {algorithms.map(({ value, name }) => (
-                  <SelectItem data-testid={`select-option`} key={value} value={value}>
+                  <SelectItem data-testid="select-option" key={value} value={value}>
                     {name}
                   </SelectItem>
                 ))}

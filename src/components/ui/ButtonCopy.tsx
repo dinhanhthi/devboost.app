@@ -9,6 +9,7 @@ import { Button } from './Button'
 type ButtonCopyProps = {
   text: string
   showText?: boolean
+  dataTestId?: string
 }
 
 export default function ButtonCopy(props: ButtonCopyProps) {
@@ -25,6 +26,7 @@ export default function ButtonCopy(props: ButtonCopyProps) {
   return (
     <SimpleTooltip text="Copy to clipboard" hidden={!!props.showText}>
       <Button
+        data-testid={props.dataTestId || 'copy-button'}
         className={cn({
           'w-[100px]': props.showText
         })}

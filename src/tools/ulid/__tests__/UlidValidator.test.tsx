@@ -15,7 +15,7 @@ describe('UlidValidator', () => {
 
   it('disables ClearButton and ValidateButton when UUID input is empty', () => {
     render(<UlidValidator />)
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     expect(clearButton).toBeDisabled()
     expect(validateButton).toBeDisabled()
@@ -24,7 +24,7 @@ describe('UlidValidator', () => {
   it('enables ClearButton and ValidateButton when UUID input is not empty', () => {
     render(<UlidValidator />)
     const input = screen.getByTestId('ulid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     expect(clearButton).toBeEnabled()
@@ -34,7 +34,7 @@ describe('UlidValidator', () => {
   it('clears UUID input when ClearButton is clicked', () => {
     render(<UlidValidator />)
     const input = screen.getByTestId('ulid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(clearButton)
@@ -48,11 +48,11 @@ describe('UlidValidator', () => {
       .spyOn(navigator.clipboard, 'readText')
       .mockImplementation(() => Promise.resolve('clipboardValue'))
     render(<UlidValidator />)
-    const clipboardButton = screen.getByRole('button', { name: /clipboard/i })
+    const clipboardButton = screen.getByTestId('clipboard-button')
     fireEvent.click(clipboardButton)
     await screen.findByDisplayValue('clipboardValue')
     const input = screen.getByTestId('ulid-input')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     expect(input).toHaveValue('clipboardValue')
     expect(clearButton).toBeEnabled()
@@ -64,7 +64,7 @@ describe('UlidValidator', () => {
     render(<UlidValidator />)
     const input = screen.getByTestId('ulid-input')
     const validateButton = screen.getByRole('button', { name: /validate/i })
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     fireEvent.change(input, { target: { value: '01HFE5Z3SZDQVR53EY0T54C9TS' } })
     fireEvent.click(validateButton)
     expect(await screen.findByText('ULID is valid', { exact: false })).toBeVisible()
@@ -75,7 +75,7 @@ describe('UlidValidator', () => {
     render(<UlidValidator />)
     const input = screen.getByTestId('ulid-input')
     const validateButton = screen.getByRole('button', { name: /validate/i })
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     fireEvent.change(input, { target: { value: 'invalid' } })
     fireEvent.click(validateButton)
     expect(await screen.findByText('ULID is invalid', { exact: false })).toBeVisible()
@@ -84,7 +84,7 @@ describe('UlidValidator', () => {
 
   it('displays a sample ULID when SampleButton is clicked', () => {
     render(<UlidValidator />)
-    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    const sampleButton = screen.getByTestId('sample-button')
     fireEvent.click(sampleButton)
     expect(screen.getByTestId('ulid-input')).toHaveValue('01HFE5Z3SZDQVR53EY0T54C9TS')
   })

@@ -6,12 +6,18 @@ type ButtonClearProps = {
   onClick: () => void
   disabled?: boolean
   showText?: boolean
+  dataTestId?: string
 }
 
 export default function ButtonClear(props: ButtonClearProps) {
   return (
     <SimpleTooltip text="Clear all" hidden={!!props.showText}>
-      <Button variant="outline" onClick={props.onClick} disabled={props.disabled}>
+      <Button
+        data-testid={props.dataTestId || 'clear-button'}
+        variant="outline"
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
         <CleanIcon className="w-3.5 h-3.5" />
         {props.showText && <span className="ml-1.5">Clear</span>}
       </Button>

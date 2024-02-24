@@ -21,9 +21,9 @@ describe('NanoIdGenerator', () => {
 
   it('disables CopyButton, DownloladButton and ClearButton when textarea is empty', () => {
     render(<NanoIdGenerator />)
-    const copyButton = screen.getByRole('button', { name: /copy/i })
-    const downloadButton = screen.getByRole('button', { name: /download/i })
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const copyButton = screen.getByTestId('copy-button')
+    const downloadButton = screen.getByTestId('download-button')
+    const clearButton = screen.getByTestId('clear-button')
     expect(copyButton).toBeDisabled()
     expect(downloadButton).toBeDisabled()
     expect(clearButton).toBeDisabled()
@@ -32,9 +32,9 @@ describe('NanoIdGenerator', () => {
   it('enables CopyButton, DownloladButton and ClearButton when textarea is not empty', () => {
     render(<NanoIdGenerator />)
     const textarea = screen.getByPlaceholderText('Click "Generate" button to generate Nano IDs...')
-    const copyButton = screen.getByRole('button', { name: /copy/i })
-    const downloadButton = screen.getByRole('button', { name: /download/i })
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const copyButton = screen.getByTestId('copy-button')
+    const downloadButton = screen.getByTestId('download-button')
+    const clearButton = screen.getByTestId('clear-button')
     fireEvent.change(textarea, { target: { value: 'test' } })
     expect(copyButton).toBeEnabled()
     expect(downloadButton).toBeEnabled()
@@ -44,7 +44,7 @@ describe('NanoIdGenerator', () => {
   it('clears textarea when ClearButton is clicked', () => {
     render(<NanoIdGenerator />)
     const textarea = screen.getByPlaceholderText('Click "Generate" button to generate Nano IDs...')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     fireEvent.change(textarea, { target: { value: 'test' } })
     fireEvent.click(clearButton)
     expect(textarea).toHaveValue('')
@@ -57,7 +57,7 @@ describe('NanoIdGenerator', () => {
       .mockImplementation(() => Promise.resolve())
     const textarea = screen.getByPlaceholderText('Click "Generate" button to generate Nano IDs...')
     fireEvent.change(textarea, { target: { value: 'test' } })
-    const copyButton = screen.getByRole('button', { name: /copy/i })
+    const copyButton = screen.getByTestId('copy-button')
     fireEvent.click(copyButton)
     expect(clipboardSpy).toHaveBeenCalledWith('test')
   })
