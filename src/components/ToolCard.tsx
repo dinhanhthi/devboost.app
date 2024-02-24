@@ -26,7 +26,7 @@ export default function ToolCard(props: ToolCardProps) {
 
   const classNames = cn(
     className,
-    'flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight border hover:border-primary rounded-lg group bg-accent relative overflow-hidden'
+    'h-full flex transform flex-col items-center justify-center gap-4 p-4 text-center transition-all hover:scale-105 hover:dark:border-thighlight border hover:border-primary rounded-lg group bg-accent relative overflow-hidden'
   )
 
   return (
