@@ -541,11 +541,11 @@ export default function PasswordGenerator() {
         </div>
 
         {/* History */}
-        <div className="flex flex-col gap-3 p-4 mt-4 overflow-auto border rounded-md db-scrollbar">
+        <div className="flex flex-col gap-3 p-4 mt-4 overflow-auto text-sm border rounded-md db-scrollbar">
           <div>
-            Last 5 passwords generated (<i>deleted when page is reloaded</i>)
+            Last 5 passwords generated (<i>deleted when tool is reloaded</i>)
           </div>
-          <ol className="pl-6 font-mono text-sm list-decimal">
+          <ol reversed className="pl-6 font-mono list-decimal">
             {pwdHistory.slice(0, 5).map((pwd, index) => (
               <li key={index}>{pwd}</li>
             ))}

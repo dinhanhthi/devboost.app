@@ -343,7 +343,7 @@ export default function Jwt() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
+    <div className="flex flex-col w-full gap-4 2xl:flex-row">
       {/* Encoded */}
       <div className="flex flex-col flex-1 gap-3 h-fit">
         <div className="flex flex-row flex-wrap gap-4">
