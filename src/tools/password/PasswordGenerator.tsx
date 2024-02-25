@@ -553,7 +553,7 @@ export default function PasswordGenerator() {
         </div>
       </div>
 
-      <div className="text-sm italic">*The passphrase is generated from 100 random words.</div>
+      <div className="text-sm italic">*The passphrase is generated from a fixed number of words.</div>
     </MainContainer>
   )
 }
