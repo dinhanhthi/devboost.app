@@ -86,6 +86,7 @@ export default function SideNav(props: SideNavProps) {
               placeholder={'type to search tools...'}
               value={query}
               onChange={e => handleOnchangeInput(e)}
+              className='py-1.5 h-fit'
             />
             <SideNavFilter filter={filter} setFilter={setFilter} />
           </div>

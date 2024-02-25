@@ -69,6 +69,7 @@ export default function SideNavItem(props: SideNavItemProps) {
           'relative group w-full aria-selected:bg-muted aria-selected:opacity-100 aria-selected:font-medium !px-2 font-normal text-foreground opacity-95 hover:opacity-100',
           { 'opacity-50': !tool.implemented }
         )}
+        title={tool.name}
       >
         <div className="flex items-center w-full gap-2">
           <div className="flex items-center w-6">{tool.iconEl}</div>
@@ -90,7 +91,7 @@ export default function SideNavItem(props: SideNavItemProps) {
                   {dateStatus === 'updated' && 'updated'}
                 </span>
               )}
-              <div className="font-medium" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
+              <div className="flex-1 overflow-hidden font-medium text-ellipsis" dangerouslySetInnerHTML={{ __html: tool.name }}></div>
             </div>
             {(props.filter?.showDescription || props.forceToShowDescription) && (
               <div

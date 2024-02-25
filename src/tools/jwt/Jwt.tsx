@@ -502,7 +502,7 @@ const getMarkup = (decoded: string) => {
   if (decoded.split('.').length === 0) return decoded
   let [firstPart, secondPart, rest] = ['', '', '']
   if (decoded.split('.').length >= 1) {
-    firstPart = `<span class="text-red-600 dark:text-red-400">${decoded.split('.')[0]}</span>`
+    firstPart = `<span class="text-danger">${decoded.split('.')[0]}</span>`
   }
   if (decoded.split('.').length >= 2) {
     secondPart = `.<span class="text-fuchsia-600 dark:text-fuchsia-400">${

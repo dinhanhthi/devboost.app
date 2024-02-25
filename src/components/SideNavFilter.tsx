@@ -2,6 +2,7 @@
 
 import { CheckedState } from '@radix-ui/react-checkbox'
 import { isEqual } from 'lodash'
+import { useState } from 'react'
 import CleanIcon from '../icons/CleanIcon'
 import IoFilter from '../icons/IoFilter'
 import { SideNavFilterSortBy, SideNavFilterType } from '../interface'
@@ -18,6 +19,7 @@ type SideNavFilterProps = {
 
 export default function SideNavFilter(props: SideNavFilterProps) {
   const { filter, setFilter } = props
+  const [openPopover, setOpenPopover] = useState(false)
 
   const handleShowOnlyFavoriteChange = (checked: CheckedState) => {
     setFilter({ ...filter, showOnlyFavorites: checked === true })
@@ -51,7 +53,7 @@ export default function SideNavFilter(props: SideNavFilterProps) {
   }
 
   return (
-    <Popover>
+    <Popover open={openPopover} onOpenChange={setOpenPopover}>
       <PopoverTrigger asChild>
         <Button className="relative" variant="ghost" size="icon">
           <IoFilter className="w-4 h-4" />
@@ -60,7 +62,7 @@ export default function SideNavFilter(props: SideNavFilterProps) {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex flex-col gap-4 divide-y" align="start">
+      <PopoverContent className="flex flex-col gap-4" align="start">
         <div className="flex flex-col gap-4 text-sm">
           {/* Show only favorites */}
           <div className="flex items-center space-x-2">
@@ -152,14 +154,14 @@ export default function SideNavFilter(props: SideNavFilterProps) {
           </div>
         </div>
         {/* Clear filters */}
-        <div className="pt-2 -mb-1">
-          <button
-            className="flex items-center gap-1.5 text-sm hover:bg-accent hover:text-accent-foreground px-3 py-1 rounded-sm"
-            onClick={() => setFilter(DEFAULT_C0NFIGS.sideNavFilter)}
-          >
+        <div className="flex items-center gap-2 pt-2">
+          <Button variant="outline" onClick={() => setFilter(DEFAULT_C0NFIGS.sideNavFilter)}>
             <CleanIcon className="w-4 h-4" />
             Reset filters
-          </button>
+          </Button>
+          <Button variant={'outline'} onClick={() => setOpenPopover(false)}>
+            Cancel
+          </Button>
         </div>
       </PopoverContent>
     </Popover>
