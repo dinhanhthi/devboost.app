@@ -85,7 +85,7 @@ export default function OpenAiKeyValidator() {
             value={apiKeyInputValue}
             onChange={handleOnChangeApiKeyInput}
             type="text"
-            placeholder={'sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0'}
+            placeholder={'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
             className={cn('flex-1 py-2')}
           />
         </div>

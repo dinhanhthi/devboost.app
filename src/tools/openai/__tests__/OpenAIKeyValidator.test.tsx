@@ -17,7 +17,7 @@ describe('OpenAiKeyValidator', () => {
 
   it('disables ClearButton and ValidateButton when API key input is empty', () => {
     render(<OpenAiKeyValidator />)
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     expect(clearButton).toBeDisabled()
     expect(validateButton).toBeDisabled()
@@ -25,8 +25,8 @@ describe('OpenAiKeyValidator', () => {
 
   it('enables ClearButton and ValidateButton when API key input is not empty', () => {
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     expect(clearButton).toBeEnabled()
@@ -35,8 +35,8 @@ describe('OpenAiKeyValidator', () => {
 
   it('clears API key input when ClearButton is clicked', () => {
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(clearButton)
@@ -50,11 +50,11 @@ describe('OpenAiKeyValidator', () => {
       .spyOn(navigator.clipboard, 'readText')
       .mockImplementation(() => Promise.resolve('clipboardValue'))
     render(<OpenAiKeyValidator />)
-    const clipboardButton = screen.getByRole('button', { name: /clipboard/i })
+    const clipboardButton = screen.getByTestId('clipboard-button')
     fireEvent.click(clipboardButton)
     await screen.findByDisplayValue('clipboardValue')
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     expect(input).toHaveValue('clipboardValue')
     expect(clearButton).toBeEnabled()
@@ -70,7 +70,7 @@ describe('OpenAiKeyValidator', () => {
       } as Response)
     )
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(validateButton)
@@ -86,7 +86,7 @@ describe('OpenAiKeyValidator', () => {
       } as Response)
     )
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(validateButton)
@@ -97,7 +97,7 @@ describe('OpenAiKeyValidator', () => {
   it('shows error when there is an error with fetch', async () => {
     jest.spyOn(global, 'fetch').mockImplementationOnce(() => Promise.reject(new Error('error')))
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     const validateButton = screen.getByRole('button', { name: /validate/i })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(validateButton)
@@ -107,10 +107,10 @@ describe('OpenAiKeyValidator', () => {
 
   it('displays a sample API key when Sample button is clicked', () => {
     render(<OpenAiKeyValidator />)
-    const input = screen.getByPlaceholderText('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
-    const clearButton = screen.getByRole('button', { name: /clear/i })
+    const input = screen.getByPlaceholderText('sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    const clearButton = screen.getByTestId('clear-button')
     const validateButton = screen.getByRole('button', { name: /validate/i })
-    const sampleButton = screen.getByRole('button', { name: /sample/i })
+    const sampleButton = screen.getByTestId('sample-button')
     fireEvent.click(sampleButton)
     expect(input).toHaveValue('sk-dvREYJKERUIeXANAZfABC3BlbkFJs4FlBU4TYxgqkfH9UAV0')
     expect(clearButton).toBeEnabled()

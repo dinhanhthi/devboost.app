@@ -149,7 +149,7 @@ export default function UuidGenerator() {
 
   return (
     <div className={cn('flex h-full flex-col gap-4')}>
-      <div className="flex flex-wrap justify-between gap-4">
+      <div className="flex flex-wrap gap-4">
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="flex flex-row items-center gap-2">
@@ -175,13 +175,13 @@ export default function UuidGenerator() {
         </div>
 
         {/* versions */}
-        <div className="relative z-10 flex flex-row items-center h-8 gap-1">
+        <div className="relative z-10 flex flex-row flex-wrap items-center gap-x-1 gap-y-2 h-fit w-ful">
           <Select
             defaultValue={defaultUuidVersion}
             onValueChange={handleSelectVersionsChange}
             name="version-selection"
           >
-            <SelectTrigger data-testid="select-button-version" className="w-[280px] h-8">
+            <SelectTrigger data-testid="select-button-version" className="w-[255px] h-8">
               <SelectValue placeholder="Select a version" />
             </SelectTrigger>
             <SelectContent>
@@ -192,17 +192,19 @@ export default function UuidGenerator() {
               ))}
             </SelectContent>
           </Select>
-          <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
-          <Input
-            ref={inputRecordsRef}
-            value={recordsValue}
-            onChange={event => setRecordsValue(event.target.value)}
-            type="number"
-            placeholder="max 500"
-            min={1}
-            max={500}
-            className={cn('w-28 h-8')}
-          />
+          <div className='flex items-center gap-1 flex-nowrap'>
+            <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
+            <Input
+              ref={inputRecordsRef}
+              value={recordsValue}
+              onChange={event => setRecordsValue(event.target.value)}
+              type="number"
+              placeholder="max 500"
+              min={1}
+              max={500}
+              className={cn('w-28 h-8')}
+            />
+          </div>
         </div>
       </div>
 
@@ -260,7 +262,7 @@ export default function UuidGenerator() {
       {/* textarea */}
       <div className="flex-1 min-h-0">
         <Textarea
-          className='h-full resize-none db-scrollbar'
+          className="h-full resize-none db-scrollbar"
           ref={textareaRef}
           value={textareaValue}
           onChange={handleTextareaChange}

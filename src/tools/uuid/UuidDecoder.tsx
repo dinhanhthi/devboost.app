@@ -69,7 +69,7 @@ export default function UuidDecoder() {
         <div className="flex flex-row items-center gap-2">
           <ButtonClear onClick={handleClearClicked} disabled={!originalValue || isDecoding} />
           <ButtonClipboard handleClipText={handleClipText} disabled={isDecoding} />
-          <ButtonSample onClick={handleSampleClicked} />
+          <ButtonSample dataTestId='sample-button' onClick={handleSampleClicked} />
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default function UuidDecoder() {
           value={originalValue}
           onChange={handleOnChangeInput}
           type="text"
-          placeholder={'123639f0-8522-11ee-9b23-0500b4b78763'}
+          placeholder={'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}
           className={cn('flex-1 py-2')}
         />
       </div>

@@ -49,7 +49,7 @@ export default function UlidGenerator() {
 
   return (
     <div className={cn('flex h-full flex-col gap-4')}>
-      <div className="flex flex-row flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-row flex-wrap items-center gap-4">
         {/* buttons */}
         <div className="flex flex-row flex-wrap items-center gap-4">
           <ButtonGenerate
@@ -65,24 +65,26 @@ export default function UlidGenerator() {
         </div>
 
         {/* records */}
-        <div className="flex flex-row items-center h-8 gap-1">
+        <div className="flex flex-row flex-wrap items-center gap-x-1 gap-y-2 h-fit">
           <Input
             ref={inputTimeSeedRef}
             type="text"
             placeholder="time seed"
             className={cn('w-52')}
           />
-          <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
-          <Input
-            ref={inputRecordsRef}
-            value={recordsValue}
-            onChange={event => setRecordsValue(event.target.value)}
-            type="number"
-            placeholder="max 500"
-            max={500}
-            min={1}
-            className={cn('w-28')}
-          />
+          <div className="flex items-center gap-1 flex-nowrap">
+            <Times className="w-5 h-5 text-gray-500 dark:text-tdark" />
+            <Input
+              ref={inputRecordsRef}
+              value={recordsValue}
+              onChange={event => setRecordsValue(event.target.value)}
+              type="number"
+              placeholder="max 500"
+              max={500}
+              min={1}
+              className={cn('w-28')}
+            />
+          </div>
         </div>
       </div>
 

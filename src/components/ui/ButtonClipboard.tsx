@@ -6,6 +6,7 @@ type ButtonClipboardProps = {
   handleClipText: (text: string) => void
   disabled?: boolean
   showText?: boolean
+  dataTestId?: string
 }
 
 export default function ButtonClipboard(props: ButtonClipboardProps) {
@@ -17,7 +18,12 @@ export default function ButtonClipboard(props: ButtonClipboardProps) {
 
   return (
     <SimpleTooltip text="Paste your text" hidden={!!props.showText}>
-      <Button variant="outline" onClick={handleClipboardClicked} disabled={props.disabled}>
+      <Button
+        data-testid={props.dataTestId || 'clipboard-button'}
+        variant="outline"
+        onClick={handleClipboardClicked}
+        disabled={props.disabled}
+      >
         <ClipboardIcon className="w-3.5 h-3.5" />
         {props.showText && <span className="ml-1.5">Clipboard</span>}
       </Button>

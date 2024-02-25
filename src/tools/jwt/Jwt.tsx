@@ -343,9 +343,9 @@ export default function Jwt() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full gap-4 2xl:flex-row">
+    <div className="flex flex-col w-full gap-4 2xl:flex-row">
       {/* Encoded */}
-      <div className="flex flex-col flex-1 gap-3">
+      <div className="flex flex-col flex-1 gap-3 h-fit">
         <div className="flex flex-row flex-wrap gap-4">
           <div className="flex flex-row flex-wrap items-center gap-2">
             <div className="font-medium">Encoded</div>
@@ -360,7 +360,7 @@ export default function Jwt() {
               </SelectTrigger>
               <SelectContent>
                 {algorithms.map(({ value, name }) => (
-                  <SelectItem data-testid={`select-option`} key={value} value={value}>
+                  <SelectItem data-testid="select-option" key={value} value={value}>
                     {name}
                   </SelectItem>
                 ))}
@@ -373,7 +373,7 @@ export default function Jwt() {
           </div>
           {jwt && (
             <div
-              className={cn('flex items-center 2xl:hidden', {
+              className={cn('flex items-center', {
                 'text-success': isSignatureVerified,
                 'text-danger': !isSignatureVerified
               })}
@@ -394,7 +394,7 @@ export default function Jwt() {
           )}
         </div>
         <div className="flex-1 min-h-0">
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full min-h-[150px]">
             {/* Make sure the classes are the same as the ones in Textarea component! */}
             <div
               className="absolute top-0 left-0 w-full h-full max-h-full px-3 py-2 text-sm break-words db-scrollbar dark:bg-[#1C1F27] font-mono border rounded-md"
@@ -412,27 +412,6 @@ export default function Jwt() {
             />
           </div>
         </div>
-        {jwt && (
-          <div
-            className={cn('items-center hidden w-full mx-auto text-center 2xl:flex', {
-              'text-success': isSignatureVerified,
-              'text-danger': !isSignatureVerified
-            })}
-          >
-            {isSignatureVerified && (
-              <>
-                <CheckCircledIcon className="w-4 h-4 mr-1.5" />
-                Signature Verified
-              </>
-            )}
-            {!isSignatureVerified && (
-              <>
-                <Cross2Icon className="w-4 h-4 mr-1.5" />
-                Invalid Signature
-              </>
-            )}
-          </div>
-        )}
       </div>
 
       {/* Decoded */}
@@ -523,7 +502,7 @@ const getMarkup = (decoded: string) => {
   if (decoded.split('.').length === 0) return decoded
   let [firstPart, secondPart, rest] = ['', '', '']
   if (decoded.split('.').length >= 1) {
-    firstPart = `<span class="text-red-600 dark:text-red-400">${decoded.split('.')[0]}</span>`
+    firstPart = `<span class="text-danger">${decoded.split('.')[0]}</span>`
   }
   if (decoded.split('.').length >= 2) {
     secondPart = `.<span class="text-fuchsia-600 dark:text-fuchsia-400">${
