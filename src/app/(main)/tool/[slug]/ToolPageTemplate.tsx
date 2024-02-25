@@ -15,9 +15,9 @@ import LoremIpsumGenerator from '../../../../tools/lorem-ipsum/LoremIpsumGenerat
 import NanoIdGenerator from '../../../../tools/nano-id/NanoIdGenerator'
 import ObjectIdComponent from '../../../../tools/object-id/ObjectIdComponent'
 import OpenAiKeyValidator from '../../../../tools/openai/OpenAiKeyValidator'
+import PasswordComponent from '../../../../tools/password/PasswordComponent'
 import Ulid from '../../../../tools/ulid/Ulid'
 import Uuid from '../../../../tools/uuid/Uuid'
-import PasswordGenerator from '../../../../tools/password/PasswordGenerator'
 
 type ToolPageTemplateProps = {
   className?: string
@@ -52,9 +52,11 @@ export default function ToolPageTemplate(props: ToolPageTemplateProps) {
 
   return (
     <div className={cn(className, 'flex h-full w-full flex-col')}>
-      <div className="flex flex-col flex-1 min-h-0 p-4 overflow-auto db-scrollbar">{getToolComponent(tool.slug)}</div>
+      <div className="flex flex-col flex-1 min-h-0 p-4 overflow-auto db-scrollbar">
+        {getToolComponent(tool.slug)}
+      </div>
       {tool.credit && (
-        <div className="w-full px-4 py-2 text-xs italic border-t db-prose">
+        <div className="w-full px-4 py-2 text-xs border-t db-prose">
           External tools/libraries used to build this tool:{' '}
           {tool.credit.map((credit, index) => (
             <span key={credit.name}>
@@ -104,8 +106,8 @@ function getToolComponent(slug: string) {
     case 'objectid-generator':
       return <ObjectIdComponent />
 
-    case 'password-generator':
-      return <PasswordGenerator />
+    case 'password-generator-checker':
+      return <PasswordComponent />
 
     case 'ulid-generator':
       return <Ulid />

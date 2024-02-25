@@ -263,12 +263,19 @@ const originalTools: Tool[] = [
     releaseDate: '2023-10-31'
   },
   {
-    slug: 'password-generator',
-    name: 'Password Generator',
+    slug: 'password-generator-checker',
+    name: 'Password Generator / Checker',
+    description: 'Generate a strong password with custom length and options.',
     iconEl: PasswordIcon({ className: commonIconClass }),
-    releaseDate: '2024-02-17',
-    wip: true,
-    implemented: true
+    releaseDate: '2024-02-25',
+    implemented: true,
+    credit: [
+      {
+        name: 'zxcvbn',
+        url: 'https://github.com/dropbox/zxcvbn',
+        version: '4.4.2'
+      }
+    ]
   },
   {
     slug: 'qr-code-generator-reader',
@@ -387,5 +394,6 @@ export const allToolItem: Tool = {
   name: 'All tools',
   slug: '/',
   iconEl: RiApps2Line({ className: 'text-xl' }),
-  releaseDate: '2023-10-31'
+  releaseDate: '2023-10-31',
+  implemented: true
 }
