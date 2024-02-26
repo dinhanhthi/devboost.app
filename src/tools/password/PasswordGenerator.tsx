@@ -9,120 +9,12 @@ import { Checkbox } from '../../components/ui/Checkbox'
 import { RadioGroup, RadioGroupItem } from '../../components/ui/RadioGroup'
 import { Slider } from '../../components/ui/Slider'
 import { cn } from '../../lib/utils'
+import { wordList } from './wordList'
 
 type GenerateTypes = 'password' | 'passphrase'
 export type PasswordStrength = 'Very weak' | 'Weak' | 'Good' | 'Strong' | 'Very strong'
 
 const specialChars = '!@#$%^&*-_+='
-const wordList = [
-  'aardvark',
-  'albatross',
-  'ant',
-  'apple',
-  'avocado',
-  'baboon',
-  'banana',
-  'bee',
-  'bison',
-  'bamboo',
-  'bicycle',
-  'basil',
-  'cat',
-  'crocodile',
-  'cactus',
-  'caterpillar',
-  'coconut',
-  'cheetah',
-  'donut',
-  'dragon',
-  'dinosaur',
-  'dolphin',
-  'dog',
-  'elephant',
-  'eagle',
-  'elephant',
-  'fox',
-  'flamingo',
-  'feather',
-  'ferret',
-  'gorilla',
-  'gazelle',
-  'guitar',
-  'giraffe',
-  'grape',
-  'horse',
-  'hat',
-  'hedgehog',
-  'hummingbird',
-  'hippo',
-  'hawk',
-  'ice',
-  'iguana',
-  'ibis',
-  'ink',
-  'jaguar',
-  'jellyfish',
-  'jigsaw',
-  'kiwi',
-  'kangaroo',
-  'koala',
-  'lion',
-  'lemon',
-  'ladybug',
-  'lighthouse',
-  'lizard',
-  'mango',
-  'mongoose',
-  'monkey',
-  'mushroom',
-  'nectarine',
-  'nightingale',
-  'notebook',
-  'narwhal',
-  'numbat',
-  'octopus',
-  'ostrich',
-  'orange',
-  'owl',
-  'pizza',
-  'penguin',
-  'parrot',
-  'quilt',
-  'quokka',
-  'quail',
-  'rabbit',
-  'raccoon',
-  'rhinoceros',
-  'robot',
-  'sunflower',
-  'sloth',
-  'snake',
-  'strawberry',
-  'squirrel',
-  'turtle',
-  'toucan',
-  'tapir',
-  'teacher',
-  'tiger',
-  'tower',
-  'umbrella',
-  'uakari',
-  'unicorn',
-  'vase',
-  'volleyball',
-  'vulture',
-  'watermelon',
-  'waffle',
-  'walrus',
-  'xylophone',
-  'xerus',
-  'yak',
-  'yacht',
-  'yogurt',
-  'yak',
-  'zebra',
-  'zucchini'
-]
 
 export default function PasswordGenerator() {
   const defaultType = 'password'
@@ -164,7 +56,7 @@ export default function PasswordGenerator() {
   const [type, setType] = useState<GenerateTypes>(defaultType)
   const generateTypes = [
     { value: 'password', name: 'Password' },
-    { value: 'passphrase', name: 'Passphrase*' }
+    { value: 'passphrase', name: 'Passphrase' }
   ]
   const handleSelectTypes = (value: GenerateTypes) => {
     setType(value)
@@ -441,11 +333,11 @@ export default function PasswordGenerator() {
                   <Checkbox
                     onCheckedChange={handleUpperPpChanged}
                     defaultChecked={defaultUpperPp}
-                    id="capitalize-passphrase"
+                    id="upper-passphrase"
                     disabled={capitalPp}
                   />
                   <label
-                    htmlFor="capitalize-passphrase"
+                    htmlFor="upper-passphrase"
                     className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 whitespace-nowrap"
                   >
                     Uppercase
@@ -552,8 +444,6 @@ export default function PasswordGenerator() {
           </ol>
         </div>
       </div>
-
-      <div className="text-sm italic">*The passphrase is generated from a fixed number of words.</div>
     </MainContainer>
   )
 }
