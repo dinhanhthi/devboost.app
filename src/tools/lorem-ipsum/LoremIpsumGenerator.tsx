@@ -41,9 +41,9 @@ export default function LoremIpsumGenerator() {
   const defaultGenerateType = 'paragraph'
   const [generateType, setGenerateType] = useState<GenerateTypes>(defaultGenerateType)
   const generateTypes = [
-    { value: 'words', name: 'Generate Words' },
-    { value: 'sentences', name: 'Generate Sentences' },
-    { value: 'paragraph', name: 'Generate Paragraphs' }
+    { value: 'words', name: 'Words' },
+    { value: 'sentences', name: 'Sentences' },
+    { value: 'paragraph', name: 'Paragraphs' }
   ]
   const handleSelectTypes = (value: GenerateTypes) => {
     setTextareaValue('')
@@ -155,39 +155,23 @@ export default function LoremIpsumGenerator() {
             {/* HTML / Plain Text */}
             <RadioGroup
               className="flex"
-              defaultValue={defaultFormat}
-              onValueChange={handleSelectFormats}
+              defaultValue={defaultGenerateType}
+              onValueChange={handleSelectTypes}
             >
-              {formatTypes.map(item => (
+              {generateTypes.map(item => (
                 <div key={item.value} className="flex items-center space-x-2">
                   <RadioGroupItem value={item.value} id={item.value} />
                   <label htmlFor={item.value}>{item.name}</label>
                 </div>
               ))}
             </RadioGroup>
-            {/* <Select
-              defaultValue={defaultFormat}
-              onValueChange={handleSelectFormats}
-              name="format-selection"
-            >
-              <SelectTrigger className="w-[170px] h-8">
-                <SelectValue placeholder="Select a format" />
-              </SelectTrigger>
-              <SelectContent>
-                {formatTypes.map(({ value, name }) => (
-                  <SelectItem key={value} value={value}>
-                    {name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select> */}
           </div>
 
           {/* format x type x number */}
           <div className="relative z-10 flex flex-row items-center h-fit gap-x-1 gap-y-2">
             {/* Words / Paragraphs / Sentences */}
             <div className="flex flex-row flex-wrap gap-x-1 gap-y-2 h-fit">
-              <Select
+              {/* <Select
                 defaultValue={defaultGenerateType}
                 onValueChange={handleSelectTypes}
                 name="types-selection"
@@ -197,6 +181,22 @@ export default function LoremIpsumGenerator() {
                 </SelectTrigger>
                 <SelectContent>
                   {generateTypes.map(({ value, name }) => (
+                    <SelectItem key={value} value={value}>
+                      {name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select> */}
+              <Select
+                defaultValue={defaultFormat}
+                onValueChange={handleSelectFormats}
+                name="format-selection"
+              >
+                <SelectTrigger className="w-[170px] h-8">
+                  <SelectValue placeholder="Select a format" />
+                </SelectTrigger>
+                <SelectContent>
+                  {formatTypes.map(({ value, name }) => (
                     <SelectItem key={value} value={value}>
                       {name}
                     </SelectItem>
@@ -225,7 +225,7 @@ export default function LoremIpsumGenerator() {
           <div className="flex flex-row flex-wrap items-center flex-1 min-w-0 gap-4 h-7">
             {/* Words per sentence */}
             <div className="flex flex-row flex-wrap items-center gap-3">
-              <div className="text-sm whitespace-nowrap">Words per sentence</div>
+              <div className="whitespace-nowrap">Words per sentence</div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 flex-nowrap">
                   <Input
@@ -257,7 +257,7 @@ export default function LoremIpsumGenerator() {
             {/* Sentences per paragraph */}
             {generateType === 'paragraph' && (
               <div className="flex flex-row flex-wrap items-center gap-3">
-                <div className="text-sm whitespace-nowrap">Sentences per paragraph</div>
+                <div className="whitespace-nowrap">Sentences per paragraph</div>
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-center gap-2 flex-nowrap">
                     <Input
