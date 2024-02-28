@@ -193,7 +193,9 @@ const originalTools: Tool[] = [
     slug: 'mermaid-playground',
     name: 'Mermaid Playground',
     iconEl: TreeDiagramIcon({ className: 'text-xl' }),
-    releaseDate: '2023-10-31'
+    releaseDate: '2023-10-31',
+    wip: true,
+    implemented: true
   },
   {
     slug: 'nano-id-generator',
