@@ -86,6 +86,13 @@ const originalTools: Tool[] = [
     releaseDate: '2023-10-31'
   },
   {
+    slug: 'css-to-react',
+    name: 'CSS to React',
+    description: 'Convert CSS to React inline styles.',
+    iconEl: DiCss3Full({ className: commonIconClass }),
+    releaseDate: '2023-10-31'
+  },
+  {
     slug: 'html-beautifier-minifier',
     name: 'HTML Beautifier/Minifier',
     iconEl: AiFillHtml5({ className: commonIconClass }),
@@ -151,7 +158,7 @@ const originalTools: Tool[] = [
       {
         name: 'yaml',
         url: 'https://github.com/eemeli/yaml',
-        version: '2.3.4'
+        version: '2.4.5'
       }
     ],
     implemented: true,
@@ -167,7 +174,7 @@ const originalTools: Tool[] = [
       {
         name: 'jose',
         url: 'https://github.com/panva/jose',
-        version: '5.1.3'
+        version: '5.4.1'
       }
     ],
     implemented: true,
@@ -193,7 +200,9 @@ const originalTools: Tool[] = [
     slug: 'mermaid-playground',
     name: 'Mermaid Playground',
     iconEl: TreeDiagramIcon({ className: 'text-xl' }),
-    releaseDate: '2023-10-31'
+    releaseDate: '2023-10-31',
+    wip: true,
+    implemented: true
   },
   {
     slug: 'nano-id-generator',
@@ -206,7 +215,7 @@ const originalTools: Tool[] = [
       {
         name: 'nanoid',
         url: 'https://github.com/ai/nanoid',
-        version: '5.0.3'
+        version: '5.0.7'
       }
     ],
     implemented: true,
@@ -235,7 +244,7 @@ const originalTools: Tool[] = [
       {
         name: 'bson',
         url: 'https://github.com/mongodb/js-bson',
-        version: '6.2.0'
+        version: '6.7.0'
       }
     ],
     implemented: true,
@@ -343,7 +352,7 @@ const originalTools: Tool[] = [
       {
         name: 'ulidx',
         url: 'https://github.com/perry-mitchell/ulidx',
-        version: '2.2.1'
+        version: '2.3.0'
       }
     ],
     implemented: true,
