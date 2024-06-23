@@ -55,6 +55,7 @@ npx shadcn-ui@latest add tabs
 - [ ] Compare JSON
 - [ ] Compare String
 - [ ] CSS Beautifier/Minifier
+- [ ] CSS to React
 - [ ] HTML Beautifier/Minifier
 - [ ] HTML Entities Encoder/Decoder
 - [ ] HTML Preview
