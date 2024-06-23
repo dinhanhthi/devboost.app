@@ -1,6 +1,6 @@
 'use client'
 
-import { CheckedState } from '@radix-ui/react-checkbox'
+import { CheckboxProps } from '@radix-ui/react-checkbox'
 import { isEqual } from 'lodash'
 import { useState } from 'react'
 import CleanIcon from '../icons/CleanIcon'
@@ -16,6 +16,8 @@ type SideNavFilterProps = {
   filter: SideNavFilterType
   setFilter: (value: SideNavFilterType) => void
 }
+
+type CheckedState = CheckboxProps['checked']
 
 export default function SideNavFilter(props: SideNavFilterProps) {
   const { filter, setFilter } = props
